@@ -650,24 +650,24 @@ img {
   transform: rotate(-180deg);
 }
 
-/*====================  ====================*/
-.__tabs {
+/*==================== QUALIFICATION ====================*/
+.qualification__tabs {
   display: flex;
   justify-content: space-evenly;
   margin-bottom: var(--mb-2);
 }
 
-.__button {
+.qualification__button {
   font-size: var(--h3-font-size);
   font-weight: var(--font-medium);
   cursor: pointer;
 }
 
-.__button:hover {
+.qualification__button:hover {
   color: var(--first-color);
 }
 
-.__icon {
+.qualification__icon {
   font-size: 1.8rem;
   margin-right: var(--mb-0-25);
 }
