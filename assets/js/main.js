@@ -170,6 +170,43 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+
+/*==================== Typewriter function ====================*/ 
+
+/*==================== Typewriter Function ====================*/ 
+
+// Typewriter Animation
+const roles = [ 
+    '🤖 AI Engineer 🧠',
+    '🔎 Gen AI Developer 📑',
+    '💻 Machine Learning Engineer🦾'
+];
+
+let roleIndex = 0, charIndex = 0, isDeleting = false;
+const typingSpeed = 100, erasingSpeed = 50, delayBetweenRoles = 1500;
+
+function typeText() {
+    const typingText = document.getElementById("typing-text");
+    if (!typingText) return;
+
+    if (!isDeleting && charIndex <= roles[roleIndex].length) {
+        typingText.innerHTML = roles[roleIndex].substring(0, charIndex++);
+        setTimeout(typeText, typingSpeed);
+    } else if (isDeleting && charIndex >= 0) {
+        typingText.innerHTML = roles[roleIndex].substring(0, charIndex--);
+        setTimeout(typeText, erasingSpeed);
+    } else {
+        isDeleting = !isDeleting;
+        if (!isDeleting) roleIndex = (roleIndex + 1) % roles.length;
+        setTimeout(typeText, delayBetweenRoles);
+    }
+}
+
+setTimeout(typeText, 700);
+
+
+
+
 /*==================== CHANGE BACKGROUND HEADER ====================*/ 
 function scrollHeader(){
     const nav = document.getElementById('header');

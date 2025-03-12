@@ -1364,3 +1364,26 @@ img {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/* Typewriter Text */
+#typing-text {
+    font-size: 1.3rem; /* Increased text size */
+    font-weight: bold; /* Bold text */
+    font-family: Arial, sans-serif;
+    color: #7510d7; /* Adjust color if needed */
+}
+
+/* Typewriter Cursor */
+#typing-text::after {
+    content: "|";
+    display: inline-block;
+    margin-left: 5px;
+    animation: blink 0.7s infinite;
+}
+
+/* Blinking Cursor Animation */
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
