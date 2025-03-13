@@ -223,43 +223,84 @@ function scrollTop(){
 window.addEventListener('scroll', scrollTop)
 
 /*==================== DARK LIGHT THEME ====================*/ 
-const themeButton = document.getElementById('theme-button')
-const darkTheme = 'dark-theme'
-const iconTheme = 'uil-sun'
+// const themeButton = document.getElementById('theme-button')
+// const darkTheme = 'dark-theme'
+// const iconTheme = 'uil-sun'
 
-// Previously selected topic (if user selected)
-const selectedTheme = localStorage.getItem('selected-theme')
-const selectedIcon = localStorage.getItem('selected-icon')
+// // Previously selected topic (if user selected)
+// const selectedTheme = localStorage.getItem('selected-theme')
+// const selectedIcon = localStorage.getItem('selected-icon')
 
-// We obtain the current theme that the interface has by validating the dark-theme class
-const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light'
-const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'uil-moon' : 'uil-sun'
+// // We obtain the current theme that the interface has by validating the dark-theme class
+// const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light'
+// const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'uil-moon' : 'uil-sun'
 
-// We validate if the user previously chose a topic
+// // We validate if the user previously chose a topic
+// if (selectedTheme) {
+//   // If the validation is fulfilled, we ask what the issue was to know if we activated or deactivated the dark
+// document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme)
+// themeButton.classList[selectedIcon === 'uil-moon' ? 'add' : 'remove'](iconTheme)
+// }
+
+// // Activate / deactivate the theme manually with the button
+// themeButton.addEventListener('click', () => {
+//     // Add or remove the dark / icon theme
+//     document.body.classList.toggle(darkTheme)
+//     themeButton.classList.toggle(iconTheme)
+//     // We save the theme and the current icon that the user chose
+//     localStorage.setItem('selected-theme', getCurrentTheme())
+//     localStorage.setItem('selected-icon', getCurrentIcon())
+
+
+// document.addEventListener("click", function () {
+//         if (document.documentElement.requestFullscreen) {
+//             document.documentElement.requestFullscreen();
+//         } else if (document.documentElement.webkitRequestFullscreen) {
+//             document.documentElement.webkitRequestFullscreen();
+//         } else if (document.documentElement.msRequestFullscreen) {
+//             document.documentElement.msRequestFullscreen();
+//         }
+//       }, { once: true }); // Ensures it runs only once
+/*==================== DARK LIGHT THEME ====================*/ 
+const themeButton = document.getElementById('theme-button');
+const darkTheme = 'dark-theme';
+const iconTheme = 'uil-sun';
+
+// Retrieve saved theme settings
+const selectedTheme = localStorage.getItem('selected-theme');
+const selectedIcon = localStorage.getItem('selected-icon');
+
+// Function to get the current theme and icon state
+const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light';
+const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'uil-moon' : 'uil-sun';
+
+// Apply saved theme on page load
 if (selectedTheme) {
-  // If the validation is fulfilled, we ask what the issue was to know if we activated or deactivated the dark
-document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme)
-themeButton.classList[selectedIcon === 'uil-moon' ? 'add' : 'remove'](iconTheme)
+    document.body.classList.toggle(darkTheme, selectedTheme === 'dark');
+    themeButton.classList.toggle(iconTheme, selectedIcon === 'uil-moon');
 }
 
-// Activate / deactivate the theme manually with the button
+// Toggle theme on button click
 themeButton.addEventListener('click', () => {
-    // Add or remove the dark / icon theme
-    document.body.classList.toggle(darkTheme)
-    themeButton.classList.toggle(iconTheme)
-    // We save the theme and the current icon that the user chose
-    localStorage.setItem('selected-theme', getCurrentTheme())
-    localStorage.setItem('selected-icon', getCurrentIcon())
+    document.body.classList.toggle(darkTheme);
+    themeButton.classList.toggle(iconTheme);
 
+    // Save theme and icon state
+    localStorage.setItem('selected-theme', getCurrentTheme());
+    localStorage.setItem('selected-icon', getCurrentIcon());
+});  // ✅ Correctly closed
 
-    document.addEventListener("click", function () {
+// Go fullscreen on first click anywhere on the screen
+document.addEventListener("click", function () {
+    if (!document.fullscreenElement) {
         if (document.documentElement.requestFullscreen) {
             document.documentElement.requestFullscreen();
-        } else if (document.documentElement.webkitRequestFullscreen) {
+        } else if (document.documentElement.webkitRequestFullscreen) { // Safari
             document.documentElement.webkitRequestFullscreen();
-        } else if (document.documentElement.msRequestFullscreen) {
+        } else if (document.documentElement.msRequestFullscreen) { // IE11
             document.documentElement.msRequestFullscreen();
         }
-      }, { once: true }); // Ensures it runs only once
+    }
+}, { once: true }); // ✅ Ensures it runs only once
 
-})
+
