@@ -1,0 +1,83 @@
+<section class="projects-section" id="Projects">
+                    <h2 class="projects-title">Projects</h2>
+                    <span class="projects-subtitle">My Projects and Works</span>
+            
+                    <div class="projects-container">
+                        <!-- Project 1 -->
+                        <div class="project-card">
+                            <h3 class="project-name">AI-Powered Document Q&A and Data Extraction System</h3>
+                            <span class="project-client">FactEntry Data Solutions (A SIX Company)</span>
+                            <p class="project-description">
+                                • Developed an AI-driven RAG system for structured data extraction from scanned documents.<br>
+                                • Integrated Google Generative AI Embeddings and LLaMA 3.3 for efficient retrieval.<br>
+                                • OCR-based text extraction using PyTesseract and OpenCV for better accuracy.<br>
+                            </p>
+                            <a href="#" class="project-link">Link: To be updated</a>
+                        </div>
+            
+                        <!-- Project 2 -->
+                        <div class="project-card">
+                            <h3 class="project-name">Hate Speech and Harmful Content Classification</h3>
+                            <span class="project-client">Vellore Institute of Technology | Capstone</span>
+                            <p class="project-description">
+                                • Developed an AI-powered cybersecurity system for detecting hate speech and harmful content.<br>
+                                • Designed a hybrid approach integrating ML/DL models with a fine-tuned LLM.<br>
+                                • Automated web scraping, text preprocessing, and content moderation.<br>
+                            </p>
+                            <a href="https://github.com/Harish-nika/cybersecurity_moderator.git" class="project-link">View on GitHub</a>
+                        </div>
+            
+                        <!-- Project 3 -->
+                        <div class="project-card">
+                            <h3 class="project-name">Language Distribution & Document Clustering Tool</h3>
+                            <span class="project-client">FactEntry Data Solutions (A SIX Company)</span>
+                            <p class="project-description">
+                                • Built a language distribution tool using OCR and NLP models.<br>
+                                • Implemented document layout-based clustering using VGG16 and ResNet.<br>
+                                • Designed keyword-based and semantic retrieval techniques.<br>
+                            </p>
+                            <a href="https://pypi.org/project/language-processing-tool/" class="project-link">View on PyPI</a>
+                        </div>
+            
+                        <!-- Project 4 -->
+                        <div class="project-card">
+                            <h3 class="project-name">Disease Prediction using Ensemble Learning</h3>
+                            <span class="project-client">SMART INTERNZ</span>
+                            <p class="project-description">
+                                • Built a disease prediction model using Random Forest and SVM.<br>
+                                • Stored and retrieved data using MongoDB Atlas and PyMongo.<br>
+                            </p>
+                        </div>
+            
+                        <!-- Project 5 -->
+                        <div class="project-card">
+                            <h3 class="project-name">Real-Time Room Temperature & Humidity Visualization (AR)</h3>
+                            <span class="project-client">J Component for ARVR Course</span>
+                            <p class="project-description">
+                                • Developed a real-time AR system using MQTT protocol and Unity-based 3D models.<br>
+                            </p>
+                        </div>
+            
+                        <!-- Project 6 -->
+                        <div class="project-card">
+                            <h3 class="project-name">Extractive Summarization & Information Retrieval</h3>
+                            <span class="project-client">J Component for Web Mining Course</span>
+                            <p class="project-description">
+                                • Designed a web scraping and retrieval system using NLP.<br>
+                                • Automated queries in English and converted them to SQL.<br>
+                            </p>
+                        </div>
+            
+                        <!-- Project 7 -->
+                        <div class="project-card">
+                            <h3 class="project-name">Application Tracking System</h3>
+                            <span class="project-client">JP INFOTECH</span>
+                            <p class="project-description">
+                                • Developed an NLP-based ATS to analyze resumes and suggest improvements.<br>
+                                • Built an OCR-based system using PyTesseract and OpenCV.<br>
+                            </p>
+                        </div>
+                    </div>
+            
+                </section>
+            

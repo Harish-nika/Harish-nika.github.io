@@ -1,0 +1,276 @@
+
+            <section class="testimonial section" id="Projects">
+                <h2 class="section__title">Projects</h2>
+                <span class="section__subtitle">My Projects and works</span>
+
+                <div class="testimonial__container container swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="testimonial__content">
+                            <div class="testimonial__data">
+                                <div class="testimonial__header">
+        
+                                    <div>
+                                        <h3 class="testimonial__name">AI-Powered Document Q&A and Data Extraction System</h3>
+                                        <span class="testimonial__client">FactEntry Data Solutions (A SIX Company)<br>
+                                            Link: To be updated<br>
+                                        </span>
+                                    </div>
+                                </div>
+    
+                            </div>
+    
+                            <p class="testimonial__description" style="text-align: justify;">
+   <strong>Objective:</strong><br>
+   • Developed an AI-driven RAG system for extracting structured data from scanned documents, including tables, forms, and text.<br><br>
+
+   <strong>Key Contributions:</strong><br>
+   • Integrated Google Generative AI Embeddings (Google API) and LLaMA 3.3 (Groq API) for efficient retrieval and response generation.<br>
+   • Implemented OCR-based text extraction using PyTesseract, enhanced with OpenCV preprocessing for improved accuracy.<br>
+   • Leveraged Hugging Face LayoutLM for extracting data from complex layouts, including borderless tables and unstructured forms.<br>
+   • Developed a Streamlit web interface for real-time document analysis and deployed it securely via ngrok.<br>
+
+   <strong>Impact:</strong><br>
+   • Automated document processing, reducing manual effort while improving data accuracy and retrieval speed.
+</p>
+
+                        </div>
+                    </div>
+
+                    <div class="swiper-wrapper">
+                        <div class="testimonial__content">
+                            <div class="testimonial__data">
+                                <div class="testimonial__header">
+        
+                                    <div>
+                                        <h3 class="testimonial__name">Hate Speech and Harmful Content Classification from Web Pages</h3>
+                                        <span class="testimonial__client"> Associated with Vellore Institute of Technology |
+Capstone<br>
+                                            Link: <a href="https://github.com/Harish-nika/cybersecurity_moderator.git"><strong>https://github.com/Harish-nika/cybersecurity_moderator.git</strong></a><br>
+                                        </span>
+                                    </div>
+                                </div>
+    
+                            </div>
+    
+                            <p class="testimonial__description" style="text-align: justify;">
+   • Developed an AI-powered cybersecurity system for detecting hate speech and harmful content on the web and social media using NLP and LLMs.<br><br>
+
+   <strong>Key Contributions:</strong><br>
+   • Designed a hybrid approach integrating ML/DL models with a fine-tuned LLM for advanced content moderation.<br>
+   • Experimented with LLaMA 3.3, 3.2, DeepSeek 7B/14B, and WizardLM 7B via Ollama to optimize detection.<br>
+   • Automated web scraping, text preprocessing, and structured content extraction.<br>
+   • Deployed a real-time monitoring system for detecting and flagging harmful content.<br><br>
+
+   <strong>Impact:</strong><br>
+   • Enhanced cybersecurity and content moderation, reducing manual effort while improving detection accuracy.
+</p>
+
+
+                        </div>
+                    </div>
+
+                    <div class="swiper-wrapper">
+                        <div class="testimonial__content">
+                            <div class="testimonial__data">
+                                <div class="testimonial__header">
+        
+                                    <div>
+                                        <h3 class="testimonial__name">Language Distribution Tool and Document Layout Based Clustering Tool</h3>
+                                        <span class="testimonial__client">
+                                            FactEntry Data Solutions (A SIX Company)<br>
+                                            Install via PYPI: <code>pip install language-processing-tool</code>  
+                                            <a href="https://pypi.org/project/language-processing-tool/" target="_blank">View on PyPI</a><br>
+                                            Document Layout-Based Clustering: Will update soon  
+                                        </span>
+                                    </div>
+                                </div>
+    
+                            </div>
+    
+                            <p class="testimonial__description" style="text-align: justify;">
+                                
+                                • Developed and deployed a Language Distribution Tool and a Document Layout-Based Clustering Tool, providing basic versions on PyPI and delivering advanced versions to FactEntry. <br> 
+                                <strong>Key Contributions:</strong>
+                                • Implemented Tesseract OCR, LangDetect, and StableLM to analyze PDFs and determine the language distribution, presenting results as percentage breakdowns (e.g., 60% English, 30% Spanish, 10% French).<br>  
+                                • Designed a Document Layout-Based Clustering System by extracting visual features using VGG16, ResNet, and other CNN architectures, followed by clustering techniques and PCA-based fine-tuning to enhance document classification.<br>  
+                                • Applied OCR and deep learning to process scanned financial documents, ensuring accurate data extraction and improved text structure recognition.<br>  
+                                • Integrated LLaMA Vision for image analysis, combining **keyword-based and semantic retrieval to optimize document ranking and content grouping.<br>  
+</p>
+
+                        </div>
+                    </div>
+
+                    <div class="swiper-wrapper">
+                        <div class="testimonial__content">
+                            <div class="testimonial__data">
+                                <div class="testimonial__header">
+                                    <div>
+                                        <h3 class="testimonial__name">Disease Prediction using Ensemble Learning </h3>
+                                        <span class="testimonial__client"></i><br>
+                                        <!-- Link: <a href="https://reunir.unir.net/handle/123456789/14357">https://doi.org/10.9781/ijimai.2023.02.008</a><br> -->
+                                            SMART INTERNZ
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <p class="testimonial__description" style="text-align: justify;">
+   • Engineered a disease prediction model using Python and machine learning algorithms like Random Forest and SVM, achieving high accuracy in clinical trial predictions based on extensive patient historical data.<br>
+
+   <strong>Key Contributions:</strong><br>
+   • Stored data in MongoDB Atlas, retrieved it with PyMongo, and transformed it into a binary dataset for analysis.<br>
+</p>
+
+                        </div>
+                    </div> 
+
+                    <div class="swiper-wrapper">
+                        <div class="testimonial__content">
+                            <div class="testimonial__data">
+                                <div class="testimonial__header">
+        
+                                    <div>
+                                        <h3 class="testimonial__name">Real-Time Room Temperature & Humidity Visualization using Augmented Reality Technology</h3>
+                                        <span class="testimonial__client">Academic Work <br>
+                                            J component for ARVR Course<br>
+                                            
+                                        </span>
+                                    </div>
+                                </div>
+    
+                            </div>
+    
+                            <p class="testimonial__description" style="text-align: justify;">
+   • Engineered a real-time AR system integrating the MQTT protocol to capture and visualize environmental data (temperature and humidity) using Unity-based 3D models.<br>  
+   • Enhanced user engagement with actionable ML-driven insights and provided interactive climate reporting.<br>
+</p>
+
+                        </div>
+                    </div>
+
+                    <div class="swiper-wrapper">
+                        <div class="testimonial__content">
+                            <div class="testimonial__data">
+                                <div class="testimonial__header">
+        
+                                    <div>
+                                        <h3 class="testimonial__name">Extractive Summarization and Information Retrieval System using Natural Language Processing</h3>
+                                        <span class="testimonial__client">Academic Work <br>
+                                            J Component for Web mining Course<br>
+                                        
+                                        </span>
+                                    </div>
+                                </div>
+    
+                            </div>
+    
+                            <p class="testimonial__description" style="text-align: justify;">
+   • Designed an advanced web scraping and information retrieval system leveraging natural language processing (NLP).<br>  
+   • Enabled the system to understand user queries in English, translate them into SQL, and extract targeted data with 95% accuracy from multiple websites.<br>  
+   • Stored extracted data in MySQL using SQLite3 in Python.<br>  
+   • Automated user queries in English to retrieve relevant data efficiently.<br>  
+</p>
+
+                        </div>
+                    </div>
+                    <!--
+                    <div class="swiper-wrapper">
+                        <div class="testimonial__content">
+                            <div class="testimonial__data">
+                                <div class="testimonial__header">
+        
+                                    <div>
+                                        <h3 class="testimonial__name">APPLICATION TRACKING SYSTEM</h3>
+                                        <span class="testimonial__client">JP Infotech<br>
+                                        </span>
+                                    </div>
+                                </div>
+    
+                            </div>
+    
+                            <p class="testimonial__description">
+                                 Developed an NLP-based application tracking system using Python to analyze resumes, identify weak sentences, suggest improvements, and recommend keywords based on job descriptions.
+                                            Implemented an n-gram model to predict the next word a user might type, providing a typing assist feature.
+                                            • Developed an OCR-based system leveraging PyTesseract, combined with OpenCV preprocessing techniques scanned documents with 95% accuracy.
+                                            • Built a pipeline for recognizing complex tabular structures, including borderless tables, by integrating Hugging Face models and custom algorithms.
+                                            • Automated document processing across various formats (PDF, images) by integrating multi-API workflows, reducing manual efforts.
+                                            • Optimized data extraction workflows for large-scale datasets, enhancing performance and reducing processing time by 30%. 
+                                            • Collaborated on ML-driven NLP projects to generate automated suggestions for keyword optimization and grammar correction.
+                            </p>
+                        </div>
+                    </div>   -->
+
+                   <!-- <div class="swiper-wrapper">
+                        <div class="testimonial__content">
+                            <div class="testimonial__data">
+                                <div class="testimonial__header">
+        
+                                    <div>
+                                        <h3 class="testimonial__name">VoxelBox: A Novel Tool for Dynamic Network Localization of Brain Functional Activity in Dementia using rs-fMRI</h3>
+                                        <span class="testimonial__client"><br>
+                                         
+                                        </span>
+                                    </div>
+                                </div>
+    
+                            </div>  
+    
+                            <p class="testimonial__description">
+                                A novel tool for dynamic network localization of brain functional activity in dementia using resting-state fMRI data and comparison with healthy controls.
+                            </p>
+                        </div>
+                    </div> -->
+
+                  <!--  <div class="swiper-wrapper">
+                        <div class="testimonial__content">
+                            <div class="testimonial__data">
+                                <div class="testimonial__header">
+                                    <div>
+                                        <h3 class="testimonial__name">A Hybrid Framework for Intrusion Detection in Healthcare Systems using Deep Learning</h3>
+                                        <span class="testimonial__client">Journal: Frontiers in Public Health | Progress: <i>Published</i><br>
+                                            
+                                            
+                                        </span>
+                                    </div>
+                                </div>
+    
+                            </div>  
+    
+                            <p class="testimonial__description">
+                                A Machine Learning based approach to detect network & application intrusions, achieving ~99.2% accuracy in successfully
+                                detecting around 19 types of latest cyber attacks.
+                            </p>
+                        </div>
+                    </div>  -->
+
+                    <div class="swiper-wrapper">
+                        <div class="testimonial__content">
+                            <div class="testimonial__data">
+                                <div class="testimonial__header">
+                                    <div>
+                                        <h3 class="testimonial__name"> APPLICATION TRACKING SYSTEM</h3>
+                                        <span class="testimonial__client">JP INFOTECH</i><br>
+                
+                                            
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <p class="testimonial__description" style="text-align: justify;">
+   • Developed an NLP-based application tracking system using Python to analyze resumes, identify weak sentences, suggest improvements, and recommend keywords based on job descriptions.<br>
+   • Developed an OCR-based system leveraging PyTesseract, combined with OpenCV preprocessing techniques, achieving 95% accuracy in scanned document processing.<br>
+   • Built a pipeline for recognizing complex tabular structures, including borderless tables, by integrating Hugging Face models and custom algorithms.<br>
+   • Automated document processing across various formats (PDF, images) by integrating multi-API workflows, significantly reducing manual efforts.<br>
+   • Optimized data extraction workflows for large-scale datasets, enhancing performance and reducing processing time by 30%.<br>
+   • Collaborated on ML-driven NLP projects to generate automated suggestions for keyword optimization and grammar correction.<br>
+</p>
+
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="swiper-pagination swiper-pagination-testimonial"></div>
+                </div>
+                
+            </section>
