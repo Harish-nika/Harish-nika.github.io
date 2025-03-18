@@ -304,3 +304,19 @@ document.addEventListener("click", function () {
 }, { once: true }); // ✅ Ensures it runs only once
 
 
+/*==================== project seperator ====================*/ 
+
+document.addEventListener("DOMContentLoaded", function() {
+    console.log("Projects Section Loaded!");
+
+    // Add interactive effects (if needed in future)
+    document.querySelectorAll('.project-card').forEach(card => {
+        card.addEventListener('mouseover', function() {
+            this.style.boxShadow = "0 6px 12px rgba(0, 0, 0, 0.15)";
+        });
+
+        card.addEventListener('mouseout', function() {
+            this.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.1)";
+        });
+    });
+});

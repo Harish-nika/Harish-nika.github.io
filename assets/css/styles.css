@@ -1387,3 +1387,134 @@ img {
         opacity: 0;
     }
 }
+
+
+/* Unique styling for project cards */
+.project-card {
+  background: #f9f9f9; /* Light gray background */
+  padding: 20px;
+  margin-bottom: 30px; /* Space between projects */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+/* Unique separator styling */
+.project-divider {
+  border: none;
+  height: 2px;
+  background: #ddd; /* Light gray separator */
+  margin: 40px 0; /* Space above and below the separator */
+}
+
+/* Project title */
+.project-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Client info */
+.project-client {
+  font-size: 14px;
+  color: #555;
+}
+
+/* Description text */
+.project-description {
+  text-align: justify;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* project section */
+/* Unique Class Names to Avoid Conflicts */
+.projects-section {
+  text-align: center;
+  padding: 40px;
+  background-color: #f8f9fa;
+}
+
+.projects-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.projects-subtitle {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* .projects-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.project-card {
+  background: hsl(250deg 65.56% 59.74%);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+} */
+
+.projects-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(600px, 1fr)); /* Adjusted for better layout */
+  gap: 20px;
+  padding: 20px;
+}
+
+.project-card {
+  background: hsl(250deg 65.56% 59.74%);
+  padding: 20px;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  width: 100%;
+  min-height: 200px; /* Minimum height but allows it to expand */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Keeps elements aligned properly */
+}
+
+
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+.project-name {
+  font-size: 1.5rem;
+  color: #007bff;
+  margin-bottom: 10px;
+}
+
+.project-client {
+  font-weight: bold;
+  color: #333;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.project-description {
+  font-size: 1rem;
+  color: #444;
+  text-align: justify;
+}
+
+.project-link {
+  display: block;
+  margin-top: 10px;
+  text-decoration: none;
+  color: #28a745;
+  font-weight: bold;
+}
+
+.project-link:hover {
+  text-decoration: underline;
+}
