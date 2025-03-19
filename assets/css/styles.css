@@ -945,6 +945,14 @@ img {
 
 .testimonial__description {
   margin-bottom: var(--mb-2-5);
+  font-size: 14px; /* Adjust the size as needed */
+}
+
+/* Even smaller text for mobile */
+@media (max-width: 480px) {
+  .testimonial__description {
+    font-size: 12px;
+  }
 }
 
 .testimonial__icon-star {
@@ -1395,14 +1403,43 @@ img {
 }
 
 
-/* Unique styling for project cards */
-.project-card {
-  background: #f9f9f9; /* Light gray background */
+/* Centered container with left & right spacing */
+.project-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  gap: 20px; /* Space between cards */
+  max-width: 1200px; /* Limits width for left & right spacing */
+  margin: 0 auto; /* Centers the container */
   padding: 20px;
-  margin-bottom: 30px; /* Space between projects */
-  border-radius: 10px; /* Rounded corners */
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
 }
+
+/* Project card styling */
+.project-card {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  min-width: 250px;
+}
+
+/* Responsive: 2 cards per row on tablets */
+@media (max-width: 1024px) {
+  .project-container {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+  }
+}
+
+/* Responsive: 1 card per row on mobile */
+@media (max-width: 768px) {
+  .project-container {
+    grid-template-columns: repeat(1, 1fr); /* 1 column */
+  }
+}
+
+
+
+
+
 
 /* Unique separator styling */
 .project-divider {
