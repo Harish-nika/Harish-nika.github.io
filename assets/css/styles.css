@@ -394,7 +394,13 @@ img {
 }
 
 .button--small {
-  padding: .75rem 1rem;
+ 
+    padding: 6px 8px;  /* Reduce left & right padding */
+    font-size: 12px;   /* Keep text readable */
+    min-width: auto;   /* Allow flexible width */
+    width: fit-content; /* Ensure the button wraps around the text */
+  
+  
 }
 
 .button--link {
@@ -1482,7 +1488,20 @@ img {
   justify-content: space-between; /* Keeps elements aligned properly */
 }
 
-
+.project-card {
+    background: rgba(111, 66, 193, 0.2); /* Adjust the last value (0.8) for transparency */
+  
+  
+  padding: 20px;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  width: 100%;
+  min-height: 200px; /* Minimum height but allows it to expand */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Keeps elements aligned properly */
+}
 
 .project-card:hover {
   transform: translateY(-5px);
