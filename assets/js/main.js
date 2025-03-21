@@ -177,9 +177,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Typewriter Animation
 const roles = [ 
-    '🤖 AI Engineer 🧠',
     '🔎 Gen AI Developer 📑',
-    '💻 Machine Learning Engineer🦾'
+    '💻 Machine Learning Engineer🦾',
+    '🤖 AI Engineer 🧠'
 ];
 
 let roleIndex = 0, charIndex = 0, isDeleting = false;
