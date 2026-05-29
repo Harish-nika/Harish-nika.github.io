@@ -98,6 +98,7 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             margin-bottom: 1.5rem;
             object-fit: cover;
+            border: 1px solid rgba(0,0,0,0.1);
         }
         .feature-grid {
             display: grid;
@@ -109,6 +110,7 @@
             display: grid;
             grid-template-columns: 1fr;
             gap: 2rem;
+            align-items: start;
         }
         @media screen and (min-width: 768px) {
             .feature-grid {
@@ -120,10 +122,11 @@
         }
         .img-caption {
             text-align: center;
-            font-size: 0.9rem;
-            color: var(--text-color-light);
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--title-color);
             margin-top: -1rem;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
         }
         .back-btn {
             display: inline-flex;
@@ -165,25 +168,30 @@
 
             <!-- Tabs -->
             <div class="tabs">
-                <button class="tab-btn active" onclick="openTab(event, 'overview')">Overview & Features</button>
-                <button class="tab-btn" onclick="openTab(event, 'architecture')">Architecture Flow</button>
-                <button class="tab-btn" onclick="openTab(event, 'gallery')">UI Gallery</button>
-                <button class="tab-btn" onclick="openTab(event, 'infrastructure')">Infrastructure & GitOps</button>
+                <button class="tab-btn active" onclick="openTab(event, 'overview')">Overview</button>
+                <button class="tab-btn" onclick="openTab(event, 'extraction')">Extraction & Validation</button>
+                <button class="tab-btn" onclick="openTab(event, 'insights')">Parser & Comms</button>
+                <button class="tab-btn" onclick="openTab(event, 'admin')">Admin & Scheduling</button>
+                <button class="tab-btn" onclick="openTab(event, 'cluster')">Cluster & API</button>
+                <button class="tab-btn" onclick="openTab(event, 'gitops')">Infrastructure & GitOps</button>
             </div>
 
-            <!-- Tab 1: Overview & Features -->
+            <!-- Tab 1: Overview -->
             <div id="overview" class="tab-content active">
                 <div class="project-section">
                     <h2 class="section__title">Core Technical Achievements</h2>
                     <ul style="line-height: 1.8; margin-left: 1.5rem; text-align: justify; margin-bottom: 2rem;">
-                        <li><strong>Process Scaling & GIL Bypass:</strong> To fully utilize an 80+ core Xeon server, I engineered the system to bypass Python's Global Interpreter Lock by spawning separate processes via `ProcessPoolExecutor`, enabling it to process 80+ ISINs simultaneously.</li>
-                        <li><strong>Role-Based CPU Tiering:</strong> Implemented job-level semaphores to cap batches (Low: 5 batches, Medium: 8 batches, High: 16 batches) allocating exact CPU fractions dynamically per user.</li>
+                        <li><strong>Process Scaling & GIL Bypass:</strong> To fully utilize an 80+ core Xeon server, I engineered the system to bypass Python's Global Interpreter Lock by spawning separate processes via `ProcessPoolExecutor`, processing 80+ ISINs simultaneously.</li>
+                        <li><strong>Role-Based CPU Tiering:</strong> Implemented job-level semaphores to cap batches allocating exact CPU fractions dynamically per user.</li>
                         <li><strong>Microservices Architecture:</strong> Built heavily decoupled services using FastAPI, Python, PostgreSQL, and Redis across Corporate, Municipal, Validation, and Document Processing domains.</li>
-                        <li><strong>Job Life-cycle:</strong> Uses short terminatable batches with direct `/cancel-job` signals and persistent flag restoration for accurate pausing/resuming.</li>
-                        <li><strong>SMB Mount Data Infrastructure:</strong> Maps massive SMB network shares directly into container file systems via Kubernetes CSI plugins, avoiding HTTP transfer penalties for gigabytes of PDF documents.</li>
+                        <li><strong>Domain-Restricted Access:</strong> Custom secure signup flows validating against `@factentry.com` domains natively in Zod and FastAPI.</li>
                     </ul>
 
                     <div class="feature-grid">
+                        <div>
+                            <img src="./assets/img/dme/platform/login_page.png" alt="Login Page" class="project-img">
+                            <p class="img-caption">Secure Domain-Restricted Login</p>
+                        </div>
                         <div>
                             <img src="./assets/img/dme/platform/user_dashboard.png" alt="User Dashboard" class="project-img">
                             <p class="img-caption">Role-Aware Main Dashboard</p>
@@ -192,147 +200,246 @@
                             <img src="./assets/img/dme/platform/live-stats-feature.png" alt="Live Stats" class="project-img">
                             <p class="img-caption">Live Backend CPU & Queue Telemetry</p>
                         </div>
+                        <div>
+                            <img src="./assets/img/dme/platform/cicd-gitlab-redploy.png" alt="CI/CD Gitlab Redeploy" class="project-img">
+                            <p class="img-caption">CI/CD Gitlab Redeploy Pipeline View</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Tab 2: Architecture & Workflow -->
-            <div id="architecture" class="tab-content">
+            <!-- Tab 2: Extraction & Validation -->
+            <div id="extraction" class="tab-content">
                 <div class="project-section">
-                    <h2 class="section__title">End-to-End Application Flow</h2>
+                    <h2 class="section__title">Data Extraction Workflows</h2>
                     <p style="text-align: justify; margin-bottom: 2rem;">
-                        The backend orchestrator dynamically dispatches extraction jobs to massive ProcessPoolExecutors via Redis queues or HTTP polling, and streams real-time updates directly to the frontend via WebSockets.
+                        Support for asynchronous Corporate and Municipal bond data extraction. Jobs track progress dynamically with persistent runtime backups securely routed to the internal File Manager.
                     </p>
-                    
-                    <div style="text-align: center; margin-bottom: 3rem;">
-                        <img src="./assets/img/dme/architecture-flow.png" alt="Architecture Flow" style="width: 100%; max-width: 800px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-                        <p class="img-caption" style="margin-top: 1rem;">Core Extraction Event Loop & Cluster Interaction</p>
+                    <div class="feature-grid-3">
+                        <div>
+                            <img src="./assets/img/dme/platform/extract_corporate.png" alt="Corporate Extraction" class="project-img">
+                            <p class="img-caption">Corporate Bond Extraction Queue</p>
+                        </div>
+                        <div>
+                            <img src="./assets/img/dme/platform/extract_municipal.png" alt="Municipal Extraction" class="project-img">
+                            <p class="img-caption">Municipal Bond Extraction Queue</p>
+                        </div>
+                        <div>
+                            <img src="./assets/img/dme/platform/file_manager.png" alt="File Manager 1" class="project-img" onerror="this.style.display='none'">
+                            <img src="./assets/img/dme/platform/filemanger.png" alt="File Manager 2" class="project-img">
+                            <p class="img-caption">Runtime Recovery File Manager</p>
+                        </div>
                     </div>
 
-                    <h2 class="section__title">Communication Live Workspace</h2>
-                    <p style="text-align: justify; margin-bottom: 1.5rem;">
-                        A real-time WebSocket communication hub highlighting extraction events, CI/CD static flow mapping, and localized internal container telemetry failures.
+                    <h2 class="section__title" style="margin-top: 2rem;">Interactive Validation (Human-in-the-Loop)</h2>
+                    <p style="text-align: justify; margin-bottom: 2rem;">
+                        A highly optimized validation UI with <strong>strict dual-pane scroll isolation</strong>, ranked PDF match navigation, and interactive text highlighting directly over native PDFs loaded from SMB mounts.
+                    </p>
+                    <div class="feature-grid">
+                        <div>
+                            <img src="./assets/img/dme/platform/validation_page1.png" alt="Validation Workspace 1" class="project-img">
+                            <p class="img-caption">Interactive PDF/TXT Highlighting Workspace</p>
+                        </div>
+                        <div>
+                            <img src="./assets/img/dme/platform/validation_page2.png" alt="Validation Workspace 2" class="project-img">
+                            <p class="img-caption">Ranked Match Navigation & Quick Corrections</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 3: Parser & Comms -->
+            <div id="insights" class="tab-content">
+                <div class="project-section">
+                    <h2 class="section__title">LLM Text Parser & Insights</h2>
+                    <p style="text-align: justify; margin-bottom: 2rem;">
+                        Integrated advanced text parsing for unstructured documents, offering visual analytics, language distribution stats, and structured insights using selectable local LLMs (via Ollama).
+                    </p>
+                    <div class="feature-grid">
+                        <div>
+                            <img src="./assets/img/dme/platform/insights-textparser-img1.png" alt="Text Parser Setup" class="project-img">
+                            <p class="img-caption">Parser Setup & Extractor Selection</p>
+                        </div>
+                        <div>
+                            <img src="./assets/img/dme/platform/insights-textparser-img2.png" alt="Language Distribution" class="project-img">
+                            <p class="img-caption">Language Distribution & Data Insights</p>
+                        </div>
+                    </div>
+
+                    <h2 class="section__title" style="margin-top: 2rem;">Communication Live Workspace</h2>
+                    <p style="text-align: justify; margin-bottom: 2rem;">
+                        A real-time WebSocket hub highlighting live extraction stages, system chatter, and collaborative tools.
                     </p>
                     <div class="feature-grid">
                         <div>
                             <img src="./assets/img/dme/platform/group_chat_messaging_support.png" alt="Group Chat" class="project-img">
-                            <p class="img-caption">Main Team Support Chat</p>
+                            <p class="img-caption">Main Team Support Chat & Broadcasts</p>
                         </div>
                         <div>
-                            <img src="./assets/img/dme/platform/groupchat_sidechatwindow.png" alt="Side Chat" class="project-img">
-                            <p class="img-caption">Collapsible Slide-Out Window</p>
+                            <img src="./assets/img/dme/platform/groupchat_sidechatwindow.png" alt="Side Chat Window" class="project-img">
+                            <p class="img-caption">Collapsible Slide-Out Chat Drawer</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Tab 3: UI Gallery -->
-            <div id="gallery" class="tab-content">
-                
-                <h2 class="section__title">Data Extraction & Management</h2>
-                <div class="feature-grid-3">
-                    <div>
-                        <img src="./assets/img/dme/platform/extract_corporate.png" alt="Corporate Extraction" class="project-img">
-                        <p class="img-caption">Corporate Bond Extraction</p>
-                    </div>
-                    <div>
-                        <img src="./assets/img/dme/platform/extract_municipal.png" alt="Municipal Extraction" class="project-img">
-                        <p class="img-caption">Municipal Bond Extraction</p>
-                    </div>
-                    <div>
-                        <img src="./assets/img/dme/platform/filemanger.png" alt="File Manager" class="project-img" onerror="this.src='./assets/img/dme/platform/file_manager.png';">
-                        <p class="img-caption">Runtime File Manager</p>
-                    </div>
-                </div>
-
-                <h2 class="section__title" style="margin-top: 2rem;">Interactive Validation Workflow</h2>
-                <p style="text-align: justify; margin-bottom: 1.5rem;">
-                    A highly optimized "Human-in-the-loop" UI with <strong>strict dual-pane scroll isolation</strong>, ranked PDF match navigation, and interactive text highlighting directly over native PDFs.
-                </p>
-                <div class="feature-grid">
-                    <div>
-                        <img src="./assets/img/dme/platform/validation_page1.png" alt="Validation Workspace" class="project-img">
-                        <p class="img-caption">Interactive Validation Workspace</p>
-                    </div>
-                    <div>
-                        <img src="./assets/img/dme/platform/validation_page2.png" alt="Validation Search" class="project-img">
-                        <p class="img-caption">Ranked Match Navigation</p>
-                    </div>
-                </div>
-
-                <h2 class="section__title" style="margin-top: 2rem;">API Access & Text Parsing</h2>
-                <div class="feature-grid-3">
-                    <div>
-                        <img src="./assets/img/dme/api-access/DME_api_docs_page.png" alt="API Portal" class="project-img">
-                        <p class="img-caption">Built-in API Portal</p>
-                    </div>
-                    <div>
-                        <img src="./assets/img/dme/platform/insights-textparser-img1.png" alt="Parser" class="project-img">
-                        <p class="img-caption">LLM Text Parser</p>
-                    </div>
-                    <div>
-                        <img src="./assets/img/dme/platform/insights-textparser-img2.png" alt="Insights" class="project-img">
-                        <p class="img-caption">Language Distribution Insights</p>
-                    </div>
-                </div>
-
-                <h2 class="section__title" style="margin-top: 2rem;">Admin Management & Scheduling</h2>
-                <div class="feature-grid">
-                    <div>
-                        <img src="./assets/img/dme/platform/admin_jobs.png" alt="Admin Jobs" class="project-img">
-                        <p class="img-caption">Global Admin Jobs View</p>
-                    </div>
-                    <div>
-                        <img src="./assets/img/dme/platform/admin_users_list.png" alt="Admin Users" class="project-img">
-                        <p class="img-caption">User & Team Management</p>
-                    </div>
-                    <div>
-                        <img src="./assets/img/dme/platform/scheduler-img2.png" alt="Job Scheduler" class="project-img">
-                        <p class="img-caption">Job Scheduler Interface</p>
-                    </div>
-                    <div>
-                        <img src="./assets/img/dme/platform/scheduledimg1.png" alt="Scheduler Calendar" class="project-img">
-                        <p class="img-caption">Visual Extraction Calendar</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Tab 4: Infrastructure & GitOps -->
-            <div id="infrastructure" class="tab-content">
+            <!-- Tab 4: Admin & Scheduling -->
+            <div id="admin" class="tab-content">
                 <div class="project-section">
-                    <h2 class="section__title">Kubernetes & Server Cluster Management</h2>
-                    <p style="text-align: justify; margin-bottom: 1.5rem;">
-                        The application is deployed across a multi-node <strong>K3s</strong> cluster. It leverages <strong>Argo CD</strong> for GitOps deployments and natively exposes server allocation patches and throttling constraints straight from the frontend UI (`/server-potential`).
+                    <h2 class="section__title">Admin Jobs & Team Management</h2>
+                    <p style="text-align: justify; margin-bottom: 2rem;">
+                        Robust backend tools for superusers to manage cross-tenant extraction jobs and govern dynamic team allocations natively in the browser.
                     </p>
-                    
                     <div class="feature-grid-3">
                         <div>
-                            <img src="./assets/img/dme/platform/K3_183master_162workeragent.png" alt="K3s Environment" class="project-img">
-                            <p class="img-caption">Multi-Node K3s Topology</p>
+                            <img src="./assets/img/dme/platform/admin_jobs.png" alt="Admin Jobs" class="project-img">
+                            <p class="img-caption">Global Admin Jobs View</p>
                         </div>
                         <div>
-                            <img src="./assets/img/dme/server-cluster/server-fleet.png" alt="Fleet View" class="project-img">
-                            <p class="img-caption">Node & Live Pod Fleet View</p>
+                            <img src="./assets/img/dme/platform/admin_users_list.png" alt="Admin Users" class="project-img">
+                            <p class="img-caption">Global User Management</p>
                         </div>
                         <div>
-                            <img src="./assets/img/dme/server-cluster/server-control1.png" alt="Controls View" class="project-img">
-                            <p class="img-caption">Runtime Placement Controls</p>
+                            <img src="./assets/img/dme/platform/admin_edit_user.png" alt="Admin Edit User" class="project-img">
+                            <p class="img-caption">Role & Permissions Editor</p>
+                        </div>
+                    </div>
+                    <div class="feature-grid" style="margin-top: 2rem;">
+                        <div>
+                            <img src="./assets/img/dme/platform/admin_items_list.png" alt="Admin Items List" class="project-img">
+                            <p class="img-caption">Extraction Results Table</p>
+                        </div>
+                        <div>
+                            <img src="./assets/img/dme/platform/admin_items_details.png" alt="Admin Items Details" class="project-img">
+                            <p class="img-caption">Detailed Item Inspector</p>
                         </div>
                     </div>
 
-                    <h2 class="section__title" style="margin-top: 2rem;">GitOps Tooling</h2>
+                    <h2 class="section__title" style="margin-top: 2rem;">Job Scheduler Engine</h2>
+                    <div class="feature-grid">
+                        <div>
+                            <img src="./assets/img/dme/platform/scheduler-img2.png" alt="Job Scheduler Configure" class="project-img">
+                            <p class="img-caption">Recurring Job Configuration</p>
+                        </div>
+                        <div>
+                            <img src="./assets/img/dme/platform/scheduledimg1.png" alt="Job Scheduler Calendar" class="project-img">
+                            <p class="img-caption">Visual Extraction Calendar</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 5: Cluster & API -->
+            <div id="cluster" class="tab-content">
+                <div class="project-section">
+                    <h2 class="section__title">Server Cluster Management</h2>
+                    <p style="text-align: justify; margin-bottom: 2rem;">
+                        The cluster management UI (`/server-potential`) provides superuser control for worker/server placement, dynamic Kubernetes node affinity patches, and live backend concurrency throttling overrides directly via PostgreSQL.
+                    </p>
                     <div class="feature-grid-3">
+                        <div>
+                            <img src="./assets/img/dme/server-cluster/server-fleet.png" alt="Server Fleet" class="project-img">
+                            <p class="img-caption">Node & Live Pod Fleet Map</p>
+                        </div>
+                        <div>
+                            <img src="./assets/img/dme/server-cluster/server-control1.png" alt="Server Control 1" class="project-img">
+                            <p class="img-caption">Placement Controls & CPU Budgets</p>
+                        </div>
+                        <div>
+                            <img src="./assets/img/dme/server-cluster/server-control2.png" alt="Server Control 2" class="project-img">
+                            <p class="img-caption">Backend Throttling Configuration</p>
+                        </div>
+                        <div>
+                            <img src="./assets/img/dme/server-cluster/server-control3.png" alt="Server Control 3" class="project-img">
+                            <p class="img-caption">Frontend Server Targets</p>
+                        </div>
+                        <div>
+                            <img src="./assets/img/dme/server-cluster/server-portargo.png" alt="Server Argo Status" class="project-img">
+                            <p class="img-caption">ArgoCD Drift Sync Checks</p>
+                        </div>
+                    </div>
+
+                    <h2 class="section__title" style="margin-top: 2rem;">API Access Portal</h2>
+                    <p style="text-align: justify; margin-bottom: 2rem;">
+                        A built-in developer-facing portal generating cURL examples, response schemas, API key tier provisioning, and live usage monitoring natively from the FastAPI backend.
+                    </p>
+                    <div class="feature-grid-3">
+                        <div>
+                            <img src="./assets/img/dme/api-access/DME_api_docs_page.png" alt="API Docs" class="project-img">
+                            <p class="img-caption">Interactive Endpoint Documentation</p>
+                        </div>
+                        <div>
+                            <img src="./assets/img/dme/api-access/DME_api_keys_page1.png" alt="API Keys 1" class="project-img">
+                            <p class="img-caption">API Key Provisioning</p>
+                        </div>
+                        <div>
+                            <img src="./assets/img/dme/api-access/DME_api_keys_page2.png" alt="API Keys 2" class="project-img">
+                            <p class="img-caption">Rate Limits & Tier Management</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 6: Infrastructure & GitOps -->
+            <div id="gitops" class="tab-content">
+                <div class="project-section">
+                    <h2 class="section__title">End-to-End Architecture Flow</h2>
+                    <div style="text-align: center; margin-bottom: 3rem;">
+                        <img src="./assets/img/dme/architecture-flow.png" alt="Architecture Diagram" style="width: 100%; max-width: 800px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                        <p class="img-caption" style="margin-top: 1rem;">Core Extraction Event Loop & Distributed Messaging</p>
+                    </div>
+
+                    <h2 class="section__title">K3s Container Deployment</h2>
+                    <p style="text-align: justify; margin-bottom: 2rem;">
+                        The application is fully containerized across a multi-node K3s cluster. The engines mount massive SMB network shares dynamically to skip HTTP transfer overhead.
+                    </p>
+                    <div class="feature-grid">
+                        <div>
+                            <img src="./assets/img/dme/platform/K3_183master_162workeragent.png" alt="K3s Topology" class="project-img">
+                            <p class="img-caption">Master-Worker K3s Topology</p>
+                        </div>
                         <div>
                             <img src="./assets/img/dme/platform/portainer_stack.png" alt="Portainer Stack" class="project-img">
-                            <p class="img-caption">Portainer Cluster Management</p>
+                            <p class="img-caption">Portainer Cluster Metrics</p>
                         </div>
+                    </div>
+
+                    <h2 class="section__title" style="margin-top: 2rem;">Argo CD & GitOps Pipeline</h2>
+                    <p style="text-align: justify; margin-bottom: 2rem;">
+                        DME leverages Argo CD for continuous delivery, pulling Helm charts automatically and synchronizing core apps, persistent volume chains, and NATS JetStream infrastructure.
+                    </p>
+                    <div class="feature-grid-3">
                         <div>
-                            <img src="./assets/img/dme/argocd/argocd_apps.png" alt="ArgoCD Apps" class="project-img">
-                            <p class="img-caption">Argo CD GitOps Applications</p>
+                            <img src="./assets/img/dme/argocd/argocd_apps.png" alt="Argo Apps" class="project-img">
+                            <p class="img-caption">Global ArgoCD Application Fleet</p>
                         </div>
                         <div>
                             <img src="./assets/img/dme/argocd/argo_coreapp.png" alt="Argo CoreApp" class="project-img">
-                            <p class="img-caption">Core App Deployment Graph</p>
+                            <p class="img-caption">Core App Synchronization</p>
+                        </div>
+                        <div>
+                            <img src="./assets/img/dme/argocd/argo_coreapp1.png" alt="Argo CoreApp Details" class="project-img">
+                            <p class="img-caption">Core App Deployment Tree</p>
+                        </div>
+                        <div>
+                            <img src="./assets/img/dme/argocd/argo-dataservice.png" alt="Argo Data Service" class="project-img">
+                            <p class="img-caption">SMB Volumes & Postgres Data</p>
+                        </div>
+                        <div>
+                            <img src="./assets/img/dme/argocd/argo_DMEnetwork.png" alt="Argo Network" class="project-img">
+                            <p class="img-caption">Platform Networking</p>
+                        </div>
+                        <div>
+                            <img src="./assets/img/dme/argocd/argo_NATSjetstream.png" alt="Argo NATS" class="project-img">
+                            <p class="img-caption">NATS JetStream Queue Infrastructure</p>
+                        </div>
+                        <div>
+                            <img src="./assets/img/dme/argocd/argo_cert_manager.png" alt="Argo Cert Manager" class="project-img">
+                            <p class="img-caption">Cert Manager Deployment</p>
+                        </div>
+                        <div>
+                            <img src="./assets/img/dme/argocd/argo_dme_pki.png" alt="Argo PKI" class="project-img">
+                            <p class="img-caption">Internal PKI Management</p>
                         </div>
                     </div>
                 </div>
