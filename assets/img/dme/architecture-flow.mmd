@@ -1,32 +1,51 @@
 flowchart TB
   subgraph clients [Clients]
-    InternalTeams[Internal teams stage]
-    FutureInvestors[Global investors prod]
+    Users[Analysts and API clients]
   end
-  subgraph edge [Edge]
-    Ingress[Traefik Ingress api.* and dme.*]
-    Certs[cert-manager and dme-pki]
+  subgraph edge [Edge TLS]
+    Ingress[Ingress dme-stage and api-stage]
+    Certs[cert-manager and dme-pki CA]
   end
-  subgraph app [dme-core-app in dme-stage]
-    FE[DME frontend]
-    BE[Backend API]
-    Workers[Corporate and Municipal workers]
+  subgraph app [dme-core-app namespace dme-stage]
+    FE[Stage frontend]
+    BE[Backend FastAPI]
+    Corp[Corporate worker]
+    Muni[Municipal worker]
+    ValSvc[Validation service]
+    DocProc[Doc processing]
   end
   subgraph data [dme-data-services]
-    Val[Validation SMB reader]
-    SMB[(SMB volumes)]
+    PG[(PostgreSQL)]
+    Redis[(Redis streams)]
+    SMB[(SMB document volumes)]
   end
-  subgraph gitops [Argo CD]
-    Charts[docfin_ai_charts Helm]
-    Updater[Image Updater tags]
+  subgraph ci [GitLab CI data-mining-engine]
+    Build[build-k3 services]
+    Promote[promote-k3 docfin]
+    Reg[Registry 5005]
   end
-  InternalTeams --> Ingress
-  FutureInvestors --> Ingress
+  subgraph gitops [GitOps]
+    Charts[docfin_ai_charts Helm values]
+    Argo[Argo CD dme-core-app]
+  end
+  Users --> Ingress
   Ingress --> FE
   Ingress --> BE
-  BE --> Workers
-  BE --> Val
-  Val --> SMB
-  Charts --> app
-  Updater --> Charts
-  BE -.->|Server management patches| Workers
+  FE --> BE
+  BE --> PG
+  BE -->|USE_QUEUE_EXTRACTION| Redis
+  Redis --> Corp
+  Redis --> Muni
+  BE --> DocProc
+  BE --> ValSvc
+  Corp --> SMB
+  Muni --> SMB
+  ValSvc --> SMB
+  Build --> Reg
+  Build --> Promote
+  Promote --> Charts
+  Charts --> Argo
+  Argo --> app
+  Reg -.->|imagePull| app
+  BE -.->|Server management affinity CPU| Corp
+  BE -.->|Server management affinity CPU| Muni

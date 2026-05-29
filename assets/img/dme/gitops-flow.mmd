@@ -1,0 +1,8 @@
+flowchart LR
+  Push[Push or New pipeline k3s-numaflow-migration] --> Build[build-k3 backend workers frontend]
+  Build -->|docker push| Reg[Registry dme-service-sha]
+  Build --> Verify[verify-k3-backend optional]
+  Verify --> Promote[promote-k3 docfin jobs]
+  Promote -->|git commit master| Charts[docfin_ai_charts values.yaml]
+  Charts --> Argo[Argo CD automated sync]
+  Argo --> Stage[dme-stage Deployments]

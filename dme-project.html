@@ -10,6 +10,7 @@
     <link rel="icon" href="./assets/favicon.ico">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.6/css/line.css">
     <link rel="stylesheet" href="./assets/css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
     
     <title>Data Mining Engine (DME) - Full Project Case Study</title>
     <style>
@@ -144,6 +145,21 @@
         .back-btn:hover {
             background-color: var(--first-color-alt);
         }
+        .flow-diagram {
+            background: var(--container-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            overflow-x: auto;
+            border: 1px solid rgba(0,0,0,0.08);
+        }
+        .arch-list {
+            line-height: 1.8;
+            margin-left: 1.5rem;
+            text-align: justify;
+            margin-bottom: 1.5rem;
+        }
+        .arch-list li { margin-bottom: 0.5rem; }
     </style>
 </head>
 <body>
@@ -182,8 +198,11 @@
                     <h2 class="section__title">Core Technical Achievements</h2>
                     <ul style="line-height: 1.8; margin-left: 1.5rem; text-align: justify; margin-bottom: 2rem;">
                         <li><strong>Process Scaling & GIL Bypass:</strong> To fully utilize an 80+ core Xeon server, I engineered the system to bypass Python's Global Interpreter Lock by spawning separate processes via `ProcessPoolExecutor`, processing 80+ ISINs simultaneously.</li>
-                        <li><strong>Role-Based CPU Tiering:</strong> Implemented job-level semaphores to cap batches allocating exact CPU fractions dynamically per user.</li>
+                        <li><strong>Role-Based CPU Tiering & Burst Throttling:</strong> Implemented job-level semaphores to cap batches allocating exact CPU fractions dynamically per user, including a dynamic priority engine that allows admin burst throttling when no normal users are active.</li>
                         <li><strong>Microservices Architecture:</strong> Built heavily decoupled services using FastAPI, Python, PostgreSQL, and Redis across Corporate, Municipal, Validation, and Document Processing domains.</li>
+                        <li><strong>Redis Queue Extraction (default):</strong> Backend publishes ISIN jobs to Redis streams; corporate/municipal replicas consume in parallel for multi-node throughput. Optional Numaflow/NATS JetStream (`dme-jobs`) runs as cluster infrastructure alongside HTTP fallback paths.</li>
+                        <li><strong>GitOps delivery:</strong> GitLab CI builds immutable images (<code>dme-*-commit-sha</code>), promote jobs update <code>docfin_ai_charts</code>, Argo CD auto-syncs <code>dme-stage</code> on K3s.</li>
+                        <li><strong>Security & Threat Modeling:</strong> Conducted comprehensive SecureCoder threat modeling to map trust boundaries across extraction engines, SMB mounts, and the frontend API, ensuring enterprise-grade security.</li>
                         <li><strong>Domain-Restricted Access:</strong> Custom secure signup flows validating against `@factentry.com` domains natively in Zod and FastAPI.</li>
                     </ul>
 
@@ -201,8 +220,8 @@
                             <p class="img-caption">Live Backend CPU & Queue Telemetry</p>
                         </div>
                         <div>
-                            <img src="./assets/img/dme/platform/cicd-gitlab-redploy.png" alt="CI/CD Gitlab Redeploy" class="project-img">
-                            <p class="img-caption">CI/CD Gitlab Redeploy Pipeline View</p>
+                            <img src="./assets/img/dme/git_build_promote/git_pipeline.png" alt="GitLab K3 pipeline build promote deploy" class="project-img">
+                            <p class="img-caption">GitLab CI — build → promote → deploy (K3 stage)</p>
                         </div>
                     </div>
                 </div>
@@ -334,7 +353,7 @@
                 <div class="project-section">
                     <h2 class="section__title">Server Cluster Management</h2>
                     <p style="text-align: justify; margin-bottom: 2rem;">
-                        The cluster management UI (`/server-potential`) provides superuser control for worker/server placement, dynamic Kubernetes node affinity patches, and live backend concurrency throttling overrides directly via PostgreSQL.
+                        The cluster management UI (`/server-potential`) provides superuser control for worker/server placement (Fleet, Controls, Argo tabs), disk-pressure visibility, worker evacuate/relocate with explicit target nodes, dynamic Kubernetes affinity patches, and live extraction throttling overrides via PostgreSQL.
                     </p>
                     <div class="feature-grid-3">
                         <div>
@@ -383,11 +402,51 @@
             <!-- Tab 6: Infrastructure & GitOps -->
             <div id="gitops" class="tab-content">
                 <div class="project-section">
-                    <h2 class="section__title">End-to-End Architecture Flow</h2>
-                    <div style="text-align: center; margin-bottom: 3rem;">
-                        <img src="./assets/img/dme/architecture-flow.png" alt="Architecture Diagram" style="width: 100%; max-width: 800px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-                        <p class="img-caption" style="margin-top: 1rem;">Core Extraction Event Loop & Distributed Messaging</p>
+                    <h2 class="section__title">Two Repositories</h2>
+                    <ul class="arch-list">
+                        <li><strong>data-mining-engine</strong> — application code, GitLab CI (<code>build-k3-*</code>, <code>promote-k3-*-docfin</code>), branch <code>k3s-numaflow-migration</code>.</li>
+                        <li><strong>docfin_ai_charts</strong> — Helm charts Argo CD syncs (<code>DME/core-app</code>, <code>dme-data-services</code>, …). Image pins live in <code>values.yaml</code>.</li>
+                    </ul>
+
+                    <h2 class="section__title">CI/CD → GitOps → K3 (stage)</h2>
+                    <p style="text-align: justify; margin-bottom: 1.5rem;">
+                        Push or <strong>New pipeline</strong> on <code>k3s-numaflow-migration</code> builds all service images at one commit SHA, promote jobs commit tags to charts Git, then Argo CD rolls <code>dme-stage</code> automatically.
+                    </p>
+                    <div style="text-align: center; margin-bottom: 2rem;">
+                        <img src="./assets/img/dme/git_build_promote/git_pipeline.png" alt="GitLab pipeline stages" class="project-img" style="max-width: 960px;">
+                        <p class="img-caption">Live GitLab pipeline: build → promote → deploy</p>
                     </div>
+                    <div class="flow-diagram">
+                        <pre class="mermaid">
+flowchart LR
+  Push[Git push or New pipeline] --> Build[build-k3 services]
+  Build -->|push| Reg[Registry 5005]
+  Build --> Promote[promote-k3 docfin]
+  Promote -->|master| Charts[docfin_ai_charts]
+  Charts --> Argo[Argo CD sync]
+  Argo --> Pods[dme-stage pods]
+                        </pre>
+                    </div>
+
+                    <h2 class="section__title">Runtime Architecture (browser → workers)</h2>
+                    <div class="flow-diagram">
+                        <pre class="mermaid">
+flowchart TB
+  User[Browser] --> Ingress[Ingress TLS]
+  Ingress --> FE[Frontend]
+  Ingress --> BE[Backend API]
+  FE --> BE
+  BE --> PG[(PostgreSQL)]
+  BE -->|Redis streams| Corp[Corporate]
+  BE --> Muni[Municipal]
+  BE --> Val[Validation]
+  BE --> Doc[Docproc]
+  Corp --> SMB[(SMB volumes)]
+  Muni --> SMB
+  Val --> SMB
+                        </pre>
+                    </div>
+                    <p class="img-caption">Request path and data plane (queue mode). Server management patches corp/muni placement at runtime; Argo ignores those fields via <code>ignoreDifferences</code>.</p>
 
                     <h2 class="section__title">K3s Container Deployment</h2>
                     <p style="text-align: justify; margin-bottom: 2rem;">
@@ -404,9 +463,9 @@
                         </div>
                     </div>
 
-                    <h2 class="section__title" style="margin-top: 2rem;">Argo CD & GitOps Pipeline</h2>
+                    <h2 class="section__title" style="margin-top: 2rem;">Argo CD Applications</h2>
                     <p style="text-align: justify; margin-bottom: 2rem;">
-                        DME leverages Argo CD for continuous delivery, pulling Helm charts automatically and synchronizing core apps, persistent volume chains, and NATS JetStream infrastructure.
+                        Argo CD watches <strong>docfin_ai_charts</strong> (not the app repo). Applications include <code>dme-core-app</code>, <code>dme-data-services</code>, <code>dme-platform-network</code>, and <code>dme-nats</code> with automated sync and self-heal. SMB PVCs sync before worker rollouts.
                     </p>
                     <div class="feature-grid-3">
                         <div>
@@ -452,6 +511,12 @@
     </main>
 
     <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: document.body.classList.contains('dark-theme') ? 'dark' : 'default',
+            securityLevel: 'loose'
+        });
+
         /* Tabs Logic */
         function openTab(evt, tabName) {
             var i, tabcontent, tablinks;
@@ -465,6 +530,9 @@
             }
             document.getElementById(tabName).classList.add("active");
             evt.currentTarget.classList.add("active");
+            if (tabName === 'gitops' && typeof mermaid !== 'undefined') {
+                setTimeout(function () { mermaid.run({ querySelector: '#gitops .mermaid' }); }, 100);
+            }
         }
 
         /* Basic Dark Mode Logic matching portfolio */
@@ -488,6 +556,7 @@
             themeButton.classList.toggle(iconTheme)
             localStorage.setItem('selected-theme', getCurrentTheme())
             localStorage.setItem('selected-icon', getCurrentIcon())
+            mermaid.initialize({ theme: getCurrentTheme() === 'dark' ? 'dark' : 'default', startOnLoad: false });
         })
     </script>
 </body>
