@@ -1,0 +1,32 @@
+flowchart TB
+  subgraph clients [Clients]
+    InternalTeams[Internal teams stage]
+    FutureInvestors[Global investors prod]
+  end
+  subgraph edge [Edge]
+    Ingress[Traefik Ingress api.* and dme.*]
+    Certs[cert-manager and dme-pki]
+  end
+  subgraph app [dme-core-app in dme-stage]
+    FE[DME frontend]
+    BE[Backend API]
+    Workers[Corporate and Municipal workers]
+  end
+  subgraph data [dme-data-services]
+    Val[Validation SMB reader]
+    SMB[(SMB volumes)]
+  end
+  subgraph gitops [Argo CD]
+    Charts[docfin_ai_charts Helm]
+    Updater[Image Updater tags]
+  end
+  InternalTeams --> Ingress
+  FutureInvestors --> Ingress
+  Ingress --> FE
+  Ingress --> BE
+  BE --> Workers
+  BE --> Val
+  Val --> SMB
+  Charts --> app
+  Updater --> Charts
+  BE -.->|Server management patches| Workers
