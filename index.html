@@ -3,20 +3,24 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="keywords" content="Harish Kumar S, Harish Kumar S GitHub, Harish-nika github, Harish-nika GitHub, 
-        aksh-ai, HarishKumar,Harish Kumar S, hari, Artificial Intelligence, AI, Deep Learning, Machine Learning, DL, ML, 
-        Web, web, app, developer, github, git, projects, tutorials, keywords, seo, artificial intelligence, deep learning, machine learning, 
-        dl, ml, deeplearning, machinelearning, DeepLearning, MachineLearning, Cybersecurity, cybersecurity, research, machine learning india, 
-        india, R&D, harish, harsh, kumar,harish,kumar">
         <meta name="author" content="Harish Kumar S">
-        <meta name="description" content="Hey there! I'm Harish. I'm a Machine Learning Engineer from India.">
+        <meta name="description" content="Harish Kumar S — ML engineer and software developer. Production K3s data-extraction platform, FastAPI microservices, and AI document systems.">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://harish-nika.github.io/">
+        <meta property="og:title" content="Harish Kumar — AI &amp; ML Engineer">
+        <meta property="og:description" content="ML engineer building production bond-extraction on K3s (FastAPI, Redis, Argo CD) and AI document pipelines.">
+        <meta property="og:image" content="https://harish-nika.github.io/assets/img/dme/platform/user_dashboard.png">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="Harish Kumar — AI &amp; ML Engineer">
+        <meta name="twitter:description" content="ML engineer — K3s extraction platform, FastAPI, Redis, Argo CD.">
+        <meta name="twitter:image" content="https://harish-nika.github.io/assets/img/dme/platform/user_dashboard.png">
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
         <link rel="icon" href="./assets/favicon.ico">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
         <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.6/css/line.css">
         <link rel="stylesheet" href="./assets/css/swiper-bundle.min.css">
         <link rel="stylesheet" href="./assets/css/styles.css">
+        <link rel="stylesheet" href="./assets/css/portfolio-enhance.css">
         <!-- favicon tags-->
         <link rel="icon" type="image/png" href="./assets/favicon-96x96.png" sizes="96x96" />
         <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
@@ -140,6 +144,7 @@
                             <p class="home__description">
                                 23 | Data Science | Software Engineering | AI & Machine Learning | Generative AI
                             </p>
+                            <span class="home__highlight">Shipped production bond-extraction on K3s (FastAPI, Redis, Argo CD) at FactEntry.</span>
                             <a href="https://drive.google.com/file/d/1gawlbbXktf9qoLHGh9AskOxeLvBPYQNp/view?usp=sharing" 
                             target="_blank" 
                             class="button button--flex">
@@ -314,6 +319,7 @@
                                 <div>
                                     <h3 class="qualification__title">Software Developer Trainee</h3>
                                     <span class="qualification__subtitle">Fact Entry Data Solutions-A SIX Company</span>
+                                    <span class="qualification__note">Data Mining Engine (DME): K3s stage, GitLab CI → Helm charts → Argo CD GitOps, Redis queue extraction.</span>
                                     <div class="qualification__calendar">
                                         <i class="uil uil-calendar-alt"></i>
                                         Dec 2025 - Present
@@ -920,24 +926,38 @@
                 <span class="section__subtitle">My Projects and Works</span>
         
                 <div class="project-container">
-                    <!-- Project 0: DME -->
-                    <div class="project-card">
-                        <img src="./assets/img/dme/platform/user_dashboard.png" alt="DME Dashboard" style="width: 100%; border-radius: 8px; margin-bottom: 1rem; object-fit: cover; max-height: 200px;" onerror="this.src='./assets/img/dme/user_dashboard.png';">
+                    <!-- Featured: DME -->
+                    <div class="project-card project-card--featured">
+                        <img src="./assets/img/dme/platform/user_dashboard.png" alt="DME dashboard — live queue and cluster telemetry" class="project-img--ui" loading="eager" onerror="this.src='./assets/img/dme/user_dashboard.png';">
                         <h3 class="testimonial__name">Data Mining Engine (DME)</h3>
                         <span class="testimonial__description">FactEntry Data Solutions (A SIX Company)</span>
-                        <p class="testimonial__description" style="text-align: justify;">
-                            <strong>Objective:</strong>
-                             Developed a high-performance, containerized data extraction platform for financial instrument analysis (Corporate and Municipal bonds).<br>
-                            <strong>Key Contributions:</strong><br>
-                            • Built a scalable microservices architecture using FastAPI, Python, PostgreSQL, and Redis, deployed on Kubernetes (K3s).<br>
-                            • Engineered a high-concurrency extraction engine utilizing ProcessPoolExecutor to bypass the Python GIL and saturate up to 80+ CPU cores simultaneously.<br>
-                            • Implemented an interactive validation UI with strict dual-pane scroll isolation for human-in-the-loop data correction.<br>
-                            • Developed real-time telemetry and a Communication Live Workspace using WebSockets to monitor the pipeline and worker stages.<br>
-                            • Delivered K3s stage via GitLab CI (build → promote to Helm charts) and Argo CD GitOps sync.<br>
-                         </p>
-                         <a href="dme-project.html" class="button button--flex button--small portfolio__button">Read Full Case Study <i class="uil uil-arrow-right button__icon"></i></a>
+                        <p class="project-card__headline">Enterprise bond extraction on K3s — UI, API, multi-node workers</p>
+                        <div class="project-metrics" aria-label="Key metrics">
+                            <span class="metric-chip">80+ CPU cores</span>
+                            <span class="metric-chip">Redis queue</span>
+                            <span class="metric-chip">GitLab CI → Argo</span>
+                            <span class="metric-chip">Multi-node workers</span>
+                        </div>
+                        <div class="project-tech" aria-label="Technologies">
+                            <span class="tech-chip">K3s</span>
+                            <span class="tech-chip">FastAPI</span>
+                            <span class="tech-chip">PostgreSQL</span>
+                            <span class="tech-chip">Redis</span>
+                            <span class="tech-chip">Argo CD</span>
+                        </div>
+                        <div class="project-card__body">
+                            <ul>
+                                <li>Microservices for corporate &amp; municipal bond extraction with ProcessPoolExecutor across worker pods.</li>
+                                <li>Human-in-the-loop validation UI, Communication Live WebSockets, and superuser cluster/API portals.</li>
+                                <li>GitOps delivery: immutable images, Helm chart promote, automated Argo CD sync to stage.</li>
+                            </ul>
+                        </div>
+                        <div class="project-card__cta">
+                            <a href="dme-project.html" class="button button--flex button--small portfolio__button">Read full case study <i class="uil uil-arrow-right button__icon"></i></a>
+                        </div>
                     </div>
 
+                    <div class="project-grid-secondary">
                     <!-- Project 1 -->
                     <div class="project-card">
                         <h3 class="testimonial__name">AI-Powered Document Q&A and Data Extraction System</h3>
@@ -1045,6 +1065,7 @@
                                        • Optimized data extraction workflows for large-scale datasets, enhancing performance and reducing processing time by 30%. <br>
                                        • Collaborated on ML-driven NLP projects to generate automated suggestions for keyword optimization and grammar correction.<br>
                        </p>
+                    </div>
                     </div>
                 </div>
         
@@ -1330,5 +1351,6 @@
         <script src="./assets/js/swiper-bundle.min.js"></script>
 
         <script src="./assets/js/main.js"></script>
+        <script src="./assets/js/portfolio-enhance.js"></script>
     </body>
 </html>

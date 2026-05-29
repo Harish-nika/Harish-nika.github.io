@@ -1,12 +1,13 @@
 /*========== GOOGLE FONTS ==========*/
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;700&display=swap");
 /*==================== VARIABLES CSS ====================*/
 :root {
   --header-height: 3rem;
   /*========== Colors ==========*/
   /* Change favorite color */
-  --hue-color: 250;
-  /*Purple 250 - Green 142 - Blue 230 - Pink 340*/
+  --hue-color: 220;
+  /* Blue-teal brand (was 250 purple template) */
   /* HSL color mode */
   --first-color: hsl(var(--hue-color), 69%, 61%);
   --first-color-second: hsl(var(--hue-color), 69%, 61%);
@@ -1403,37 +1404,44 @@ img {
 }
 
 
-/* Centered container with left & right spacing */
+/* Projects section — layout extended in portfolio-enhance.css */
 .project-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columns */
-  gap: 20px; /* Space between cards */
-  max-width: 1200px; /* Limits width for left & right spacing */
-  margin: 0 auto; /* Centers the container */
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 20px;
 }
 
-/* Project card styling */
 .project-card {
-  background: #f9f9f9;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  min-width: 250px;
+  background: var(--container-color);
+  color: var(--text-color);
+  padding: 1.25rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  border: 1px solid hsl(var(--hue-color), 12%, 90%);
 }
 
-/* Responsive: 2 cards per row on tablets */
-@media (max-width: 1024px) {
-  .project-container {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns */
-  }
+body.dark-theme .project-card {
+  border-color: hsl(var(--hue-color), 12%, 26%);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
-/* Responsive: 1 card per row on mobile */
-@media (max-width: 768px) {
-  .project-container {
-    grid-template-columns: repeat(1, 1fr); /* 1 column */
-  }
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.project-card .testimonial__name {
+  color: var(--title-color);
+}
+
+.project-card .testimonial__description {
+  text-align: left;
+  color: var(--text-color);
 }
 
 
@@ -1507,41 +1515,15 @@ img {
 
 .projects-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(600px, 1fr)); /* Adjusted for better layout */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
   padding: 20px;
 }
 
-.project-card {
-  background: hsl(250deg 65.56% 59.74%);
-  padding: 20px;
-  border-radius: 6px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease-in-out;
-  width: 100%;
-  min-height: 200px; /* Minimum height but allows it to expand */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* Keeps elements aligned properly */
-}
-
-.project-card {
-    background: rgba(111, 66, 193, 0.2); /* Adjust the last value (0.8) for transparency */
-  
-  
-  padding: 20px;
-  border-radius: 6px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease-in-out;
-  width: 100%;
-  min-height: 200px; /* Minimum height but allows it to expand */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* Keeps elements aligned properly */
-}
-
-.project-card:hover {
-  transform: translateY(-5px);
+.section__title,
+.home__title,
+.case-study-title {
+  font-family: "DM Sans", var(--body-font), sans-serif;
 }
 
 .project-name {
