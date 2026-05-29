@@ -1,0 +1,25 @@
+flowchart TB
+  user[Browser]
+  ingress[Ingress TLS]
+  fe[Frontend]
+  be[Backend API]
+  pg[(PostgreSQL)]
+  redis[(Redis streams)]
+  corp[Corporate worker]
+  muni[Municipal worker]
+  valSvc[Validation]
+  docproc[Docproc]
+  smb[(SMB volumes)]
+  user --> ingress
+  ingress --> fe
+  ingress --> be
+  fe --> be
+  be --> pg
+  be --> redis
+  redis --> corp
+  redis --> muni
+  be --> valSvc
+  be --> docproc
+  corp --> smb
+  muni --> smb
+  valSvc --> smb

@@ -16,4 +16,12 @@ Screenshots for [dme-project.html](../../../dme-project.html) case study.
 `fullstack/docs/images/git_build_promote/git_pipeline.png`  
 → `git_build_promote/git_pipeline.png`
 
-**Diagrams in case study:** rendered in-browser via Mermaid CDN from `.mmd` sources in this folder.
+**Diagrams in case study:** pre-rendered PNGs (avoids Mermaid errors on hidden tabs). Regenerate:
+
+```bash
+# from this directory; mmdc from data-mining-engine fullstack/docs (npm install @mermaid-js/mermaid-cli there once)
+MMDC=/path/to/data-mining-engine/fullstack/docs/node_modules/.bin/mmdc
+for f in gitops-flow runtime-flow architecture-flow; do
+  "$MMDC" -i "$f.mmd" -o "$f.png" -b white
+done
+```

@@ -10,7 +10,6 @@
     <link rel="icon" href="./assets/favicon.ico">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.6/css/line.css">
     <link rel="stylesheet" href="./assets/css/styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
     
     <title>Data Mining Engine (DME) - Full Project Case Study</title>
     <style>
@@ -416,37 +415,22 @@
                         <img src="./assets/img/dme/git_build_promote/git_pipeline.png" alt="GitLab pipeline stages" class="project-img" style="max-width: 960px;">
                         <p class="img-caption">Live GitLab pipeline: build → promote → deploy</p>
                     </div>
-                    <div class="flow-diagram">
-                        <pre class="mermaid">
-flowchart LR
-  Push[Git push or New pipeline] --> Build[build-k3 services]
-  Build -->|push| Reg[Registry 5005]
-  Build --> Promote[promote-k3 docfin]
-  Promote -->|master| Charts[docfin_ai_charts]
-  Charts --> Argo[Argo CD sync]
-  Argo --> Pods[dme-stage pods]
-                        </pre>
+                    <div class="flow-diagram" style="text-align: center;">
+                        <img src="./assets/img/dme/gitops-flow.png" alt="GitLab CI build promote docfin charts Argo CD sync" class="project-img" style="max-width: 100%;">
+                        <p class="img-caption">CI/CD: build-k3 → registry → promote docfin_ai_charts → Argo sync dme-stage</p>
                     </div>
 
                     <h2 class="section__title">Runtime Architecture (browser → workers)</h2>
-                    <div class="flow-diagram">
-                        <pre class="mermaid">
-flowchart TB
-  User[Browser] --> Ingress[Ingress TLS]
-  Ingress --> FE[Frontend]
-  Ingress --> BE[Backend API]
-  FE --> BE
-  BE --> PG[(PostgreSQL)]
-  BE -->|Redis streams| Corp[Corporate]
-  BE --> Muni[Municipal]
-  BE --> Val[Validation]
-  BE --> Doc[Docproc]
-  Corp --> SMB[(SMB volumes)]
-  Muni --> SMB
-  Val --> SMB
-                        </pre>
+                    <div class="flow-diagram" style="text-align: center;">
+                        <img src="./assets/img/dme/runtime-flow.png" alt="Browser Ingress backend Redis corporate municipal SMB" class="project-img" style="max-width: 100%;">
+                        <p class="img-caption">Request path and data plane (queue mode). Server management patches corp/muni placement at runtime; Argo ignores those fields via <code>ignoreDifferences</code>.</p>
                     </div>
-                    <p class="img-caption">Request path and data plane (queue mode). Server management patches corp/muni placement at runtime; Argo ignores those fields via <code>ignoreDifferences</code>.</p>
+
+                    <h3 class="section__title" style="font-size: 1.1rem; margin-top: 1.5rem;">Full stack (runtime + GitOps)</h3>
+                    <div class="flow-diagram" style="text-align: center;">
+                        <img src="./assets/img/dme/architecture-flow.png" alt="End-to-end DME architecture clients ingress GitOps workers" class="project-img" style="max-width: 100%;">
+                        <p class="img-caption">Combined view: edge TLS, core app, data plane, GitLab CI, and Argo CD (source: <code>architecture-flow.mmd</code>).</p>
+                    </div>
 
                     <h2 class="section__title">K3s Container Deployment</h2>
                     <p style="text-align: justify; margin-bottom: 2rem;">
@@ -511,12 +495,6 @@ flowchart TB
     </main>
 
     <script>
-        mermaid.initialize({
-            startOnLoad: true,
-            theme: document.body.classList.contains('dark-theme') ? 'dark' : 'default',
-            securityLevel: 'loose'
-        });
-
         /* Tabs Logic */
         function openTab(evt, tabName) {
             var i, tabcontent, tablinks;
@@ -530,9 +508,6 @@ flowchart TB
             }
             document.getElementById(tabName).classList.add("active");
             evt.currentTarget.classList.add("active");
-            if (tabName === 'gitops' && typeof mermaid !== 'undefined') {
-                setTimeout(function () { mermaid.run({ querySelector: '#gitops .mermaid' }); }, 100);
-            }
         }
 
         /* Basic Dark Mode Logic matching portfolio */
@@ -556,7 +531,6 @@ flowchart TB
             themeButton.classList.toggle(iconTheme)
             localStorage.setItem('selected-theme', getCurrentTheme())
             localStorage.setItem('selected-icon', getCurrentIcon())
-            mermaid.initialize({ theme: getCurrentTheme() === 'dark' ? 'dark' : 'default', startOnLoad: false });
         })
     </script>
 </body>
