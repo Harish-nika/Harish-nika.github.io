@@ -574,6 +574,30 @@ body.dark-theme .certifications--scifi .portfolio__title {
     linear-gradient(120deg, transparent 0%, hsla(var(--hue-color), 92%, 62%, 0.12) 50%, transparent 100%);
 }
 
+.section-theme--skills::after {
+  background:
+    radial-gradient(circle at 14% 20%, hsla(205, 95%, 62%, 0.18), transparent 34%),
+    linear-gradient(115deg, transparent 5%, hsla(205, 92%, 58%, 0.14) 52%, transparent 92%);
+}
+
+.section-theme--projects::after {
+  background:
+    radial-gradient(circle at 12% 16%, hsla(168, 88%, 46%, 0.16), transparent 30%),
+    linear-gradient(125deg, transparent 6%, hsla(168, 88%, 42%, 0.14) 52%, transparent 94%);
+}
+
+.section-theme--certifications::after {
+  background:
+    radial-gradient(circle at 82% 18%, hsla(272, 88%, 64%, 0.18), transparent 34%),
+    linear-gradient(135deg, transparent 6%, hsla(272, 86%, 62%, 0.14) 50%, transparent 95%);
+}
+
+.section-theme--contact::after {
+  background:
+    radial-gradient(circle at 85% 22%, hsla(30, 92%, 62%, 0.15), transparent 35%),
+    linear-gradient(130deg, transparent 8%, hsla(30, 88%, 58%, 0.12) 50%, transparent 96%);
+}
+
 .section-theme.section-theme--active::after {
   opacity: 1;
   animation: sectionPipelineSweep 0.9s ease;
@@ -592,7 +616,38 @@ body.is-skills-toggling .skills__title {
 }
 
 .skills__content {
+  position: relative;
+  overflow: hidden;
   transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+}
+
+.skills__content::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  opacity: 0.72;
+  border-radius: 8px;
+  background: hsla(var(--hue-color), 88%, 58%, 0.55);
+  transform: scaleY(0.45);
+  transform-origin: top;
+  transition: transform 0.35s ease, opacity 0.35s ease, background 0.35s ease;
+}
+
+.skills__content[data-skill-theme="ai"]::before {
+  background: hsla(206, 95%, 56%, 0.62);
+}
+
+.skills__content[data-skill-theme="devops"]::before {
+  background: hsla(163, 84%, 44%, 0.62);
+}
+
+.skills__content[data-skill-theme="k3s"]::before {
+  background: hsla(34, 90%, 56%, 0.62);
+}
+
+.skills__content[data-skill-theme="data"]::before {
+  background: hsla(274, 84%, 62%, 0.62);
 }
 
 .skills__content.skills__open {
@@ -600,8 +655,39 @@ body.is-skills-toggling .skills__title {
   box-shadow: 0 8px 22px hsla(var(--hue-color), 78%, 50%, 0.14);
 }
 
+.skills__content.skills__open::before {
+  transform: scaleY(1);
+  opacity: 1;
+}
+
+.skills__content.skills__open .skills__data {
+  animation: skillItemReveal 0.45s ease both;
+}
+
+.skills__content.skills__open .skills__data:nth-child(2) { animation-delay: 0.04s; }
+.skills__content.skills__open .skills__data:nth-child(3) { animation-delay: 0.08s; }
+.skills__content.skills__open .skills__data:nth-child(4) { animation-delay: 0.12s; }
+.skills__content.skills__open .skills__data:nth-child(5) { animation-delay: 0.16s; }
+.skills__content.skills__open .skills__data:nth-child(6) { animation-delay: 0.20s; }
+
 .skills__content.skills__content--pulse {
   animation: skillsPipelinePulse 0.65s ease;
+}
+
+body.skills-theme-ai .skills__content.skills__open {
+  box-shadow: 0 10px 24px hsla(206, 95%, 56%, 0.22);
+}
+
+body.skills-theme-devops .skills__content.skills__open {
+  box-shadow: 0 10px 24px hsla(163, 84%, 44%, 0.22);
+}
+
+body.skills-theme-k3s .skills__content.skills__open {
+  box-shadow: 0 10px 24px hsla(34, 90%, 56%, 0.21);
+}
+
+body.skills-theme-data .skills__content.skills__open {
+  box-shadow: 0 10px 24px hsla(274, 84%, 62%, 0.22);
 }
 
 @keyframes sectionPipelineSweep {
@@ -641,6 +727,17 @@ body.is-skills-toggling .skills__title {
   }
 }
 
+@keyframes skillItemReveal {
+  0% {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .section-theme::after,
   .section-theme.section-theme--active::after,
@@ -649,6 +746,8 @@ body.is-skills-toggling .skills__title {
   .section-theme--certifications.section-theme--active .portfolio__container,
   .section-theme--contact.section-theme--active .contact__container,
   .skills__content,
+  .skills__content::before,
+  .skills__content.skills__open .skills__data,
   .skills__content.skills__content--pulse {
     animation: none;
     transition: none;

@@ -46,6 +46,24 @@ navLink.forEach((n) => {
 const skillsContent = document.getElementsByClassName('skills__content'),
       skillsHeader = document.querySelectorAll('.skills__header')
 
+function resolveSkillTheme(skillBlock){
+    const title = skillBlock.querySelector('.skills__title')?.textContent?.toLowerCase() || ''
+    if(title.includes('devops') || title.includes('gitops') || title.includes('version control')){
+        return 'devops'
+    }
+    if(title.includes('cloud') || title.includes('computing') || title.includes('backend') || title.includes('programming')){
+        return 'k3s'
+    }
+    if(title.includes('analytics') || title.includes('visualization') || title.includes('engineering') || title.includes('etl')){
+        return 'data'
+    }
+    return 'ai'
+}
+
+Array.from(skillsContent).forEach((block) => {
+    block.setAttribute('data-skill-theme', resolveSkillTheme(block))
+})
+
 function toggleSkills(){
     let itemClass = this.parentNode.className
     const nextIsOpen = itemClass === 'skills__content skills__close'
@@ -59,6 +77,9 @@ function toggleSkills(){
         if(!prefersReducedMotion){
             this.parentNode.classList.add('skills__content--pulse')
         }
+        const theme = this.parentNode.getAttribute('data-skill-theme') || 'ai'
+        document.body.classList.remove('skills-theme-ai', 'skills-theme-devops', 'skills-theme-k3s', 'skills-theme-data')
+        document.body.classList.add(`skills-theme-${theme}`)
         pulseBodyClass('is-skills-toggling')
     }
 }
