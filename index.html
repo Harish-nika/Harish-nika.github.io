@@ -923,7 +923,7 @@
 
             <section class="testimonial section" id="Projects">
                 <h2 class="section__title">Projects</h2>
-                <span class="section__subtitle">My Projects and Works</span>
+                <span class="section__subtitle">Production platforms &amp; research — architecture flows on featured work</span>
         
                 <div class="project-container">
                     <!-- Featured: DME -->
@@ -952,6 +952,38 @@
                                 <li>GitOps delivery: immutable images, Helm chart promote, automated Argo CD sync to stage.</li>
                             </ul>
                         </div>
+
+                        <div class="project-flows">
+                            <h4 class="project-flows__title">Architecture &amp; system flows</h4>
+                            <p class="project-flows__intro">End-to-end K3s platform — click a diagram to enlarge. Full set in the case study.</p>
+                            <div class="flow-grid flow-grid--index">
+                                <figure class="flow-card flow-card--wide">
+                                    <img src="./assets/img/dme/architecture-flow.png" alt="DME full stack — runtime and GitOps" class="project-img--ui" loading="lazy">
+                                    <figcaption><strong>Full stack</strong> Ingress, core app, Redis/Postgres, SMB, GitLab CI → Argo CD</figcaption>
+                                </figure>
+                                <figure class="flow-card">
+                                    <img src="./assets/img/dme/gitops-flow.png" alt="GitLab CI promote Helm Argo sync" class="project-img--ui" loading="lazy">
+                                    <figcaption><strong>GitOps</strong> build-k3 → promote charts → Argo → dme-stage</figcaption>
+                                </figure>
+                                <figure class="flow-card">
+                                    <img src="./assets/img/dme/runtime-flow.png" alt="Redis queue to corporate municipal workers" class="project-img--ui" loading="lazy">
+                                    <figcaption><strong>Runtime</strong> Redis streams → worker pods → SMB corpora</figcaption>
+                                </figure>
+                                <figure class="flow-card">
+                                    <img src="./assets/img/dme/extraction-dispatch-flow.png" alt="Job dispatch queue vs HTTP" class="project-img--ui" loading="lazy">
+                                    <figcaption><strong>Job dispatch</strong> Redis queue (default) or HTTP run-direct fallback</figcaption>
+                                </figure>
+                                <figure class="flow-card">
+                                    <img src="./assets/img/dme/request-path-flow.png" alt="Browser API path WebSocket validation" class="project-img--ui" loading="lazy">
+                                    <figcaption><strong>Request path</strong> Ingress, backend, WebSocket, workers, validation</figcaption>
+                                </figure>
+                                <figure class="flow-card">
+                                    <img src="./assets/img/dme/cluster-ops-flow.png" alt="Server management to Kubernetes" class="project-img--ui" loading="lazy">
+                                    <figcaption><strong>Cluster ops</strong> Server UI → allocations → Deployment patches</figcaption>
+                                </figure>
+                            </div>
+                        </div>
+
                         <div class="project-card__cta">
                             <a href="dme-project.html" class="button button--flex button--small portfolio__button">Read full case study <i class="uil uil-arrow-right button__icon"></i></a>
                         </div>

@@ -9,8 +9,13 @@ Screenshots for [dme-project.html](../../../dme-project.html) case study.
 | `server-cluster/` | `/server-potential` Fleet, Controls, Argo |
 | `argocd/` | Argo CD application views |
 | `git_build_promote/` | GitLab K3 pipeline (build → promote → deploy) |
-| `architecture-flow.mmd` | Runtime + GitOps mermaid (source) |
-| `gitops-flow.mmd` | CI → charts → Argo mermaid (source) |
+| `architecture-flow.mmd` | Full stack — runtime + GitOps |
+| `gitops-flow.mmd` | CI → charts → Argo |
+| `runtime-flow.mmd` | Queue mode runtime |
+| `request-path-flow.mmd` | Browser → backend → workers |
+| `extraction-dispatch-flow.mmd` | Redis queue vs HTTP fallback |
+| `worker-pipeline-flow.mmd` | Inside worker pod |
+| `cluster-ops-flow.mmd` | Server management → K8s |
 
 **Update pipeline screenshot:** copy from repo  
 `fullstack/docs/images/git_build_promote/git_pipeline.png`  
@@ -21,7 +26,7 @@ Screenshots for [dme-project.html](../../../dme-project.html) case study.
 ```bash
 # from this directory; mmdc from data-mining-engine fullstack/docs (npm install @mermaid-js/mermaid-cli there once)
 MMDC=/path/to/data-mining-engine/fullstack/docs/node_modules/.bin/mmdc
-for f in gitops-flow runtime-flow architecture-flow; do
+for f in architecture-flow gitops-flow runtime-flow request-path-flow extraction-dispatch-flow worker-pipeline-flow cluster-ops-flow; do
   "$MMDC" -i "$f.mmd" -o "$f.png" -b white
 done
 ```

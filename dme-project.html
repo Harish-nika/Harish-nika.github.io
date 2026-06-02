@@ -195,6 +195,7 @@
                 <p class="case-study-subtitle">
                     Enterprise extraction platform on K3s: FastAPI microservices, Redis-stream jobs, human-in-the-loop validation, and superuser cluster controls. Delivered via GitLab CI image builds, Helm chart promote, and Argo CD sync to stage.
                 </p>
+                <a href="#architecture-flows" class="flow-jump">View architecture &amp; flow diagrams ↓</a>
             </div>
 
             <div class="case-study-tabs-wrap">
@@ -219,6 +220,43 @@
                         <li><strong>Security & Threat Modeling:</strong> Conducted comprehensive SecureCoder threat modeling to map trust boundaries across extraction engines, SMB mounts, and the frontend API, ensuring enterprise-grade security.</li>
                         <li><strong>Domain-Restricted Access:</strong> Custom secure signup flows validating against `@factentry.com` domains natively in Zod and FastAPI.</li>
                     </ul>
+
+                    <section id="architecture-flows" class="flow-section">
+                        <h2 class="section__title">Architecture &amp; system flows</h2>
+                        <p class="flow-section__intro">
+                            End-to-end view of DME on K3s: how users and APIs reach the platform, how jobs are dispatched to workers, how GitOps delivers images, and how operators manage the fleet. Click any diagram to zoom.
+                        </p>
+                        <div class="flow-grid">
+                            <figure class="flow-card flow-card--wide">
+                                <img src="./assets/img/dme/architecture-flow.png" alt="Full stack — clients, ingress, core app, data plane, GitLab CI, Argo CD" class="project-img--ui" loading="lazy">
+                                <figcaption><strong>Full stack (runtime + GitOps)</strong> Edge TLS, <code>dme-core-app</code>, PostgreSQL &amp; Redis, SMB volumes, CI build/promote, Argo sync. Server management patches worker placement at runtime.</figcaption>
+                            </figure>
+                            <figure class="flow-card">
+                                <img src="./assets/img/dme/request-path-flow.png" alt="Browser to backend workers validation and WebSocket" class="project-img--ui" loading="lazy">
+                                <figcaption><strong>Request path</strong> Ingress → frontend/backend → PostgreSQL, live job WebSocket, corporate/muni/docproc. Validation is a separate highlight workflow.</figcaption>
+                            </figure>
+                            <figure class="flow-card">
+                                <img src="./assets/img/dme/runtime-flow.png" alt="Queue mode runtime — Redis to workers and SMB" class="project-img--ui" loading="lazy">
+                                <figcaption><strong>Runtime (queue mode)</strong> Backend publishes to Redis streams; corporate and municipal consumers read bond data from SMB mounts.</figcaption>
+                            </figure>
+                            <figure class="flow-card">
+                                <img src="./assets/img/dme/gitops-flow.png" alt="GitLab CI promote charts Argo CD" class="project-img--ui" loading="lazy">
+                                <figcaption><strong>GitOps / CI/CD</strong> Push or New pipeline → <code>build-k3-*</code> → registry → promote <code>docfin_ai_charts</code> → Argo CD → <code>dme-stage</code>.</figcaption>
+                            </figure>
+                            <figure class="flow-card">
+                                <img src="./assets/img/dme/extraction-dispatch-flow.png" alt="Job dispatch Redis queue vs HTTP fallback" class="project-img--ui" loading="lazy">
+                                <figcaption><strong>Job dispatch</strong> Default: <code>USE_QUEUE_EXTRACTION</code> and Redis streams. Fallback: async HTTP <code>run-direct</code> to worker pods.</figcaption>
+                            </figure>
+                            <figure class="flow-card">
+                                <img src="./assets/img/dme/worker-pipeline-flow.png" alt="Inside worker — stream to extractors to callback" class="project-img--ui" loading="lazy">
+                                <figcaption><strong>Inside a worker pod</strong> Redis message → <code>api_runner</code> → DataMining orchestrator → field extractors → status/callback.</figcaption>
+                            </figure>
+                            <figure class="flow-card">
+                                <img src="./assets/img/dme/cluster-ops-flow.png" alt="Server management UI to Postgres and Kubernetes" class="project-img--ui" loading="lazy">
+                                <figcaption><strong>Cluster operations</strong> <code>/server-potential</code> → nodes API → Postgres allocations → Deployment patches (Argo <code>ignoreDifferences</code> on replicas/affinity).</figcaption>
+                            </figure>
+                        </div>
+                    </section>
 
                     <div class="feature-grid">
                         <div>
@@ -422,6 +460,10 @@
                         <li><strong>docfin_ai_charts</strong> — Helm charts Argo CD syncs (<code>DME/core-app</code>, <code>dme-data-services</code>, …). Image pins live in <code>values.yaml</code>.</li>
                     </ul>
 
+                    <p class="flow-section__intro" style="margin-bottom: 1.5rem;">
+                        All architecture diagrams (full stack, dispatch, worker pipeline, cluster ops) are in the <a href="#architecture-flows" class="flow-jump" onclick="openTab(event, 'overview')">Overview → Architecture &amp; system flows</a> section.
+                    </p>
+
                     <h2 class="section__title">CI/CD → GitOps → K3 (stage)</h2>
                     <p style="text-align: justify; margin-bottom: 1.5rem;">
                         Push or <strong>New pipeline</strong> on <code>k3s-numaflow-migration</code> builds all service images at one commit SHA, promote jobs commit tags to charts Git, then Argo CD rolls <code>dme-stage</code> automatically.
@@ -444,7 +486,7 @@
                     <details class="arch-details">
                         <summary>Full stack diagram (runtime + GitOps)</summary>
                         <div class="flow-diagram" style="text-align: center; margin-top: 1rem;">
-                            <img src="./assets/img/dme/architecture-flow.png" alt="End-to-end DME architecture — clients, ingress, GitOps, workers" class="project-img project-img--ui" loading="lazy" loading="lazy">
+                            <img src="./assets/img/dme/architecture-flow.png" alt="End-to-end DME architecture — clients, ingress, GitOps, workers" class="project-img project-img--ui" loading="lazy">
                             <p class="img-caption">Edge TLS, core app, data plane, GitLab CI, and Argo CD.</p>
                         </div>
                     </details>

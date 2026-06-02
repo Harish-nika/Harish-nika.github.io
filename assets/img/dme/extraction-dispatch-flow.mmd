@@ -1,0 +1,8 @@
+flowchart LR
+  jobs[Backend jobs dispatch]
+  jobs -->|USE_QUEUE_EXTRACTION default| redis[(Redis streams)]
+  redis --> consumers[Corp and muni consumers]
+  consumers --> pods[Worker pods per node]
+  jobs -->|HTTP fallback| http[Async POST run-direct]
+  http --> pods
+  pods --> smb[(SMB corpora)]

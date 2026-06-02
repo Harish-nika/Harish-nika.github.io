@@ -1,0 +1,11 @@
+flowchart TB
+  ui[Server management UI]
+  api[Nodes API]
+  db[(Postgres allocations)]
+  k8s[Patch Deployments]
+  fleet[Live pod fleet view]
+  ui --> api
+  api --> db
+  api --> k8s
+  api --> fleet
+  k8s -.->|Argo ignoreDifferences| gitops[Helm baseline via Argo CD]

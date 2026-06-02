@@ -234,6 +234,120 @@ body.dark-theme .arch-details {
   padding: 0.5rem 0;
 }
 
+/* Case study — architecture & flow diagrams */
+.flow-section {
+  margin-bottom: 3rem;
+}
+
+.flow-section__intro {
+  text-align: left;
+  color: var(--text-color);
+  line-height: 1.65;
+  margin-bottom: 1.5rem;
+  max-width: 900px;
+}
+
+.flow-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media screen and (min-width: 768px) {
+  .flow-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.flow-card {
+  margin: 0;
+  background: var(--container-color);
+  border: 1px solid hsl(var(--hue-color), 12%, 88%);
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+}
+
+body.dark-theme .flow-card {
+  border-color: hsl(var(--hue-color), 12%, 28%);
+}
+
+.flow-card--wide {
+  grid-column: 1 / -1;
+}
+
+.flow-card img {
+  width: 100%;
+  max-height: 520px;
+  object-fit: contain;
+  cursor: zoom-in;
+}
+
+.flow-card figcaption {
+  font-size: var(--small-font-size);
+  color: var(--text-color);
+  line-height: 1.5;
+  margin-top: 0.75rem;
+  text-align: left;
+}
+
+.flow-card figcaption strong {
+  color: var(--title-color);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.flow-jump {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-size: var(--small-font-size);
+  color: var(--first-color);
+  font-weight: var(--font-medium);
+}
+
+/* Index.html — featured project flows (compact) */
+.project-flows {
+  margin: 1.5rem 0 1rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid hsl(var(--hue-color), 12%, 88%);
+}
+
+body.dark-theme .project-flows {
+  border-top-color: hsl(var(--hue-color), 12%, 28%);
+}
+
+.project-flows__title {
+  font-size: var(--h3-font-size);
+  font-family: "DM Sans", var(--body-font), sans-serif;
+  color: var(--title-color);
+  margin: 0 0 0.5rem;
+}
+
+.project-flows__intro {
+  font-size: var(--small-font-size);
+  color: var(--text-color);
+  margin: 0 0 1rem;
+  line-height: 1.5;
+}
+
+.flow-grid--index .flow-card img {
+  max-height: 220px;
+}
+
+@media screen and (min-width: 968px) {
+  .flow-grid--index {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .flow-grid--index .flow-card--wide {
+    grid-column: 1 / -1;
+  }
+
+  .flow-grid--index .flow-card--wide img {
+    max-height: 320px;
+  }
+}
+
 .qualification__note {
   display: block;
   margin-top: 0.35rem;
