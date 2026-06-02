@@ -74,6 +74,10 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
+body.dark-theme .project-card--featured:hover {
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+}
+
 .project-card__headline {
   font-size: var(--normal-font-size);
   font-weight: var(--font-semi-bold);
@@ -434,6 +438,11 @@ body.dark-theme .project-flows {
   color: var(--title-color);
 }
 
+body.dark-theme .qual-badge--intern {
+  background: hsla(var(--hue-color), 70%, 34%, 0.72);
+  color: var(--title-color);
+}
+
 /* Certification slider polish */
 .portfolio__container {
   padding: 0.5rem 0 1.25rem;
@@ -447,14 +456,14 @@ body.dark-theme .project-flows {
     hsl(var(--hue-color), 100%, 99%),
     hsl(var(--hue-color), 80%, 97%)
   );
-  box-shadow: 0 14px 32px rgba(56, 92, 214, 0.09);
+  box-shadow: 0 14px 32px hsla(var(--hue-color), 70%, 54%, 0.16);
   overflow: hidden;
-  transition: transform 0.28s ease, box-shadow 0.28s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .portfolio__content:hover {
   transform: translateY(-5px);
-  box-shadow: 0 22px 40px rgba(56, 92, 214, 0.18);
+  box-shadow: 0 22px 40px hsla(var(--hue-color), 72%, 54%, 0.24);
 }
 
 .portfolio__img {
@@ -500,9 +509,9 @@ body.dark-theme .portfolio__content:hover {
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(circle at 20% 20%, rgba(73, 110, 255, 0.08), transparent 35%),
-    radial-gradient(circle at 80% 30%, rgba(95, 235, 255, 0.09), transparent 30%),
-    linear-gradient(transparent 97%, rgba(73, 110, 255, 0.08) 100%);
+    radial-gradient(circle at 20% 20%, hsla(var(--hue-color), 89%, 56%, 0.12), transparent 35%),
+    radial-gradient(circle at 80% 30%, hsla(var(--hue-color), 95%, 70%, 0.1), transparent 30%),
+    linear-gradient(transparent 97%, hsla(var(--hue-color), 89%, 56%, 0.12) 100%);
 }
 
 .certifications--scifi .portfolio__container {
@@ -532,7 +541,7 @@ body.dark-theme .portfolio__content:hover {
 
 body.dark-theme .certifications--scifi .portfolio__description,
 body.dark-theme .certifications--scifi .portfolio__title {
-  color: hsl(var(--text-color));
+  color: var(--text-color);
 }
 
 .certifications--scifi .lottie-slot--certs {
@@ -542,18 +551,18 @@ body.dark-theme .certifications--scifi .portfolio__title {
 
 .certifications--scifi .swiper-button-next,
 .certifications--scifi .swiper-button-prev {
-  background: rgba(73, 110, 255, 0.14);
-  border: 1px solid rgba(73, 110, 255, 0.35);
+  background: hsla(var(--hue-color), 89%, 56%, 0.16);
+  border: 1px solid hsla(var(--hue-color), 89%, 56%, 0.35);
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 50%;
-  transition: transform 0.2s ease, background 0.2s ease;
+  transition: transform 0.15s ease, background 0.15s ease;
 }
 
 .certifications--scifi .swiper-button-next:hover,
 .certifications--scifi .swiper-button-prev:hover {
   transform: scale(1.06);
-  background: rgba(73, 110, 255, 0.22);
+  background: hsla(var(--hue-color), 89%, 56%, 0.26);
 }
 
 /* Transition motifs: GitOps/API/K3s themed micro effects */
@@ -618,7 +627,7 @@ body.is-skills-toggling .skills__title {
 .skills__content {
   position: relative;
   overflow: hidden;
-  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
 .skills__content::before {

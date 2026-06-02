@@ -3,6 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Harish Kumar S" />
+  <meta name="description" content="Full profile of Harish Kumar S - AI/ML Engineer with production K3s, FastAPI, GitOps, and RAG project experience." />
+  <meta property="og:type" content="profile" />
+  <meta property="og:url" content="https://harish-nika.github.io/profile.html" />
+  <meta property="og:title" content="Full Profile - Harish Kumar S" />
+  <meta property="og:description" content="Experience, education, certifications, and portfolio projects of Harish Kumar S." />
+  <meta property="og:image" content="https://harish-nika.github.io/assets/img/dme/platform/user_dashboard.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Full Profile - Harish Kumar S" />
+  <meta name="twitter:description" content="AI/ML Engineer profile with production K3s, FastAPI, and GitOps project experience." />
+  <meta name="twitter:image" content="https://harish-nika.github.io/assets/img/dme/platform/user_dashboard.png" />
   <title>Full Profile - Harish Kumar</title>
   <link rel="stylesheet" href="./assets/css/styles.css" />
   <link rel="stylesheet" href="./assets/css/portfolio-enhance.css" />
@@ -61,15 +72,23 @@
           <p style="margin-top:.8rem;"><strong>Email:</strong> ${data.basics.email} | <strong>Phone:</strong> ${data.basics.phone}</p>
           <p><strong>Location:</strong> ${data.basics.location}</p>
           <div style="margin-top:.8rem; display:flex; gap:.6rem; flex-wrap:wrap;">
-            <a class="button button--small" href="${data.basics.linkedin}" target="_blank">LinkedIn</a>
-            <a class="button button--small" href="${data.basics.github}" target="_blank">GitHub</a>
-            <a class="button button--small" href="./content/Harish-Kumar-Resume.pdf" target="_blank">Download Resume PDF</a>
+            <a class="button button--small" href="${data.basics.linkedin}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a class="button button--small" href="${data.basics.github}" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a class="button button--small" href="./content/Harish-Kumar-Resume.pdf" target="_blank" rel="noopener noreferrer">Download Resume PDF</a>
           </div>
         </section>
 
         <section class="profile-card profile-section">
           <h2>Experience</h2>
           ${data.experience.map((e) => `<p><strong>${e.role}</strong> - ${e.company} <em>(${e.period})</em></p><ul>${e.highlights.map((h) => `<li>${h}</li>`).join('')}</ul>`).join('')}
+        </section>
+
+        <section class="profile-card profile-section">
+          <h2>Education</h2>
+          ${data.education.map((edu) => `
+            <p><strong>${edu.degree}</strong> - ${edu.institution} <em>(${edu.period})</em></p>
+            <p class="profile-meta">${edu.score}</p>
+          `).join('')}
         </section>
 
         <section class="profile-card profile-section">
@@ -81,7 +100,12 @@
 
         <section class="profile-card profile-section">
           <h2>Projects</h2>
-          <ul>${data.projects.map((p) => `<li><a href="${p.link}" target="_blank">${p.name}</a> - ${p.stack.join(', ')}</li>`).join('')}</ul>
+          <ul>${data.projects.map((p) => `<li><a href="${p.link}" target="_blank" rel="noopener noreferrer">${p.name}</a> - ${p.stack.join(', ')}</li>`).join('')}</ul>
+        </section>
+
+        <section class="profile-card profile-section">
+          <h2>Certifications</h2>
+          <ul>${data.certifications.map((cert) => `<li>${cert}</li>`).join('')}</ul>
         </section>
       `;
     }
