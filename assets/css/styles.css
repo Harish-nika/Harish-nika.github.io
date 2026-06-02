@@ -706,6 +706,26 @@ img {
   column-gap: 1.5rem;
 }
 
+.qualification__data > div:first-child:not(:empty),
+.qualification__data > div:last-child:not(:empty) {
+  background: var(--container-color);
+  border: 1px solid hsl(var(--hue-color), 12%, 90%);
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+  border-left: 3px solid transparent;
+  transition: border-left-color 0.2s;
+}
+
+body.dark-theme .qualification__data > div:first-child:not(:empty),
+body.dark-theme .qualification__data > div:last-child:not(:empty) {
+  border-color: hsl(var(--hue-color), 12%, 26%);
+}
+
+.qualification__data:hover > div:first-child:not(:empty),
+.qualification__data:hover > div:last-child:not(:empty) {
+  border-left-color: var(--first-color);
+}
+
 .qualification__title {
   font-size: var(--normal-font-size);
   font-weight: var(--font-medium);
@@ -715,6 +735,10 @@ img {
   display: inline-block;
   font-size: var(--small-font-size);
   margin-bottom: var(--mb-1);
+}
+
+.qualification__org {
+  font-weight: var(--font-medium);
 }
 
 .qualification__calendar {
@@ -736,6 +760,18 @@ img {
   height: 100%;
   background-color: var(--first-color);
   transform: translate(6px, -7px);
+}
+
+.qualification__time {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.qualification__data .button {
+  font-size: var(--smaller-font-size);
+  padding: 0.25rem 0.6rem;
+  margin-top: 0.4rem;
 }
 
 .qualification [data-content] {
@@ -1176,6 +1212,13 @@ img {
   .qualification__data {
     gap: .5rem;
   }
+  .about__info-name {
+    white-space: normal;
+    font-size: 10px;
+  }
+  .about__info {
+    gap: 0.5rem 0.75rem;
+  }
   .services__container {
     grid-template-columns: max-content;
     justify-content: center;
@@ -1226,6 +1269,15 @@ img {
     display: grid;
     grid-template-columns: .6fr;
     justify-content: center;
+  }
+}
+
+@media screen and (min-width: 568px) and (max-width: 767px) {
+  .section {
+    padding: 4rem 0 2rem;
+  }
+  .skills__container {
+    row-gap: 1rem;
   }
 }
 
@@ -1300,6 +1352,9 @@ img {
   }
   .about__buttons {
     justify-content: flex-start;
+  }
+  .skills__list {
+    grid-template-columns: repeat(2, 1fr);
   }
   .qualification__tabs {
     justify-content: center;
@@ -1399,6 +1454,16 @@ img {
   }
   .contact__inputs {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .skills__container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .qualification__container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .qualification__sections {
+    grid-template-columns: .65fr;
   }
 }
 
