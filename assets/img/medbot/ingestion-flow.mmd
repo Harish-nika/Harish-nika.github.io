@@ -1,0 +1,9 @@
+flowchart TD
+  Upload[Upload Medical PDF] --> Extract[Extract Text With PyMuPDF]
+  Extract --> Split[Split By Heading And Recursive Chunks]
+  Split --> Embed[Generate Embeddings All-MiniLM-L6-v2]
+  Embed --> SaveEmb[Save Embeddings NPY]
+  Split --> SaveChunks[Save Chunks PKL]
+  SaveEmb --> Index[Add To FAISS Index]
+  SaveChunks --> Index
+  Index --> Ready[Ready For Query]

@@ -1,0 +1,11 @@
+flowchart LR
+  User[Doctor Or Analyst] --> UI[Streamlit UI]
+  UI --> API[FastAPI Service]
+  API --> PDF[PyMuPDF Extractor]
+  API --> Chunker[Heading Chunker]
+  Chunker --> Embedder[SBERT Encoder]
+  Embedder --> Vec[(FAISS Index)]
+  API --> Meta[(JSON Metadata)]
+  API --> LLM[Groq Llama3 8B]
+  Vec --> LLM
+  LLM --> UI

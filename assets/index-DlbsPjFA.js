@@ -1170,8 +1170,40 @@ Error generating stack: `+r.message+`
                             <a href="https://github.com/Harish-nika/language_processing_tool" target="_blank" rel="noopener noreferrer" class="project-link">GitHub</a>
                         </div>
                     </div>
+
+                    <!-- Project 4: MedBot -->
+                    <div class="project-card">
+                        <img src="./assets/img/medbot/architecture-flow.png" alt="MedBot architecture flow" class="project-img--ui" loading="lazy">
+                        <h3 class="testimonial__name">MedBot (Medical RAG Assistant)</h3>
+                        <span class="testimonial__description">Healthcare AI Project</span>
+                        <p class="project-card__headline">Medical PDF question-answering assistant with FAISS retrieval and Groq LLaMA responses</p>
+                        <div class="project-metrics" aria-label="Key facts">
+                            <span class="metric-chip">FAISS retrieval</span>
+                            <span class="metric-chip">Groq LLaMA 3 8B</span>
+                            <span class="metric-chip">SBERT embeddings</span>
+                        </div>
+                        <div class="project-tech" aria-label="Technologies">
+                            <span class="tech-chip">FastAPI</span>
+                            <span class="tech-chip">Streamlit</span>
+                            <span class="tech-chip">Sentence Transformers</span>
+                            <span class="tech-chip">FAISS</span>
+                            <span class="tech-chip">PyMuPDF</span>
+                            <span class="tech-chip">LangChain</span>
+                        </div>
+                        <div class="project-card__body">
+                            <ul>
+                                <li>Ingests medical PDFs, chunks content, stores SBERT embeddings, and performs top-K FAISS retrieval for grounded answers.</li>
+                                <li>Uses Groq-hosted LLaMA 3 8B with strict context prompts so responses stay tied to uploaded medical evidence.</li>
+                                <li><strong>Confidentiality note:</strong> Base bot code is public in repository; advanced agentic extensions are not published.</li>
+                            </ul>
+                        </div>
+                        <div class="project-card__cta">
+                            <a href="medbot.html" class="button button--flex button--small portfolio__button">Read case study <i class="uil uil-arrow-right button__icon"></i></a>
+                            <a href="https://github.com/Harish-nika/medbot" target="_blank" rel="noopener noreferrer" class="button button--flex button--small">GitHub <i class="uil uil-github-alt button__icon"></i></a>
+                        </div>
+                    </div>
         
-                    <!-- Project 4 -->
+                    <!-- Project 5 -->
                     <div class="project-card">
                         <h3 class="testimonial__name">Disease Prediction using Ensemble Learning</h3>
                         <span class="testimonial__description">SMART INTERNZ</span>
@@ -1191,7 +1223,7 @@ Error generating stack: `+r.message+`
                         </div>
                     </div>
 
-                    <!-- Project 5 -->
+                    <!-- Project 6 -->
                     <div class="project-card">
                         <h3 class="testimonial__name">Real-Time Room Temperature &amp; Humidity Visualization (AR)</h3>
                         <span class="testimonial__description">J Component — ARVR Course</span>
@@ -1210,7 +1242,7 @@ Error generating stack: `+r.message+`
                         </div>
                     </div>
 
-                    <!-- Project 6 -->
+                    <!-- Project 7 -->
                     <div class="project-card">
                         <h3 class="testimonial__name">Extractive Summarization &amp; Information Retrieval</h3>
                         <span class="testimonial__description">J Component — Web Mining Course</span>
@@ -1226,30 +1258,6 @@ Error generating stack: `+r.message+`
                                 <li>Translates English queries to SQL and extracts targeted data from multiple websites with 95% accuracy.</li>
                                 <li>Advanced web scraping and information retrieval system using NLP; stores results in MySQL via SQLite3.</li>
                             </ul>
-                        </div>
-                    </div>
-
-                    <!-- Project 7 -->
-                    <div class="project-card">
-                        <h3 class="testimonial__name">MedBot (Medical RAG Assistant)</h3>
-                        <span class="testimonial__description">Healthcare AI Project</span>
-                        <p class="project-card__headline">Medical PDF chatbot using embeddings + semantic retrieval</p>
-                        <div class="project-tech">
-                            <span class="tech-chip">Python</span>
-                            <span class="tech-chip">Sentence Transformers</span>
-                            <span class="tech-chip">FAISS</span>
-                            <span class="tech-chip">PyMuPDF</span>
-                            <span class="tech-chip">Streamlit</span>
-                        </div>
-                        <div class="project-card__body">
-                            <ul>
-                                <li>Built a base medical assistant pipeline with chunking, embedding generation, and retrieval over medical documents.</li>
-                                <li>Supports PDF ingestion, vector storage, and semantic search across saved embeddings and text chunks.</li>
-                                <li><strong>Confidentiality note:</strong> Base bot code is available in the repository; advanced agentic version code is not public due to confidentiality.</li>
-                            </ul>
-                        </div>
-                        <div class="project-card__cta">
-                            <a href="https://github.com/Harish-nika/medbot" target="_blank" rel="noopener noreferrer" class="button button--flex button--small portfolio__button">GitHub <i class="uil uil-github-alt button__icon"></i></a>
                         </div>
                     </div>
 
@@ -1554,4 +1562,4 @@ Error generating stack: `+r.message+`
 
         <a href="#" class="scrollup" id="scroll-top">
             <i class="uil uil-arrow-up scrollup__icon"></i>
-        </a>`;function App(){return reactExports.useEffect(()=>{if(window.__legacyAssetsLoaded)return;window.__legacyAssetsLoaded=!0,document.title="Harish Kumar - AI ML Engineer";const e=document.head,t=["https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css","https://unicons.iconscout.com/release/v3.0.6/css/line.css","/assets/css/swiper-bundle.min.css","/assets/css/styles.css","/assets/css/portfolio-enhance.css"],n=["/assets/js/swiper-bundle.min.js","/assets/js/main.js","/assets/js/portfolio-enhance.js"];return t.forEach(r=>{if(!document.querySelector(`link[data-legacy="${r}"]`)){const a=document.createElement("link");a.rel="stylesheet",a.href=r,a.setAttribute("data-legacy",r),e.appendChild(a)}}),n.forEach(r=>{if(!document.querySelector(`script[data-legacy="${r}"]`)){const a=document.createElement("script");a.src=r,a.defer=!0,a.setAttribute("data-legacy",r),document.body.appendChild(a)}}),()=>{}},[]),reactExports.useEffect(()=>{const e=window.matchMedia("(prefers-reduced-motion: reduce)").matches,t={hero:{path:"/assets/animations/lottie/hero-ai-network.json",loop:!0},about:{path:"/assets/animations/lottie/about-ml-research.json",loop:!0},experience:{path:"/assets/animations/lottie/experience-devops-pipeline.json",loop:!0},skills:{path:"/assets/animations/lottie/skills-data-flow.json",loop:!0},projects:{path:"/assets/animations/lottie/projects-cloud-ops.json",loop:!0},contact:{path:"/assets/animations/lottie/contact-loop.json",loop:!0}},n=[],r=new IntersectionObserver(a=>{a.forEach(i=>{var l;const s=i.target,o=(l=n.find(h=>h.container===s))==null?void 0:l.instance;o&&(i.isIntersecting?o.play():o.pause())})},{threshold:.2});return Object.entries(t).forEach(([a,i])=>{const s=document.querySelector(`[data-lottie-id="${a}"]`);if(!s)return;const o=lottie.loadAnimation({container:s,renderer:"svg",loop:i.loop,autoplay:!e,path:i.path,rendererSettings:{preserveAspectRatio:"xMidYMid meet",progressiveLoad:!0}});e?o.goToAndStop(0,!0):r.observe(s),n.push({container:s,instance:o})}),()=>{r.disconnect(),n.forEach(({instance:a})=>a.destroy())}},[]),jsxRuntimeExports.jsx("div",{className:"legacy-wrapper",dangerouslySetInnerHTML:{__html:legacyHtml}})}clientExports.createRoot(document.getElementById("root")).render(jsxRuntimeExports.jsx(reactExports.StrictMode,{children:jsxRuntimeExports.jsx(App,{})}));
+        </a>`;function App(){return reactExports.useEffect(()=>{if(window.__legacyAssetsLoaded)return;window.__legacyAssetsLoaded=!0,document.title="Harish Kumar - AI ML Engineer";const e=document.head,t=["https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css","https://unicons.iconscout.com/release/v3.0.6/css/line.css","/assets/css/swiper-bundle.min.css","/assets/css/styles.css","/assets/css/portfolio-enhance.css"],n=["/assets/js/swiper-bundle.min.js","/assets/js/main.js","/assets/js/portfolio-enhance.js"];return t.forEach(r=>{if(!document.querySelector(`link[data-legacy="${r}"]`)){const a=document.createElement("link");a.rel="stylesheet",a.href=r,a.setAttribute("data-legacy",r),e.appendChild(a)}}),n.forEach(r=>{if(!document.querySelector(`script[data-legacy="${r}"]`)){const a=document.createElement("script");a.src=r,a.defer=!0,a.setAttribute("data-legacy",r),document.body.appendChild(a)}}),()=>{}},[]),reactExports.useEffect(()=>{const e=window.matchMedia("(prefers-reduced-motion: reduce)").matches,t={hero:{path:"/assets/animations/lottie/hero-ai-network.json",loop:!0},about:{path:"/assets/animations/lottie/about-ml-research.json",loop:!0},experience:{path:"/assets/animations/lottie/experience-mlops-workflow.json",loop:!0},skills:{path:"/assets/animations/lottie/skills-ml-graph.json",loop:!0},projects:{path:"/assets/animations/lottie/projects-ai-delivery.json",loop:!0},contact:{path:"/assets/animations/lottie/contact-loop.json",loop:!0}},n=[],r=new IntersectionObserver(a=>{a.forEach(i=>{var l;const s=i.target,o=(l=n.find(h=>h.container===s))==null?void 0:l.instance;o&&(i.isIntersecting?o.play():o.pause())})},{threshold:.2});return Object.entries(t).forEach(([a,i])=>{const s=document.querySelector(`[data-lottie-id="${a}"]`);if(!s)return;const o=lottie.loadAnimation({container:s,renderer:"svg",loop:i.loop,autoplay:!e,path:i.path,rendererSettings:{preserveAspectRatio:"xMidYMid meet",progressiveLoad:!0}});e?o.goToAndStop(0,!0):r.observe(s),n.push({container:s,instance:o})}),()=>{r.disconnect(),n.forEach(({instance:a})=>a.destroy())}},[]),jsxRuntimeExports.jsx("div",{className:"legacy-wrapper",dangerouslySetInnerHTML:{__html:legacyHtml}})}clientExports.createRoot(document.getElementById("root")).render(jsxRuntimeExports.jsx(reactExports.StrictMode,{children:jsxRuntimeExports.jsx(App,{})}));
