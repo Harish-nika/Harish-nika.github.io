@@ -1,0 +1,26 @@
+flowchart TB
+  user[User or API client]
+  ingress[Ingress TLS]
+  fe[Frontend]
+  be[Backend FastAPI]
+  pg[(PostgreSQL)]
+  ws[Jobs live WebSocket]
+  corp[Corporate worker]
+  muni[Municipal worker]
+  docproc[Docproc]
+  val[Validation]
+  smb[(SMB document volumes)]
+  user --> ingress
+  ingress --> fe
+  ingress --> be
+  fe --> be
+  be --> pg
+  be --> ws
+  be --> corp
+  be --> muni
+  be --> docproc
+  be -.->|PDF TXT highlight| val
+  corp --> smb
+  muni --> smb
+  docproc --> smb
+  val --> smb

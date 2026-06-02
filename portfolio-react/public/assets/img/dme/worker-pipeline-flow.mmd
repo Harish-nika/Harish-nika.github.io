@@ -1,0 +1,7 @@
+flowchart LR
+  msg[Stream message per ISIN]
+  runner[api_runner]
+  orch[DataMining orchestrator]
+  fields[Per-field extractors]
+  status[Status and callback]
+  msg --> runner --> orch --> fields --> status

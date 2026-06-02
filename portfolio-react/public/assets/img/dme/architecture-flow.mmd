@@ -1,0 +1,51 @@
+flowchart TB
+  subgraph clients [Clients]
+    Users[Analysts and API clients]
+  end
+  subgraph edge [Edge TLS]
+    Ingress[Ingress dme-stage and api-stage]
+    Certs[cert-manager and dme-pki CA]
+  end
+  subgraph app [dme-core-app namespace dme-stage]
+    FE[Stage frontend]
+    BE[Backend FastAPI]
+    Corp[Corporate worker]
+    Muni[Municipal worker]
+    ValSvc[Validation service]
+    DocProc[Doc processing]
+  end
+  subgraph data [dme-data-services]
+    PG[(PostgreSQL)]
+    Redis[(Redis streams)]
+    SMB[(SMB document volumes)]
+  end
+  subgraph ci [GitLab CI data-mining-engine]
+    Build[build-k3 services]
+    Promote[promote-k3 docfin]
+    Reg[Registry 5005]
+  end
+  subgraph gitops [GitOps]
+    Charts[docfin_ai_charts Helm values]
+    Argo[Argo CD dme-core-app]
+  end
+  Users --> Ingress
+  Ingress --> FE
+  Ingress --> BE
+  FE --> BE
+  BE --> PG
+  BE -->|USE_QUEUE_EXTRACTION| Redis
+  Redis --> Corp
+  Redis --> Muni
+  BE --> DocProc
+  BE --> ValSvc
+  Corp --> SMB
+  Muni --> SMB
+  ValSvc --> SMB
+  Build --> Reg
+  Build --> Promote
+  Promote --> Charts
+  Charts --> Argo
+  Argo --> app
+  Reg -.->|imagePull| app
+  BE -.->|Server management affinity CPU| Corp
+  BE -.->|Server management affinity CPU| Muni

@@ -1,0 +1,7 @@
+flowchart LR
+  push[Git push to main]
+  actions[GitHub Actions]
+  version[Auto semantic version tag]
+  build[docker build content-moderator]
+  hub[Docker Hub push latest and tag]
+  push --> actions --> version --> build --> hub
