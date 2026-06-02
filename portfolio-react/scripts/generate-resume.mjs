@@ -61,30 +61,65 @@ for (const cert of profile.certifications) {
 await fs.writeFile(resumeMdPath, `${lines.join("\n")}\n`, "utf8");
 
 const pdfDoc = await PDFDocument.create();
-const page = pdfDoc.addPage([595, 842]); // A4
 const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
 const boldFont = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
 
+let page = pdfDoc.addPage([595, 842]); // A4
 let y = 810;
 const left = 40;
 const normalSize = 10.5;
 const titleSize = 18;
 const sectionSize = 12;
+const bottomMargin = 40;
+const pageWidth = 595;
+
+const ensureSpace = (requiredHeight) => {
+  if (y - requiredHeight >= bottomMargin) {
+    return;
+  }
+  page = pdfDoc.addPage([595, 842]);
+  y = 810;
+};
+
+const wrapText = (text, activeFont, size, maxWidth) => {
+  const words = String(text).split(/\s+/).filter(Boolean);
+  if (!words.length) {
+    return [""];
+  }
+  const linesOut = [];
+  let current = words[0];
+  for (let i = 1; i < words.length; i += 1) {
+    const candidate = `${current} ${words[i]}`;
+    if (activeFont.widthOfTextAtSize(candidate, size) <= maxWidth) {
+      current = candidate;
+    } else {
+      linesOut.push(current);
+      current = words[i];
+    }
+  }
+  linesOut.push(current);
+  return linesOut;
+};
 
 const drawLine = (text, opts = {}) => {
   const { bold = false, size = normalSize, color = rgb(0.1, 0.1, 0.1), indent = 0 } = opts;
-  if (y < 40) return false;
-  page.drawText(text, {
-    x: left + indent,
-    y,
-    size,
-    font: bold ? boldFont : font,
-    color,
-    maxWidth: 515 - indent,
-    lineHeight: 14
-  });
-  y -= size + 5;
-  return true;
+  const activeFont = bold ? boldFont : font;
+  const maxWidth = pageWidth - left - 40 - indent;
+  const lineHeight = Math.max(13, size + 3);
+  const wrappedLines = wrapText(text, activeFont, size, maxWidth);
+  ensureSpace(wrappedLines.length * lineHeight + 4);
+
+  for (const wrappedLine of wrappedLines) {
+    page.drawText(wrappedLine, {
+      x: left + indent,
+      y,
+      size,
+      font: activeFont,
+      color,
+    });
+    y -= lineHeight;
+  }
+  y -= 4;
 };
 
 drawLine(profile.basics.name, { bold: true, size: titleSize, color: rgb(0.05, 0.2, 0.45) });
