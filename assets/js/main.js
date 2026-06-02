@@ -265,6 +265,7 @@ window.addEventListener('scroll', scrollTop)
 const themeButton = document.getElementById('theme-button');
 const darkTheme = 'dark-theme';
 const iconTheme = 'uil-sun';
+window.__themeManaged = true;
 
 // Retrieve saved theme settings
 const selectedTheme = localStorage.getItem('selected-theme');
