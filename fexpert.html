@@ -407,9 +407,7 @@ journalctl -u fastapi.service   --no-pager | tail -n 20</div>
             if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
-        const themeButton = document.getElementById('theme-button')
-        window.__themeManaged = true;
-        window.__themeManaged = true;
+        const themeButton = document.getElementById('theme-button');
         const darkTheme = 'dark-theme';
         const iconTheme = 'uil-sun';
         const selectedTheme = localStorage.getItem('selected-theme');

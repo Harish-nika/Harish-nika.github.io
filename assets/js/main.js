@@ -93,37 +93,41 @@ modalCloses.forEach((modalClose) => {
 })
 
 /*==================== PORTFOLIO SWIPER  ====================*/
-let swiperPortfolio = new Swiper('.portfolio__container', {
-    cssMode: true,
-    loop: true,
+if (document.querySelector('.portfolio__container')) {
+    let swiperPortfolio = new Swiper('.portfolio__container', {
+        cssMode: true,
+        loop: true,
 
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-})
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+    })
+}
 
 /*==================== TESTIMONIAL ====================*/
-let swiperTestimonial = new Swiper('.testimonial__container', {
-    loop: true,
-    grabCursor: true,
-    spaceBetween: 48,
+if (document.querySelector('.testimonial__container')) {
+    let swiperTestimonial = new Swiper('.testimonial__container', {
+        loop: true,
+        grabCursor: true,
+        spaceBetween: 48,
 
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-        dynamicBullets: true,
-    },
-    breakpoints: {
-        568: {
-            slidesPerView: 2,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+            dynamicBullets: true,
         },
-    }
-})
+        breakpoints: {
+            568: {
+                slidesPerView: 2,
+            },
+        }
+    })
+}
 
 
 /*==================== SCROLL SECTIONS ACTIVE LINK ====================*/
@@ -265,7 +269,6 @@ window.addEventListener('scroll', scrollTop)
 const themeButton = document.getElementById('theme-button');
 const darkTheme = 'dark-theme';
 const iconTheme = 'uil-sun';
-window.__themeManaged = true;
 
 // Retrieve saved theme settings
 const selectedTheme = localStorage.getItem('selected-theme');
@@ -273,23 +276,27 @@ const selectedIcon = localStorage.getItem('selected-icon');
 
 // Function to get the current theme and icon state
 const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light';
-const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'uil-moon' : 'uil-sun';
+const getCurrentIcon = () => themeButton && themeButton.classList.contains(iconTheme) ? 'uil-moon' : 'uil-sun';
 
 // Apply saved theme on page load
 if (selectedTheme) {
     document.body.classList.toggle(darkTheme, selectedTheme === 'dark');
-    themeButton.classList.toggle(iconTheme, selectedIcon === 'uil-moon');
+    if (themeButton) {
+        themeButton.classList.toggle(iconTheme, selectedIcon === 'uil-moon');
+    }
 }
 
 // Toggle theme on button click
-themeButton.addEventListener('click', () => {
-    document.body.classList.toggle(darkTheme);
-    themeButton.classList.toggle(iconTheme);
+if (themeButton) {
+    themeButton.addEventListener('click', () => {
+        document.body.classList.toggle(darkTheme);
+        themeButton.classList.toggle(iconTheme);
 
-    // Save theme and icon state
-    localStorage.setItem('selected-theme', getCurrentTheme());
-    localStorage.setItem('selected-icon', getCurrentIcon());
-});  // ✅ Correctly closed
+        // Save theme and icon state
+        localStorage.setItem('selected-theme', getCurrentTheme());
+        localStorage.setItem('selected-icon', getCurrentIcon());
+    });  // ✅ Correctly closed
+}
 
 // Go fullscreen on first click anywhere on the screen
 document.addEventListener("click", function () {
