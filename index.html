@@ -1079,7 +1079,7 @@
                                 <li>Deployed as persistent systemd services (FastAPI + Streamlit) on internal Linux server.</li>
                             </ul>
                         </div>
-                        <div class="project-card__cta" style="margin-top:1rem;">
+                        <div class="project-card__cta">
                             <a href="fexpert.html" class="button button--flex button--small portfolio__button">Read case study <i class="uil uil-arrow-right button__icon"></i></a>
                             <a href="https://github.com/Harish-nika/FExpert" target="_blank" rel="noopener noreferrer" class="button button--flex button--small">GitHub <i class="uil uil-github-alt button__icon"></i></a>
                         </div>
@@ -1107,34 +1107,11 @@
                         <div class="project-card__body">
                             <ul>
                                 <li>Custom-trained WizardLM 7b &amp; Gemma3 12b vision models for text and image moderation.</li>
-                                <li>FAISS semantic retrieval grounds LLM verdicts in prior cases.</li>
-                                <li>Auto-versioned CI pushes Docker image to Docker Hub on every merge.</li>
+                                <li>FAISS semantic retrieval grounds LLM verdicts in prior cases — reduces hallucinations.</li>
+                                <li>Auto-versioned CI pushes Docker image to Docker Hub on every merge to main.</li>
                             </ul>
                         </div>
-
-                        <div class="project-flows" style="margin-top:1rem;">
-                            <h4 class="project-flows__title">Architecture &amp; system flows</h4>
-                            <div class="flow-grid flow-grid--index">
-                                <figure class="flow-card flow-card--wide">
-                                    <img src="./assets/img/content-moderator/system-architecture.png" alt="Full system architecture" class="project-img--ui" loading="lazy">
-                                    <figcaption><strong>System architecture</strong> Streamlit → FastAPI → FAISS + Sentence Transformers → Ollama LLM → verdict</figcaption>
-                                </figure>
-                                <figure class="flow-card">
-                                    <img src="./assets/img/content-moderator/moderation-pipeline.png" alt="Moderation pipeline" class="project-img--ui" loading="lazy">
-                                    <figcaption><strong>Moderation pipeline</strong> Input → embed → FAISS → LLM → Harmful / Safe</figcaption>
-                                </figure>
-                                <figure class="flow-card">
-                                    <img src="./assets/img/content-moderator/docker-compose-arch.png" alt="Docker Compose services" class="project-img--ui" loading="lazy">
-                                    <figcaption><strong>Docker Compose</strong> Ollama → backend → frontend with healthcheck</figcaption>
-                                </figure>
-                                <figure class="flow-card">
-                                    <img src="./assets/img/content-moderator/cicd-pipeline.png" alt="GitHub Actions CI" class="project-img--ui" loading="lazy">
-                                    <figcaption><strong>CI/CD</strong> Push → GitHub Actions → auto-version → Docker Hub</figcaption>
-                                </figure>
-                            </div>
-                        </div>
-
-                        <div class="project-card__cta" style="margin-top:1rem;">
+                        <div class="project-card__cta">
                             <a href="content-moderator.html" class="button button--flex button--small portfolio__button">Read full case study <i class="uil uil-arrow-right button__icon"></i></a>
                             <a href="https://github.com/Harish-nika/Content-moderator-image" target="_blank" rel="noopener noreferrer" class="button button--flex button--small">GitHub <i class="uil uil-github-alt button__icon"></i></a>
                             <a href="https://hub.docker.com/r/harishkumarthesde/content-moderator" target="_blank" rel="noopener noreferrer" class="project-link">Docker Hub</a>
@@ -1167,7 +1144,7 @@
                                 <li>Installable via <code>pip install language-processing-tool</code>, with CLI entry point.</li>
                             </ul>
                         </div>
-                        <div class="project-card__cta" style="margin-top:1rem;">
+                        <div class="project-card__cta">
                             <a href="lang-tool.html" class="button button--flex button--small portfolio__button">Read case study <i class="uil uil-arrow-right button__icon"></i></a>
                             <a href="https://pypi.org/project/language-processing-tool/" target="_blank" rel="noopener noreferrer" class="button button--flex button--small">PyPI <i class="uil uil-external-link-alt button__icon"></i></a>
                             <a href="https://github.com/Harish-nika/language_processing_tool" target="_blank" rel="noopener noreferrer" class="project-link">GitHub</a>
