@@ -19,8 +19,10 @@ function App() {
       "/assets/css/swiper-bundle.min.css",
       "/assets/css/styles.css",
       "/assets/css/portfolio-enhance.css",
+      "/assets/css/portfolio-transitions.css",
     ];
     const scripts = [
+      "/assets/js/portfolio-transitions.js",
       "/assets/js/swiper-bundle.min.js",
       "/assets/js/main.js",
       "/assets/js/portfolio-enhance.js",
@@ -270,52 +272,27 @@ function App() {
       }
     );
 
-    const onProjectNavigation = (event) => {
-      if (reducedMotion || event.defaultPrevented) {
+    const bindPortfolioTransitions = () => {
+      if (!window.PortfolioTransitions) {
+        const waitTimer = window.setTimeout(bindPortfolioTransitions, 40);
+        transitionTimers.push(waitTimer);
         return;
       }
-      if (event.metaKey || event.ctrlKey || event.shiftKey || event.button !== 0) {
-        return;
-      }
-      const anchor = event.currentTarget;
-      if (!(anchor instanceof HTMLAnchorElement)) {
-        return;
-      }
-      if (anchor.target === "_blank" || anchor.hasAttribute("download")) {
-        return;
-      }
-      const href = anchor.getAttribute("href");
-      if (!href || href.startsWith("#") || href.startsWith("mailto:") || href.startsWith("tel:")) {
-        return;
-      }
-
-      const isSamePageHash = href.startsWith(`${window.location.pathname}#`);
-      if (isSamePageHash) {
-        return;
-      }
-
-      event.preventDefault();
-      body.classList.add("is-project-nav");
-      const timer = window.setTimeout(() => {
-        window.location.assign(anchor.href);
-      }, 540);
-      transitionTimers.push(timer);
+      window.PortfolioTransitions.playEnter();
+      window.PortfolioTransitions.bindDeployLinks(projectNavigationLinks);
     };
-
-    projectNavigationLinks.forEach((link) => {
-      link.addEventListener("click", onProjectNavigation);
-    });
-    cleanupFns.push(() => {
-      projectNavigationLinks.forEach((link) => {
-        link.removeEventListener("click", onProjectNavigation);
-      });
-    });
+    bindPortfolioTransitions();
 
     return () => {
       observer.disconnect();
       sectionObserver.disconnect();
       transitionTimers.forEach((timer) => window.clearTimeout(timer));
-      body.classList.remove("is-page-entering", "is-section-transitioning", "is-project-nav", "is-experience-transitioning");
+      body.classList.remove(
+        "is-page-entering",
+        "is-section-transitioning",
+        "is-experience-transitioning",
+        "is-portfolio-nav-active"
+      );
       lottieInstances.forEach(({ instance }) => instance.destroy());
       experienceButtons.forEach((button) => {
         button.removeEventListener("click", onExperienceTabClick);
