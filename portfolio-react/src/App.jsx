@@ -56,6 +56,25 @@ function App() {
 
   useEffect(() => {
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const body = document.body;
+    const cleanupFns = [];
+    const transitionTimers = [];
+
+    const addTemporaryBodyClass = (className, duration = 650) => {
+      body.classList.add(className);
+      const timer = window.setTimeout(() => {
+        body.classList.remove(className);
+      }, duration);
+      transitionTimers.push(timer);
+    };
+
+    if (!reducedMotion) {
+      body.classList.add("is-page-entering");
+      const enterTimer = window.setTimeout(() => {
+        body.classList.remove("is-page-entering");
+      }, 850);
+      transitionTimers.push(enterTimer);
+    }
     // Balanced sitewide motifs: AI intro, research, education vs K8s/GitOps pipeline,
     // model graph, API deploy, sci-fi cert HUD, contact loop.
     const lottieConfig = {
@@ -112,6 +131,32 @@ function App() {
       },
       { threshold: 0.2 }
     );
+
+    const themedSections = Array.from(
+      document.querySelectorAll(
+        '#skills, #Projects, #Certifications, #contact, [data-theme-transition="skills"], [data-theme-transition="projects"], [data-theme-transition="certifications"], [data-theme-transition="contact"]'
+      )
+    );
+
+    const sectionObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting || reducedMotion) {
+            return;
+          }
+          const section = entry.target;
+          section.classList.add("section-theme--active");
+          addTemporaryBodyClass("is-section-transitioning", 450);
+          const timer = window.setTimeout(() => {
+            section.classList.remove("section-theme--active");
+          }, 950);
+          transitionTimers.push(timer);
+        });
+      },
+      { threshold: 0.35 }
+    );
+
+    themedSections.forEach((section) => sectionObserver.observe(section));
 
     Object.entries(lottieConfig).forEach(([id, config]) => {
       const container = document.querySelector(`[data-lottie-id="${id}"]`);
@@ -179,6 +224,9 @@ function App() {
         return;
       }
       // wait for class toggle in legacy script to settle
+      if (!reducedMotion) {
+        addTemporaryBodyClass("is-experience-transitioning", 520);
+      }
       window.requestAnimationFrame(() => syncExperienceAnimation(targetId));
     };
 
@@ -187,12 +235,63 @@ function App() {
     });
     syncExperienceAnimation(getActiveExperienceTab());
 
+    const projectNavigationLinks = Array.from(
+      document.querySelectorAll(
+        'a[href$=".html"], a[href*=".html?"], .project-card__cta a, a.project-link'
+      )
+    );
+
+    const onProjectNavigation = (event) => {
+      if (reducedMotion || event.defaultPrevented) {
+        return;
+      }
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.button !== 0) {
+        return;
+      }
+      const anchor = event.currentTarget;
+      if (!(anchor instanceof HTMLAnchorElement)) {
+        return;
+      }
+      if (anchor.target === "_blank" || anchor.hasAttribute("download")) {
+        return;
+      }
+      const href = anchor.getAttribute("href");
+      if (!href || href.startsWith("#") || href.startsWith("mailto:") || href.startsWith("tel:")) {
+        return;
+      }
+
+      const isSamePageHash = href.startsWith(`${window.location.pathname}#`);
+      if (isSamePageHash) {
+        return;
+      }
+
+      event.preventDefault();
+      body.classList.add("is-project-nav");
+      const timer = window.setTimeout(() => {
+        window.location.assign(anchor.href);
+      }, 220);
+      transitionTimers.push(timer);
+    };
+
+    projectNavigationLinks.forEach((link) => {
+      link.addEventListener("click", onProjectNavigation);
+    });
+    cleanupFns.push(() => {
+      projectNavigationLinks.forEach((link) => {
+        link.removeEventListener("click", onProjectNavigation);
+      });
+    });
+
     return () => {
       observer.disconnect();
+      sectionObserver.disconnect();
+      transitionTimers.forEach((timer) => window.clearTimeout(timer));
+      body.classList.remove("is-page-entering", "is-section-transitioning", "is-project-nav", "is-experience-transitioning");
       lottieInstances.forEach(({ instance }) => instance.destroy());
       experienceButtons.forEach((button) => {
         button.removeEventListener("click", onExperienceTabClick);
       });
+      cleanupFns.forEach((cleanupFn) => cleanupFn());
     };
   }, []);
 

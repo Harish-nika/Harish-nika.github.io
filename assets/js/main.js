@@ -22,13 +22,25 @@ if(navClose){
 
 /*==================== REMOVE MENU MOBILE ====================*/
 const navLink = document.querySelectorAll('.nav__link')
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+function pulseBodyClass(className, duration = 420){
+    if(prefersReducedMotion) return
+    document.body.classList.add(className)
+    window.setTimeout(() => {
+        document.body.classList.remove(className)
+    }, duration)
+}
 
 function linkAction(){
     const navMenu = document.getElementById('nav-menu')
     // When we click on each nav__link, we remove the show-menu class
     navMenu.classList.remove('show-menu')
 }
-navLink.forEach(n => n.addEventListener('click', linkAction))
+navLink.forEach((n) => {
+    n.addEventListener('click', linkAction)
+    n.addEventListener('click', () => pulseBodyClass('is-section-transitioning', 460))
+})
 
 /*==================== ACCORDION SKILLS ====================*/
 const skillsContent = document.getElementsByClassName('skills__content'),
@@ -36,12 +48,18 @@ const skillsContent = document.getElementsByClassName('skills__content'),
 
 function toggleSkills(){
     let itemClass = this.parentNode.className
+    const nextIsOpen = itemClass === 'skills__content skills__close'
     
     for(i = 0; i < skillsContent.length; i++){
         skillsContent[i].className = 'skills__content skills__close'
+        skillsContent[i].classList.remove('skills__content--pulse')
     }
-    if(itemClass === 'skills__content skills__close'){
+    if(nextIsOpen){
         this.parentNode.className = 'skills__content skills__open'
+        if(!prefersReducedMotion){
+            this.parentNode.classList.add('skills__content--pulse')
+        }
+        pulseBodyClass('is-skills-toggling')
     }
 }
 

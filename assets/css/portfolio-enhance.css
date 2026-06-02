@@ -555,3 +555,103 @@ body.dark-theme .certifications--scifi .portfolio__title {
   transform: scale(1.06);
   background: rgba(73, 110, 255, 0.22);
 }
+
+/* Transition motifs: GitOps/API/K3s themed micro effects */
+.section-theme {
+  position: relative;
+  isolation: isolate;
+}
+
+.section-theme::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  background:
+    radial-gradient(circle at 10% 15%, hsla(var(--hue-color), 95%, 62%, 0.18), transparent 30%),
+    linear-gradient(120deg, transparent 0%, hsla(var(--hue-color), 92%, 62%, 0.12) 50%, transparent 100%);
+}
+
+.section-theme.section-theme--active::after {
+  opacity: 1;
+  animation: sectionPipelineSweep 0.9s ease;
+}
+
+.section-theme--skills.section-theme--active .skills__container,
+.section-theme--projects.section-theme--active .project-container,
+.section-theme--certifications.section-theme--active .portfolio__container,
+.section-theme--contact.section-theme--active .contact__container {
+  animation: sectionLiftPulse 0.75s ease;
+}
+
+body.is-section-transitioning .nav__link.active-link,
+body.is-skills-toggling .skills__title {
+  text-shadow: 0 0 12px hsla(var(--hue-color), 90%, 60%, 0.36);
+}
+
+.skills__content {
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+}
+
+.skills__content.skills__open {
+  border-color: hsla(var(--hue-color), 88%, 57%, 0.45);
+  box-shadow: 0 8px 22px hsla(var(--hue-color), 78%, 50%, 0.14);
+}
+
+.skills__content.skills__content--pulse {
+  animation: skillsPipelinePulse 0.65s ease;
+}
+
+@keyframes sectionPipelineSweep {
+  0% {
+    opacity: 0;
+    transform: translateX(-12px);
+  }
+  35% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(12px);
+  }
+}
+
+@keyframes sectionLiftPulse {
+  0% {
+    transform: translateY(7px);
+    opacity: 0.92;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes skillsPipelinePulse {
+  0% {
+    transform: scale(0.99);
+  }
+  45% {
+    transform: scale(1.004);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-theme::after,
+  .section-theme.section-theme--active::after,
+  .section-theme--skills.section-theme--active .skills__container,
+  .section-theme--projects.section-theme--active .project-container,
+  .section-theme--certifications.section-theme--active .portfolio__container,
+  .section-theme--contact.section-theme--active .contact__container,
+  .skills__content,
+  .skills__content.skills__content--pulse {
+    animation: none;
+    transition: none;
+    transform: none;
+  }
+}
