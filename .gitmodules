@@ -1,0 +1,12 @@
+[submodule "Content-moderator-image"]
+	path = Content-moderator-image
+	url = https://github.com/Harish-nika/Content-moderator-image.git
+[submodule "FExpert"]
+	path = FExpert
+	url = https://github.com/Harish-nika/FExpert.git
+[submodule "language_processing_tool"]
+	path = language_processing_tool
+	url = https://github.com/Harish-nika/language_processing_tool.git
+[submodule "medbot"]
+	path = medbot
+	url = https://github.com/Harish-nika/medbot.git
