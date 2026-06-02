@@ -1,0 +1,10 @@
+flowchart TB
+  compose[docker-compose up]
+  ollama[ollama service port 11434]
+  backend[FastAPI port 8000]
+  frontend[Streamlit port 8501]
+  disk[(models volume)]
+  compose --> ollama
+  ollama -->|healthcheck ready| backend
+  backend -->|depends on| frontend
+  ollama -.->|persist| disk

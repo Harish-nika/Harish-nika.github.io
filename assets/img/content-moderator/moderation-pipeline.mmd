@@ -1,0 +1,8 @@
+flowchart LR
+  input[Input text image or PDF]
+  preprocess[Preprocess and extract]
+  embed[Sentence Transformer embed]
+  faiss[FAISS semantic search]
+  llm[Ollama LLM classify]
+  output[Harmful or Safe verdict]
+  input --> preprocess --> embed --> faiss --> llm --> output

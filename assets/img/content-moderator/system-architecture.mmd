@@ -1,0 +1,16 @@
+flowchart TB
+  user[User]
+  ui[Streamlit UI port 8501]
+  api[FastAPI backend port 8000]
+  llm[Ollama LLM WizardLM 7b or Gemma3 12b]
+  faiss[(FAISS vector index)]
+  embedder[Sentence Transformers]
+  result[Moderation verdict]
+  user --> ui
+  ui -->|text image PDF| api
+  api --> embedder
+  embedder --> faiss
+  faiss -->|similar cases| api
+  api --> llm
+  llm --> result
+  result --> ui
