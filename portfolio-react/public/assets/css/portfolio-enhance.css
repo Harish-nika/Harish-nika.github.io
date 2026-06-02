@@ -515,7 +515,29 @@ body.dark-theme .portfolio__content:hover {
 }
 
 .certifications--scifi .portfolio__description {
-  line-height: 1.6;
+  line-height: 1.65;
+  font-size: 0.95rem;
+  max-width: 36ch;
+}
+
+.certifications--scifi .portfolio__title {
+  font-size: 1.05rem;
+  line-height: 1.35;
+  margin-bottom: 0.35rem;
+}
+
+.certifications--scifi .portfolio__data {
+  padding: 0.35rem 0.15rem;
+}
+
+body.dark-theme .certifications--scifi .portfolio__description,
+body.dark-theme .certifications--scifi .portfolio__title {
+  color: hsl(var(--text-color));
+}
+
+.certifications--scifi .lottie-slot--certs {
+  pointer-events: none;
+  filter: saturate(0.85);
 }
 
 .certifications--scifi .swiper-button-next,

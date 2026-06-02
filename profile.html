@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Full Profile - Harish Kumar</title>
+  <link rel="stylesheet" href="./assets/css/styles.css" />
+  <link rel="stylesheet" href="./assets/css/portfolio-enhance.css" />
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.6/css/line.css" />
+  <style>
+    .profile-wrap { max-width: 980px; margin: 5.5rem auto 3rem; padding: 0 1rem; }
+    .profile-card { background: var(--container-color); border: 1px solid hsl(var(--hue-color), 12%, 84%); border-radius: 14px; padding: 1.2rem; margin-bottom: 1rem; }
+    body.dark-theme .profile-card { border-color: hsl(var(--hue-color), 12%, 28%); }
+    .profile-title { margin-bottom: .3rem; }
+    .profile-meta { color: var(--text-color-light); margin-bottom: .8rem; }
+    .profile-section h2 { font-size: var(--h3-font-size); margin-bottom: .8rem; }
+    .chipline { display:flex; flex-wrap:wrap; gap:.4rem; margin-top:.5rem; }
+    .chipline span { border:1px solid var(--first-color); color:var(--first-color); border-radius: 999px; padding:.2rem .6rem; font-size: .75rem; }
+  </style>
+</head>
+<body>
+  <header class="header" id="header">
+    <nav class="nav container">
+      <a href="index.html" class="nav__logo"><i class="uil uil-arrow-left"></i> Back to Portfolio</a>
+      <div class="nav__btns">
+        <i class="uil uil-moon change-theme" id="theme-button"></i>
+      </div>
+    </nav>
+  </header>
+
+  <main class="profile-wrap" id="profile-root"></main>
+
+  <script>
+    const themeButton = document.getElementById('theme-button');
+    const darkTheme = 'dark-theme';
+    const iconTheme = 'uil-sun';
+    const selectedTheme = localStorage.getItem('selected-theme');
+    const selectedIcon = localStorage.getItem('selected-icon');
+    const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light';
+    const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'uil-moon' : 'uil-sun';
+    if (selectedTheme) {
+      document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme);
+      themeButton.classList[selectedIcon === 'uil-moon' ? 'add' : 'remove'](iconTheme);
+    }
+    themeButton.addEventListener('click', () => {
+      document.body.classList.toggle(darkTheme);
+      themeButton.classList.toggle(iconTheme);
+      localStorage.setItem('selected-theme', getCurrentTheme());
+      localStorage.setItem('selected-icon', getCurrentIcon());
+    });
+
+    async function loadProfile() {
+      const res = await fetch('./content/profile-data.json');
+      const data = await res.json();
+      const root = document.getElementById('profile-root');
+      root.innerHTML = `
+        <section class="profile-card">
+          <h1 class="profile-title">${data.basics.name}</h1>
+          <p class="profile-meta">${data.basics.title}</p>
+          <p>${data.basics.summary}</p>
+          <p style="margin-top:.8rem;"><strong>Email:</strong> ${data.basics.email} | <strong>Phone:</strong> ${data.basics.phone}</p>
+          <p><strong>Location:</strong> ${data.basics.location}</p>
+          <div style="margin-top:.8rem; display:flex; gap:.6rem; flex-wrap:wrap;">
+            <a class="button button--small" href="${data.basics.linkedin}" target="_blank">LinkedIn</a>
+            <a class="button button--small" href="${data.basics.github}" target="_blank">GitHub</a>
+            <a class="button button--small" href="./content/Harish-Kumar-Resume.pdf" target="_blank">Download Resume PDF</a>
+          </div>
+        </section>
+
+        <section class="profile-card profile-section">
+          <h2>Experience</h2>
+          ${data.experience.map((e) => `<p><strong>${e.role}</strong> - ${e.company} <em>(${e.period})</em></p><ul>${e.highlights.map((h) => `<li>${h}</li>`).join('')}</ul>`).join('')}
+        </section>
+
+        <section class="profile-card profile-section">
+          <h2>Skills</h2>
+          <p><strong>AI/ML</strong></p><div class="chipline">${data.skills.ai_ml.map((s) => `<span>${s}</span>`).join('')}</div>
+          <p style="margin-top:.8rem;"><strong>Engineering</strong></p><div class="chipline">${data.skills.engineering.map((s) => `<span>${s}</span>`).join('')}</div>
+          <p style="margin-top:.8rem;"><strong>DevOps/GitOps</strong></p><div class="chipline">${data.skills.devops_gitops.map((s) => `<span>${s}</span>`).join('')}</div>
+        </section>
+
+        <section class="profile-card profile-section">
+          <h2>Projects</h2>
+          <ul>${data.projects.map((p) => `<li><a href="${p.link}" target="_blank">${p.name}</a> - ${p.stack.join(', ')}</li>`).join('')}</ul>
+        </section>
+      `;
+    }
+    loadProfile();
+  </script>
+</body>
+</html>

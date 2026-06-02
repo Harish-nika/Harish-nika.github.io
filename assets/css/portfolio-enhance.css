@@ -489,3 +489,69 @@ body.dark-theme .portfolio__content {
 body.dark-theme .portfolio__content:hover {
   box-shadow: 0 22px 42px rgba(0, 0, 0, 0.5);
 }
+
+.certifications--scifi {
+  position: relative;
+}
+
+.certifications--scifi::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(73, 110, 255, 0.08), transparent 35%),
+    radial-gradient(circle at 80% 30%, rgba(95, 235, 255, 0.09), transparent 30%),
+    linear-gradient(transparent 97%, rgba(73, 110, 255, 0.08) 100%);
+}
+
+.certifications--scifi .portfolio__container {
+  position: relative;
+  z-index: 1;
+}
+
+.certifications--scifi .portfolio__content {
+  backdrop-filter: blur(3px);
+}
+
+.certifications--scifi .portfolio__description {
+  line-height: 1.65;
+  font-size: 0.95rem;
+  max-width: 36ch;
+}
+
+.certifications--scifi .portfolio__title {
+  font-size: 1.05rem;
+  line-height: 1.35;
+  margin-bottom: 0.35rem;
+}
+
+.certifications--scifi .portfolio__data {
+  padding: 0.35rem 0.15rem;
+}
+
+body.dark-theme .certifications--scifi .portfolio__description,
+body.dark-theme .certifications--scifi .portfolio__title {
+  color: hsl(var(--text-color));
+}
+
+.certifications--scifi .lottie-slot--certs {
+  pointer-events: none;
+  filter: saturate(0.85);
+}
+
+.certifications--scifi .swiper-button-next,
+.certifications--scifi .swiper-button-prev {
+  background: rgba(73, 110, 255, 0.14);
+  border: 1px solid rgba(73, 110, 255, 0.35);
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.certifications--scifi .swiper-button-next:hover,
+.certifications--scifi .swiper-button-prev:hover {
+  transform: scale(1.06);
+  background: rgba(73, 110, 255, 0.22);
+}

@@ -56,6 +56,8 @@ function App() {
 
   useEffect(() => {
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    // Balanced sitewide motifs: AI intro, research, education vs K8s/GitOps pipeline,
+    // model graph, API deploy, sci-fi cert HUD, contact loop.
     const lottieConfig = {
       hero: {
         path: "/assets/animations/lottie/hero-ai-network.json",

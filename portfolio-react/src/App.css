@@ -31,12 +31,25 @@
 }
 
 .lottie-experience-wrap {
+  position: relative;
   display: flex;
   justify-content: center;
+  align-items: center;
+  min-height: 180px;
+  margin-bottom: 0.5rem;
 }
 
 .lottie-slot--experience {
-  margin-bottom: 0.75rem;
+  margin-bottom: 0;
+}
+
+.lottie-slot--experience-academic,
+.lottie-slot--experience-professional {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(100%, 340px);
+  height: 190px;
 }
 
 .lottie-slot--hidden {
@@ -45,8 +58,10 @@
 
 .lottie-slot--certs {
   width: min(100%, 460px);
-  height: 160px;
+  height: 140px;
   margin-top: 0;
+  margin-bottom: 0.5rem;
+  opacity: 0.42;
 }
 
 @media screen and (max-width: 767px) {
@@ -62,7 +77,18 @@
 
   .lottie-slot--certs {
     width: min(100%, 320px);
-    height: 130px;
+    height: 120px;
+    opacity: 0.38;
+  }
+
+  .lottie-experience-wrap {
+    min-height: 150px;
+  }
+
+  .lottie-slot--experience-academic,
+  .lottie-slot--experience-professional {
+    width: min(100%, 280px);
+    height: 150px;
   }
 }
 
