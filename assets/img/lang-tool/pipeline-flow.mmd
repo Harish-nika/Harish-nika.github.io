@@ -1,0 +1,8 @@
+flowchart LR
+    A[PDF Input\ntext-based or scanned] --> B{Is scanned?}
+    B -- No --> C[PyMuPDF\ntext extraction]
+    B -- Yes --> D[Tesseract OCR\nimage → text]
+    C --> E[LangDetect\nlanguage per page]
+    D --> E
+    E --> F[Language Distribution\nReport CSV/JSON]
+    F --> G[Output:\nDominant language\n% breakdown per doc]
