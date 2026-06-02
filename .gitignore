@@ -1,0 +1,15 @@
+#
+# Root ignore for portfolio repo
+# Keep project repos local-only and out of this git history.
+#
+
+Content-moderator-image/
+FExpert/
+language_processing_tool/
+medbot/
+
+# Node / build artifacts (defensive)
+node_modules/
+dist/
+*.log
+
