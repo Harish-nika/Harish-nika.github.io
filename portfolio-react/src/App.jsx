@@ -65,7 +65,11 @@ function App() {
         path: "/assets/animations/lottie/about-ml-research.json",
         loop: true,
       },
-      experience: {
+      experienceAcademic: {
+        path: "/assets/animations/lottie/experience-academic-research.json",
+        loop: true,
+      },
+      experienceProfessional: {
         path: "/assets/animations/lottie/experience-mlops-workflow.json",
         loop: true,
       },
@@ -79,6 +83,10 @@ function App() {
       },
       contact: {
         path: "/assets/animations/lottie/contact-loop.json",
+        loop: true,
+      },
+      certs: {
+        path: "/assets/animations/lottie/certs-scifi-hud.json",
         loop: true,
       },
     };
@@ -128,9 +136,61 @@ function App() {
       lottieInstances.push({ container, instance });
     });
 
+    const experienceButtons = Array.from(document.querySelectorAll(".qualification__button"));
+    const experienceAnimationById = {
+      experienceAcademic: lottieInstances.find((item) => item.container.dataset.lottieId === "experienceAcademic"),
+      experienceProfessional: lottieInstances.find((item) => item.container.dataset.lottieId === "experienceProfessional"),
+    };
+
+    const syncExperienceAnimation = (targetId) => {
+      const showAcademic = targetId === "#education";
+      const academicContainer = experienceAnimationById.experienceAcademic?.container;
+      const professionalContainer = experienceAnimationById.experienceProfessional?.container;
+
+      if (academicContainer) {
+        academicContainer.classList.toggle("lottie-slot--hidden", !showAcademic);
+      }
+      if (professionalContainer) {
+        professionalContainer.classList.toggle("lottie-slot--hidden", showAcademic);
+      }
+      if (reducedMotion) {
+        return;
+      }
+      if (showAcademic) {
+        experienceAnimationById.experienceProfessional?.instance.pause();
+        experienceAnimationById.experienceAcademic?.instance.play();
+      } else {
+        experienceAnimationById.experienceAcademic?.instance.pause();
+        experienceAnimationById.experienceProfessional?.instance.play();
+      }
+    };
+
+    const getActiveExperienceTab = () => {
+      const activeButton = document.querySelector(".qualification__button.qualification__active");
+      return activeButton?.getAttribute("data-target") || "#work";
+    };
+
+    const onExperienceTabClick = (event) => {
+      const button = event.currentTarget;
+      const targetId = button.getAttribute("data-target");
+      if (!targetId) {
+        return;
+      }
+      // wait for class toggle in legacy script to settle
+      window.requestAnimationFrame(() => syncExperienceAnimation(targetId));
+    };
+
+    experienceButtons.forEach((button) => {
+      button.addEventListener("click", onExperienceTabClick);
+    });
+    syncExperienceAnimation(getActiveExperienceTab());
+
     return () => {
       observer.disconnect();
       lottieInstances.forEach(({ instance }) => instance.destroy());
+      experienceButtons.forEach((button) => {
+        button.removeEventListener("click", onExperienceTabClick);
+      });
     };
   }, []);
 

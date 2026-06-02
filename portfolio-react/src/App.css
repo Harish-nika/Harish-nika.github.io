@@ -25,8 +25,28 @@
 .lottie-slot--experience,
 .lottie-slot--skills,
 .lottie-slot--projects,
-.lottie-slot--contact {
+.lottie-slot--contact,
+.lottie-slot--certs {
   opacity: 0.78;
+}
+
+.lottie-experience-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.lottie-slot--experience {
+  margin-bottom: 0.75rem;
+}
+
+.lottie-slot--hidden {
+  display: none;
+}
+
+.lottie-slot--certs {
+  width: min(100%, 460px);
+  height: 160px;
+  margin-top: 0;
 }
 
 @media screen and (max-width: 767px) {
@@ -38,6 +58,11 @@
   .lottie-slot--hero {
     width: min(100%, 320px);
     height: 170px;
+  }
+
+  .lottie-slot--certs {
+    width: min(100%, 320px);
+    height: 130px;
   }
 }
 

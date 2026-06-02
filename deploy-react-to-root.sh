@@ -28,6 +28,7 @@ echo "Syncing dist output to repository root..."
 # Keep root clean but do not touch unrelated folders such as source project directories.
 rsync -a --delete "$DIST_DIR/assets/" "$ROOT_DIR/assets/"
 rsync -a --delete "$DIST_DIR/images/" "$ROOT_DIR/images/"
+rsync -a --delete "$DIST_DIR/content/" "$ROOT_DIR/content/"
 
 cp "$DIST_DIR/index.html" "$ROOT_DIR/index.html"
 cp "$DIST_DIR/dme-project.html" "$ROOT_DIR/dme-project.html"
@@ -35,6 +36,7 @@ cp "$DIST_DIR/content-moderator.html" "$ROOT_DIR/content-moderator.html"
 cp "$DIST_DIR/fexpert.html" "$ROOT_DIR/fexpert.html"
 cp "$DIST_DIR/lang-tool.html" "$ROOT_DIR/lang-tool.html"
 cp "$DIST_DIR/medbot.html" "$ROOT_DIR/medbot.html"
+cp "$DIST_DIR/profile.html" "$ROOT_DIR/profile.html"
 cp "$DIST_DIR/favicon.svg" "$ROOT_DIR/favicon.svg"
 cp "$DIST_DIR/icons.svg" "$ROOT_DIR/icons.svg"
 
