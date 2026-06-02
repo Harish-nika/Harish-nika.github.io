@@ -63,6 +63,10 @@
   border-radius: 6px;
 }
 
+.project-grid-secondary .project-card--no-image {
+  padding-top: 0.15rem;
+}
+
 .project-card--featured {
   grid-column: 1 / -1;
   border: 2px solid var(--first-color-lighter);

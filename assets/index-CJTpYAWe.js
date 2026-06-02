@@ -1179,8 +1179,7 @@ Error generating stack: `+r.message+`
                     </div>
 
                     <!-- Project 6 -->
-                    <div class="project-card">
-                        <img src="./assets/img/third-eye.png" alt="AR room climate visualisation concept" class="project-img--ui" loading="lazy">
+                    <div class="project-card project-card--no-image">
                         <h3 class="testimonial__name">Real-Time Room Temperature &amp; Humidity Visualization (AR)</h3>
                         <span class="testimonial__description">J Component — ARVR Course</span>
                         <p class="project-card__headline">MQTT + Unity AR with ML-driven climate insights</p>
@@ -1206,8 +1205,7 @@ Error generating stack: `+r.message+`
                     </div>
 
                     <!-- Project 7 -->
-                    <div class="project-card">
-                        <img src="./assets/img/tofu.png" alt="Information retrieval and summarisation visual" class="project-img--ui" loading="lazy">
+                    <div class="project-card project-card--no-image">
                         <h3 class="testimonial__name">Extractive Summarization &amp; Information Retrieval</h3>
                         <span class="testimonial__description">J Component — Web Mining Course</span>
                         <p class="project-card__headline">NLP-driven web scraping with English-to-SQL query translation</p>
@@ -1233,8 +1231,7 @@ Error generating stack: `+r.message+`
                     </div>
 
                     <!-- Project 8 -->
-                    <div class="project-card">
-                        <img src="./assets/img/lang-tool/pypi-publish.png" alt="Application tracking workflow visual" class="project-img--ui" loading="lazy">
+                    <div class="project-card project-card--no-image">
                         <h3 class="testimonial__name">Application Tracking System</h3>
                         <span class="testimonial__description">JP INFOTECH</span>
                         <p class="project-card__headline">NLP resume analyser with OCR and n-gram typing assist</p>
