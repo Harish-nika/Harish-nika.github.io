@@ -11,12 +11,43 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.25rem;
+  align-items: stretch;
 }
 
 @media screen and (min-width: 768px) {
   .project-grid-secondary {
     grid-template-columns: repeat(2, 1fr);
   }
+}
+
+/* All secondary-grid cards: flex column so CTA always pins to bottom */
+.project-grid-secondary .project-card {
+  display: flex;
+  flex-direction: column;
+}
+
+/* New-style cards with .project-card__body */
+.project-grid-secondary .project-card .project-card__body {
+  flex: 1;
+}
+
+/* Old-style cards that use .testimonial__description as body */
+.project-grid-secondary .project-card > p.testimonial__description {
+  flex: 1;
+}
+
+.project-grid-secondary .project-card .project-card__cta {
+  margin-top: auto;
+  padding-top: 0.75rem;
+}
+
+/* Thumbnail in secondary cards — fixed height, cover crop to avoid blank gaps */
+.project-grid-secondary .project-card .project-img--ui {
+  height: 180px;
+  max-height: 180px;
+  object-fit: cover;
+  object-position: top;
+  margin-bottom: 0.85rem;
 }
 
 .project-card--featured {
@@ -31,10 +62,10 @@
 }
 
 .project-card__headline {
-  font-size: var(--h3-font-size);
+  font-size: var(--normal-font-size);
   font-weight: var(--font-semi-bold);
   color: var(--title-color);
-  margin: 0 0 0.75rem;
+  margin: 0.4rem 0 0.6rem;
   line-height: 1.4;
 }
 
@@ -46,20 +77,35 @@
 }
 
 .project-card__body ul {
-  margin: 0.5rem 0 0 1.1rem;
+  margin: 0.35rem 0 0 1.1rem;
   padding: 0;
 }
 
 .project-card__body li {
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.3rem;
+  font-size: var(--small-font-size);
+  line-height: 1.55;
+}
+
+/* Tighten title & subtitle line inside project cards */
+.project-grid-secondary .project-card .testimonial__name,
+.project-grid-secondary .project-card h3 {
+  font-size: var(--h3-font-size);
+  margin: 0 0 0.2rem;
+  line-height: 1.3;
+}
+
+.project-grid-secondary .project-card .testimonial__description {
+  font-size: var(--small-font-size);
+  margin: 0 0 0.4rem;
 }
 
 .project-metrics,
 .project-tech {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
+  gap: 0.4rem;
+  margin-bottom: 0.65rem;
 }
 
 .metric-chip {
