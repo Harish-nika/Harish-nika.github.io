@@ -990,22 +990,36 @@
                     </div>
 
                     <div class="project-grid-secondary">
-                    <!-- Project 1 -->
+                    <!-- Project 1: FExpert — Fixed Income Expert System -->
                     <div class="project-card">
-                        <h3 class="testimonial__name">AI-Powered Document Q&A and Data Extraction System</h3>
+                        <img src="./assets/img/fexpert/ui-upload.png" alt="Fixed Income Expert — Streamlit upload UI" class="project-img--ui" loading="lazy">
+                        <h3 class="testimonial__name">Fixed Income Expert System</h3>
                         <span class="testimonial__description">FactEntry Data Solutions (A SIX Company)</span>
-                        <p class="testimonial__description" >
-                            <strong>Objective:</strong>
-                             Developed an AI-driven RAG system for extracting structured data from scanned documents, including tables, forms, and text.<br>
-                            <strong>Key Contributions:</strong>
-                            • Integrated Google Generative AI Embeddings (Google API) and LLaMA 3.3 (Groq API) for efficient retrieval and response generation.<br>
-                            • Implemented OCR-based text extraction using PyTesseract, enhanced with OpenCV preprocessing for improved accuracy.<br>
-                            • Leveraged Hugging Face LayoutLM for extracting data from complex layouts, including borderless tables and unstructured forms.<br>
-                            • Developed a Streamlit web interface for real-time document analysis and deployed it securely via ngrok.<br>
-                            <strong>Impact:</strong>
-                             Automated document processing, reducing manual effort while improving data accuracy and retrieval speed.
-                         </p>
-                        <a href="#" class="project-link">Link: To be updated</a>
+                        <p class="project-card__headline">RAG chatbot for financial bond documents — PDF upload, FAISS search, LLaMA 3 via Groq</p>
+                        <div class="project-metrics" aria-label="Key facts">
+                            <span class="metric-chip">Groq LLaMA 3 8B</span>
+                            <span class="metric-chip">FAISS vector search</span>
+                            <span class="metric-chip">Hosted as systemd</span>
+                        </div>
+                        <div class="project-tech" aria-label="Technologies">
+                            <span class="tech-chip">FastAPI</span>
+                            <span class="tech-chip">Streamlit</span>
+                            <span class="tech-chip">FAISS</span>
+                            <span class="tech-chip">Sentence Transformers</span>
+                            <span class="tech-chip">LangChain</span>
+                            <span class="tech-chip">PyMuPDF</span>
+                        </div>
+                        <div class="project-card__body">
+                            <ul>
+                                <li>Upload internal bond PDFs; chunks embedded with SBERT MiniLM and stored in FAISS.</li>
+                                <li>Natural-language Q&amp;A grounded in retrieved context — no hallucination fallback.</li>
+                                <li>Deployed as persistent systemd services (FastAPI + Streamlit) on internal Linux server.</li>
+                            </ul>
+                        </div>
+                        <div class="project-card__cta" style="margin-top:1rem;">
+                            <a href="fexpert.html" class="button button--flex button--small portfolio__button">Read case study <i class="uil uil-arrow-right button__icon"></i></a>
+                            <a href="https://github.com/Harish-nika/FExpert" target="_blank" rel="noopener noreferrer" class="button button--flex button--small">GitHub <i class="uil uil-github-alt button__icon"></i></a>
+                        </div>
                     </div>
         
                     <!-- Project 2: Capstone — Content Moderator -->
