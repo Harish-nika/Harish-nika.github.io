@@ -760,7 +760,13 @@ body.dark-theme .qualification__data > div:nth-child(3) {
 }
 
 .qualification__line {
-  display: none;
+  display: block;
+  width: 2px;
+  height: 100%;
+  min-height: 120px;
+  background-color: var(--first-color);
+  opacity: 0.75;
+  margin-top: 0.2rem;
 }
 
 .qualification__time {
@@ -773,23 +779,6 @@ body.dark-theme .qualification__data > div:nth-child(3) {
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
-}
-
-.qualification__data > div:nth-child(2)::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: -1.25rem;
-  left: 50%;
-  width: 2px;
-  transform: translateX(-50%);
-  background: var(--first-color);
-  opacity: 0.7;
-}
-
-.qualification__data:last-child > div:nth-child(2)::before {
-  bottom: 0;
 }
 
 .qualification__data .button {
