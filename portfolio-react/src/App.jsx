@@ -235,10 +235,39 @@ function App() {
     });
     syncExperienceAnimation(getActiveExperienceTab());
 
-    const projectNavigationLinks = Array.from(
-      document.querySelectorAll(
-        'a[href$=".html"], a[href*=".html?"], .project-card__cta a, a.project-link'
-      )
+    const projectPageNames = new Set([
+      "dme-project.html",
+      "fexpert.html",
+      "content-moderator.html",
+      "lang-tool.html",
+      "medbot.html",
+      "profile.html",
+    ]);
+
+    const projectNavigationLinks = Array.from(document.querySelectorAll("a[href]")).filter(
+      (link) => {
+        if (!(link instanceof HTMLAnchorElement)) {
+          return false;
+        }
+        if (link.target === "_blank" || link.hasAttribute("download")) {
+          return false;
+        }
+        const href = link.getAttribute("href");
+        if (!href || href.startsWith("#") || href.startsWith("mailto:") || href.startsWith("tel:")) {
+          return false;
+        }
+        let url;
+        try {
+          url = new URL(link.href, window.location.href);
+        } catch (error) {
+          return false;
+        }
+        if (url.origin !== window.location.origin) {
+          return false;
+        }
+        const pageName = url.pathname.split("/").pop() || "";
+        return projectPageNames.has(pageName);
+      }
     );
 
     const onProjectNavigation = (event) => {
@@ -269,7 +298,7 @@ function App() {
       body.classList.add("is-project-nav");
       const timer = window.setTimeout(() => {
         window.location.assign(anchor.href);
-      }, 220);
+      }, 540);
       transitionTimers.push(timer);
     };
 

@@ -443,6 +443,110 @@ body.dark-theme .qual-badge--intern {
   color: var(--title-color);
 }
 
+.qualification__tabs {
+  width: fit-content;
+  margin: 0 auto 0.4rem;
+  padding: 0.35rem;
+  border-radius: 999px;
+  border: 1px solid hsl(var(--hue-color), 18%, 30%);
+  background: linear-gradient(
+    140deg,
+    hsl(var(--hue-color), 27%, 14%),
+    hsl(var(--hue-color), 20%, 11%)
+  );
+  gap: 0.35rem;
+}
+
+.qualification__button {
+  border-radius: 999px;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid transparent;
+  color: var(--text-color);
+  transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.qualification__button .qualification__icon {
+  margin-right: 0.4rem;
+}
+
+.qualification__button.qualification__active {
+  background: linear-gradient(120deg, hsl(var(--hue-color), 80%, 58%), hsl(var(--hue-color), 90%, 64%));
+  color: #fff;
+  border-color: hsla(var(--hue-color), 95%, 90%, 0.3);
+  box-shadow: 0 0 0 1px hsla(var(--hue-color), 100%, 92%, 0.18) inset;
+}
+
+.qualification__button:not(.qualification__active):hover {
+  border-color: hsla(var(--hue-color), 88%, 68%, 0.28);
+  background: hsla(var(--hue-color), 88%, 62%, 0.08);
+}
+
+.qualification__switch-hint {
+  text-align: center;
+  font-size: var(--smaller-font-size);
+  color: var(--text-color-light);
+  margin: 0 0 1rem;
+}
+
+.qualification__switch-hint i {
+  margin-right: 0.3rem;
+}
+
+/* Mobile timeline stability: keep one clear rail + card column */
+@media screen and (max-width: 767px) {
+  .qualification__tabs {
+    width: fit-content;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .qualification__button {
+    font-size: 0.98rem;
+    padding: 0.42rem 0.82rem;
+  }
+
+  .qualification__data {
+    grid-template-columns: 22px minmax(0, 1fr);
+    column-gap: 0.9rem;
+    row-gap: 0;
+    align-items: stretch;
+    margin-bottom: 1rem;
+  }
+
+  .qualification__data > div:nth-child(2),
+  .qualification__time {
+    grid-column: 1;
+    grid-row: 1;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .qualification__data > div:first-child:not(:empty),
+  .qualification__data > div:nth-child(3) {
+    grid-column: 2;
+    grid-row: 1;
+    width: 100%;
+    min-width: 0;
+    padding: 0.8rem 0.9rem;
+  }
+
+  .qualification__line {
+    min-height: 92px;
+    height: calc(100% - 16px);
+  }
+
+  .qualification__switch-hint {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .qualification__switch-hint {
+    margin-bottom: 1.2rem;
+  }
+}
+
 /* Certification slider polish */
 .portfolio__container {
   padding: 0.5rem 0 1.25rem;
