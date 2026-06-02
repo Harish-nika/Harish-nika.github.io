@@ -415,6 +415,17 @@ img {
   color: var(--first-color-alt);
 }
 
+.button--ghost {
+  background-color: transparent;
+  border: 2px solid var(--first-color);
+  color: var(--first-color);
+}
+
+.button--ghost:hover {
+  background-color: var(--first-color);
+  color: #fff;
+}
+
 /*==================== ABOUT ====================*/
 .about__img {
   width: 200px;
@@ -431,8 +442,15 @@ img {
 
 .about__info {
   display: flex;
-  justify-content: space-evenly;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem 1.5rem;
   margin-bottom: var(--mb-2-5);
+}
+
+.about__info > div {
+  min-width: 72px;
+  text-align: center;
 }
 
 .about__info-title {
@@ -443,6 +461,7 @@ img {
 
 .about__info-name {
   font-size: var(--smaller-font-size);
+  white-space: nowrap;
 }
 
 .about__info-title, .about__info-name {
@@ -452,6 +471,8 @@ img {
 
 .about__buttons {
   display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
   justify-content: center;
 }
 
@@ -1274,10 +1295,11 @@ img {
     text-align: initial;
   }
   .about__info {
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 1rem 2rem;
   }
   .about__buttons {
-    justify-content: initial;
+    justify-content: flex-start;
   }
   .qualification__tabs {
     justify-content: center;
