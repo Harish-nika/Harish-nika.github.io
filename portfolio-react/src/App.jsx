@@ -43,7 +43,8 @@ function App() {
       if (!document.querySelector(`script[data-legacy="${src}"]`)) {
         const script = document.createElement("script");
         script.src = src;
-        script.defer = true;
+        // Dynamic scripts are async by default; force ordered execution.
+        script.async = false;
         script.setAttribute("data-legacy", src);
         document.body.appendChild(script);
         addedNodes.push(script);

@@ -433,3 +433,59 @@ body.dark-theme .project-flows {
   background: var(--first-color-lighter);
   color: var(--title-color);
 }
+
+/* Certification slider polish */
+.portfolio__container {
+  padding: 0.5rem 0 1.25rem;
+}
+
+.portfolio__content {
+  border-radius: 18px;
+  border: 1px solid hsl(var(--hue-color), 16%, 86%);
+  background: linear-gradient(
+    145deg,
+    hsl(var(--hue-color), 100%, 99%),
+    hsl(var(--hue-color), 80%, 97%)
+  );
+  box-shadow: 0 14px 32px rgba(56, 92, 214, 0.09);
+  overflow: hidden;
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+.portfolio__content:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 22px 40px rgba(56, 92, 214, 0.18);
+}
+
+.portfolio__img {
+  border-radius: 14px;
+}
+
+.portfolio__title {
+  position: relative;
+}
+
+.portfolio__title::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  margin-right: 0.5rem;
+  background: var(--first-color);
+  box-shadow: 0 0 0 6px hsla(var(--hue-color), 89%, 56%, 0.15);
+}
+
+body.dark-theme .portfolio__content {
+  border-color: hsl(var(--hue-color), 22%, 28%);
+  background: linear-gradient(
+    145deg,
+    hsl(var(--hue-color), 24%, 14%),
+    hsl(var(--hue-color), 20%, 12%)
+  );
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.42);
+}
+
+body.dark-theme .portfolio__content:hover {
+  box-shadow: 0 22px 42px rgba(0, 0, 0, 0.5);
+}

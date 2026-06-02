@@ -95,8 +95,23 @@ modalCloses.forEach((modalClose) => {
 /*==================== PORTFOLIO SWIPER  ====================*/
 if (document.querySelector('.portfolio__container')) {
     let swiperPortfolio = new Swiper('.portfolio__container', {
-        cssMode: true,
+        effect: 'coverflow',
         loop: true,
+        centeredSlides: true,
+        slidesPerView: 1.05,
+        speed: 700,
+        grabCursor: true,
+        autoplay: {
+          delay: 3600,
+          disableOnInteraction: false
+        },
+        coverflowEffect: {
+          rotate: 12,
+          stretch: 0,
+          depth: 120,
+          modifier: 1.1,
+          slideShadows: false
+        },
 
         navigation: {
           nextEl: '.swiper-button-next',
@@ -106,6 +121,14 @@ if (document.querySelector('.portfolio__container')) {
           el: '.swiper-pagination',
           clickable: true,
         },
+        breakpoints: {
+          768: {
+            slidesPerView: 1.4
+          },
+          1024: {
+            slidesPerView: 1.9
+          }
+        }
     })
 }
 
