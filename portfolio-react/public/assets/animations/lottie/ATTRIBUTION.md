@@ -8,7 +8,7 @@ Attribution is encouraged by LottieFiles. Files were downloaded on 2026-06-02.
 
 - `hero-ai-network.json` -> `https://assets2.lottiefiles.com/packages/lf20_jcikwtux.json`
 - `about-ml-research.json` -> `https://assets9.lottiefiles.com/packages/lf20_iorpbol0.json`
-- `experience-devops-pipeline.json` -> `https://assets4.lottiefiles.com/packages/lf20_3rwasyjy.json`
-- `projects-cloud-ops.json` -> `https://assets7.lottiefiles.com/packages/lf20_w51pcehl.json`
-- `skills-data-flow.json` -> `https://assets1.lottiefiles.com/packages/lf20_2znxgjyt.json`
+- `experience-mlops-workflow.json` -> `https://assets10.lottiefiles.com/packages/lf20_kkflmtur.json`
+- `projects-ai-delivery.json` -> `https://assets2.lottiefiles.com/packages/lf20_qp1q7mct.json`
+- `skills-ml-graph.json` -> `https://assets8.lottiefiles.com/packages/lf20_49rdyysj.json`
 - `contact-loop.json` -> `https://assets6.lottiefiles.com/packages/lf20_bp5lntrf.json`

@@ -65,15 +65,15 @@ function App() {
         loop: true,
       },
       experience: {
-        path: "/assets/animations/lottie/experience-devops-pipeline.json",
+        path: "/assets/animations/lottie/experience-mlops-workflow.json",
         loop: true,
       },
       skills: {
-        path: "/assets/animations/lottie/skills-data-flow.json",
+        path: "/assets/animations/lottie/skills-ml-graph.json",
         loop: true,
       },
       projects: {
-        path: "/assets/animations/lottie/projects-cloud-ops.json",
+        path: "/assets/animations/lottie/projects-ai-delivery.json",
         loop: true,
       },
       contact: {

@@ -34,6 +34,7 @@ cp "$DIST_DIR/dme-project.html" "$ROOT_DIR/dme-project.html"
 cp "$DIST_DIR/content-moderator.html" "$ROOT_DIR/content-moderator.html"
 cp "$DIST_DIR/fexpert.html" "$ROOT_DIR/fexpert.html"
 cp "$DIST_DIR/lang-tool.html" "$ROOT_DIR/lang-tool.html"
+cp "$DIST_DIR/medbot.html" "$ROOT_DIR/medbot.html"
 cp "$DIST_DIR/favicon.svg" "$ROOT_DIR/favicon.svg"
 cp "$DIST_DIR/icons.svg" "$ROOT_DIR/icons.svg"
 

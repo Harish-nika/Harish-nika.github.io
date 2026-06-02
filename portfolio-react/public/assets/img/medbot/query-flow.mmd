@@ -1,0 +1,7 @@
+flowchart TD
+  Question[User Question] --> QEmbed[Encode Query With SBERT]
+  QEmbed --> Search[Top K FAISS Search]
+  Search --> Context[Assemble Retrieved Context]
+  Context --> Prompt[Build Grounded Prompt]
+  Prompt --> Groq[Invoke Groq Llama3 8B]
+  Groq --> Answer[Return Context Based Answer]
