@@ -41,9 +41,14 @@ body.is-experience-transitioning .legacy-wrapper .qualification__button.qualific
 .lottie-slot--experience,
 .lottie-slot--skills,
 .lottie-slot--projects,
-.lottie-slot--contact,
 .lottie-slot--certs {
   opacity: 0.78;
+}
+
+.lottie-slot--contact {
+  width: min(100%, 380px);
+  height: 220px;
+  opacity: 0.88;
 }
 
 .lottie-experience-wrap {
@@ -105,6 +110,11 @@ body.is-experience-transitioning .legacy-wrapper .qualification__button.qualific
   .lottie-slot--experience-professional {
     width: min(100%, 280px);
     height: 150px;
+  }
+
+  .lottie-slot--contact {
+    width: min(100%, 300px);
+    height: 180px;
   }
 }
 

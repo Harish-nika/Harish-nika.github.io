@@ -296,9 +296,30 @@ img {
   color: var(--first-color-alt);
 }
 
+@keyframes homeBlobFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes homeScrollBounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
 .home__blob {
   width: 200px;
   fill: var(--first-color);
+  animation: homeBlobFloat 7s ease-in-out infinite;
 }
 
 .home__blob-img {
@@ -352,6 +373,7 @@ img {
 
 .home__scroll-arrow {
   font-size: 1.25rem;
+  animation: homeScrollBounce 2s ease-in-out infinite;
 }
 
 /*========== BUTTONS ==========*/
@@ -1698,6 +1720,11 @@ body.dark-theme .project-card {
   }
 
   .qualification__active[data-content] {
+    animation: none;
+  }
+
+  .home__blob,
+  .home__scroll-arrow {
     animation: none;
   }
 }

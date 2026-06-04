@@ -882,6 +882,162 @@ body.skills-theme-data .skills__content.skills__open {
   }
 }
 
+/* Floating accents — contact section and shared motion */
+@keyframes portfolioFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(3deg);
+  }
+}
+
+@keyframes contactInfoReveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.contact__visual-wrap {
+  position: relative;
+  width: min(100%, 520px);
+  margin: 0 auto 0.5rem;
+  min-height: 200px;
+}
+
+.contact__float-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.contact__visual-wrap .lottie-slot--contact {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 0;
+}
+
+.float-accent {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  font-size: 1.15rem;
+  color: var(--first-color);
+  background: hsla(var(--hue-color), 69%, 61%, 0.12);
+  border: 1px solid hsla(var(--hue-color), 69%, 61%, 0.35);
+  box-shadow: 0 0 14px hsla(var(--hue-color), 90%, 62%, 0.2);
+  animation: portfolioFloat 4s ease-in-out infinite;
+}
+
+.float-accent--1 {
+  top: 8%;
+  left: 6%;
+  animation-delay: 0s;
+}
+
+.float-accent--2 {
+  top: 14%;
+  right: 8%;
+  animation-delay: 0.6s;
+}
+
+.float-accent--3 {
+  top: 42%;
+  right: 2%;
+  animation-delay: 1.2s;
+}
+
+.float-accent--4 {
+  bottom: 18%;
+  left: 4%;
+  animation-delay: 1.8s;
+}
+
+.float-accent--5 {
+  bottom: 10%;
+  right: 12%;
+  animation-delay: 2.4s;
+}
+
+.float-accent--6 {
+  top: 55%;
+  left: 10%;
+  animation-delay: 3s;
+}
+
+.contact__information {
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+.contact__information:hover {
+  transform: translateY(-4px);
+}
+
+.contact__information:hover .contact__icon {
+  text-shadow: 0 0 12px hsla(var(--hue-color), 90%, 62%, 0.55);
+}
+
+.section-theme--contact.section-theme--active .contact__information {
+  animation: contactInfoReveal 0.5s ease forwards;
+}
+
+.section-theme--contact.section-theme--active .contact__information:nth-child(1) {
+  animation-delay: 0.05s;
+}
+
+.section-theme--contact.section-theme--active .contact__information:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.section-theme--contact.section-theme--active .contact__information:nth-child(3) {
+  animation-delay: 0.25s;
+}
+
+.footer__social {
+  animation: portfolioFloat 5s ease-in-out infinite;
+}
+
+.footer__social:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.footer__social:nth-child(2) {
+  animation-delay: 0.8s;
+}
+
+.footer__social:nth-child(3) {
+  animation-delay: 1.6s;
+}
+
+.footer__social:hover {
+  animation-play-state: paused;
+  transform: translateY(-6px) scale(1.08);
+}
+
+@media screen and (max-width: 767px) {
+  .float-accent--3,
+  .float-accent--6 {
+    display: none;
+  }
+
+  .float-accent {
+    width: 1.85rem;
+    height: 1.85rem;
+    font-size: 1rem;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .section-theme::after,
   .section-theme.section-theme--active::after,
@@ -900,5 +1056,16 @@ body.skills-theme-data .skills__content.skills__open {
 
   .tab-content.tab-content--animating {
     animation: none;
+  }
+
+  .float-accent,
+  .footer__social,
+  .section-theme--contact.section-theme--active .contact__information {
+    animation: none;
+  }
+
+  .contact__information:hover,
+  .footer__social:hover {
+    transform: none;
   }
 }
