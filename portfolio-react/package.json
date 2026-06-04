@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "npm run build:resume && vite build",
     "build:resume": "node scripts/generate-resume.mjs",
     "lint": "eslint .",
     "preview": "vite preview",

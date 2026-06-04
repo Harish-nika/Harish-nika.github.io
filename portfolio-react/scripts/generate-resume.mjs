@@ -13,6 +13,15 @@ const resumePdfPath = path.join(contentDir, "Harish-Kumar-Resume.pdf");
 
 const profile = JSON.parse(await fs.readFile(profilePath, "utf8"));
 
+/** WinAnsi-safe text for PDF (Helvetica standard fonts). */
+const pdfSafe = (text) =>
+  String(text)
+    .replace(/\u2192/g, "->")
+    .replace(/\u2013|\u2014/g, "-")
+    .replace(/\u2018|\u2019/g, "'")
+    .replace(/\u201c|\u201d/g, '"')
+    .replace(/[^\x00-\xFF]/g, " ");
+
 const lines = [];
 lines.push(`# ${profile.basics.name}`);
 lines.push(`${profile.basics.title}`);
@@ -20,10 +29,21 @@ lines.push(
   `${profile.basics.location} | ${profile.basics.email} | ${profile.basics.phone}`
 );
 lines.push(`${profile.basics.linkedin} | ${profile.basics.github}`);
+lines.push(`${profile.basics.portfolio}`);
 lines.push("");
 lines.push("## Summary");
 lines.push(profile.basics.summary);
+if (profile.basics.highlights?.length) {
+  for (const h of profile.basics.highlights) {
+    lines.push(`- ${h}`);
+  }
+}
 lines.push("");
+if (profile.basics.keywords?.length) {
+  lines.push("## Core Competencies");
+  lines.push(profile.basics.keywords.join(" | "));
+  lines.push("");
+}
 
 lines.push("## Experience");
 for (const exp of profile.experience) {
@@ -41,7 +61,7 @@ for (const edu of profile.education) {
 }
 lines.push("");
 
-lines.push("## Skills");
+lines.push("## Technical Skills");
 lines.push(`- AI/ML: ${profile.skills.ai_ml.join(", ")}`);
 lines.push(`- Engineering: ${profile.skills.engineering.join(", ")}`);
 lines.push(`- DevOps/GitOps: ${profile.skills.devops_gitops.join(", ")}`);
@@ -49,7 +69,10 @@ lines.push("");
 
 lines.push("## Key Projects");
 for (const project of profile.projects) {
-  lines.push(`- **${project.name}** - ${project.stack.join(", ")} (${project.link})`);
+  const gh = project.github ? ` | ${project.github}` : "";
+  lines.push(
+    `- **${project.name}** — ${project.summary} [${project.stack.join(", ")}] (${project.link}${gh})`
+  );
 }
 lines.push("");
 
@@ -64,13 +87,13 @@ const pdfDoc = await PDFDocument.create();
 const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
 const boldFont = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
 
-let page = pdfDoc.addPage([595, 842]); // A4
+let page = pdfDoc.addPage([595, 842]);
 let y = 810;
-const left = 40;
-const normalSize = 10.5;
-const titleSize = 18;
-const sectionSize = 12;
-const bottomMargin = 40;
+const left = 42;
+const normalSize = 10;
+const titleSize = 16;
+const sectionSize = 11.5;
+const bottomMargin = 42;
 const pageWidth = 595;
 
 const ensureSpace = (requiredHeight) => {
@@ -104,10 +127,10 @@ const wrapText = (text, activeFont, size, maxWidth) => {
 const drawLine = (text, opts = {}) => {
   const { bold = false, size = normalSize, color = rgb(0.1, 0.1, 0.1), indent = 0 } = opts;
   const activeFont = bold ? boldFont : font;
-  const maxWidth = pageWidth - left - 40 - indent;
-  const lineHeight = Math.max(13, size + 3);
-  const wrappedLines = wrapText(text, activeFont, size, maxWidth);
-  ensureSpace(wrappedLines.length * lineHeight + 4);
+  const maxWidth = pageWidth - left - 42 - indent;
+  const lineHeight = Math.max(12, size + 2.5);
+  const wrappedLines = wrapText(pdfSafe(text), activeFont, size, maxWidth);
+  ensureSpace(wrappedLines.length * lineHeight + 3);
 
   for (const wrappedLine of wrappedLines) {
     page.drawText(wrappedLine, {
@@ -119,48 +142,65 @@ const drawLine = (text, opts = {}) => {
     });
     y -= lineHeight;
   }
-  y -= 4;
+  y -= 3;
 };
 
 drawLine(profile.basics.name, { bold: true, size: titleSize, color: rgb(0.05, 0.2, 0.45) });
 drawLine(profile.basics.title, { bold: true, size: 12 });
-drawLine(`${profile.basics.location} | ${profile.basics.email} | ${profile.basics.phone}`);
-drawLine(`${profile.basics.linkedin} | ${profile.basics.github}`);
-y -= 6;
-
-drawLine("Summary", { bold: true, size: sectionSize, color: rgb(0.05, 0.2, 0.45) });
-drawLine(profile.basics.summary);
+drawLine(`${profile.basics.email} | ${profile.basics.phone}`);
+drawLine(profile.basics.location);
+drawLine(profile.basics.linkedin);
+drawLine(profile.basics.github);
+drawLine(profile.basics.portfolio);
 y -= 4;
 
-drawLine("Experience", { bold: true, size: sectionSize, color: rgb(0.05, 0.2, 0.45) });
+drawLine("PROFESSIONAL SUMMARY", { bold: true, size: sectionSize, color: rgb(0.05, 0.2, 0.45) });
+drawLine(profile.basics.summary);
+for (const h of profile.basics.highlights || []) {
+  drawLine(`- ${h}`, { indent: 6 });
+}
+y -= 2;
+
+if (profile.basics.keywords?.length) {
+  drawLine("CORE COMPETENCIES", { bold: true, size: sectionSize, color: rgb(0.05, 0.2, 0.45) });
+  drawLine(profile.basics.keywords.join(" | "));
+  y -= 2;
+}
+
+drawLine("EXPERIENCE", { bold: true, size: sectionSize, color: rgb(0.05, 0.2, 0.45) });
 for (const exp of profile.experience) {
-  drawLine(`${exp.role} - ${exp.company}`, { bold: true });
-  drawLine(exp.period, { color: rgb(0.35, 0.35, 0.35) });
+  drawLine(`${exp.role}`, { bold: true });
+  drawLine(`${exp.company} | ${exp.period}`, { color: rgb(0.3, 0.3, 0.3) });
   for (const point of exp.highlights) {
     drawLine(`- ${point}`, { indent: 8 });
   }
-  y -= 3;
+  y -= 2;
 }
 
-drawLine("Education", { bold: true, size: sectionSize, color: rgb(0.05, 0.2, 0.45) });
+drawLine("EDUCATION", { bold: true, size: sectionSize, color: rgb(0.05, 0.2, 0.45) });
 for (const edu of profile.education) {
-  drawLine(`- ${edu.degree}, ${edu.institution} (${edu.period}) - ${edu.score}`);
+  drawLine(`${edu.degree}, ${edu.institution} (${edu.period}) - ${edu.score}`);
 }
-y -= 3;
+y -= 2;
 
-drawLine("Skills", { bold: true, size: sectionSize, color: rgb(0.05, 0.2, 0.45) });
+drawLine("TECHNICAL SKILLS", { bold: true, size: sectionSize, color: rgb(0.05, 0.2, 0.45) });
 drawLine(`AI/ML: ${profile.skills.ai_ml.join(", ")}`);
 drawLine(`Engineering: ${profile.skills.engineering.join(", ")}`);
 drawLine(`DevOps/GitOps: ${profile.skills.devops_gitops.join(", ")}`);
-y -= 3;
+y -= 2;
 
-drawLine("Projects", { bold: true, size: sectionSize, color: rgb(0.05, 0.2, 0.45) });
+drawLine("PROJECTS", { bold: true, size: sectionSize, color: rgb(0.05, 0.2, 0.45) });
 for (const project of profile.projects) {
-  drawLine(`- ${project.name} (${project.stack.join(", ")})`);
+  drawLine(`${project.name} — ${project.stack.join(", ")}`, { bold: true });
+  drawLine(project.summary, { indent: 6 });
+  drawLine(project.link, { indent: 6, size: 9.5, color: rgb(0.25, 0.25, 0.25) });
+  if (project.github) {
+    drawLine(project.github, { indent: 6, size: 9.5, color: rgb(0.25, 0.25, 0.25) });
+  }
+  y -= 1;
 }
-y -= 3;
 
-drawLine("Certifications", { bold: true, size: sectionSize, color: rgb(0.05, 0.2, 0.45) });
+drawLine("CERTIFICATIONS", { bold: true, size: sectionSize, color: rgb(0.05, 0.2, 0.45) });
 for (const cert of profile.certifications) {
   drawLine(`- ${cert}`);
 }

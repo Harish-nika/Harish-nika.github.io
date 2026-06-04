@@ -4,113 +4,321 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="author" content="Harish Kumar S" />
-  <meta name="description" content="Full profile of Harish Kumar S - AI/ML Engineer with production K3s, FastAPI, GitOps, and RAG project experience." />
+  <meta name="description" content="Full profile and ATS-friendly resume of Harish Kumar S — AI/ML Engineer, K3s, FastAPI, GitOps, RAG, and computer vision." />
   <meta property="og:type" content="profile" />
   <meta property="og:url" content="https://harish-nika.github.io/profile.html" />
   <meta property="og:title" content="Full Profile - Harish Kumar S" />
-  <meta property="og:description" content="Experience, education, certifications, and portfolio projects of Harish Kumar S." />
-  <meta property="og:image" content="https://harish-nika.github.io/assets/img/dme/platform/user_dashboard.png" />
+  <meta property="og:description" content="Experience, skills, projects, certifications, and downloadable ATS resume." />
+  <meta property="og:image" content="https://harish-nika.github.io/assets/img/dp1.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Full Profile - Harish Kumar S" />
-  <meta name="twitter:description" content="AI/ML Engineer profile with production K3s, FastAPI, and GitOps project experience." />
-  <meta name="twitter:image" content="https://harish-nika.github.io/assets/img/dme/platform/user_dashboard.png" />
-  <title>Full Profile - Harish Kumar</title>
+  <title>Full Profile &amp; Resume - Harish Kumar S</title>
   <link rel="stylesheet" href="./assets/css/styles.css" />
   <link rel="stylesheet" href="./assets/css/portfolio-enhance.css" />
   <link rel="stylesheet" href="./assets/css/portfolio-transitions.css" />
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.6/css/line.css" />
   <style>
-    .profile-wrap { max-width: 980px; margin: 5.5rem auto 3rem; padding: 0 1rem; }
-    .profile-card { background: var(--container-color); border: 1px solid hsl(var(--hue-color), 12%, 84%); border-radius: 14px; padding: 1.2rem; margin-bottom: 1rem; }
+    .profile-page { max-width: 920px; margin: 5.25rem auto 3rem; padding: 0 1.15rem; }
+    .profile-hero {
+      background: var(--container-color);
+      border: 1px solid hsl(var(--hue-color), 12%, 84%);
+      border-radius: 16px;
+      padding: 1.5rem 1.6rem;
+      margin-bottom: 1.25rem;
+    }
+    body.dark-theme .profile-hero { border-color: hsl(var(--hue-color), 12%, 28%); }
+    .profile-hero h1 { font-size: 1.85rem; margin-bottom: 0.25rem; }
+    .profile-hero .role { color: var(--first-color); font-weight: 600; font-size: 1.05rem; margin-bottom: 0.75rem; }
+    .profile-hero .summary { line-height: 1.7; text-align: justify; margin-bottom: 1rem; }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.35rem;
+      font-size: 0.92rem;
+      margin-bottom: 1rem;
+    }
+    @media (min-width: 600px) {
+      .contact-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .contact-grid a { color: var(--first-color); word-break: break-all; }
+    .resume-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      padding: 1rem 1.1rem;
+      background: var(--input-color);
+      border-radius: 12px;
+      border: 1px solid hsl(var(--hue-color), 12%, 84%);
+      margin-bottom: 1.25rem;
+    }
+    body.dark-theme .resume-bar { border-color: hsl(var(--hue-color), 12%, 28%); }
+    .resume-bar__label {
+      width: 100%;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 0.15rem;
+      color: var(--title-color);
+    }
+    .resume-bar__hint {
+      width: 100%;
+      font-size: 0.8rem;
+      color: var(--text-color-light);
+      margin-bottom: 0.35rem;
+    }
+    .profile-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-bottom: 1.25rem;
+    }
+    .profile-nav a {
+      font-size: 0.82rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid var(--first-color);
+      color: var(--first-color);
+      text-decoration: none;
+    }
+    .profile-nav a:hover { background: var(--first-color); color: #fff; }
+    .profile-card {
+      background: var(--container-color);
+      border: 1px solid hsl(var(--hue-color), 12%, 84%);
+      border-radius: 14px;
+      padding: 1.2rem 1.35rem;
+      margin-bottom: 1rem;
+      scroll-margin-top: 5.5rem;
+    }
     body.dark-theme .profile-card { border-color: hsl(var(--hue-color), 12%, 28%); }
-    .profile-title { margin-bottom: .3rem; }
-    .profile-meta { color: var(--text-color-light); margin-bottom: .8rem; }
-    .profile-section h2 { font-size: var(--h3-font-size); margin-bottom: .8rem; }
-    .chipline { display:flex; flex-wrap:wrap; gap:.4rem; margin-top:.5rem; }
-    .chipline span { border:1px solid var(--first-color); color:var(--first-color); border-radius: 999px; padding:.2rem .6rem; font-size: .75rem; }
+    .profile-card h2 {
+      font-size: var(--h3-font-size);
+      margin-bottom: 0.85rem;
+      color: var(--first-color);
+      border-bottom: 2px solid hsl(var(--hue-color), 69%, 61%);
+      padding-bottom: 0.35rem;
+    }
+    .profile-card h3 { font-size: 1rem; margin: 0.9rem 0 0.35rem; }
+    .profile-card .period { color: var(--text-color-light); font-size: 0.9rem; margin-bottom: 0.5rem; }
+    .profile-card ul { margin-left: 1.25rem; line-height: 1.75; }
+    .profile-card li { margin-bottom: 0.35rem; text-align: justify; }
+    .highlight-list { list-style: none; margin-left: 0; padding-left: 0; }
+    .highlight-list li {
+      padding-left: 1.1rem;
+      position: relative;
+      margin-bottom: 0.45rem;
+    }
+    .highlight-list li::before {
+      content: "▸";
+      position: absolute;
+      left: 0;
+      color: var(--first-color);
+      font-weight: bold;
+    }
+    .chipline { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.45rem; }
+    .chipline span {
+      border: 1px solid var(--first-color);
+      color: var(--first-color);
+      border-radius: 999px;
+      padding: 0.2rem 0.65rem;
+      font-size: 0.78rem;
+    }
+    .project-item {
+      border-top: 1px solid hsl(var(--hue-color), 12%, 88%);
+      padding-top: 0.9rem;
+      margin-top: 0.9rem;
+    }
+    body.dark-theme .project-item { border-top-color: hsl(var(--hue-color), 12%, 28%); }
+    .project-item:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+    .project-item h3 { margin-top: 0; }
+    .project-item .stack { font-size: 0.85rem; color: var(--text-color-light); margin: 0.25rem 0 0.5rem; }
+    .project-item .desc { line-height: 1.65; margin-bottom: 0.5rem; text-align: justify; }
+    .project-links { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .project-links a { font-size: 0.85rem; }
+    .edu-row { margin-bottom: 0.75rem; }
+    .edu-row strong { display: block; }
+    .keywords-block { font-size: 0.88rem; line-height: 1.8; color: var(--text-color); }
+
+    @media print {
+      .header, .resume-bar, .profile-nav, .no-print { display: none !important; }
+      .profile-page { margin-top: 0; max-width: 100%; }
+      .profile-hero, .profile-card {
+        border: none;
+        box-shadow: none;
+        page-break-inside: avoid;
+      }
+      body { background: #fff; color: #111; }
+      .profile-card h2 { color: #111; border-color: #333; }
+      .chipline span { border-color: #333; color: #111; }
+      a { color: #111; text-decoration: underline; }
+    }
   </style>
 </head>
 <body>
   <header class="header" id="header">
     <nav class="nav container">
-      <a href="index.html" class="nav__logo"><i class="uil uil-arrow-left"></i> Back to Portfolio</a>
-      <div class="nav__btns">
+      <a href="index.html" class="nav__logo no-print"><i class="uil uil-arrow-left"></i> Back to Portfolio</a>
+      <div class="nav__btns no-print">
         <i class="uil uil-moon change-theme" id="theme-button"></i>
       </div>
     </nav>
   </header>
 
-  <main class="profile-wrap" id="profile-root"></main>
+  <main class="profile-page" id="profile-root">
+    <p>Loading profile…</p>
+  </main>
 
   <script>
-    const themeButton = document.getElementById('theme-button');
-    const darkTheme = 'dark-theme';
-    const iconTheme = 'uil-sun';
-    const selectedTheme = localStorage.getItem('selected-theme');
-    const selectedIcon = localStorage.getItem('selected-icon');
-    const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light';
-    const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'uil-moon' : 'uil-sun';
-    if (selectedTheme) {
-      document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme);
-      themeButton.classList[selectedIcon === 'uil-moon' ? 'add' : 'remove'](iconTheme);
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
     }
-    themeButton.addEventListener('click', () => {
+
+    const themeButton = document.getElementById("theme-button");
+    const darkTheme = "dark-theme";
+    const iconTheme = "uil-sun";
+    const selectedTheme = localStorage.getItem("selected-theme");
+    const selectedIcon = localStorage.getItem("selected-icon");
+    const getCurrentTheme = () => (document.body.classList.contains(darkTheme) ? "dark" : "light");
+    const getCurrentIcon = () => (themeButton.classList.contains(iconTheme) ? "uil-moon" : "uil-sun");
+    if (selectedTheme) {
+      document.body.classList[selectedTheme === "dark" ? "add" : "remove"](darkTheme);
+      themeButton.classList[selectedIcon === "uil-moon" ? "add" : "remove"](iconTheme);
+    }
+    themeButton.addEventListener("click", () => {
       document.body.classList.toggle(darkTheme);
       themeButton.classList.toggle(iconTheme);
-      localStorage.setItem('selected-theme', getCurrentTheme());
-      localStorage.setItem('selected-icon', getCurrentIcon());
+      localStorage.setItem("selected-theme", getCurrentTheme());
+      localStorage.setItem("selected-icon", getCurrentIcon());
     });
 
     async function loadProfile() {
-      const res = await fetch('./content/profile-data.json');
+      const res = await fetch("./content/profile-data.json");
       const data = await res.json();
-      const root = document.getElementById('profile-root');
+      const b = data.basics;
+      const pdf = b.resumePdf || "./content/Harish-Kumar-Resume.pdf";
+      const md = b.resumeMd || "./content/resume.md";
+
+      const root = document.getElementById("profile-root");
       root.innerHTML = `
-        <section class="profile-card">
-          <h1 class="profile-title">${data.basics.name}</h1>
-          <p class="profile-meta">${data.basics.title}</p>
-          <p>${data.basics.summary}</p>
-          <p style="margin-top:.8rem;"><strong>Email:</strong> ${data.basics.email} | <strong>Phone:</strong> ${data.basics.phone}</p>
-          <p><strong>Location:</strong> ${data.basics.location}</p>
-          <div style="margin-top:.8rem; display:flex; gap:.6rem; flex-wrap:wrap;">
-            <a class="button button--small" href="${data.basics.linkedin}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <a class="button button--small" href="${data.basics.github}" target="_blank" rel="noopener noreferrer">GitHub</a>
-            <a class="button button--small" href="./content/Harish-Kumar-Resume.pdf" target="_blank" rel="noopener noreferrer">Download Resume PDF</a>
+        <section class="profile-hero" id="top">
+          <h1>${escapeHtml(b.name)}</h1>
+          <p class="role">${escapeHtml(b.title)}</p>
+          <p class="summary">${escapeHtml(b.summary)}</p>
+          <div class="contact-grid">
+            <span><strong>Email:</strong> <a href="mailto:${escapeHtml(b.email)}">${escapeHtml(b.email)}</a></span>
+            <span><strong>Phone:</strong> ${escapeHtml(b.phone)}</span>
+            <span><strong>Location:</strong> ${escapeHtml(b.location)}</span>
+            <span><strong>Portfolio:</strong> <a href="${escapeHtml(b.portfolio || "https://harish-nika.github.io/")}" target="_blank" rel="noopener noreferrer">${escapeHtml(b.portfolio || "harish-nika.github.io")}</a></span>
+            <span><strong>LinkedIn:</strong> <a href="${escapeHtml(b.linkedin)}" target="_blank" rel="noopener noreferrer">Profile</a></span>
+            <span><strong>GitHub:</strong> <a href="${escapeHtml(b.github)}" target="_blank" rel="noopener noreferrer">Harish-nika</a></span>
           </div>
+          ${(b.highlights || []).length ? `<ul class="highlight-list">${b.highlights.map((h) => `<li>${escapeHtml(h)}</li>`).join("")}</ul>` : ""}
         </section>
 
-        <section class="profile-card profile-section">
+        <div class="resume-bar no-print" id="resume">
+          <span class="resume-bar__label"><i class="uil uil-file-download"></i> Resume (ATS-friendly)</span>
+          <span class="resume-bar__hint">Single-column PDF with standard fonts, keywords, and project URLs — optimized for applicant tracking systems.</span>
+          <a class="button button--flex button--small" href="${escapeHtml(pdf)}" download="Harish-Kumar-Resume.pdf">
+            <i class="uil uil-file-alt"></i> Download PDF
+          </a>
+          <a class="button button--flex button--small button--ghost" href="${escapeHtml(md)}" download="Harish-Kumar-Resume.md">
+            <i class="uil uil-file"></i> Download Markdown
+          </a>
+          <button type="button" class="button button--flex button--small button--ghost" onclick="window.print()">
+            <i class="uil uil-print"></i> Print / Save as PDF
+          </button>
+          <a class="button button--flex button--small button--ghost" href="${escapeHtml(b.resumeLink)}" target="_blank" rel="noopener noreferrer">
+            <i class="uil uil-cloud-download"></i> Google Drive copy
+          </a>
+        </div>
+
+        <nav class="profile-nav no-print" aria-label="Profile sections">
+          <a href="#experience">Experience</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#education">Education</a>
+          <a href="#certifications">Certifications</a>
+          <a href="#resume">Download resume</a>
+        </nav>
+
+        <section class="profile-card" id="experience">
           <h2>Experience</h2>
-          ${data.experience.map((e) => `<p><strong>${e.role}</strong> - ${e.company} <em>(${e.period})</em></p><ul>${e.highlights.map((h) => `<li>${h}</li>`).join('')}</ul>`).join('')}
+          ${data.experience
+            .map(
+              (e) => `
+            <div>
+              <h3>${escapeHtml(e.role)}</h3>
+              <p class="period">${escapeHtml(e.company)} · ${escapeHtml(e.period)}</p>
+              <ul>${e.highlights.map((h) => `<li>${escapeHtml(h)}</li>`).join("")}</ul>
+            </div>`
+            )
+            .join("")}
         </section>
 
-        <section class="profile-card profile-section">
+        <section class="profile-card" id="skills">
+          <h2>Technical Skills</h2>
+          <p><strong>AI / ML</strong></p>
+          <div class="chipline">${data.skills.ai_ml.map((s) => `<span>${escapeHtml(s)}</span>`).join("")}</div>
+          <p style="margin-top:1rem;"><strong>Engineering</strong></p>
+          <div class="chipline">${data.skills.engineering.map((s) => `<span>${escapeHtml(s)}</span>`).join("")}</div>
+          <p style="margin-top:1rem;"><strong>DevOps / GitOps</strong></p>
+          <div class="chipline">${data.skills.devops_gitops.map((s) => `<span>${escapeHtml(s)}</span>`).join("")}</div>
+          ${
+            b.keywords?.length
+              ? `<p style="margin-top:1.2rem;"><strong>ATS keywords</strong></p><p class="keywords-block">${b.keywords.map(escapeHtml).join(" · ")}</p>`
+              : ""
+          }
+        </section>
+
+        <section class="profile-card" id="projects">
+          <h2>Selected Projects</h2>
+          <p style="margin-bottom:0.5rem; line-height:1.65;">Production and research work with case studies on the portfolio. <a href="index.html#Projects">View all on main site</a>.</p>
+          ${data.projects
+            .map(
+              (p) => `
+            <article class="project-item">
+              <h3><a href="${escapeHtml(p.link)}" target="_blank" rel="noopener noreferrer">${escapeHtml(p.name)}</a></h3>
+              <p class="stack">${escapeHtml(p.stack.join(" · "))}</p>
+              <p class="desc">${escapeHtml(p.summary || "")}</p>
+              <div class="project-links">
+                <a href="${escapeHtml(p.link)}" target="_blank" rel="noopener noreferrer">Case study</a>
+                ${p.github ? `<a href="${escapeHtml(p.github)}" target="_blank" rel="noopener noreferrer">GitHub</a>` : ""}
+              </div>
+            </article>`
+            )
+            .join("")}
+        </section>
+
+        <section class="profile-card" id="education">
           <h2>Education</h2>
-          ${data.education.map((edu) => `
-            <p><strong>${edu.degree}</strong> - ${edu.institution} <em>(${edu.period})</em></p>
-            <p class="profile-meta">${edu.score}</p>
-          `).join('')}
+          ${data.education
+            .map(
+              (edu) => `
+            <div class="edu-row">
+              <strong>${escapeHtml(edu.degree)}</strong>
+              <span>${escapeHtml(edu.institution)} (${escapeHtml(edu.period)}) — ${escapeHtml(edu.score)}</span>
+            </div>`
+            )
+            .join("")}
         </section>
 
-        <section class="profile-card profile-section">
-          <h2>Skills</h2>
-          <p><strong>AI/ML</strong></p><div class="chipline">${data.skills.ai_ml.map((s) => `<span>${s}</span>`).join('')}</div>
-          <p style="margin-top:.8rem;"><strong>Engineering</strong></p><div class="chipline">${data.skills.engineering.map((s) => `<span>${s}</span>`).join('')}</div>
-          <p style="margin-top:.8rem;"><strong>DevOps/GitOps</strong></p><div class="chipline">${data.skills.devops_gitops.map((s) => `<span>${s}</span>`).join('')}</div>
-        </section>
-
-        <section class="profile-card profile-section">
-          <h2>Projects</h2>
-          <ul>${data.projects.map((p) => `<li><a href="${p.link}" target="_blank" rel="noopener noreferrer">${p.name}</a> - ${p.stack.join(', ')}</li>`).join('')}</ul>
-        </section>
-
-        <section class="profile-card profile-section">
+        <section class="profile-card" id="certifications">
           <h2>Certifications</h2>
-          <ul>${data.certifications.map((cert) => `<li>${cert}</li>`).join('')}</ul>
+          <ul>${data.certifications.map((c) => `<li>${escapeHtml(c)}</li>`).join("")}</ul>
         </section>
+
+        <p class="no-print" style="text-align:center; margin-top:1.5rem;">
+          <a href="index.html" class="button button--flex button--ghost"><i class="uil uil-arrow-left"></i> Back to Portfolio</a>
+        </p>
       `;
+      document.title = `Full Profile & Resume - ${b.name}`;
     }
-    loadProfile();
+
+    loadProfile().catch(() => {
+      document.getElementById("profile-root").innerHTML =
+        "<p>Could not load profile data. Please refresh.</p>";
+    });
   </script>
   <script src="./assets/js/portfolio-transitions.js"></script>
 </body>
