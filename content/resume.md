@@ -5,11 +5,12 @@ https://www.linkedin.com/in/harish-kumar-s-b0a0472b1/ | https://github.com/Haris
 https://harish-nika.github.io/
 
 ## Summary
-Integrated MTech in Data Science (VIT, 2025) AI/ML engineer building production systems at FactEntry Data Solutions (A SIX Company). Shipped the Data Mining Engine on K3s with GitLab CI, Argo CD GitOps, Redis queue workers, and FastAPI microservices. Also delivered RAG document systems, PyPI-published NLP tooling, Roboflow computer-vision models, and containerised AI deployments.
-- Production K3s bond-extraction platform (80+ CPU cores, Redis streams, human-in-the-loop validation)
-- GitOps: GitLab CI -> Helm promote -> Argo CD sync to stage
-- RAG and document intelligence: FAISS, Groq LLaMA, Streamlit/FastAPI
-- PyPI package: language-processing-tool | Roboflow YOLOv11 dental CV models
+Integrated MTech in Data Science (VIT, 2025) AI/ML engineer building production AI systems at FactEntry Data Solutions (A SIX Company). Experienced in MLOps, Kubernetes, GitOps, RAG pipelines, computer vision, and scalable backend engineering. Delivered enterprise-grade AI platforms using FastAPI microservices, Redis-based distributed processing, and cloud-native deployment architectures.
+- Built and deployed a production bond-extraction platform on K3s, leveraging 80+ CPU cores with Redis Streams and human-in-the-loop validation workflows.
+- Implemented end-to-end GitOps delivery pipelines using GitLab CI, Helm, and Argo CD for automated staging deployments.
+- Developed RAG-powered document intelligence systems using FAISS, Groq LLaMA, Streamlit, and FastAPI.
+- Published the language-processing-tool package on PyPI for reusable NLP workflows.
+- Trained and deployed YOLOv11 computer vision models on Roboflow for dental image analysis applications.
 
 ## Core Competencies
 AI/ML Engineer | Machine Learning | Deep Learning | Computer Vision | NLP | RAG | Python | FastAPI | Kubernetes | K3s | Docker | Redis | PostgreSQL | GitLab CI | Argo CD | Helm | GitOps | MLOps | Roboflow | YOLO | FAISS | LangChain | Streamlit
