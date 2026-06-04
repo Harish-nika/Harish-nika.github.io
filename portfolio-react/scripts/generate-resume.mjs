@@ -70,15 +70,17 @@ lines.push("");
 lines.push("## Key Projects");
 for (const project of profile.projects) {
   const gh = project.github ? ` | ${project.github}` : "";
-  lines.push(
-    `- **${project.name}** — ${project.summary} [${project.stack.join(", ")}] (${project.link}${gh})`
-  );
+  lines.push(`- **${project.name}** (${project.context})`);
+  lines.push(`  ${project.summary} [${project.stack.join(", ")}]`);
+  lines.push(`  ${project.link}${gh}`);
 }
 lines.push("");
 
 lines.push("## Certifications");
 for (const cert of profile.certifications) {
-  lines.push(`- ${cert}`);
+  const name = typeof cert === "string" ? cert : cert.name;
+  const link = typeof cert === "string" ? "" : cert.link;
+  lines.push(link ? `- ${name}: ${link}` : `- ${name}`);
 }
 
 await fs.writeFile(resumeMdPath, `${lines.join("\n")}\n`, "utf8");
@@ -191,8 +193,10 @@ y -= 2;
 
 drawLine("PROJECTS", { bold: true, size: sectionSize, color: rgb(0.05, 0.2, 0.45) });
 for (const project of profile.projects) {
-  drawLine(`${project.name} — ${project.stack.join(", ")}`, { bold: true });
+  drawLine(`${project.name}`, { bold: true });
+  drawLine(`Where: ${project.context}`, { indent: 6, color: rgb(0.3, 0.3, 0.3) });
   drawLine(project.summary, { indent: 6 });
+  drawLine(`Tech: ${project.stack.join(", ")}`, { indent: 6, size: 9.5 });
   drawLine(project.link, { indent: 6, size: 9.5, color: rgb(0.25, 0.25, 0.25) });
   if (project.github) {
     drawLine(project.github, { indent: 6, size: 9.5, color: rgb(0.25, 0.25, 0.25) });
@@ -202,7 +206,12 @@ for (const project of profile.projects) {
 
 drawLine("CERTIFICATIONS", { bold: true, size: sectionSize, color: rgb(0.05, 0.2, 0.45) });
 for (const cert of profile.certifications) {
-  drawLine(`- ${cert}`);
+  const name = typeof cert === "string" ? cert : cert.name;
+  const link = typeof cert === "string" ? "" : cert.link;
+  drawLine(link ? `- ${name}` : `- ${name}`);
+  if (link) {
+    drawLine(link, { indent: 10, size: 9.5, color: rgb(0.25, 0.25, 0.25) });
+  }
 }
 
 const pdfBytes = await pdfDoc.save();

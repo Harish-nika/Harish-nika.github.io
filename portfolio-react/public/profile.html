@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="author" content="Harish Kumar S" />
-  <meta name="description" content="Full profile and ATS-friendly resume of Harish Kumar S — AI/ML Engineer, K3s, FastAPI, GitOps, RAG, and computer vision." />
+  <meta name="description" content="Full profile and resume of Harish Kumar S — AI/ML Engineer, K3s, FastAPI, GitOps, RAG, and computer vision." />
   <meta property="og:type" content="profile" />
   <meta property="og:url" content="https://harish-nika.github.io/profile.html" />
   <meta property="og:title" content="Full Profile - Harish Kumar S" />
@@ -135,6 +135,14 @@
     .edu-row { margin-bottom: 0.75rem; }
     .edu-row strong { display: block; }
     .keywords-block { font-size: 0.88rem; line-height: 1.8; color: var(--text-color); }
+    .project-context {
+      font-size: 0.9rem;
+      color: var(--first-color);
+      font-weight: 600;
+      margin: 0.2rem 0 0.45rem;
+    }
+    .cert-list { list-style: none; margin-left: 0; padding-left: 0; }
+    .cert-list li { margin-bottom: 0.65rem; line-height: 1.5; }
 
     @media print {
       .header, .resume-bar, .profile-nav, .no-print { display: none !important; }
@@ -217,19 +225,19 @@
         </section>
 
         <div class="resume-bar no-print" id="resume">
-          <span class="resume-bar__label"><i class="uil uil-file-download"></i> Resume (ATS-friendly)</span>
-          <span class="resume-bar__hint">Single-column PDF with standard fonts, keywords, and project URLs — optimized for applicant tracking systems.</span>
+          <span class="resume-bar__label"><i class="uil uil-file-download"></i> Resume</span>
+          <span class="resume-bar__hint">Download or print a single-page-friendly PDF with experience, projects (with context), skills, and certificate links.</span>
           <a class="button button--flex button--small" href="${escapeHtml(pdf)}" download="Harish-Kumar-Resume.pdf">
             <i class="uil uil-file-alt"></i> Download PDF
           </a>
           <a class="button button--flex button--small button--ghost" href="${escapeHtml(md)}" download="Harish-Kumar-Resume.md">
-            <i class="uil uil-file"></i> Download Markdown
+            <i class="uil uil-file"></i> Markdown
           </a>
           <button type="button" class="button button--flex button--small button--ghost" onclick="window.print()">
-            <i class="uil uil-print"></i> Print / Save as PDF
+            <i class="uil uil-print"></i> Print
           </button>
           <a class="button button--flex button--small button--ghost" href="${escapeHtml(b.resumeLink)}" target="_blank" rel="noopener noreferrer">
-            <i class="uil uil-cloud-download"></i> Google Drive copy
+            <i class="uil uil-cloud-download"></i> Google Drive
           </a>
         </div>
 
@@ -239,7 +247,6 @@
           <a href="#projects">Projects</a>
           <a href="#education">Education</a>
           <a href="#certifications">Certifications</a>
-          <a href="#resume">Download resume</a>
         </nav>
 
         <section class="profile-card" id="experience">
@@ -266,7 +273,7 @@
           <div class="chipline">${data.skills.devops_gitops.map((s) => `<span>${escapeHtml(s)}</span>`).join("")}</div>
           ${
             b.keywords?.length
-              ? `<p style="margin-top:1.2rem;"><strong>ATS keywords</strong></p><p class="keywords-block">${b.keywords.map(escapeHtml).join(" · ")}</p>`
+              ? `<p style="margin-top:1.2rem;"><strong>Core keywords</strong></p><p class="keywords-block">${b.keywords.map(escapeHtml).join(" · ")}</p>`
               : ""
           }
         </section>
@@ -279,6 +286,7 @@
               (p) => `
             <article class="project-item">
               <h3><a href="${escapeHtml(p.link)}" target="_blank" rel="noopener noreferrer">${escapeHtml(p.name)}</a></h3>
+              <p class="project-context">${escapeHtml(p.context || "")}</p>
               <p class="stack">${escapeHtml(p.stack.join(" · "))}</p>
               <p class="desc">${escapeHtml(p.summary || "")}</p>
               <div class="project-links">
@@ -305,7 +313,15 @@
 
         <section class="profile-card" id="certifications">
           <h2>Certifications</h2>
-          <ul>${data.certifications.map((c) => `<li>${escapeHtml(c)}</li>`).join("")}</ul>
+          <ul class="cert-list">${data.certifications
+            .map((c) => {
+              const name = typeof c === "string" ? c : c.name;
+              const link = typeof c === "string" ? "" : c.link;
+              return link
+                ? `<li><a href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer">${escapeHtml(name)}</a></li>`
+                : `<li>${escapeHtml(name)}</li>`;
+            })
+            .join("")}</ul>
         </section>
 
         <p class="no-print" style="text-align:center; margin-top:1.5rem;">
