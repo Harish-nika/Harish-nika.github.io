@@ -172,6 +172,18 @@ body.dark-theme .tech-chip {
   font-weight: var(--font-medium);
 }
 
+.about__highlights {
+  margin: 1rem 0 0;
+  padding-left: 1.15rem;
+  line-height: 1.7;
+  font-size: var(--small-font-size);
+  color: var(--text-color);
+}
+
+.about__highlights li {
+  margin-bottom: 0.4rem;
+}
+
 /* UI screenshots — no crop */
 .project-img--ui,
 .project-card--featured .project-img--ui {
