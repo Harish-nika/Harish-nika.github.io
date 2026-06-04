@@ -109,6 +109,11 @@
       "name": "MedBot (Medical RAG Assistant)",
       "link": "https://harish-nika.github.io/medbot.html",
       "stack": ["Streamlit", "FAISS", "Sentence Transformers", "Groq"]
+    },
+    {
+      "name": "Dental ML Project",
+      "link": "https://harish-nika.github.io/dental-project.html",
+      "stack": ["Roboflow", "YOLOv11", "inference-sdk", "Supervision", "OpenCV"]
     }
   ],
   "certifications": [

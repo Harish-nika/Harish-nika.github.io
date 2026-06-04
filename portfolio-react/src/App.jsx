@@ -239,6 +239,7 @@ function App() {
 
     const projectPageNames = new Set([
       "dme-project.html",
+      "dental-project.html",
       "fexpert.html",
       "content-moderator.html",
       "lang-tool.html",

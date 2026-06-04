@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Harish Kumar S">
+    <meta name="description" content="Dental ML Project case study — YOLOv11 object detection on dental imagery fine-tuned in Roboflow, with serverless and local Roboflow Inference.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://harish-nika.github.io/dental-project.html">
+    <meta property="og:title" content="Dental ML Project - Full Case Study">
+    <meta property="og:description" content="Two YOLOv11 models for tooth and panoramic X-ray detection — Roboflow training, metrics, and Inference SDK deployment.">
+    <meta property="og:image" content="https://harish-nika.github.io/assets/img/Dental_project/yolo/test1.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Dental ML Project - Full Case Study">
+    <meta name="twitter:description" content="Dental computer vision with Roboflow YOLOv11 fine-tuning and production-style inference CLI.">
+    <meta name="twitter:image" content="https://harish-nika.github.io/assets/img/Dental_project/yolo/test1.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" href="./assets/favicon.ico">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.6/css/line.css">
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="./assets/css/portfolio-enhance.css">
+    <link rel="stylesheet" href="./assets/css/portfolio-transitions.css">
+
+    <title>Dental ML Project - Full Case Study</title>
+    <style>
+        .case-study-header { text-align: center; margin-bottom: 2rem; padding-top: 5rem; }
+        .case-study-title { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .probation-badge {
+            display: inline-block; background-color: var(--first-color); color: #fff;
+            padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem;
+            font-weight: 600; margin-bottom: 1.5rem;
+        }
+        .case-study-subtitle {
+            font-size: 1.1rem; color: var(--text-color-light); max-width: 860px;
+            margin: 0 auto 1rem; text-align: left; line-height: 1.65;
+        }
+        .case-study .project-img.project-img--ui { object-fit: contain; }
+        .tabs {
+            display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem;
+            margin-bottom: 2rem; border-bottom: 2px solid var(--text-color-light); padding-bottom: 1rem;
+        }
+        .tab-btn {
+            background: none; border: none; font-size: 1.05rem; font-weight: 600;
+            color: var(--text-color-light); cursor: pointer; padding: 0.5rem 1rem;
+            transition: color 0.3s; position: relative;
+        }
+        .tab-btn:hover { color: var(--first-color); }
+        .tab-btn.active { color: var(--first-color); }
+        .tab-btn.active::after {
+            content: ''; position: absolute; left: 0; bottom: -18px;
+            width: 100%; height: 3px; background-color: var(--first-color); border-radius: 3px;
+        }
+        .tab-content {
+            display: block; scroll-margin-top: 6.5rem; padding-top: 0.5rem;
+            margin-bottom: 3rem; border-bottom: 1px solid hsl(var(--hue-color), 12%, 88%);
+            padding-bottom: 2rem;
+        }
+        body.dark-theme .tab-content { border-bottom-color: hsl(var(--hue-color), 12%, 28%); }
+        .project-section { margin-bottom: 3rem; }
+        .project-img {
+            width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-bottom: 1.5rem; border: 1px solid rgba(0,0,0,0.1);
+        }
+        .img-caption {
+            text-align: center; font-size: 0.95rem; font-weight: 500;
+            color: var(--title-color); margin-top: -1rem; margin-bottom: 2.5rem;
+        }
+        .feature-grid {
+            display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: start;
+        }
+        @media screen and (min-width: 768px) {
+            .feature-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        .back-btn {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            margin-top: 2rem; margin-bottom: 2rem; padding: 0.75rem 1.5rem;
+            background-color: var(--first-color); color: #fff; border-radius: 8px;
+            text-decoration: none; font-weight: 500;
+        }
+        .back-btn:hover { background-color: var(--first-color-alt); }
+        .metrics-table {
+            width: 100%; border-collapse: collapse; margin-bottom: 2rem; font-size: 0.95rem;
+        }
+        .metrics-table th, .metrics-table td {
+            border: 1px solid hsl(var(--hue-color), 12%, 80%);
+            padding: 10px 12px; text-align: left;
+        }
+        body.dark-theme .metrics-table th, body.dark-theme .metrics-table td {
+            border-color: hsl(var(--hue-color), 12%, 28%);
+        }
+        .metrics-table th { background: var(--input-color); font-weight: 600; }
+        .arch-list { line-height: 1.8; margin-left: 1.5rem; margin-bottom: 1.5rem; text-align: justify; }
+        .arch-list li { margin-bottom: 0.5rem; }
+        .code-block {
+            background: hsl(var(--hue-color), 20%, 14%); color: #e2e8f0;
+            border-radius: 8px; padding: 1rem 1.25rem; font-size: 0.85rem;
+            font-family: "Courier New", monospace; overflow-x: auto; line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        .note-box {
+            background: var(--input-color); border-left: 4px solid var(--first-color);
+            padding: 1rem 1.2rem; border-radius: 0 8px 8px 0;
+            line-height: 1.7; margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body class="case-study">
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="index.html" class="nav__logo"><i class="fa-solid fa-arrow-left"></i> Back to Portfolio</a>
+            <div class="nav__btns">
+                <i class="uil uil-moon change-theme" id="theme-button"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="section container">
+            <div class="case-study-header">
+                <h1 class="case-study-title">Dental ML Project</h1>
+                <p class="case-study-tagline">YOLOv11 object detection on dental imagery — Roboflow fine-tuning &amp; inference</p>
+                <div class="probation-badge"><i class="uil uil-flask"></i> Computer Vision | Roboflow</div>
+                <ul class="case-study-hero-bullets">
+                    <li>Two fine-tuned detection models</li>
+                    <li>Roboflow Inference SDK</li>
+                    <li>Serverless + local backends</li>
+                    <li>Supervision visualization</li>
+                </ul>
+                <p class="case-study-subtitle">
+                    Object detection on dental imagery using models trained and fine-tuned in Roboflow. This project
+                    documents two YOLOv11 fine-tuned tracks (tooth and panoramic X-ray), training metrics from the
+                    Roboflow dashboard, and a runnable CLI for inference via HTTP serverless API or local
+                    <code>inference</code> weights. A planned comparison with a locally trained Faster R-CNN baseline is
+                    listed as future work.
+                </p>
+                <p class="note-box" style="max-width: 860px; margin: 0 auto 1rem;">
+                    <strong>Naming note:</strong> Folders <code>coco</code> and <code>yolo</code> in assets refer to the
+                    <strong>tooth</strong> and <strong>pano</strong> training tracks in this repo — both models are
+                    YOLOv11 on Roboflow, not COCO-format vs raw YOLO dataset formats.
+                </p>
+            </div>
+
+            <div class="case-study-tabs-wrap">
+                <nav class="tabs tabs-sticky" aria-label="Case study sections">
+                    <button type="button" class="tab-btn active" data-tab="overview" onclick="openTab(event,'overview')">Overview</button>
+                    <button type="button" class="tab-btn" data-tab="tooth" onclick="openTab(event,'tooth')">Tooth model</button>
+                    <button type="button" class="tab-btn" data-tab="pano" onclick="openTab(event,'pano')">Pano model</button>
+                    <button type="button" class="tab-btn" data-tab="inference" onclick="openTab(event,'inference')">Inference &amp; usage</button>
+                </nav>
+
+                <div id="overview" class="tab-content">
+                    <div class="project-section">
+                        <h2 class="section__title">Models at a glance</h2>
+                        <table class="metrics-table" aria-label="Model metrics">
+                            <thead>
+                                <tr>
+                                    <th>Track</th>
+                                    <th>Roboflow name</th>
+                                    <th>Model ID</th>
+                                    <th>mAP@50</th>
+                                    <th>Precision</th>
+                                    <th>Recall</th>
+                                    <th>F1</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Tooth (<code>coco</code>)</td>
+                                    <td>tooth 1</td>
+                                    <td><code>tooth-bqo56-ez1w4/1</code></td>
+                                    <td>87.7%</td>
+                                    <td>89.3%</td>
+                                    <td>80.4%</td>
+                                    <td>84.6%</td>
+                                </tr>
+                                <tr>
+                                    <td>Pano (<code>yolo</code>)</td>
+                                    <td>pano 1</td>
+                                    <td><code>pano-fcjgf-nn0ku/1</code></td>
+                                    <td>70.3%</td>
+                                    <td>72.1%</td>
+                                    <td>68.4%</td>
+                                    <td>70.2%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p style="text-align: justify; margin-bottom: 1rem;">
+                            Both models use <strong>YOLOv11 Object Detection (Accurate)</strong> in Roboflow (license AGPL-3.0).
+                            <a href="https://universe.roboflow.com/harishnika/pano-fcjgf-nn0ku/model/1" target="_blank" rel="noopener noreferrer">Pano model on Roboflow Universe</a>.
+                        </p>
+
+                        <h2 class="section__title">Technical highlights</h2>
+                        <ul class="arch-list">
+                            <li><strong>End-to-end Roboflow workflow:</strong> Dataset annotation, fine-tuning, and deployment IDs for private inference.</li>
+                            <li><strong>Dual inference backends:</strong> <code>inference-sdk</code> HTTP client against serverless Roboflow, or local <code>get_model</code> from the <code>inference</code> package.</li>
+                            <li><strong>Visualization pipeline:</strong> Predictions converted via Supervision <code>Detections.from_inference</code>, boxed and labeled, saved under <code>outputs/</code>.</li>
+                            <li><strong>Tooth classes:</strong> Cavity, Fillings, Impacted Tooth, Implant — per-class validation mAP@50 up to 97% (Implant).</li>
+                            <li><strong>Pano classes:</strong> Caries and Filling detection on panoramic X-rays (example inference at 40% confidence threshold).</li>
+                            <li><strong>Future work:</strong> Local Faster R-CNN training and side-by-side evaluation vs these YOLOv11 models.</li>
+                        </ul>
+
+                        <div class="feature-grid">
+                            <div>
+                                <img src="./assets/img/Dental_project/coco/finetuning_with_coco.png" alt="Roboflow tooth 1 fine-tuned model dashboard" class="project-img project-img--ui" loading="lazy">
+                                <p class="img-caption">Tooth model — Roboflow fine-tuned summary (tooth 1)</p>
+                            </div>
+                            <div>
+                                <img src="./assets/img/Dental_project/yolo/finetuned_with_Yolo.png" alt="Roboflow pano 1 fine-tuned model dashboard" class="project-img project-img--ui" loading="lazy">
+                                <p class="img-caption">Pano model — Roboflow fine-tuned summary (pano 1)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tooth" class="tab-content">
+                    <div class="project-section">
+                        <h2 class="section__title">Tooth detection model</h2>
+                        <p style="text-align: justify; margin-bottom: 2rem;">
+                            Per-class mAP@50 on the validation set: <strong>Cavity 71%</strong>, <strong>Fillings 92%</strong>,
+                            <strong>Impacted Tooth 90%</strong>, <strong>Implant 97%</strong>; overall mAP ~88%.
+                        </p>
+                        <img src="./assets/img/Dental_project/coco/training_graph.png" alt="Tooth model mAP loss curves and per-class AP" class="project-img project-img--ui" loading="lazy">
+                        <p class="img-caption">mAP, loss curves, and average precision by class over training</p>
+
+                        <div class="feature-grid">
+                            <div>
+                                <img src="./assets/img/Dental_project/coco/advanced_training_graph.png" alt="Advanced tooth training metrics" class="project-img project-img--ui" loading="lazy">
+                                <p class="img-caption">Extended training metrics</p>
+                            </div>
+                            <div>
+                                <img src="./assets/img/Dental_project/coco/finetuning_parameter.png" alt="Tooth fine-tuning parameters" class="project-img project-img--ui" loading="lazy">
+                                <p class="img-caption">Fine-tuning configuration</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="pano" class="tab-content">
+                    <div class="project-section">
+                        <h2 class="section__title">Panoramic X-ray model</h2>
+                        <p style="text-align: justify; margin-bottom: 2rem;">
+                            Detects <strong>Caries</strong> and <strong>Filling</strong> on panoramic dental X-rays. Dataset
+                            and class setup were managed in Roboflow; example predictions below use a 40% confidence threshold.
+                        </p>
+                        <img src="./assets/img/Dental_project/yolo/test1.png" alt="Example pano inference Caries and Filling" class="project-img project-img--ui" loading="lazy">
+                        <p class="img-caption">Example predictions on a panoramic X-ray (Caries, Filling)</p>
+
+                        <img src="./assets/img/Dental_project/yolo/training_graph.png" alt="Pano training mAP and loss" class="project-img project-img--ui" loading="lazy">
+                        <p class="img-caption">Training mAP and loss curves</p>
+
+                        <div class="feature-grid">
+                            <div>
+                                <img src="./assets/img/Dental_project/yolo/roboflow_annotated_DS.png" alt="Roboflow annotated dataset preview" class="project-img project-img--ui" loading="lazy">
+                                <p class="img-caption">Annotated dataset preview</p>
+                            </div>
+                            <div>
+                                <img src="./assets/img/Dental_project/yolo/classes_tags.png" alt="Pano class labels" class="project-img project-img--ui" loading="lazy">
+                                <p class="img-caption">Class labels in the pano dataset</p>
+                            </div>
+                            <div>
+                                <img src="./assets/img/Dental_project/yolo/finetuning_parameter.png" alt="Pano fine-tuning parameters" class="project-img project-img--ui" loading="lazy">
+                                <p class="img-caption">Fine-tuning configuration</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="inference" class="tab-content">
+                    <div class="project-section">
+                        <h2 class="section__title">Project structure</h2>
+                        <pre class="code-block">Dental_ML_project/
+├── app.py                 # CLI entry point
+├── requirements.txt
+├── src/
+│   ├── config.py          # Model IDs and API key helpers
+│   ├── annotate.py        # Load image, annotate, save
+│   ├── inference_http.py  # Serverless HTTP inference
+│   └── inference_local.py # Local inference (get_model)
+├── assets/
+│   ├── coco/              # Tooth model screenshots
+│   └── yolo/              # Pano model screenshots
+└── outputs/               # Annotated images (runtime)</pre>
+
+                        <h2 class="section__title">Install</h2>
+                        <pre class="code-block">cd Dental_ML_project
+python -m venv .venv
+source .venv/bin/activate   # Windows: .venv\Scripts\activate
+pip install -r requirements.txt</pre>
+                        <p style="text-align: justify; margin-bottom: 1rem;">
+                            Optional GPU: <code>pip install --extra-index-url https://download.pytorch.org/whl/cu124 inference-gpu</code>
+                            — see <a href="https://inference.roboflow.com/quickstart/run_a_model/" target="_blank" rel="noopener noreferrer">Roboflow install docs</a>.
+                        </p>
+
+                        <h2 class="section__title">Run inference</h2>
+                        <p style="text-align: justify; margin-bottom: 1rem;">
+                            Set your API key from Roboflow dashboard → <strong>Deploy</strong>:
+                        </p>
+                        <pre class="code-block">export ROBOFLOW_API_KEY=&lt;your_api_key&gt;
+# or: cp .env.example .env</pre>
+
+                        <p><strong>HTTP / serverless (default)</strong> — <a href="https://inference.roboflow.com/quickstart/explore_models/" target="_blank" rel="noopener noreferrer">InferenceHTTPClient</a>:</p>
+                        <pre class="code-block">python app.py --model tooth --image path/to/tooth_image.jpg
+python app.py --model pano --image path/to/pano_image.jpg
+python app.py --model pano --image https://example.com/xray.jpg --output outputs/result.png
+python app.py --model pano --image xray.jpg --display</pre>
+
+                        <p><strong>Local weights</strong> — <a href="https://inference.roboflow.com/quickstart/run_a_model/" target="_blank" rel="noopener noreferrer">get_model</a>:</p>
+                        <pre class="code-block">python app.py --model pano --image path/to/pano_image.jpg --backend local
+python app.py --model tooth --image path/to/tooth_image.jpg --backend local</pre>
+
+                        <p style="text-align: justify;">
+                            Annotated images save under <code>outputs/</code> by default (e.g. <code>outputs/tooth_annotated.png</code>).
+                            For a self-hosted Inference Server, use <code>api_url=http://localhost:9001</code> in <code>src/config.py</code>.
+                        </p>
+
+                        <h2 class="section__title" style="margin-top: 2rem;">References</h2>
+                        <ul class="arch-list">
+                            <li><a href="https://inference.roboflow.com/quickstart/run_a_model/" target="_blank" rel="noopener noreferrer">Run a model (Roboflow Inference)</a></li>
+                            <li><a href="https://inference.roboflow.com/quickstart/explore_models/" target="_blank" rel="noopener noreferrer">Fine-tuned private models</a></li>
+                            <li><a href="https://universe.roboflow.com/harishnika/pano-fcjgf-nn0ku/model/1" target="_blank" rel="noopener noreferrer">Pano model on Roboflow Universe</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center;">
+                <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Back to Portfolio</a>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        function openTab(evt, tabName) {
+            if (evt && evt.preventDefault) evt.preventDefault();
+            var tablinks = document.querySelectorAll(".case-study-tabs-wrap .tab-btn");
+            tablinks.forEach(function (btn) {
+                btn.classList.toggle("active", btn.getAttribute("data-tab") === tabName);
+            });
+            var section = document.getElementById(tabName);
+            if (section) section.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+
+        const themeButton = document.getElementById('theme-button');
+        const darkTheme = 'dark-theme';
+        const iconTheme = 'uil-sun';
+        const selectedTheme = localStorage.getItem('selected-theme');
+        const selectedIcon = localStorage.getItem('selected-icon');
+        const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light';
+        const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'uil-moon' : 'uil-sun';
+
+        if (selectedTheme) {
+            document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme);
+            themeButton.classList[selectedIcon === 'uil-moon' ? 'add' : 'remove'](iconTheme);
+        }
+
+        themeButton.addEventListener('click', () => {
+            document.body.classList.toggle(darkTheme);
+            themeButton.classList.toggle(iconTheme);
+            localStorage.setItem('selected-theme', getCurrentTheme());
+            localStorage.setItem('selected-icon', getCurrentIcon());
+        });
+    </script>
+    <script src="./assets/js/portfolio-transitions.js"></script>
+    <script src="./assets/js/portfolio-enhance.js"></script>
+</body>
+</html>
