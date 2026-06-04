@@ -131,8 +131,9 @@
                     Object detection on dental imagery using models trained and fine-tuned in Roboflow. This project
                     documents two YOLOv11 fine-tuned tracks (tooth and panoramic X-ray), training metrics from the
                     Roboflow dashboard, and a runnable CLI for inference via HTTP serverless API or local
-                    <code>inference</code> weights. A planned comparison with a locally trained Faster R-CNN baseline is
-                    listed as future work.
+                    <code>inference</code> weights.
+                    <a href="https://github.com/Harish-nika/Dental_ML_project" target="_blank" rel="noopener noreferrer">Source on GitHub</a>.
+                    A planned comparison with a locally trained Faster R-CNN baseline is listed as future work.
                 </p>
                 <p class="note-box" style="max-width: 860px; margin: 0 auto 1rem;">
                     <strong>Naming note:</strong> Folders <code>coco</code> and <code>yolo</code> in assets refer to the
@@ -187,8 +188,37 @@
                         </table>
                         <p style="text-align: justify; margin-bottom: 1rem;">
                             Both models use <strong>YOLOv11 Object Detection (Accurate)</strong> in Roboflow (license AGPL-3.0).
-                            <a href="https://universe.roboflow.com/harishnika/pano-fcjgf-nn0ku/model/1" target="_blank" rel="noopener noreferrer">Pano model on Roboflow Universe</a>.
+                            <a href="https://universe.roboflow.com/harishnika/pano-fcjgf-nn0ku/model/1" target="_blank" rel="noopener noreferrer">Pano model on Roboflow Universe</a>
+                            · <a href="https://github.com/Harish-nika/Dental_ML_project" target="_blank" rel="noopener noreferrer">github.com/Harish-nika/Dental_ML_project</a>.
                         </p>
+
+                        <h2 class="section__title">Tooth track — classes &amp; labels (<code>coco</code>)</h2>
+                        <table class="metrics-table" aria-label="Tooth dataset classes">
+                            <thead><tr><th>Class</th><th>Annotations</th></tr></thead>
+                            <tbody>
+                                <tr><td>Cavity</td><td>641</td></tr>
+                                <tr><td>Fillings</td><td>6,097</td></tr>
+                                <tr><td>Impacted Tooth</td><td>498</td></tr>
+                                <tr><td>Implant</td><td>2,047</td></tr>
+                            </tbody>
+                        </table>
+
+                        <h2 class="section__title">Pano track — classes &amp; labels (<code>yolo</code>)</h2>
+                        <p style="text-align: justify; margin-bottom: 1rem;">14 panoramic classes; largest label counts include Filling (55,964), impacted tooth (32,520), Root Canal Treatment (25,108), Crown (14,476), and Caries (13,316).</p>
+                        <table class="metrics-table" aria-label="Pano dataset classes">
+                            <thead><tr><th>Class</th><th>Annotations</th></tr></thead>
+                            <tbody>
+                                <tr><td>Filling</td><td>55,964</td></tr>
+                                <tr><td>impacted tooth</td><td>32,520</td></tr>
+                                <tr><td>Root Canal Treatment</td><td>25,108</td></tr>
+                                <tr><td>Crown</td><td>14,476</td></tr>
+                                <tr><td>Caries</td><td>13,316</td></tr>
+                                <tr><td>Periapical lesion</td><td>8,104</td></tr>
+                                <tr><td>Missing teeth</td><td>5,108</td></tr>
+                                <tr><td>Root Piece</td><td>4,100</td></tr>
+                                <tr><td>Implant</td><td>2,736</td></tr>
+                            </tbody>
+                        </table>
 
                         <h2 class="section__title">Technical highlights</h2>
                         <ul class="arch-list">
@@ -196,7 +226,7 @@
                             <li><strong>Dual inference backends:</strong> <code>inference-sdk</code> HTTP client against serverless Roboflow, or local <code>get_model</code> from the <code>inference</code> package.</li>
                             <li><strong>Visualization pipeline:</strong> Predictions converted via Supervision <code>Detections.from_inference</code>, boxed and labeled, saved under <code>outputs/</code>.</li>
                             <li><strong>Tooth classes:</strong> Cavity, Fillings, Impacted Tooth, Implant — per-class validation mAP@50 up to 97% (Implant).</li>
-                            <li><strong>Pano classes:</strong> Caries and Filling detection on panoramic X-rays (example inference at 40% confidence threshold).</li>
+                            <li><strong>Pano classes:</strong> 14 panoramic labels (Caries, Filling, Crown, RCT, canals, sinuses, etc.) — UI example highlights Caries/Filling at 40% confidence.</li>
                             <li><strong>Future work:</strong> Local Faster R-CNN training and side-by-side evaluation vs these YOLOv11 models.</li>
                         </ul>
 
@@ -215,11 +245,13 @@
 
                 <div id="tooth" class="tab-content">
                     <div class="project-section">
-                        <h2 class="section__title">Tooth detection model</h2>
+                        <h2 class="section__title">Tooth detection model (<code>coco</code> track)</h2>
                         <p style="text-align: justify; margin-bottom: 2rem;">
-                            Per-class mAP@50 on the validation set: <strong>Cavity 71%</strong>, <strong>Fillings 92%</strong>,
-                            <strong>Impacted Tooth 90%</strong>, <strong>Implant 97%</strong>; overall mAP ~88%.
+                            Model ID <code>tooth-bqo56-ez1w4/1</code>. Four classes with 9k+ Roboflow labels. Per-class mAP@50 on the validation set:
+                            <strong>Cavity 71%</strong>, <strong>Fillings 92%</strong>, <strong>Impacted Tooth 90%</strong>, <strong>Implant 97%</strong>; overall mAP ~88%.
                         </p>
+                        <img src="./assets/img/Dental_project/coco/classes_tags.png" alt="Tooth dataset classes and annotation counts" class="project-img project-img--ui" loading="lazy">
+                        <p class="img-caption">Tooth classes &amp; tags — Cavity, Fillings, Impacted Tooth, Implant</p>
                         <img src="./assets/img/Dental_project/coco/training_graph.png" alt="Tooth model mAP loss curves and per-class AP" class="project-img project-img--ui" loading="lazy">
                         <p class="img-caption">mAP, loss curves, and average precision by class over training</p>
 
@@ -238,11 +270,14 @@
 
                 <div id="pano" class="tab-content">
                     <div class="project-section">
-                        <h2 class="section__title">Panoramic X-ray model</h2>
+                        <h2 class="section__title">Panoramic X-ray model (<code>yolo</code> track)</h2>
                         <p style="text-align: justify; margin-bottom: 2rem;">
-                            Detects <strong>Caries</strong> and <strong>Filling</strong> on panoramic dental X-rays. Dataset
-                            and class setup were managed in Roboflow; example predictions below use a 40% confidence threshold.
+                            Model ID <code>pano-fcjgf-nn0ku/1</code>. Fourteen panoramic classes (Caries, Filling, Crown, Root Canal Treatment,
+                            impacted tooth, Implant, Mandibular Canal, maxillary sinus, Missing teeth, Periapical lesion, and more).
+                            Example UI inference below highlights <strong>Caries</strong> and <strong>Filling</strong> at 40% confidence.
                         </p>
+                        <img src="./assets/img/Dental_project/yolo/classes_tags.png" alt="Pano dataset 14 classes and counts" class="project-img project-img--ui" loading="lazy">
+                        <p class="img-caption">Pano classes &amp; tags — 14 classes and annotation volumes</p>
                         <img src="./assets/img/Dental_project/yolo/test1.png" alt="Example pano inference Caries and Filling" class="project-img project-img--ui" loading="lazy">
                         <p class="img-caption">Example predictions on a panoramic X-ray (Caries, Filling)</p>
 
@@ -251,12 +286,12 @@
 
                         <div class="feature-grid">
                             <div>
-                                <img src="./assets/img/Dental_project/yolo/roboflow_annotated_DS.png" alt="Roboflow annotated dataset preview" class="project-img project-img--ui" loading="lazy">
-                                <p class="img-caption">Annotated dataset preview</p>
+                                <img src="./assets/img/Dental_project/yolo/advanced_training_graph.png" alt="Advanced pano training metrics" class="project-img project-img--ui" loading="lazy">
+                                <p class="img-caption">Extended training metrics</p>
                             </div>
                             <div>
-                                <img src="./assets/img/Dental_project/yolo/classes_tags.png" alt="Pano class labels" class="project-img project-img--ui" loading="lazy">
-                                <p class="img-caption">Class labels in the pano dataset</p>
+                                <img src="./assets/img/Dental_project/yolo/roboflow_annotated_DS.png" alt="Roboflow annotated dataset preview" class="project-img project-img--ui" loading="lazy">
+                                <p class="img-caption">Annotated dataset preview</p>
                             </div>
                             <div>
                                 <img src="./assets/img/Dental_project/yolo/finetuning_parameter.png" alt="Pano fine-tuning parameters" class="project-img project-img--ui" loading="lazy">
@@ -283,7 +318,8 @@
 └── outputs/               # Annotated images (runtime)</pre>
 
                         <h2 class="section__title">Install</h2>
-                        <pre class="code-block">cd Dental_ML_project
+                        <pre class="code-block">git clone https://github.com/Harish-nika/Dental_ML_project.git
+cd Dental_ML_project
 python -m venv .venv
 source .venv/bin/activate   # Windows: .venv\Scripts\activate
 pip install -r requirements.txt</pre>
@@ -319,6 +355,7 @@ python app.py --model tooth --image path/to/tooth_image.jpg --backend local</pre
                             <li><a href="https://inference.roboflow.com/quickstart/run_a_model/" target="_blank" rel="noopener noreferrer">Run a model (Roboflow Inference)</a></li>
                             <li><a href="https://inference.roboflow.com/quickstart/explore_models/" target="_blank" rel="noopener noreferrer">Fine-tuned private models</a></li>
                             <li><a href="https://universe.roboflow.com/harishnika/pano-fcjgf-nn0ku/model/1" target="_blank" rel="noopener noreferrer">Pano model on Roboflow Universe</a></li>
+                            <li><a href="https://github.com/Harish-nika/Dental_ML_project" target="_blank" rel="noopener noreferrer">GitHub — Harish-nika/Dental_ML_project</a></li>
                         </ul>
                     </div>
                 </div>

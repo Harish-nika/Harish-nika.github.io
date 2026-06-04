@@ -1115,13 +1115,14 @@
                         </div>
                         <div class="project-card__body">
                             <ul>
-                                <li>Two fine-tuned models: <code>tooth-bqo56-ez1w4/1</code> (Cavity, Fillings, Impacted Tooth, Implant) and <code>pano-fcjgf-nn0ku/1</code> (Caries, Filling on pano X-rays).</li>
-                                <li>Runnable CLI for serverless HTTP inference or local <code>get_model</code> weights with annotated outputs via Supervision.</li>
-                                <li>Training dashboards, loss curves, and dataset screenshots documented in the full case study.</li>
+                                <li><strong>Tooth track (<code>coco</code>):</strong> <code>tooth-bqo56-ez1w4/1</code> — 4 classes (Cavity, Fillings, Impacted Tooth, Implant); 9k+ labels; mAP@50 87.7%, F1 84.6%.</li>
+                                <li><strong>Pano track (<code>yolo</code>):</strong> <code>pano-fcjgf-nn0ku/1</code> — 14 panoramic classes (Caries, Filling, Crown, RCT, impacted tooth, and more); mAP@50 70.3%, F1 70.2%.</li>
+                                <li>Runnable CLI: serverless <code>inference-sdk</code> or local <code>get_model</code>, with Supervision box/label overlays saved to <code>outputs/</code>.</li>
                             </ul>
                         </div>
                         <div class="project-card__cta">
                             <a href="dental-project.html" class="button button--flex button--small portfolio__button">Read full case study <i class="uil uil-arrow-right button__icon"></i></a>
+                            <a href="https://github.com/Harish-nika/Dental_ML_project" target="_blank" rel="noopener noreferrer" class="button button--flex button--small">GitHub <i class="uil uil-github-alt button__icon"></i></a>
                             <a href="https://universe.roboflow.com/harishnika/pano-fcjgf-nn0ku/model/1" target="_blank" rel="noopener noreferrer" class="project-link">Roboflow Universe</a>
                         </div>
                     </div>

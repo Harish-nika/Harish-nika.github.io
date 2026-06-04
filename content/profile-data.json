@@ -113,7 +113,7 @@
     {
       "name": "Dental ML Project",
       "link": "https://harish-nika.github.io/dental-project.html",
-      "stack": ["Roboflow", "YOLOv11", "inference-sdk", "Supervision", "OpenCV"]
+      "stack": ["Roboflow", "YOLOv11", "inference-sdk", "Supervision", "GitHub"]
     }
   ],
   "certifications": [
