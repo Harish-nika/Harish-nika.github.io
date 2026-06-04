@@ -212,6 +212,30 @@ body.is-portfolio-nav-active .profile-wrap {
   }
 }
 
+/* Cold load: HUD scale-in + doors open (homepage hard refresh) */
+.portfolio-nav-overlay.is-coldload-enter.is-active .portfolio-nav-overlay__panel--left {
+  animation: panelOpenLeft 0.62s cubic-bezier(0.2, 0.72, 0.16, 1) forwards;
+}
+
+.portfolio-nav-overlay.is-coldload-enter.is-active .portfolio-nav-overlay__panel--right {
+  animation: panelOpenRight 0.62s cubic-bezier(0.2, 0.72, 0.16, 1) forwards;
+}
+
+.portfolio-nav-overlay.is-coldload-enter.is-active .portfolio-nav-overlay__hud {
+  animation: coldloadHudIn 0.55s cubic-bezier(0.2, 0.72, 0.16, 1) forwards;
+}
+
+@keyframes coldloadHudIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .portfolio-nav-overlay,
   .portfolio-nav-overlay__panel,

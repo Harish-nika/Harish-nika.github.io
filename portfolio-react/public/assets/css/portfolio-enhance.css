@@ -867,6 +867,21 @@ body.skills-theme-data .skills__content.skills__open {
   }
 }
 
+.tab-content.tab-content--animating {
+  animation: tabPanelFadeIn 0.35s ease forwards;
+}
+
+@keyframes tabPanelFadeIn {
+  from {
+    opacity: 0.55;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .section-theme::after,
   .section-theme.section-theme--active::after,
@@ -881,5 +896,9 @@ body.skills-theme-data .skills__content.skills__open {
     animation: none;
     transition: none;
     transform: none;
+  }
+
+  .tab-content.tab-content--animating {
+    animation: none;
   }
 }

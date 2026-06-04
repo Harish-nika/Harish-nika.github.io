@@ -200,14 +200,18 @@ img {
 @media screen and (max-width: 767px) {
   .nav__menu {
     position: fixed;
-    bottom: -100%;
+    bottom: 0;
     left: 0;
     width: 100%;
     background-color: var(--body-color);
     padding: 2rem 1.5rem 4rem;
     box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.15);
     border-radius: 1.5rem 1.5rem 0 0;
-    transition: .3s;
+    transform: translateY(100%);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: transform 0.35s ease-out, opacity 0.35s ease-out, visibility 0.35s ease-out;
   }
 }
 
@@ -250,7 +254,10 @@ img {
 
 /* show menu */
 .show-menu {
-  bottom: 0;
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
 
 /* Active link */
@@ -664,13 +671,17 @@ img {
   width: 90%;
 }
 
-.skills__close .skills__list {
-  height: 0px;
+.skills__list {
   overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  margin-bottom: 0;
+  transition: max-height 0.4s ease, opacity 0.3s ease, margin-bottom 0.35s ease;
 }
 
 .skills__open .skills__list {
-  height: max-content;
+  max-height: 1400px;
+  opacity: 1;
   margin-bottom: var(--mb-2-5);
 }
 
@@ -793,6 +804,18 @@ body.dark-theme .qualification__data > div:nth-child(3) {
 
 .qualification__active[data-content] {
   display: block;
+  animation: qualificationPanelIn 0.28s ease forwards;
+}
+
+@keyframes qualificationPanelIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .qualification__button.qualification__active {
@@ -1655,6 +1678,28 @@ body.dark-theme .project-card {
 
 .project-link:hover {
   text-decoration: underline;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @media screen and (max-width: 767px) {
+    .nav__menu {
+      transition: none;
+    }
+    .show-menu {
+      transform: none;
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+  }
+
+  .skills__list {
+    transition: none;
+  }
+
+  .qualification__active[data-content] {
+    animation: none;
+  }
 }
 
 .libutton {

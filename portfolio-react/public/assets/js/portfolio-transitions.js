@@ -1,5 +1,5 @@
 /**
- * DevOps-style page transitions: deploy to case study, rollout back to portfolio.
+ * DevOps-style page transitions: deploy to case study, rollout back to portfolio, cold load.
  */
 (function () {
   "use strict";
@@ -7,9 +7,11 @@
   var STORAGE_KEY = "portfolioNavTransition";
   var EXIT_MS = 640;
   var ENTER_MS = 720;
+  var COLDLOAD_MS = 1000;
 
   var CASE_STUDY_PAGES = {
     "dme-project.html": true,
+    "dental-project.html": true,
     "fexpert.html": true,
     "content-moderator.html": true,
     "lang-tool.html": true,
@@ -21,6 +23,15 @@
   var DEPLOY_ENTER_STAGES = ["IMAGE PULLED", "PODS READY", "CASE STUDY LIVE"];
   var ROLLOUT_STAGES = ["DRAINING TRAFFIC", "ROLLOUT REVISION", "ROUTING TO PORTFOLIO"];
   var ROLLOUT_ENTER_STAGES = ["SYNC COMPLETE", "INGRESS UPDATED", "PORTFOLIO ONLINE"];
+  var COLDLOAD_STAGES = ["BOOTING SERVICES", "LOADING ASSETS", "PORTFOLIO ONLINE"];
+
+  var OVERLAY_MODE_CLASSES = [
+    "is-deploy-exit",
+    "is-deploy-enter",
+    "is-rollout-exit",
+    "is-rollout-enter",
+    "is-coldload-enter",
+  ];
 
   function prefersReducedMotion() {
     return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -143,26 +154,32 @@
 
   function activateOverlay(overlay, modeClass) {
     document.body.classList.add("is-portfolio-nav-active");
-    overlay.classList.remove(
-      "is-deploy-exit",
-      "is-deploy-enter",
-      "is-rollout-exit",
-      "is-rollout-enter"
-    );
+    overlay.classList.remove.apply(overlay.classList, OVERLAY_MODE_CLASSES);
     overlay.classList.add("is-active", modeClass);
     overlay.setAttribute("aria-hidden", "false");
   }
 
-  function deactivateOverlay(overlay) {
-    overlay.classList.remove(
-      "is-active",
-      "is-deploy-exit",
-      "is-deploy-enter",
-      "is-rollout-exit",
-      "is-rollout-enter"
-    );
-    overlay.setAttribute("aria-hidden", "true");
-    document.body.classList.remove("is-portfolio-nav-active");
+  function finishOverlay(overlay) {
+    return new Promise(function (resolve) {
+      overlay.classList.add("is-finishing");
+      window.setTimeout(function () {
+        overlay.classList.remove.apply(overlay.classList, ["is-active", "is-finishing"].concat(OVERLAY_MODE_CLASSES));
+        overlay.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("is-portfolio-nav-active");
+        resolve();
+      }, 280);
+    });
+  }
+
+  function playHudSequence(overlay, modeClass, stages, durationMs) {
+    return new Promise(function (resolve) {
+      activateOverlay(overlay, modeClass);
+      var stopStages = runStages(overlay, stages, durationMs - 120);
+      window.setTimeout(function () {
+        stopStages();
+        finishOverlay(overlay).then(resolve);
+      }, durationMs);
+    });
   }
 
   function playExit(mode, href, stages) {
@@ -184,41 +201,72 @@
   }
 
   function playEnter() {
-    var transition = readTransition();
-    if (!transition) return;
-    clearTransition();
+    return new Promise(function (resolve) {
+      var transition = readTransition();
+      if (!transition) {
+        resolve();
+        return;
+      }
+      clearTransition();
 
-    if (prefersReducedMotion()) return;
+      if (prefersReducedMotion()) {
+        resolve();
+        return;
+      }
 
-    var onCaseStudy = document.body.classList.contains("case-study");
-    var onProfile = isCaseStudyPageName(pageNameFromUrl(new URL(window.location.href)));
-    var onPortfolioHome = isIndexPageName(pageNameFromUrl(new URL(window.location.href)));
-    var mode = transition.mode;
-    var overlay = ensureOverlay();
-    var stages;
-    var modeClass;
+      var onCaseStudy = document.body.classList.contains("case-study");
+      var onProfile = isCaseStudyPageName(pageNameFromUrl(new URL(window.location.href)));
+      var onPortfolioHome = isIndexPageName(pageNameFromUrl(new URL(window.location.href)));
+      var mode = transition.mode;
+      var overlay = ensureOverlay();
+      var stages;
+      var modeClass;
 
-    if (mode === "deploy" && (onCaseStudy || onProfile)) {
-      stages = DEPLOY_ENTER_STAGES;
-      modeClass = "is-deploy-enter";
-    } else if (mode === "rollout" && onPortfolioHome) {
-      stages = ROLLOUT_ENTER_STAGES;
-      modeClass = "is-rollout-enter";
-    } else {
-      return;
-    }
+      if (mode === "deploy" && (onCaseStudy || onProfile)) {
+        stages = DEPLOY_ENTER_STAGES;
+        modeClass = "is-deploy-enter";
+      } else if (mode === "rollout" && onPortfolioHome) {
+        stages = ROLLOUT_ENTER_STAGES;
+        modeClass = "is-rollout-enter";
+      } else {
+        resolve();
+        return;
+      }
 
-    activateOverlay(overlay, modeClass);
-    var stopStages = runStages(overlay, stages, ENTER_MS - 120);
+      playHudSequence(overlay, modeClass, stages, ENTER_MS).then(resolve);
+    });
+  }
 
-    window.setTimeout(function () {
-      stopStages();
-      overlay.classList.add("is-finishing");
-      window.setTimeout(function () {
-        deactivateOverlay(overlay);
-        overlay.classList.remove("is-finishing");
-      }, 280);
-    }, ENTER_MS);
+  function playColdLoad() {
+    return new Promise(function (resolve) {
+      if (prefersReducedMotion()) {
+        resolve();
+        return;
+      }
+
+      if (!isIndexPageName(pageNameFromUrl(new URL(window.location.href)))) {
+        resolve();
+        return;
+      }
+
+      if (readTransition()) {
+        resolve();
+        return;
+      }
+
+      var overlay = ensureOverlay();
+      playHudSequence(overlay, "is-coldload-enter", COLDLOAD_STAGES, COLDLOAD_MS).then(resolve);
+    });
+  }
+
+  function runHomeIntro() {
+    return new Promise(function (resolve) {
+      if (readTransition()) {
+        playEnter().then(resolve);
+        return;
+      }
+      playColdLoad().then(resolve);
+    });
   }
 
   function bindDeployLinks(links) {
@@ -246,6 +294,8 @@
     bindDeployLinks: bindDeployLinks,
     bindRolloutLinks: bindRolloutLinks,
     playEnter: playEnter,
+    playColdLoad: playColdLoad,
+    runHomeIntro: runHomeIntro,
     playDeployExit: function (href) {
       playExit("deploy", href, DEPLOY_STAGES);
     },
@@ -255,9 +305,9 @@
   };
 
   function init() {
-    playEnter();
     var page = pageNameFromUrl(new URL(window.location.href));
     if (document.body.classList.contains("case-study") || isCaseStudyPageName(page)) {
+      playEnter();
       bindRolloutLinks();
     }
   }

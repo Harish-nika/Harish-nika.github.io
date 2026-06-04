@@ -72,10 +72,6 @@ function App() {
 
     if (!reducedMotion) {
       body.classList.add("is-page-entering");
-      const enterTimer = window.setTimeout(() => {
-        body.classList.remove("is-page-entering");
-      }, 850);
-      transitionTimers.push(enterTimer);
     }
     // Balanced sitewide motifs: AI intro, research, education vs K8s/GitOps pipeline,
     // model graph, API deploy, sci-fi cert HUD, contact loop.
@@ -273,14 +269,31 @@ function App() {
       }
     );
 
+    const finishPageEnter = () => {
+      if (reducedMotion) {
+        body.classList.remove("is-page-entering");
+        return;
+      }
+      const enterTimer = window.setTimeout(() => {
+        body.classList.remove("is-page-entering");
+      }, 850);
+      transitionTimers.push(enterTimer);
+    };
+
     const bindPortfolioTransitions = () => {
       if (!window.PortfolioTransitions) {
         const waitTimer = window.setTimeout(bindPortfolioTransitions, 40);
         transitionTimers.push(waitTimer);
         return;
       }
-      window.PortfolioTransitions.playEnter();
       window.PortfolioTransitions.bindDeployLinks(projectNavigationLinks);
+      const intro = window.PortfolioTransitions.runHomeIntro;
+      if (typeof intro === "function") {
+        intro().then(finishPageEnter);
+      } else {
+        window.PortfolioTransitions.playEnter();
+        finishPageEnter();
+      }
     };
     bindPortfolioTransitions();
 
