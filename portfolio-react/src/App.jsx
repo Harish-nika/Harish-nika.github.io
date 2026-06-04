@@ -74,7 +74,7 @@ function App() {
       body.classList.add("is-page-entering");
     }
     // Balanced sitewide motifs: AI intro, research, education vs K8s/GitOps pipeline,
-    // model graph, API deploy, sci-fi cert HUD, contact loop.
+    // model graph, API deploy, and sci-fi cert HUD. Contact uses a custom CSS tech orbit.
     const lottieConfig = {
       hero: {
         path: "/assets/animations/lottie/hero-ai-network.json",
@@ -98,10 +98,6 @@ function App() {
       },
       projects: {
         path: "/assets/animations/lottie/projects-ai-delivery.json",
-        loop: true,
-      },
-      contact: {
-        path: "/assets/animations/lottie/contact-loop.json",
         loop: true,
       },
       certs: {

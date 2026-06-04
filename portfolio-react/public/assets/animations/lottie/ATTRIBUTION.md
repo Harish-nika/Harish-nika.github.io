@@ -15,6 +15,7 @@ Attribution is encouraged by LottieFiles. Files were refreshed on 2026-06-02.
 | `skills-ml-graph.json` | Model graph / systems intelligence | https://assets8.lottiefiles.com/packages/lf20_49rdyysj.json |
 | `projects-ai-delivery.json` | API orchestration / deployment | https://assets7.lottiefiles.com/packages/lf20_w51pcehl.json |
 | `certs-scifi-hud.json` | Sci-fi HUD / data scan | https://assets10.lottiefiles.com/packages/lf20_2znxgjyt.json |
-| `contact-loop.json` | Contact / messaging (mobile UI loop) | https://assets9.lottiefiles.com/packages/lf20_u4yrau.json |
+
+Contact now uses custom HTML/CSS tech-orbit animation, so no contact Lottie asset is active.
 
 Unused legacy copies (kept for reference): `experience-devops-pipeline.json`, `projects-cloud-ops.json`, `skills-data-flow.json`.

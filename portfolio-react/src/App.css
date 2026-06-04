@@ -45,12 +45,6 @@ body.is-experience-transitioning .legacy-wrapper .qualification__button.qualific
   opacity: 0.78;
 }
 
-.lottie-slot--contact {
-  width: min(100%, 380px);
-  height: 220px;
-  opacity: 0.88;
-}
-
 .lottie-experience-wrap {
   position: relative;
   display: flex;
@@ -112,10 +106,6 @@ body.is-experience-transitioning .legacy-wrapper .qualification__button.qualific
     height: 150px;
   }
 
-  .lottie-slot--contact {
-    width: min(100%, 300px);
-    height: 180px;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
