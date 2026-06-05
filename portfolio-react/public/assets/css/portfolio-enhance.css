@@ -378,6 +378,18 @@ body.dark-theme .tech-chip {
   transition-delay: 0.15s;
 }
 
+.home__social--mobile {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+@media screen and (min-width: 768px) {
+  .home__social--mobile {
+    display: none;
+  }
+}
+
 /* ===== Skills pillars (reference Services port) ===== */
 .skills__intro {
   margin-bottom: 2rem;
@@ -599,6 +611,15 @@ body.dark-theme .tech-chip {
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
   transition: stroke-dashoffset 0.15s linear;
+}
+
+.projects__all-heading {
+  text-align: center;
+  font-size: var(--h3-font-size);
+  color: var(--title-color);
+  margin: 0 auto 1.5rem;
+  max-width: 36rem;
+  line-height: 1.5;
 }
 
 /* ===== Contact glass split ===== */
@@ -1558,7 +1579,7 @@ body.skills-theme-data .skills__content.skills__open {
 
 @media screen and (min-width: 1024px) {
   .projects-showcase__scroller {
-    height: 400vh;
+    height: 220vh;
   }
 
   .projects-showcase__track {
@@ -1582,14 +1603,14 @@ body.skills-theme-data .skills__content.skills__open {
     border: none;
     border-radius: 0;
     background: transparent;
-    opacity: 0.35;
-    transform: translateX(40px) translateY(40px);
+    opacity: 1;
+    transform: none;
     transition: opacity 0.45s ease, transform 0.45s ease;
   }
 
   .projects-showcase__slide.is-visible {
     opacity: 1;
-    transform: translate(0);
+    transform: none;
   }
 
   .projects-showcase__slide:nth-child(3) {

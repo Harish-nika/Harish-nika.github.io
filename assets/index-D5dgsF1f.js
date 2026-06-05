@@ -171,7 +171,7 @@ Error generating stack: `+a.message+`
             <section class="home section" id="home">
                 <div class="home__container container">
                     <div class="home__layout">
-                        <div class="home__panel home__panel--copy reveal-on-scroll">
+                        <div class="home__panel home__panel--copy reveal-on-scroll is-visible">
                             <h1 class="home__title home__title--dramatic">Hi, I'm <span>Harish</span></h1>
 
                             <div class="home__speech-bubble">
@@ -196,6 +196,18 @@ Error generating stack: `+a.message+`
                                 </a>
                             </div>
 
+                            <div class="home__social home__social--mobile">
+                                <a href="https://www.linkedin.com/in/harish-kumar-s-b0a0472b1/" target="_blank" rel="noopener noreferrer" class="home__social-icon" aria-label="Open LinkedIn profile">
+                                    <i class="uil uil-linkedin-alt"></i>
+                                </a>
+                                <a href="https://github.com/Harish-nika" target="_blank" rel="noopener noreferrer" class="home__social-icon" aria-label="Open GitHub profile">
+                                    <i class="uil uil-github-alt"></i>
+                                </a>
+                                <a href="mailto:harishkumar56278@gmail.com" class="home__social-icon" aria-label="Send email">
+                                    <i class="uil uil-envelope-alt"></i>
+                                </a>
+                            </div>
+
                             <div class="hero-tech-floats" aria-hidden="true">
                                 <span>AI</span>
                                 <span>MLOps</span>
@@ -204,7 +216,7 @@ Error generating stack: `+a.message+`
                             </div>
                         </div>
 
-                        <div class="home__panel home__panel--visual reveal-on-scroll reveal-on-scroll--delay">
+                        <div class="home__panel home__panel--visual reveal-on-scroll reveal-on-scroll--delay is-visible">
                             <div class="home__glow-orb" aria-hidden="true"></div>
 
                             <aside class="home__follow-rail" aria-label="Social links">
@@ -1123,6 +1135,8 @@ Error generating stack: `+a.message+`
                         <circle cx="50" cy="50" r="45" class="projects-showcase__progress-fill" pathLength="1"></circle>
                     </svg>
                 </div>
+
+                <h3 class="projects__all-heading">All projects — full case studies &amp; architecture flows</h3>
         
                 <div class="project-container">
                     <!-- Featured: DME -->

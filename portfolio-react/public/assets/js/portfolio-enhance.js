@@ -115,7 +115,15 @@
 
   function initRevealOnScroll() {
     var items = document.querySelectorAll(".reveal-on-scroll");
-    if (!items.length || !("IntersectionObserver" in window)) {
+    if (!items.length) return;
+
+    items.forEach(function (el) {
+      if (el.closest("#home")) {
+        el.classList.add("is-visible");
+      }
+    });
+
+    if (!("IntersectionObserver" in window)) {
       items.forEach(function (el) {
         el.classList.add("is-visible");
       });
