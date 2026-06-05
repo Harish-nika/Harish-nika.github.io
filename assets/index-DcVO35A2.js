@@ -120,7 +120,6 @@ Error generating stack: `+a.message+`
 
         <div class="tech-rain-layer" aria-hidden="true">
             <div class="tech-rain-lane tech-rain-lane--left">
-                <div class="tech-rain-grid"></div>
                 <div class="jarvis-graph">
                     <span class="jarvis-node jarvis-node--1" data-label="Model"></span>
                     <span class="jarvis-node jarvis-node--2" data-label="RAG"></span>
@@ -144,7 +143,6 @@ Error generating stack: `+a.message+`
                 <span class="tech-rain-link tech-rain-link--one"></span>
             </div>
             <div class="tech-rain-lane tech-rain-lane--right">
-                <div class="tech-rain-grid"></div>
                 <div class="jarvis-graph">
                     <span class="jarvis-node jarvis-node--1" data-label="API"></span>
                     <span class="jarvis-node jarvis-node--2" data-label="Redis"></span>

@@ -1081,10 +1081,10 @@ body.skills-theme-data .skills__content.skills__open {
   width: min(34vw, 380px);
   pointer-events: none;
   background:
-    radial-gradient(circle at 50% 18%, rgba(94, 234, 212, 0.1), transparent 32%),
-    linear-gradient(180deg, transparent, rgba(94, 234, 212, 0.2), transparent);
+    radial-gradient(circle at 48% 18%, rgba(94, 234, 212, 0.08), transparent 26%),
+    linear-gradient(180deg, transparent 12%, rgba(94, 234, 212, 0.08), transparent 46%);
   opacity: 0;
-  animation: jarvisScanSweep 9s ease-in-out infinite;
+  animation: jarvisScanSweep 12s ease-in-out infinite;
 }
 
 .tech-rain-layer::before {
@@ -1114,29 +1114,15 @@ body.skills-theme-data .skills__content.skills__open {
   mask-image: linear-gradient(270deg, #000 58%, transparent 100%);
 }
 
-.tech-rain-grid,
 .jarvis-graph {
   position: absolute;
   inset: 0;
   pointer-events: none;
 }
 
-.tech-rain-grid {
-  opacity: 0.34;
-  background:
-    linear-gradient(90deg, rgba(94, 234, 212, 0.12) 1px, transparent 1px),
-    linear-gradient(180deg, rgba(123, 196, 255, 0.08) 1px, transparent 1px);
-  background-size: 52px 52px, 52px 52px;
-  mask-image: linear-gradient(90deg, #000 28%, transparent 100%);
-}
-
-.tech-rain-lane--right .tech-rain-grid {
-  mask-image: linear-gradient(270deg, #000 28%, transparent 100%);
-}
-
 .jarvis-graph {
   z-index: 0;
-  opacity: 0.82;
+  opacity: 0.92;
 }
 
 .jarvis-node,
@@ -1145,11 +1131,11 @@ body.skills-theme-data .skills__content.skills__open {
 }
 
 .jarvis-node {
-  width: 0.58rem;
-  height: 0.58rem;
+  width: 0.48rem;
+  height: 0.48rem;
   border-radius: 50%;
   background: #5eead4;
-  border: 1px solid rgba(200, 236, 255, 0.58);
+  border: 1px solid rgba(200, 236, 255, 0.48);
   animation: jarvisNodePulse 4.6s ease-in-out infinite;
 }
 
@@ -1161,9 +1147,9 @@ body.skills-theme-data .skills__content.skills__open {
   transform: translateY(-50%);
   padding: 0.12rem 0.38rem;
   border-radius: 999px;
-  color: rgba(216, 246, 255, 0.78);
-  background: rgba(7, 15, 34, 0.48);
-  border: 1px solid rgba(123, 196, 255, 0.16);
+  color: rgba(216, 246, 255, 0.7);
+  background: rgba(7, 15, 34, 0.3);
+  border: 1px solid rgba(123, 196, 255, 0.12);
   font-size: 0.54rem;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -1229,8 +1215,8 @@ body.skills-theme-data .skills__content.skills__open {
 .jarvis-link {
   height: 1px;
   transform-origin: left center;
-  background: linear-gradient(90deg, transparent, rgba(94, 234, 212, 0.62), transparent);
-  box-shadow: 0 0 12px rgba(94, 234, 212, 0.26);
+  background: linear-gradient(90deg, transparent, rgba(94, 234, 212, 0.5), transparent);
+  box-shadow: 0 0 10px rgba(94, 234, 212, 0.2);
   animation: jarvisLinkScan 5.8s ease-in-out infinite;
 }
 
@@ -1282,16 +1268,16 @@ body.skills-theme-data .skills__content.skills__open {
 }
 
 .tech-rain-chip {
-  --rain-opacity: 0.64;
+  --rain-opacity: 0.46;
   display: inline-flex;
   align-items: center;
   gap: 0.28rem;
   padding: 0.25rem 0.55rem;
   border-radius: 999px;
-  color: #c8ecff;
-  background: rgba(7, 15, 34, 0.62);
-  border: 1px solid rgba(123, 196, 255, 0.24);
-  box-shadow: 0 0 18px rgba(58, 148, 255, 0.12);
+  color: rgba(200, 236, 255, 0.82);
+  background: rgba(7, 15, 34, 0.34);
+  border: 1px solid rgba(123, 196, 255, 0.18);
+  box-shadow: 0 0 14px rgba(58, 148, 255, 0.09);
   backdrop-filter: blur(8px);
   font-size: 0.64rem;
   font-weight: 700;
@@ -1854,45 +1840,6 @@ body.skills-theme-data .skills__content.skills__open {
 
 @media screen and (max-width: 767px) {
   .tech-rain-layer {
-    opacity: 0.32;
-  }
-
-  .tech-rain-lane {
-    width: 5.25rem;
-  }
-
-  .tech-rain-layer::before,
-  .tech-rain-layer::after {
-    width: 5.5rem;
-  }
-
-  .tech-rain-grid {
-    opacity: 0.18;
-    background-size: 34px 34px, 34px 34px;
-  }
-
-  .jarvis-node::after,
-  .jarvis-link--2,
-  .jarvis-link--3 {
-    display: none;
-  }
-
-  .jarvis-node {
-    width: 0.42rem;
-    height: 0.42rem;
-  }
-
-  .tech-rain-chip {
-    padding: 0.2rem 0.36rem;
-    font-size: 0.5rem;
-  }
-
-  .tech-rain-chip i {
-    display: none;
-  }
-
-  .tech-rain-lane .tech-rain-chip:nth-child(n + 5),
-  .tech-rain-link {
     display: none;
   }
 
