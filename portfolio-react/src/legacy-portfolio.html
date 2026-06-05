@@ -113,94 +113,82 @@
 
         <main class="main">
             <section class="home section" id="home">
-                <div class="home__container container">
-                    <div class="home__layout">
-                        <div class="home__panel home__panel--copy reveal-on-scroll is-visible">
-                            <h1 class="home__title home__title--dramatic">Hi, I'm <span>Harish</span></h1>
+                <div class="home__container container grid">
+                    <div class="home__content grid">
+                        <div class="home__social">
+                            <a href="https://www.linkedin.com/in/harish-kumar-s-b0a0472b1/" target="_blank" rel="noopener noreferrer" class="home__social-icon" aria-label="Open LinkedIn profile">
+                                <i class="uil uil-linkedin-alt"></i>
+                            </a>
 
-                            <div class="home__speech-bubble">
-                                <span id="typing-text"></span>
-                                <p class="home__speech-tagline">AI / MLOps engineer shipping production systems on K3s &amp; FastAPI</p>
-                            </div>
+                            <a href="https://github.com/Harish-nika" target="_blank" rel="noopener noreferrer" class="home__social-icon" aria-label="Open GitHub profile">
+                                <i class="uil uil-github-alt"></i>                            
+                            </a>
+    
+                            <a href="mailto:harishkumar56278@gmail.com" class="home__social-icon" aria-label="Send email">
+                                <i class="uil uil-envelope-alt"></i>                       
+                            </a>                           
+                        </div>
+    
+                        <div class="home__img">
+                            <svg class="home__blob" viewBox="0 0 200 187">
+                                <mask id="mask0" mask-type="alpha">
+                                    <path d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 165.547 
+                                    130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403 129.362C2.45775 
+                                    97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 -0.149132 97.9666 
+                                    0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z"/>
+                                </mask>
+                                <g mask="url(#mask0)">
+                                    <path d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 
+                                    165.547 130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403 
+                                    129.362C2.45775 97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 
+                                    -0.149132 97.9666 0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z"/>
 
+                                    <image class="home__blob-img" x="15" y="12" xlink:href="./assets/img/dp0.png"/>
+
+                                </g>
+                            </svg>
+                        </div>
+
+                        <div class="home__data">
+                            <h1 class="home__title">Hi, I'm Harish</h1>
+                            <span id="typing-text" ></span>
+                            <br>
+                            <!-- <h3 class="home__subtitle">💻  🤖 🧠 🇦🇮 🚀 🦾</h3> -->
+                            
                             <p class="home__description">
-                                23 | Data Science | Software Engineering | AI &amp; Machine Learning | Generative AI
+                                23 | Data Science | Software Engineering | AI & Machine Learning | Generative AI
                             </p>
                             <span class="home__highlight">Production AI at FactEntry — K3s, GitOps, RAG, and computer vision (MLOps &amp; FastAPI).</span>
+                            <a href="./content/Harish-Kumar-Resume.pdf" download="Harish-Kumar-Resume.pdf"
+                            class="button button--flex">
+                                Download Resume <i class="uil uil-file-alt button__icon"></i></a>
+                            
+                            
 
-                            <div class="home__cta-row">
-                                <a href="./content/Harish-Kumar-Resume.pdf" download="Harish-Kumar-Resume.pdf" class="button button--flex button--cta-ring">
-                                    Download Resume <i class="uil uil-file-alt button__icon"></i>
-                                </a>
-                                <a href="#contact" class="button button--flex">
-                                    Contact <i class="uil uil-message button__icon"></i>
-                                </a>
-                                <a href="profile.html" class="button button--flex button--ghost">
-                                    Full Profile <i class="uil uil-user-circle button__icon"></i>
-                                </a>
-                            </div>
-
-                            <div class="home__social home__social--mobile">
-                                <a href="https://www.linkedin.com/in/harish-kumar-s-b0a0472b1/" target="_blank" rel="noopener noreferrer" class="home__social-icon" aria-label="Open LinkedIn profile">
-                                    <i class="uil uil-linkedin-alt"></i>
-                                </a>
-                                <a href="https://github.com/Harish-nika" target="_blank" rel="noopener noreferrer" class="home__social-icon" aria-label="Open GitHub profile">
-                                    <i class="uil uil-github-alt"></i>
-                                </a>
-                                <a href="mailto:harishkumar56278@gmail.com" class="home__social-icon" aria-label="Send email">
-                                    <i class="uil uil-envelope-alt"></i>
-                                </a>
-                            </div>
-
+                    <a href="#contact" class="button button--flex">
+                    Contact <i class="uil uil-message button__icon"></i></a>
+                            <a href="profile.html" class="button button--flex button--ghost">
+                    Full Profile <i class="uil uil-user-circle button__icon"></i></a>
                             <div class="hero-tech-floats" aria-hidden="true">
                                 <span>AI</span>
                                 <span>MLOps</span>
                                 <span>RAG</span>
                                 <span>K3s</span>
                             </div>
-                        </div>
 
-                        <div class="home__panel home__panel--visual reveal-on-scroll reveal-on-scroll--delay is-visible">
-                            <div class="home__glow-orb" aria-hidden="true"></div>
-
-                            <aside class="home__follow-rail" aria-label="Social links">
-                                <span class="home__follow-label">Follow</span>
-                                <a href="https://www.linkedin.com/in/harish-kumar-s-b0a0472b1/" target="_blank" rel="noopener noreferrer" class="home__follow-link" aria-label="Open LinkedIn profile">
-                                    <i class="uil uil-linkedin-alt"></i>
-                                </a>
-                                <a href="https://github.com/Harish-nika" target="_blank" rel="noopener noreferrer" class="home__follow-link" aria-label="Open GitHub profile">
-                                    <i class="uil uil-github-alt"></i>
-                                </a>
-                                <a href="mailto:harishkumar56278@gmail.com" class="home__follow-link" aria-label="Send email">
-                                    <i class="uil uil-envelope-alt"></i>
-                                </a>
-                            </aside>
-
-                            <div class="home__img">
-                                <svg class="home__blob" viewBox="0 0 200 187">
-                                    <mask id="mask0" mask-type="alpha">
-                                        <path d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 165.547
-                                        130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403 129.362C2.45775
-                                        97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 -0.149132 97.9666
-                                        0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z"/>
-                                    </mask>
-                                    <g mask="url(#mask0)">
-                                        <path d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346
-                                        165.547 130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403
-                                        129.362C2.45775 97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028
-                                        -0.149132 97.9666 0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z"/>
-                                        <image class="home__blob-img" x="15" y="12" xlink:href="./assets/img/dp0.png"/>
-                                    </g>
-                                </svg>
-                            </div>
-
-                            <div class="lottie-slot lottie-slot--hero" data-lottie-id="hero" aria-hidden="true"></div>
+                        <!-- <a href="#contact" class="button button--flex">
+                                Contact <i class="uil uil-message button__icon"></i>
+                            </a> -->
                         </div>
                     </div>
 
+                    <div class="home__hero-animation">
+                        <div class="lottie-slot lottie-slot--hero" data-lottie-id="hero" aria-hidden="true"></div>
+                    </div>
+
                     <div class="home__scroll">
-                        <a href="#about" class="home__scroll-button button--flex" aria-label="Scroll to About section">
-                            <img src="./assets/ref-3d/scroll-mouse.svg" alt="" class="home__scroll-svg" width="50" height="50">
+                        <a href="#about" class="home__scroll-button button--flex">
+                            <i class="uil uil-mouse-alt home__scroll-mouse"></i>
                             <span class="home__scroll-name">Scroll down</span>
                             <i class="uil uil-arrow-down home__scroll-arrow"></i>
                         </a>
@@ -461,63 +449,6 @@
                 <h2 class="section__title">Skills</h2>
                 <span class="section__subtitle">My technical & other skills</span>
                 <div class="lottie-slot lottie-slot--skills" data-lottie-id="skills" aria-hidden="true"></div>
-
-                <div class="skills__intro container">
-                    <div class="skills__pillars" role="tablist" aria-label="Skill pillars">
-                        <button type="button" class="skills__pillar skills__pillar--active" data-pillar="aiml" role="tab" aria-selected="true">
-                            <img src="./assets/ref-3d/service1.png" alt="" class="skills__pillar-icon" width="36" height="36">
-                            <span class="skills__pillar-title">AI / ML</span>
-                            <span class="skills__pillar-desc">RAG, CV, NLP, GenAI</span>
-                        </button>
-                        <button type="button" class="skills__pillar" data-pillar="mlops" role="tab" aria-selected="false">
-                            <img src="./assets/ref-3d/service2.png" alt="" class="skills__pillar-icon" width="36" height="36">
-                            <span class="skills__pillar-title">MLOps &amp; Platform</span>
-                            <span class="skills__pillar-desc">K3s, GitOps, FastAPI</span>
-                        </button>
-                        <button type="button" class="skills__pillar" data-pillar="data" role="tab" aria-selected="false">
-                            <img src="./assets/ref-3d/service3.png" alt="" class="skills__pillar-icon" width="36" height="36">
-                            <span class="skills__pillar-title">Data Engineering</span>
-                            <span class="skills__pillar-desc">ETL, Redis, pipelines</span>
-                        </button>
-                    </div>
-
-                    <div class="skills__intro-grid">
-                        <div class="skills__stats" data-counter-root>
-                            <div class="skills__stat">
-                                <strong class="skills__stat-value" data-counter data-target="6">6</strong>
-                                <span class="skills__stat-label">Production projects</span>
-                            </div>
-                            <div class="skills__stat">
-                                <strong class="skills__stat-value" data-counter data-target="12">12</strong>
-                                <span class="skills__stat-label">Core stack tools</span>
-                            </div>
-                            <div class="skills__stat">
-                                <strong class="skills__stat-value" data-counter data-target="8">8</strong>
-                                <span class="skills__stat-label">Certifications</span>
-                            </div>
-                        </div>
-
-                        <div class="skills__stage" aria-live="polite">
-                            <div class="skills__stage-panel skills__stage-panel--active" data-stage="aiml">
-                                <i class="uil uil-brain skills__stage-icon"></i>
-                                <h3>AI / ML Systems</h3>
-                                <p>RAG chatbots, YOLOv11 dental CV, LLM orchestration, vector search, and research-grade NLP pipelines.</p>
-                            </div>
-                            <div class="skills__stage-panel" data-stage="mlops">
-                                <i class="uil uil-cloud-computing skills__stage-icon"></i>
-                                <h3>MLOps &amp; Platform</h3>
-                                <p>K3s clusters, Argo CD GitOps, FastAPI microservices, Redis queues, and Terraform-driven infra.</p>
-                            </div>
-                            <div class="skills__stage-panel" data-stage="data">
-                                <i class="uil uil-analytics skills__stage-icon"></i>
-                                <h3>Data Engineering</h3>
-                                <p>ETL automation, Numaflow streams, PostgreSQL, SMB corpora ingestion, and observability hooks.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <h3 class="skills__detail-heading">Detailed skill breakdown</h3>
 
                 <div class="skills__container container grid">
                     
@@ -1030,63 +961,6 @@
                 <h2 class="section__title">Projects</h2>
                 <span class="section__subtitle">Production platforms &amp; research — architecture flows on featured work</span>
                 <div class="lottie-slot lottie-slot--projects" data-lottie-id="projects" aria-hidden="true"></div>
-
-                <div class="projects-showcase" data-projects-showcase>
-                    <div class="projects-showcase__scroller">
-                        <div class="projects-showcase__track">
-                            <article class="projects-showcase__slide reveal-on-scroll">
-                                <div class="projects-showcase__img">
-                                    <img src="./assets/img/dme/platform/user_dashboard.png" alt="DME dashboard" loading="lazy" onerror="this.src='./assets/img/dme/user_dashboard.png';">
-                                </div>
-                                <div class="projects-showcase__text">
-                                    <span class="projects-showcase__eyebrow">Featured · FactEntry</span>
-                                    <h3>Data Mining Engine (DME)</h3>
-                                    <p>Enterprise bond extraction on K3s — UI, API, Redis queues, and GitOps delivery at FactEntry.</p>
-                                    <a href="dme-project.html" class="button button--flex button--small">View case study <i class="uil uil-arrow-right button__icon"></i></a>
-                                </div>
-                            </article>
-                            <article class="projects-showcase__slide reveal-on-scroll">
-                                <div class="projects-showcase__img">
-                                    <img src="./assets/img/fexpert/ui-upload.png" alt="Fixed Income Expert RAG UI" loading="lazy">
-                                </div>
-                                <div class="projects-showcase__text">
-                                    <span class="projects-showcase__eyebrow">Featured · RAG</span>
-                                    <h3>Fixed Income Expert System</h3>
-                                    <p>RAG chatbot for financial bond documents — FAISS search, LLaMA 3 via Groq, Streamlit UI.</p>
-                                    <a href="fexpert.html" class="button button--flex button--small">View case study <i class="uil uil-arrow-right button__icon"></i></a>
-                                </div>
-                            </article>
-                            <article class="projects-showcase__slide reveal-on-scroll">
-                                <div class="projects-showcase__img">
-                                    <img src="./assets/img/Dental_project/yolo/test1.png" alt="Dental ML panoramic detection" loading="lazy">
-                                </div>
-                                <div class="projects-showcase__text">
-                                    <span class="projects-showcase__eyebrow">Featured · Computer Vision</span>
-                                    <h3>Dental ML Project</h3>
-                                    <p>YOLOv11 dental object detection — tooth and panoramic X-ray models with Roboflow Inference.</p>
-                                    <a href="dental-project.html" class="button button--flex button--small">View case study <i class="uil uil-arrow-right button__icon"></i></a>
-                                </div>
-                            </article>
-                            <article class="projects-showcase__slide reveal-on-scroll">
-                                <div class="projects-showcase__img">
-                                    <img src="./assets/img/medbot/architecture-flow.png" alt="MedBot architecture" loading="lazy">
-                                </div>
-                                <div class="projects-showcase__text">
-                                    <span class="projects-showcase__eyebrow">Featured · Medical AI</span>
-                                    <h3>MedBot (Medical RAG)</h3>
-                                    <p>Medical RAG assistant with document ingestion, vector retrieval, and LLM-backed Q&amp;A.</p>
-                                    <a href="medbot.html" class="button button--flex button--small">View case study <i class="uil uil-arrow-right button__icon"></i></a>
-                                </div>
-                            </article>
-                        </div>
-                    </div>
-                    <svg class="projects-showcase__progress" viewBox="0 0 100 100" aria-hidden="true">
-                        <circle cx="50" cy="50" r="45" class="projects-showcase__progress-bg"></circle>
-                        <circle cx="50" cy="50" r="45" class="projects-showcase__progress-fill" pathLength="1"></circle>
-                    </svg>
-                </div>
-
-                <h3 class="projects__all-heading">All projects — full case studies &amp; architecture flows</h3>
         
                 <div class="project-container">
                     <!-- Featured: DME -->
@@ -1553,87 +1427,73 @@
                 <h2 class="section__title">Contact</h2>
                 <span class="section__subtitle">Get in touch with me</span>
 
-                <div class="contact__glass-grid container">
-                    <div class="contact__glass-panel contact__glass-panel--visual">
-                        <div class="contact__desk-silhouette" aria-hidden="true"></div>
-                        <div class="contact__visual-wrap">
-                            <div class="contact__float-layer" aria-hidden="true">
-                                <span class="float-accent float-accent--1"><i class="uil uil-brain"></i><span>RAG</span></span>
-                                <span class="float-accent float-accent--2"><i class="uil uil-server-network"></i><span>FastAPI</span></span>
-                                <span class="float-accent float-accent--3"><i class="uil uil-database"></i><span>Redis</span></span>
-                                <span class="float-accent float-accent--4"><i class="uil uil-code-branch"></i><span>GitOps</span></span>
-                                <span class="float-accent float-accent--5"><i class="uil uil-cloud-computing"></i><span>K3s</span></span>
-                                <span class="float-accent float-accent--6"><i class="uil uil-channel"></i><span>Numaflow</span></span>
-                                <span class="float-accent float-accent--7"><i class="uil uil-brackets-curly"></i><span>REST API</span></span>
-                                <span class="float-accent float-accent--8"><i class="uil uil-layer-group"></i><span>Terraform</span></span>
-                                <span class="float-accent float-accent--9"><i class="uil uil-analytics"></i><span>Data Eng</span></span>
-                                <span class="float-accent float-accent--10"><i class="uil uil-eye"></i><span>CV</span></span>
-                            </div>
-                            <div class="tech-orbit" aria-hidden="true">
-                                <div class="tech-orbit__ring tech-orbit__ring--outer"></div>
-                                <div class="tech-orbit__ring tech-orbit__ring--inner"></div>
-                                <div class="tech-orbit__core">
-                                    <span class="tech-orbit__eyebrow">Pipeline Online</span>
-                                    <strong>AI / MLOps</strong>
-                                    <span>FastAPI • Redis • GitOps</span>
-                                </div>
-                                <span class="tech-orbit__node tech-orbit__node--fastapi">FastAPI</span>
-                                <span class="tech-orbit__node tech-orbit__node--redis">Redis</span>
-                                <span class="tech-orbit__node tech-orbit__node--numaflow">Numaflow</span>
-                                <span class="tech-orbit__node tech-orbit__node--terraform">Terraform</span>
-                                <span class="tech-orbit__node tech-orbit__node--rag">RAG</span>
-                                <span class="tech-orbit__node tech-orbit__node--k3s">K3s</span>
-                                <div class="tech-orbit__pipeline tech-orbit__pipeline--one"><span></span><span></span><span></span></div>
-                                <div class="tech-orbit__pipeline tech-orbit__pipeline--two"><span></span><span></span><span></span></div>
+                <div class="contact__visual-wrap">
+                    <div class="contact__float-layer" aria-hidden="true">
+                        <span class="float-accent float-accent--1"><i class="uil uil-brain"></i><span>RAG</span></span>
+                        <span class="float-accent float-accent--2"><i class="uil uil-server-network"></i><span>FastAPI</span></span>
+                        <span class="float-accent float-accent--3"><i class="uil uil-database"></i><span>Redis</span></span>
+                        <span class="float-accent float-accent--4"><i class="uil uil-code-branch"></i><span>GitOps</span></span>
+                        <span class="float-accent float-accent--5"><i class="uil uil-cloud-computing"></i><span>K3s</span></span>
+                        <span class="float-accent float-accent--6"><i class="uil uil-channel"></i><span>Numaflow</span></span>
+                        <span class="float-accent float-accent--7"><i class="uil uil-brackets-curly"></i><span>REST API</span></span>
+                        <span class="float-accent float-accent--8"><i class="uil uil-layer-group"></i><span>Terraform</span></span>
+                        <span class="float-accent float-accent--9"><i class="uil uil-analytics"></i><span>Data Eng</span></span>
+                        <span class="float-accent float-accent--10"><i class="uil uil-eye"></i><span>CV</span></span>
+                    </div>
+                    <div class="tech-orbit" aria-hidden="true">
+                        <div class="tech-orbit__ring tech-orbit__ring--outer"></div>
+                        <div class="tech-orbit__ring tech-orbit__ring--inner"></div>
+                        <div class="tech-orbit__core">
+                            <span class="tech-orbit__eyebrow">Pipeline Online</span>
+                            <strong>AI / MLOps</strong>
+                            <span>FastAPI • Redis • GitOps</span>
+                        </div>
+                        <span class="tech-orbit__node tech-orbit__node--fastapi">FastAPI</span>
+                        <span class="tech-orbit__node tech-orbit__node--redis">Redis</span>
+                        <span class="tech-orbit__node tech-orbit__node--numaflow">Numaflow</span>
+                        <span class="tech-orbit__node tech-orbit__node--terraform">Terraform</span>
+                        <span class="tech-orbit__node tech-orbit__node--rag">RAG</span>
+                        <span class="tech-orbit__node tech-orbit__node--k3s">K3s</span>
+                        <div class="tech-orbit__pipeline tech-orbit__pipeline--one"><span></span><span></span><span></span></div>
+                        <div class="tech-orbit__pipeline tech-orbit__pipeline--two"><span></span><span></span><span></span></div>
+                    </div>
+                </div>
+
+                <p class="contact__pitch">
+                    Need help building AI/ML systems, RAG workflows, FastAPI services, Redis queues, GitOps/K3s deployments,
+                    computer vision pipelines, or data engineering automation? I am open to consulting, freelance builds,
+                    and full-time AI/MLOps opportunities.
+                </p>
+
+                <div class="contact__container container grid">
+                    <div>
+                        
+                        <div class="contact__information">
+                            <i class="uil uil-envelope contact__icon"></i>
+                            <div>
+                                <h3 class="contact__title">Email</h3>
+                                <a class="contact__subtitle" href="mailto:harishkumar56278@gmail.com">harishkumar56278@gmail.com</a>
                             </div>
                         </div>
+
+                        <div class="contact__information">
+                            <i class="uil uil-map-marker contact__icon"></i>
+                            <div>
+                                <h3 class="contact__title">Location</h3>
+                                <span class="contact__subtitle">Ranipet, Tamil Nadu, India | Chennai, India</span>
+                            </div>
+                        </div>
+
+                        <div class="contact__information">
+                            <i class="uil uil-coffee contact__icon"></i>
+                            <div>
+                                <h3 class="contact__title">Call and schedule a meeting</h3>
+                                <a class="contact__subtitle" href="tel:+917393727957">+91 73973 27957</a>
+                            </div>
+                        </div>
+
                     </div>
 
-                    <div class="contact__glass-panel contact__glass-panel--info">
-                        <p class="contact__pitch">
-                            Need help building AI/ML systems, RAG workflows, FastAPI services, Redis queues, GitOps/K3s deployments,
-                            computer vision pipelines, or data engineering automation? I am open to consulting, freelance builds,
-                            and full-time AI/MLOps opportunities.
-                        </p>
-
-                        <div class="contact__container grid">
-                            <div class="contact__information">
-                                <i class="uil uil-envelope contact__icon"></i>
-                                <div>
-                                    <h3 class="contact__title">Email</h3>
-                                    <a class="contact__subtitle" href="mailto:harishkumar56278@gmail.com">harishkumar56278@gmail.com</a>
-                                </div>
-                            </div>
-
-                            <div class="contact__information">
-                                <i class="uil uil-map-marker contact__icon"></i>
-                                <div>
-                                    <h3 class="contact__title">Location</h3>
-                                    <span class="contact__subtitle">Ranipet, Tamil Nadu, India | Chennai, India</span>
-                                </div>
-                            </div>
-
-                            <div class="contact__information">
-                                <i class="uil uil-coffee contact__icon"></i>
-                                <div>
-                                    <h3 class="contact__title">Call and schedule a meeting</h3>
-                                    <a class="contact__subtitle" href="tel:+917393727957">+91 73973 27957</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="contact__social-row">
-                            <a href="https://www.linkedin.com/in/harish-kumar-s-b0a0472b1/" target="_blank" rel="noopener noreferrer" class="contact__social-link" aria-label="LinkedIn">
-                                <i class="uil uil-linkedin-alt"></i><span>LinkedIn</span>
-                            </a>
-                            <a href="https://github.com/Harish-nika" target="_blank" rel="noopener noreferrer" class="contact__social-link" aria-label="GitHub">
-                                <i class="uil uil-github-alt"></i><span>GitHub</span>
-                            </a>
-                            <a href="https://wa.me/917397327957" target="_blank" rel="noopener noreferrer" class="contact__social-link" aria-label="WhatsApp">
-                                <i class="fa-brands fa-whatsapp"></i><span>WhatsApp</span>
-                            </a>
-                        </div>
-                    </div>
                 </div>
 
             </section>
