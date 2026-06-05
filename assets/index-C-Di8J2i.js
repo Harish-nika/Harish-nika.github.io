@@ -540,15 +540,15 @@ Error generating stack: `+a.message+`
                     <div class="skills__intro-grid">
                         <div class="skills__stats" data-counter-root>
                             <div class="skills__stat">
-                                <strong class="skills__stat-value" data-counter data-target="6">0</strong>
+                                <strong class="skills__stat-value" data-counter data-target="6">6</strong>
                                 <span class="skills__stat-label">Production projects</span>
                             </div>
                             <div class="skills__stat">
-                                <strong class="skills__stat-value" data-counter data-target="12">0</strong>
+                                <strong class="skills__stat-value" data-counter data-target="12">12</strong>
                                 <span class="skills__stat-label">Core stack tools</span>
                             </div>
                             <div class="skills__stat">
-                                <strong class="skills__stat-value" data-counter data-target="8">0</strong>
+                                <strong class="skills__stat-value" data-counter data-target="8">8</strong>
                                 <span class="skills__stat-label">Certifications</span>
                             </div>
                         </div>
@@ -572,6 +572,8 @@ Error generating stack: `+a.message+`
                         </div>
                     </div>
                 </div>
+
+                <h3 class="skills__detail-heading">Detailed skill breakdown</h3>
 
                 <div class="skills__container container grid">
                     
@@ -1093,6 +1095,7 @@ Error generating stack: `+a.message+`
                                     <img src="./assets/img/dme/platform/user_dashboard.png" alt="DME dashboard" loading="lazy" onerror="this.src='./assets/img/dme/user_dashboard.png';">
                                 </div>
                                 <div class="projects-showcase__text">
+                                    <span class="projects-showcase__eyebrow">Featured · FactEntry</span>
                                     <h3>Data Mining Engine (DME)</h3>
                                     <p>Enterprise bond extraction on K3s — UI, API, Redis queues, and GitOps delivery at FactEntry.</p>
                                     <a href="dme-project.html" class="button button--flex button--small">View case study <i class="uil uil-arrow-right button__icon"></i></a>
@@ -1103,6 +1106,7 @@ Error generating stack: `+a.message+`
                                     <img src="./assets/img/fexpert/ui-upload.png" alt="Fixed Income Expert RAG UI" loading="lazy">
                                 </div>
                                 <div class="projects-showcase__text">
+                                    <span class="projects-showcase__eyebrow">Featured · RAG</span>
                                     <h3>Fixed Income Expert System</h3>
                                     <p>RAG chatbot for financial bond documents — FAISS search, LLaMA 3 via Groq, Streamlit UI.</p>
                                     <a href="fexpert.html" class="button button--flex button--small">View case study <i class="uil uil-arrow-right button__icon"></i></a>
@@ -1113,6 +1117,7 @@ Error generating stack: `+a.message+`
                                     <img src="./assets/img/Dental_project/yolo/test1.png" alt="Dental ML panoramic detection" loading="lazy">
                                 </div>
                                 <div class="projects-showcase__text">
+                                    <span class="projects-showcase__eyebrow">Featured · Computer Vision</span>
                                     <h3>Dental ML Project</h3>
                                     <p>YOLOv11 dental object detection — tooth and panoramic X-ray models with Roboflow Inference.</p>
                                     <a href="dental-project.html" class="button button--flex button--small">View case study <i class="uil uil-arrow-right button__icon"></i></a>
@@ -1123,6 +1128,7 @@ Error generating stack: `+a.message+`
                                     <img src="./assets/img/medbot/architecture-flow.png" alt="MedBot architecture" loading="lazy">
                                 </div>
                                 <div class="projects-showcase__text">
+                                    <span class="projects-showcase__eyebrow">Featured · Medical AI</span>
                                     <h3>MedBot (Medical RAG)</h3>
                                     <p>Medical RAG assistant with document ingestion, vector retrieval, and LLM-backed Q&amp;A.</p>
                                     <a href="medbot.html" class="button button--flex button--small">View case study <i class="uil uil-arrow-right button__icon"></i></a>
@@ -1670,6 +1676,18 @@ Error generating stack: `+a.message+`
                                     <a class="contact__subtitle" href="tel:+917393727957">+91 73973 27957</a>
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="contact__social-row">
+                            <a href="https://www.linkedin.com/in/harish-kumar-s-b0a0472b1/" target="_blank" rel="noopener noreferrer" class="contact__social-link" aria-label="LinkedIn">
+                                <i class="uil uil-linkedin-alt"></i><span>LinkedIn</span>
+                            </a>
+                            <a href="https://github.com/Harish-nika" target="_blank" rel="noopener noreferrer" class="contact__social-link" aria-label="GitHub">
+                                <i class="uil uil-github-alt"></i><span>GitHub</span>
+                            </a>
+                            <a href="https://wa.me/917397327957" target="_blank" rel="noopener noreferrer" class="contact__social-link" aria-label="WhatsApp">
+                                <i class="fa-brands fa-whatsapp"></i><span>WhatsApp</span>
+                            </a>
                         </div>
                     </div>
                 </div>
