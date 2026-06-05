@@ -176,9 +176,9 @@ body.dark-theme .tech-chip {
   display: flex;
   justify-content: center;
   width: 100%;
-  margin-top: 1.25rem;
+  margin-top: 0.5rem;
   position: relative;
-  z-index: 2;
+  z-index: 1;
   clear: both;
 }
 
@@ -1105,8 +1105,7 @@ body:not(.dark-theme) .header {
 .main .portfolio__container,
 .main .contact__visual-wrap,
 .main .contact__pitch,
-.main .contact__container,
-.main .home__container {
+.main .contact__container {
   position: relative;
   z-index: 1;
   background: hsla(var(--hue-color), 28%, 12%, 0.82);
@@ -1125,17 +1124,40 @@ body:not(.dark-theme) .main .project-container,
 body:not(.dark-theme) .main .portfolio__container,
 body:not(.dark-theme) .main .contact__visual-wrap,
 body:not(.dark-theme) .main .contact__pitch,
-body:not(.dark-theme) .main .contact__container,
-body:not(.dark-theme) .main .home__container {
+body:not(.dark-theme) .main .contact__container {
   background: hsla(var(--hue-color), 60%, 99%, 0.9);
   box-shadow: 0 10px 36px rgba(58, 148, 255, 0.08);
 }
 
 .main .section__title,
 .main .section__subtitle,
-.main .lottie-slot {
+.main .lottie-slot,
+.main .lottie-experience-wrap,
+.main .home__hero-animation,
+.main .home__scroll {
   position: relative;
   z-index: 1;
+}
+
+/* Hero / experience gaps stay open so ambient rain flows through */
+.main .home__hero-animation {
+  margin-top: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.qualification__container .lottie-experience-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 200px;
+  margin: 0 auto 1.25rem;
+}
+
+.qualification__container .lottie-slot--experience {
+  margin: 0 auto;
+  width: min(100%, 400px);
+  height: 200px;
 }
 
 @media screen and (max-width: 767px) {
@@ -1183,6 +1205,149 @@ body:not(.dark-theme) .main .home__container {
 .tech-rain-lane--right {
   right: 0;
   mask-image: linear-gradient(270deg, #000 30%, transparent 100%);
+}
+
+/* Sparse full-width rain for empty gaps between content panels */
+.tech-rain-ambient {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.tech-rain-ambient .tech-rain-chip--ambient {
+  left: var(--rain-pos, 50%);
+  --rain-opacity: 0.16;
+  --rain-x: 0px;
+  font-size: 0.58rem;
+  padding: 0.18rem 0.42rem;
+  color: rgba(200, 236, 255, 0.48);
+  background: rgba(7, 15, 34, 0.12);
+  border-color: rgba(123, 196, 255, 0.08);
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.tech-rain-ambient .tech-rain-chip--ambient:nth-child(1) {
+  --rain-pos: 22%;
+  --rain-duration: 24s;
+  --rain-delay: -3s;
+  --rain-drift: 12px;
+}
+
+.tech-rain-ambient .tech-rain-chip--ambient:nth-child(2) {
+  --rain-pos: 34%;
+  --rain-duration: 28s;
+  --rain-delay: -11s;
+  --rain-drift: -10px;
+}
+
+.tech-rain-ambient .tech-rain-chip--ambient:nth-child(3) {
+  --rain-pos: 48%;
+  --rain-duration: 22s;
+  --rain-delay: -6s;
+  --rain-drift: 8px;
+}
+
+.tech-rain-ambient .tech-rain-chip--ambient:nth-child(4) {
+  --rain-pos: 56%;
+  --rain-duration: 26s;
+  --rain-delay: -16s;
+  --rain-drift: -14px;
+}
+
+.tech-rain-ambient .tech-rain-chip--ambient:nth-child(5) {
+  --rain-pos: 64%;
+  --rain-duration: 23s;
+  --rain-delay: -9s;
+  --rain-drift: 10px;
+}
+
+.tech-rain-ambient .tech-rain-chip--ambient:nth-child(6) {
+  --rain-pos: 40%;
+  --rain-duration: 30s;
+  --rain-delay: -20s;
+  --rain-drift: -8px;
+}
+
+.tech-rain-ambient .tech-rain-chip--ambient:nth-child(7) {
+  --rain-pos: 72%;
+  --rain-duration: 25s;
+  --rain-delay: -13s;
+  --rain-drift: 14px;
+}
+
+.tech-rain-ambient .tech-rain-chip--ambient:nth-child(8) {
+  --rain-pos: 28%;
+  --rain-duration: 27s;
+  --rain-delay: -18s;
+  --rain-drift: -6px;
+}
+
+.tech-rain-ambient .tech-rain-chip--ambient:nth-child(9) {
+  --rain-pos: 52%;
+  --rain-duration: 21s;
+  --rain-delay: -7s;
+  --rain-drift: 9px;
+}
+
+.tech-rain-ambient .tech-rain-chip--ambient:nth-child(10) {
+  --rain-pos: 78%;
+  --rain-duration: 29s;
+  --rain-delay: -22s;
+  --rain-drift: -11px;
+}
+
+.tech-rain-ambient .tech-rain-chip--ambient:nth-child(11) {
+  --rain-pos: 44%;
+  --rain-duration: 26s;
+  --rain-delay: -14s;
+  --rain-drift: 7px;
+}
+
+.tech-rain-ambient .tech-rain-chip--ambient:nth-child(12) {
+  --rain-pos: 68%;
+  --rain-duration: 24s;
+  --rain-delay: -5s;
+  --rain-drift: -9px;
+}
+
+.tech-rain-ambient .tech-rain-node--ambient {
+  left: var(--rain-pos, 50%);
+  --rain-opacity: 0.22;
+  width: 0.34rem;
+  height: 0.34rem;
+  box-shadow: 0 0 8px rgba(94, 234, 212, 0.35);
+}
+
+.tech-rain-ambient .tech-rain-node--amb-one {
+  --rain-pos: 26%;
+  --rain-duration: 19s;
+  --rain-delay: -4s;
+}
+
+.tech-rain-ambient .tech-rain-node--amb-two {
+  --rain-pos: 46%;
+  --rain-duration: 22s;
+  --rain-delay: -12s;
+}
+
+.tech-rain-ambient .tech-rain-node--amb-three {
+  --rain-pos: 58%;
+  --rain-duration: 17s;
+  --rain-delay: -8s;
+}
+
+.tech-rain-ambient .tech-rain-node--amb-four {
+  --rain-pos: 70%;
+  --rain-duration: 24s;
+  --rain-delay: -17s;
+}
+
+.tech-rain-ambient .tech-rain-node--amb-five {
+  --rain-pos: 36%;
+  --rain-duration: 20s;
+  --rain-delay: -10s;
 }
 
 .jarvis-graph {
