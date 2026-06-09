@@ -230,6 +230,7 @@ function App() {
     syncExperienceAnimation(getActiveExperienceTab());
 
     const projectPageNames = new Set([
+      "pai-pdf-ai.html",
       "dme-project.html",
       "dental-project.html",
       "fexpert.html",
