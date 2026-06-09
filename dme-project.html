@@ -16,7 +16,7 @@
     <meta name="twitter:image" content="https://harish-nika.github.io/assets/img/dme/architecture-flow.png">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="icon" href="./assets/favicon.ico">
+    <link rel="icon" href="./favicon.svg">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.6/css/line.css">
     <link rel="stylesheet" href="./assets/css/styles.css">
     <link rel="stylesheet" href="./assets/css/portfolio-enhance.css">
@@ -323,79 +323,9 @@
                         </div>
                         <div>
                             <img src="./assets/img/dme/platform/validation_page2.png" alt="Validation Workspace 2" class="project-img project-img--ui" loading="lazy">
-                            <p class="img-caption">Ranked Match Navigation &amp; Quick Corrections</p>
+                            <p class="img-caption">Ranked Match Navigation & Quick Corrections</p>
                         </div>
                     </div>
-
-                    <!-- AI Semantic Validation Section -->
-                    <h2 class="section__title" style="margin-top: 3rem;">🧠 AI-Powered Semantic Validation Engine</h2>
-                    <p style="text-align: justify; margin-bottom: 1.5rem;">
-                        Beyond standard keyword search, I architected a <strong>self-learning, three-layer AI validation engine</strong> for the validation microservice. Every human correction generates a semantic embedding via a local <strong>Ollama LLM</strong>, stored as a dense vector in <strong>Elasticsearch</strong> keyed by the bond's <strong>ISIN</strong>. Over time, the system learns exactly where each data field lives in every document layout it has seen — enabling <em>instant, sub-second highlights</em> on future reviews.
-                    </p>
-
-                    <!-- Tech Chips -->
-                    <div style="display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2rem;">
-                        <span style="background: var(--first-color); color: #fff; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">Ollama (nomic-embed-text)</span>
-                        <span style="background: var(--first-color); color: #fff; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">Elasticsearch k-NN</span>
-                        <span style="background: var(--first-color); color: #fff; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">Dense Vector (768-dim)</span>
-                        <span style="background: var(--first-color); color: #fff; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">PyMuPDF (fitz)</span>
-                        <span style="background: var(--first-color); color: #fff; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">FastAPI</span>
-                        <span style="background: var(--first-color); color: #fff; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">ISIN-Primary-Key Store</span>
-                    </div>
-
-                    <!-- Three Layer Architecture -->
-                    <div style="background: var(--container-color); border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; border: 1px solid rgba(0,0,0,0.08);">
-                        <h3 style="margin-bottom: 1rem; font-size: 1.1rem;">Three-Layer Cascading Search Architecture</h3>
-
-                        <!-- Layer 1 -->
-                        <div style="display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1.2rem;">
-                            <div style="background: var(--first-color); color: #fff; border-radius: 50%; width: 2rem; height: 2rem; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0;">1</div>
-                            <div>
-                                <strong>ISIN-Anchored Semantic Memory (Self-Learning)</strong>
-                                <p style="margin-top: 0.3rem; font-size: 0.9rem; color: var(--text-color-light); line-height: 1.6;">
-                                    When an analyst approves a bounding box, the exact paragraph text is embedded via the local <code>nomic-embed-text</code> Ollama model into a 768-dimensional vector and indexed in Elasticsearch under the bond's ISIN. The next time that ISIN is opened, the system fires a k-NN cosine similarity query and instantly returns the exact bounding box with no scanning needed. Score threshold &gt; 0.70 guards against template drift.
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- Divider -->
-                        <div style="border-top: 1px dashed rgba(0,0,0,0.1); margin: 0.8rem 0;"></div>
-
-                        <!-- Layer 2 -->
-                        <div style="display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1.2rem;">
-                            <div style="background: #f0a500; color: #fff; border-radius: 50%; width: 2rem; height: 2rem; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0;">2</div>
-                            <div>
-                                <strong>Evidence Keyword Anchor Proximity Search</strong>
-                                <p style="margin-top: 0.3rem; font-size: 0.9rem; color: var(--text-color-light); line-height: 1.6;">
-                                    A curated JSON knowledge base (<code>evidence_knowledge.json</code>) stores short, high-precision anchor labels for each field (e.g. <em>"Issue Date:"</em>, <em>"Coupon Rate:"</em>) separately from the corporate extractor's broad keyword lists. The <code>score_line_by_anchors()</code> function scores each PDF line by anchor match weight and boosts the score when the extracted value appears on the same line. This knowledge base evolves independently through human feedback.
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- Divider -->
-                        <div style="border-top: 1px dashed rgba(0,0,0,0.1); margin: 0.8rem 0;"></div>
-
-                        <!-- Layer 3 -->
-                        <div style="display: flex; gap: 1rem; align-items: flex-start;">
-                            <div style="background: #666; color: #fff; border-radius: 50%; width: 2rem; height: 2rem; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0;">3</div>
-                            <div>
-                                <strong>Full Document Scan (Classic Engine Fallback)</strong>
-                                <p style="margin-top: 0.3rem; font-size: 0.9rem; color: var(--text-color-light); line-height: 1.6;">
-                                    If neither Layer 1 nor Layer 2 produces a confident match, a comprehensive scan runs: Elasticsearch index hints, exact phrase search, token-window scoring, joined-word OCR fallback, and numbered-clause selection via <code>_pick_evidence_segment()</code>. The winning match is annotated in-place into the PDF bytes via PyMuPDF.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Learning Loop -->
-                    <h3 style="margin-bottom: 1rem; font-size: 1.1rem;">Self-Learning Feedback Loop</h3>
-                    <ul style="line-height: 1.8; margin-left: 1.5rem; margin-bottom: 2rem; text-align: justify;">
-                        <li><strong>Learn:</strong> Analyst approves → <code>POST /api/v1/validation/knowledge/learn</code> → Ollama embeds text → vector saved to Elasticsearch index <code>dme_validation_knowledge</code> under ISIN key.</li>
-                        <li><strong>Search:</strong> UI opens PDF → <code>POST /api/v1/validation/knowledge/search</code> → k-NN query filtered by ISIN + field → exact bounding box returned instantly.</li>
-                        <li><strong>Overwrite Mechanism:</strong> Analyst corrections overwrite stale vectors, making the system self-healing on human mistakes.</li>
-                        <li><strong>Cold Start Handling:</strong> New ISINs with no history automatically cascade to Layer 2 (keyword anchors), then Layer 3 (full scan).</li>
-                        <li><strong>Separation of Concerns:</strong> Corporate extraction keywords (broad, noisy) are strictly isolated from the Evidence Knowledge Base (precise, short anchor labels), so both can evolve independently.</li>
-                    </ul>
                 </div>
             </div>
 
