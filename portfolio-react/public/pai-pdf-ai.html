@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Harish Kumar S">
-    <meta name="description" content="PAI PDF AI - Bharat Document Intelligence Platform. AI-powered document intelligence with localized reasoning and vector cross-referencing.">
+    <meta name="description" content="PAI PDF AI - Bharat Document Intelligence Platform. AI document intelligence with local LLMs, Elasticsearch RAG.">
     <meta property="og:title" content="PAI PDF AI — Harish Kumar S">
     <meta property="og:description" content="AI document intelligence with local LLMs, Elasticsearch RAG, and React Framer Motion animations.">
     <meta property="og:image" content="https://raw.githubusercontent.com/Harish-nika/PAI_pdf_AI/main/img_assets/readme/BDIP.png">
@@ -17,6 +17,10 @@
     <link rel="stylesheet" href="./assets/css/styles.css">
     <link rel="stylesheet" href="./assets/css/portfolio-enhance.css">
     <link rel="stylesheet" href="./assets/css/portfolio-transitions.css">
+
+    <!-- Mermaid.js for Flowcharts -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({ startOnLoad: true, theme: 'dark' });</script>
 
     <title>PAI PDF AI — Harish Kumar S</title>
     <style>
@@ -65,13 +69,6 @@
         }
         .arch-list { line-height: 1.8; margin-left: 1.5rem; margin-bottom: 1.5rem; }
         .arch-list li { margin-bottom: 0.5rem; }
-        .code-block {
-            background: hsl(var(--hue-color), 20%, 14%); color: #e2e8f0;
-            border-radius: 8px; padding: 1rem 1.25rem; font-size: 0.85rem;
-            font-family: 'Courier New', monospace; overflow-x: auto;
-            margin-bottom: 1.5rem; line-height: 1.6;
-        }
-        body:not(.dark-theme) .code-block { background: #1e293b; }
         .endpoint-table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; font-size: 0.95rem; }
         .endpoint-table th, .endpoint-table td {
             border: 1px solid hsl(var(--hue-color), 12%, 80%); padding: 8px 12px; text-align: left;
@@ -79,8 +76,22 @@
         body.dark-theme .endpoint-table th,
         body.dark-theme .endpoint-table td { border-color: hsl(var(--hue-color), 12%, 28%); }
         .endpoint-table th { background: var(--input-color); font-weight: 600; }
-        .method-get  { display:inline-block; padding:2px 8px; border-radius:4px; font-size:.78rem; font-weight:700; background:#22c55e; color:#fff; }
-        .method-post { display:inline-block; padding:2px 8px; border-radius:4px; font-size:.78rem; font-weight:700; background:var(--first-color); color:#fff; }
+        
+        /* Iframe container for React animation */
+        .iframe-container {
+            position: relative;
+            width: 100%;
+            height: 700px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: #000;
+        }
+        .iframe-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
     </style>
 </head>
 <body class="case-study">
@@ -104,21 +115,22 @@
                 <ul class="case-study-hero-bullets">
                     <li>Local LLM (Ollama)</li>
                     <li>Elasticsearch Vector RAG</li>
-                    <li>React & Framer Motion</li>
                     <li>FastAPI Backend</li>
+                    <li>React & Framer Motion</li>
                 </ul>
                 <p class="case-study-subtitle">
                     An AI-powered document intelligence platform that helps users understand complex Indian legal and financial documents. 
-                    It extracts information, cross-references against Indian laws and regulations via a local knowledge base, and presents risk insights 
-                    with explicit proof chunks—all running locally for absolute data privacy.
+                    It extracts information, cross-references against Indian laws and regulations via a local vector knowledge base, and presents risk insights 
+                    with explicit proof chunks—all running entirely locally for absolute data privacy.
                 </p>
             </div>
 
             <div class="case-study-tabs-wrap">
             <nav class="tabs tabs-sticky" aria-label="Case study sections">
                 <button type="button" class="tab-btn active" data-tab="overview"     onclick="openTab(event,'overview')">Overview</button>
-                <button type="button" class="tab-btn"        data-tab="architecture" onclick="openTab(event,'architecture')">Architecture</button>
-                <button type="button" class="tab-btn"        data-tab="animation"    onclick="openTab(event,'animation')">Animated POC</button>
+                <button type="button" class="tab-btn"        data-tab="architecture" onclick="openTab(event,'architecture')">Architecture Flows</button>
+                <button type="button" class="tab-btn"        data-tab="planning"     onclick="openTab(event,'planning')">Project Planning</button>
+                <button type="button" class="tab-btn"        data-tab="animation"    onclick="openTab(event,'animation')">Live React Animation</button>
             </nav>
 
             <!-- ── Tab 1: Overview ── -->
@@ -132,76 +144,129 @@
                         highlights clauses, and detects risks.
                     </p>
 
-                    <div class="project-metrics" aria-label="Key facts">
-                        <span class="metric-chip">Local LLM Reasoning</span>
-                        <span class="metric-chip">Data Privacy</span>
-                        <span class="metric-chip">Elasticsearch</span>
-                    </div>
-                    <div class="project-tech" aria-label="Technologies">
-                        <span class="tech-chip">FastAPI</span>
-                        <span class="tech-chip">React/Next.js</span>
-                        <span class="tech-chip">Ollama (LLaMA)</span>
-                        <span class="tech-chip">Elasticsearch</span>
-                        <span class="tech-chip">PyMuPDF</span>
-                        <span class="tech-chip">Framer Motion</span>
-                    </div>
+                    <img src="./assets/img/pai/dashboard.png" alt="PAI PDF AI Dashboard" class="project-img" loading="lazy" onerror="this.src='https://raw.githubusercontent.com/Harish-nika/PAI_pdf_AI/main/img_assets/readme/BDIP.png';">
+                    <p class="img-caption">PAI PDF AI - Proof-of-Concept Dashboard Interface</p>
 
                     <h2 class="section__title" style="margin-top:2rem;">Key Features</h2>
                     <ul class="arch-list">
-                        <li><strong>Semantic Knowledge Search:</strong> Matches document clauses against national laws (Constitution, Contract Act) and Tamil Nadu rules using Elasticsearch.</li>
+                        <li><strong>Semantic Knowledge Search:</strong> Matches document clauses against national laws and state rules using Elasticsearch.</li>
                         <li><strong>Bounding-Box Highlights:</strong> Instantly finds the exact paragraph in the PDF where the AI extracted a particular value.</li>
                         <li><strong>Human Feedback Loop:</strong> Analysts can correct AI extractions, and the system instantly embeds and learns these new patterns.</li>
-                        <li><strong>Zero Data Leakage:</strong> Utilizes local Ollama LLMs (`llama3`, `nomic-embed-text`) ensuring sensitive documents never leave the laptop/server.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- ── Tab 2: Architecture ── -->
-            <div id="architecture" class="tab-content">
-                <div class="project-section">
-                    <h2 class="section__title">System Flow</h2>
-                    <ul class="arch-list">
-                        <li><strong>Phase 1 - Knowledge Setup:</strong> Admins upload rules, laws, and regulations. These are embedded using local SBERT/Nomic models and stored in Elasticsearch.</li>
-                        <li><strong>Phase 2 - User Interaction:</strong> Users upload a complex PDF. The system extracts entities, references the knowledge base, and provides a summarized risk report.</li>
-                        <li><strong>Phase 3 - Q&A with Proof:</strong> Users ask questions. The LLM generates answers and visually highlights the specific chunks from the source document that validate the answer.</li>
+                        <li><strong>Zero Data Leakage:</strong> Utilizes local Ollama LLMs (`llama3`, `nomic-embed-text`) ensuring sensitive documents never leave the machine.</li>
                     </ul>
 
-                    <h2 class="section__title" style="margin-top:2rem;">Core Tech Stack</h2>
+                    <h2 class="section__title" style="margin-top:2rem;">Tech Stack</h2>
                     <table class="endpoint-table">
-                        <thead><tr><th>Component</th><th>Technology</th></tr></thead>
+                        <thead><tr><th>Layer</th><th>Technology</th></tr></thead>
                         <tbody>
-                            <tr><td>Frontend Validation UI</td><td>React + Framer Motion</td></tr>
-                            <tr><td>Backend API</td><td>FastAPI</td></tr>
-                            <tr><td>PDF Parsing</td><td>PyMuPDF (fitz)</td></tr>
+                            <tr><td>Frontend</td><td>React + Vite + Framer Motion</td></tr>
+                            <tr><td>Backend API</td><td>FastAPI + Python</td></tr>
                             <tr><td>Vector Store</td><td>Elasticsearch</td></tr>
-                            <tr><td>Local LLM & Embeddings</td><td>Ollama (`llama3`, `nomic-embed-text`)</td></tr>
+                            <tr><td>LLM Integration</td><td>Ollama (`llama3` model)</td></tr>
+                            <tr><td>Embeddings</td><td>Ollama (`nomic-embed-text`)</td></tr>
+                            <tr><td>PDF Parsing</td><td>PyMuPDF (`fitz`), Unstructured</td></tr>
                         </tbody>
                     </table>
                 </div>
             </div>
 
-            <!-- ── Tab 3: Animated POC ── -->
-            <div id="animation" class="tab-content">
+            <!-- ── Tab 2: Architecture ── -->
+            <div id="architecture" class="tab-content" style="display:none;">
                 <div class="project-section">
-                    <h2 class="section__title">Interactive Animated Flow</h2>
+                    <h2 class="section__title">System Architecture Flows</h2>
                     <p style="line-height:1.8; margin-bottom:1.5rem;">
-                        To clearly communicate the complex multi-agent flow of the Bharat Document Intelligence Platform to stakeholders, 
-                        we engineered a beautiful, animated React Proof-of-Concept (POC) dashboard.
+                        The platform operates in three distinct phases: Setting up the domain knowledge, AI extraction, and interactive Q&A. 
+                        These processes ensure answers are always grounded in verifiable rules.
                     </p>
 
+                    <h3 class="section__title" style="font-size:1.3rem; margin-top:2rem;">Phase 1: Knowledge Setup (Domain Rules)</h3>
+                    <div style="background:var(--container-color); padding:1rem; border-radius:12px; margin-bottom:2rem;">
+                        <div class="mermaid">
+                            graph TD
+                                A[Admin] -->|Upload Laws/Regulations PDF| B(PyMuPDF Parser)
+                                B -->|Extract Text| C{Text Splitter}
+                                C -->|Chunks| D[Ollama Embeddings: nomic-embed-text]
+                                D -->|Vector Vectors| E[(Elasticsearch Vector DB)]
+                                classDef default fill:#1e293b,stroke:#3b82f6,stroke-width:2px,color:#fff;
+                                classDef db fill:#0f172a,stroke:#10b981,stroke-width:2px,color:#fff;
+                                class E db;
+                        </div>
+                    </div>
                     <ul class="arch-list">
-                        <li><strong>Tech Stack:</strong> Built using Vite, React, Framer Motion, and Lucide React.</li>
-                        <li><strong>Aesthetics:</strong> Features premium glassmorphism, animated data-paths (representing vector embeddings moving through the system), and dynamic layout transitions.</li>
-                        <li><strong>Visual Storytelling:</strong> Automatically cycles through the 3 phases of the pipeline (Setup, Analysis, Q&A), demonstrating how chunks are extracted and highlighted as proof.</li>
+                        <li>Admins upload reference materials (e.g., Transfer of Property Act, RBI circulars).</li>
+                        <li>Documents are parsed, chunked, and embedded into vector space.</li>
+                        <li>Stored in Elasticsearch to act as the Ground Truth for the AI engine.</li>
                     </ul>
+
+                    <h3 class="section__title" style="font-size:1.3rem; margin-top:3rem;">Phase 2 & 3: PDF Ingestion & Cross-Reference Q&A</h3>
+                    <div style="background:var(--container-color); padding:1rem; border-radius:12px; margin-bottom:2rem;">
+                        <div class="mermaid">
+                            graph TD
+                                U[User] -->|Upload Sale Deed PDF| P(Backend Pipeline)
+                                P -->|Extract Key Entities| E[Extracted Clauses]
+                                E -->|Semantic Search| KB[(Elasticsearch DB)]
+                                KB -->|Retrieve Relevant Laws| Ctx[Context Rules]
+                                U -->|Ask Question| Q(Query Processor)
+                                Q -->|Search Text| KB
+                                Ctx --> Prompt
+                                Q --> Prompt
+                                E --> Prompt
+                                Prompt -->|Send to LLM| O[Ollama LLaMA-3]
+                                O -->|Generated Answer| Res[Response + Bounding Box Proof]
+                                Res --> U
+                                classDef default fill:#1e293b,stroke:#8b5cf6,stroke-width:2px,color:#fff;
+                                classDef db fill:#0f172a,stroke:#10b981,stroke-width:2px,color:#fff;
+                                classDef user fill:#334155,stroke:#f59e0b,stroke-width:2px,color:#fff;
+                                class KB db;
+                                class U user;
+                        </div>
+                    </div>
+                    <ul class="arch-list">
+                        <li>User uploads an unstructured document. The AI extracts entities and clauses.</li>
+                        <li>Extracted clauses are verified against the Elasticsearch knowledge base.</li>
+                        <li>When the user asks a question, the LLM generates an answer, and the UI highlights the exact source chunks (proof).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ── Tab 3: Planning ── -->
+            <div id="planning" class="tab-content" style="display:none;">
+                <div class="project-section">
+                    <h2 class="section__title">GitHub Project Planning & Iterations</h2>
+                    <p style="line-height:1.8; margin-bottom:1.5rem;">
+                        I structured the development into structured sprints using GitHub Projects, tracking tasks via issues across the different phases.
+                    </p>
+
+                    <div class="feature-grid">
+                        <figure class="flow-card">
+                            <img src="./assets/img/pai/planning-phase1.png" alt="Phase 1 Planning Board" class="project-img project-img--ui" loading="lazy">
+                            <figcaption style="text-align:center; padding-top:10px;"><strong>Phase 1: Knowledge Setup</strong><br>Tracking tasks for embedding models and Elasticsearch</figcaption>
+                        </figure>
+                        <figure class="flow-card">
+                            <img src="./assets/img/pai/planning-phase2.png" alt="Phase 2 Planning Board" class="project-img project-img--ui" loading="lazy">
+                            <figcaption style="text-align:center; padding-top:10px;"><strong>Phase 2: RAG & Q&A</strong><br>Tracking tasks for Ollama inference and UI proofs</figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── Tab 4: Animated POC ── -->
+            <div id="animation" class="tab-content" style="display:none;">
+                <div class="project-section">
+                    <h2 class="section__title">Interactive Animated Architecture Flow</h2>
+                    <p style="line-height:1.8; margin-bottom:1.5rem;">
+                        To clearly communicate the complex multi-agent flow of the Bharat Document Intelligence Platform to stakeholders, 
+                        I engineered this beautiful, interactive React animation using Vite and Framer Motion.
+                    </p>
+
+                    <div class="iframe-container">
+                        <!-- Points to the built React App inside the portfolio -->
+                        <iframe src="./pai-animation/index.html" title="PAI PDF AI Animated Flow"></iframe>
+                    </div>
 
                     <div class="project-card__cta" style="margin-top:2rem; text-align: center;">
                         <a href="https://github.com/Harish-nika/PAI_pdf_AI/tree/main/flow_demo_poc" target="_blank" rel="noopener noreferrer" class="button button--flex button--small portfolio__button">
                             <i class="uil uil-github-alt"></i>&nbsp; View POC Source Code
-                        </a>
-                        <!-- Placeholder for live link when deployed -->
-                        <a href="#" class="button button--flex button--small" style="background: rgba(255,255,255,0.1);">
-                            Live Demo Coming Soon <i class="uil uil-arrow-right button__icon"></i>
                         </a>
                     </div>
                 </div>
@@ -221,11 +286,26 @@
     <script>
         function openTab(evt, tabName) {
             if (evt && evt.preventDefault) evt.preventDefault();
-            document.querySelectorAll('.case-study-tabs-wrap .tab-btn').forEach(function(btn) {
-                btn.classList.toggle('active', btn.getAttribute('data-tab') === tabName);
+            
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(function(content) {
+                content.style.display = 'none';
             });
+            
+            // Remove active class from buttons
+            document.querySelectorAll('.case-study-tabs-wrap .tab-btn').forEach(function(btn) {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-tab') === tabName) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Show the selected tab
             var section = document.getElementById(tabName);
-            if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            if (section) {
+                section.style.display = 'block';
+                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         }
 
         const themeButton = document.getElementById('theme-button');
