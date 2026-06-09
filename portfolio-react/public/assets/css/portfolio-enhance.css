@@ -423,6 +423,45 @@ body.dark-theme .project-flows {
   line-height: 1.5;
 }
 
+.project-flow-preview {
+  margin-bottom: 1.25rem;
+  border: 1px solid hsl(var(--hue-color), 18%, 82%);
+  border-radius: 16px;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(11, 15, 25, 0.98), rgba(30, 41, 59, 0.94));
+}
+
+body.dark-theme .project-flow-preview {
+  border-color: hsl(var(--hue-color), 18%, 26%);
+}
+
+.project-flow-preview__viewport {
+  height: 460px;
+  overflow: hidden;
+}
+
+.project-flow-preview__frame {
+  width: 166.67%;
+  height: 760px;
+  border: 0;
+  display: block;
+  transform: scale(0.6);
+  transform-origin: top left;
+  pointer-events: none;
+}
+
+@media screen and (max-width: 767px) {
+  .project-flow-preview__viewport {
+    height: 300px;
+  }
+
+  .project-flow-preview__frame {
+    width: 250%;
+    height: 760px;
+    transform: scale(0.4);
+  }
+}
+
 .flow-grid--index .flow-card img {
   max-height: 220px;
 }

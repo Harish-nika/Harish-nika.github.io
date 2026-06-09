@@ -71,6 +71,9 @@
             margin-top: 1rem;
             padding-bottom: 0.5rem;
         }
+        .overview-flow {
+            margin: 0 0 2.5rem;
+        }
         .project-img { width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             margin-bottom: 1.5rem; border: 1px solid rgba(0,0,0,0.1); }
         .feature-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: start; }
@@ -160,6 +163,23 @@
             <!-- ── Tab 1: Overview ── -->
             <div id="overview" class="tab-content">
                 <div class="project-section">
+                    <div id="animation" class="overview-flow">
+                        <h2 class="section__title">Interactive Animated Architecture Flow</h2>
+                        <p style="line-height:1.8; margin-bottom:1.5rem;">
+                            Start with the end-to-end platform flow. This animation shows how domain knowledge, AI extraction, and proof-based answers connect across the full Bharat Document Intelligence Platform.
+                        </p>
+
+                        <div class="iframe-container">
+                            <iframe id="pai-animation-frame" src="./pai-animation/index.html" title="PAI PDF AI Animated Flow"></iframe>
+                        </div>
+
+                        <div class="project-card__cta" style="margin-top:2rem; text-align: center;">
+                            <a href="index.html#contact" class="button button--flex button--small portfolio__button">
+                                <i class="uil uil-lock"></i>&nbsp; Source Available on Request (Private Repo)
+                            </a>
+                        </div>
+                    </div>
+
                     <h2 class="section__title">What it does</h2>
                     <p style="line-height:1.8; margin-bottom:1.5rem;">
                         Millions of Indian documents (Property sale deeds, loan agreements, tax notices) exist only as unstructured PDFs.
@@ -362,28 +382,6 @@
                             </h4>
                             <p style="font-size:0.95rem; line-height:1.6; margin-left:2rem;">Goals: Coordinate specialized agents (Document, Legal, Banking, Property, Research). Deliverable: Unified domain reasoning system.</p>
                         </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ── Tab 4: Animated POC ── -->
-            <div id="animation" class="tab-content">
-                <div class="project-section">
-                    <h2 class="section__title">Interactive Animated Architecture Flow</h2>
-                    <p style="line-height:1.8; margin-bottom:1.5rem;">
-                        To clearly communicate the complex multi-agent flow of the Bharat Document Intelligence Platform to stakeholders, 
-                        I engineered this beautiful, interactive React animation using Vite and Framer Motion.
-                    </p>
-
-                    <div class="iframe-container">
-                        <!-- Points to the built React App inside the portfolio -->
-                        <iframe id="pai-animation-frame" src="./pai-animation/index.html" title="PAI PDF AI Animated Flow"></iframe>
-                    </div>
-
-                    <div class="project-card__cta" style="margin-top:2rem; text-align: center;">
-                        <a href="index.html#contact" class="button button--flex button--small portfolio__button">
-                            <i class="uil uil-lock"></i>&nbsp; Source Available on Request (Private Repo)
-                        </a>
                     </div>
                 </div>
             </div>

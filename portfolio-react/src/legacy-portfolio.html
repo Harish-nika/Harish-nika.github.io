@@ -1013,38 +1013,16 @@
 
                         <div class="project-flows">
                             <h4 class="project-flows__title">Platform flow</h4>
-                            <p class="project-flows__intro">Three-phase pipeline — knowledge setup, AI analysis, and cross-reference Q&amp;A with proof chunks.</p>
-                            <div style="background:linear-gradient(135deg,rgba(11,15,25,0.95),rgba(30,41,59,0.9));border-radius:12px;padding:2rem 1.5rem;border:1px solid rgba(255,255,255,0.1);margin-bottom:1.5rem;overflow:hidden;">
-                                <div style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;align-items:center;">
-                                    <div style="background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.4);border-radius:10px;padding:12px 18px;text-align:center;min-width:140px;animation:fadeSlideUp .6s ease .1s both;">
-                                        <div style="font-size:1.3rem;margin-bottom:4px;">📜</div>
-                                        <div style="font-size:.8rem;font-weight:600;color:#c4b5fd;">Upload Laws</div>
-                                        <div style="font-size:.65rem;color:#94a3b8;">Regulations &amp; Rules</div>
-                                    </div>
-                                    <div style="color:rgba(139,92,246,0.6);font-size:1.2rem;animation:fadeSlideUp .6s ease .2s both;">→</div>
-                                    <div style="background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.4);border-radius:10px;padding:12px 18px;text-align:center;min-width:140px;animation:fadeSlideUp .6s ease .3s both;">
-                                        <div style="font-size:1.3rem;margin-bottom:4px;">🗄️</div>
-                                        <div style="font-size:.8rem;font-weight:600;color:#c4b5fd;">Vector KB</div>
-                                        <div style="font-size:.65rem;color:#94a3b8;">Elasticsearch</div>
-                                    </div>
-                                    <div style="color:rgba(59,130,246,0.6);font-size:1.2rem;animation:fadeSlideUp .6s ease .4s both;">→</div>
-                                    <div style="background:rgba(59,130,246,0.15);border:1px solid rgba(59,130,246,0.4);border-radius:10px;padding:12px 18px;text-align:center;min-width:140px;animation:fadeSlideUp .6s ease .5s both;">
-                                        <div style="font-size:1.3rem;margin-bottom:4px;">📄</div>
-                                        <div style="font-size:.8rem;font-weight:600;color:#93c5fd;">User PDF</div>
-                                        <div style="font-size:.65rem;color:#94a3b8;">Sale Deed / Loan</div>
-                                    </div>
-                                    <div style="color:rgba(59,130,246,0.6);font-size:1.2rem;animation:fadeSlideUp .6s ease .6s both;">→</div>
-                                    <div style="background:rgba(245,158,11,0.15);border:1px solid rgba(245,158,11,0.4);border-radius:10px;padding:12px 18px;text-align:center;min-width:140px;animation:fadeSlideUp .6s ease .7s both;">
-                                        <div style="font-size:1.3rem;margin-bottom:4px;">🧠</div>
-                                        <div style="font-size:.8rem;font-weight:600;color:#fcd34d;">AI Engine</div>
-                                        <div style="font-size:.65rem;color:#94a3b8;">Ollama LLM</div>
-                                    </div>
-                                    <div style="color:rgba(16,185,129,0.6);font-size:1.2rem;animation:fadeSlideUp .6s ease .8s both;">→</div>
-                                    <div style="background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.4);border-radius:10px;padding:12px 18px;text-align:center;min-width:140px;animation:fadeSlideUp .6s ease .9s both;">
-                                        <div style="font-size:1.3rem;margin-bottom:4px;">✅</div>
-                                        <div style="font-size:.8rem;font-weight:600;color:#6ee7b7;">Answer + Proof</div>
-                                        <div style="font-size:.65rem;color:#94a3b8;">Highlighted chunks</div>
-                                    </div>
+                            <p class="project-flows__intro">Live preview of the full animated pipeline. Open the case study for the expanded walkthrough.</p>
+                            <div class="project-flow-preview">
+                                <div class="project-flow-preview__viewport">
+                                    <iframe
+                                        src="./pai-animation/index.html"
+                                        title="PAI PDF AI animated preview"
+                                        class="project-flow-preview__frame"
+                                        loading="lazy"
+                                        tabindex="-1"
+                                        aria-hidden="true"></iframe>
                                 </div>
                             </div>
                         </div>
@@ -1055,7 +1033,6 @@
                         </div>
                         <style>
                             @keyframes pulse-badge { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:.85;transform:scale(1.05);} }
-                            @keyframes fadeSlideUp { from{opacity:0;transform:translateY(12px);} to{opacity:1;transform:translateY(0);} }
                         </style>
                     </div>
 
