@@ -982,6 +982,83 @@
                 <div class="lottie-slot lottie-slot--projects" data-lottie-id="projects" aria-hidden="true"></div>
         
                 <div class="project-container">
+                    <!-- Featured: PAI PDF AI (Ongoing) -->
+                    <div class="project-card project-card--featured" style="position:relative;">
+                        <span style="position:absolute;top:1rem;right:1rem;background:linear-gradient(135deg,#f59e0b,#ef4444);color:#fff;padding:6px 16px;border-radius:20px;font-size:.8rem;font-weight:700;letter-spacing:.5px;z-index:2;animation:pulse-badge 2s infinite;">🔧 ONGOING PROJECT</span>
+                        <img src="https://raw.githubusercontent.com/Harish-nika/PAI_pdf_AI/main/img_assets/readme/BDIP.png" alt="PAI PDF AI — Bharat Document Intelligence Platform" class="project-img--ui" loading="eager" style="object-fit:cover;">
+                        <h3 class="testimonial__name">PAI PDF AI — Bharat Document Intelligence Platform</h3>
+                        <span class="testimonial__description">Independent R&amp;D / Open Source — Active Development</span>
+                        <p class="project-card__headline">AI-powered document intelligence with localized reasoning, vector cross-referencing, and proof-based answers</p>
+                        <div class="project-metrics" aria-label="Key metrics">
+                            <span class="metric-chip">Local LLM (Ollama)</span>
+                            <span class="metric-chip">Vector RAG</span>
+                            <span class="metric-chip">Data Privacy</span>
+                            <span class="metric-chip">Elasticsearch</span>
+                        </div>
+                        <div class="project-tech" aria-label="Technologies">
+                            <span class="tech-chip">FastAPI</span>
+                            <span class="tech-chip">React / Vite</span>
+                            <span class="tech-chip">Framer Motion</span>
+                            <span class="tech-chip">Elasticsearch</span>
+                            <span class="tech-chip">Ollama</span>
+                            <span class="tech-chip">PyMuPDF</span>
+                        </div>
+                        <div class="project-card__body">
+                            <ul>
+                                <li>Extracts key clauses, entities, and risks from legal/financial PDFs (sale deeds, loan agreements, tax notices) without sending sensitive data to external APIs.</li>
+                                <li>Answers user questions with <strong>explicit proof</strong> by highlighting the exact source chunks from the uploaded document and knowledge base.</li>
+                                <li>Admins upload domain-specific laws and regulations; the system embeds and segregates them into a structured vector knowledge base for cross-referencing.</li>
+                            </ul>
+                        </div>
+
+                        <div class="project-flows">
+                            <h4 class="project-flows__title">Platform flow</h4>
+                            <p class="project-flows__intro">Three-phase pipeline — knowledge setup, AI analysis, and cross-reference Q&amp;A with proof chunks.</p>
+                            <div style="background:linear-gradient(135deg,rgba(11,15,25,0.95),rgba(30,41,59,0.9));border-radius:12px;padding:2rem 1.5rem;border:1px solid rgba(255,255,255,0.1);margin-bottom:1.5rem;overflow:hidden;">
+                                <div style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;align-items:center;">
+                                    <div style="background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.4);border-radius:10px;padding:12px 18px;text-align:center;min-width:140px;animation:fadeSlideUp .6s ease .1s both;">
+                                        <div style="font-size:1.3rem;margin-bottom:4px;">📜</div>
+                                        <div style="font-size:.8rem;font-weight:600;color:#c4b5fd;">Upload Laws</div>
+                                        <div style="font-size:.65rem;color:#94a3b8;">Regulations &amp; Rules</div>
+                                    </div>
+                                    <div style="color:rgba(139,92,246,0.6);font-size:1.2rem;animation:fadeSlideUp .6s ease .2s both;">→</div>
+                                    <div style="background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.4);border-radius:10px;padding:12px 18px;text-align:center;min-width:140px;animation:fadeSlideUp .6s ease .3s both;">
+                                        <div style="font-size:1.3rem;margin-bottom:4px;">🗄️</div>
+                                        <div style="font-size:.8rem;font-weight:600;color:#c4b5fd;">Vector KB</div>
+                                        <div style="font-size:.65rem;color:#94a3b8;">Elasticsearch</div>
+                                    </div>
+                                    <div style="color:rgba(59,130,246,0.6);font-size:1.2rem;animation:fadeSlideUp .6s ease .4s both;">→</div>
+                                    <div style="background:rgba(59,130,246,0.15);border:1px solid rgba(59,130,246,0.4);border-radius:10px;padding:12px 18px;text-align:center;min-width:140px;animation:fadeSlideUp .6s ease .5s both;">
+                                        <div style="font-size:1.3rem;margin-bottom:4px;">📄</div>
+                                        <div style="font-size:.8rem;font-weight:600;color:#93c5fd;">User PDF</div>
+                                        <div style="font-size:.65rem;color:#94a3b8;">Sale Deed / Loan</div>
+                                    </div>
+                                    <div style="color:rgba(59,130,246,0.6);font-size:1.2rem;animation:fadeSlideUp .6s ease .6s both;">→</div>
+                                    <div style="background:rgba(245,158,11,0.15);border:1px solid rgba(245,158,11,0.4);border-radius:10px;padding:12px 18px;text-align:center;min-width:140px;animation:fadeSlideUp .6s ease .7s both;">
+                                        <div style="font-size:1.3rem;margin-bottom:4px;">🧠</div>
+                                        <div style="font-size:.8rem;font-weight:600;color:#fcd34d;">AI Engine</div>
+                                        <div style="font-size:.65rem;color:#94a3b8;">Ollama LLM</div>
+                                    </div>
+                                    <div style="color:rgba(16,185,129,0.6);font-size:1.2rem;animation:fadeSlideUp .6s ease .8s both;">→</div>
+                                    <div style="background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.4);border-radius:10px;padding:12px 18px;text-align:center;min-width:140px;animation:fadeSlideUp .6s ease .9s both;">
+                                        <div style="font-size:1.3rem;margin-bottom:4px;">✅</div>
+                                        <div style="font-size:.8rem;font-weight:600;color:#6ee7b7;">Answer + Proof</div>
+                                        <div style="font-size:.65rem;color:#94a3b8;">Highlighted chunks</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card__cta">
+                            <a href="pai-pdf-ai.html" class="button button--flex button--small portfolio__button">Read case study <i class="uil uil-arrow-right button__icon"></i></a>
+                            <a href="https://github.com/Harish-nika/PAI_pdf_AI" target="_blank" rel="noopener noreferrer" class="button button--flex button--small">GitHub <i class="uil uil-github-alt button__icon"></i></a>
+                        </div>
+                        <style>
+                            @keyframes pulse-badge { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:.85;transform:scale(1.05);} }
+                            @keyframes fadeSlideUp { from{opacity:0;transform:translateY(12px);} to{opacity:1;transform:translateY(0);} }
+                        </style>
+                    </div>
+
                     <!-- Featured: DME -->
                     <div class="project-card project-card--featured">
                         <img src="./assets/img/dme/platform/user_dashboard.png" alt="DME dashboard — live queue and cluster telemetry" class="project-img--ui" loading="eager" onerror="this.src='./assets/img/dme/user_dashboard.png';">
@@ -1046,36 +1123,6 @@
                     </div>
 
                     <div class="project-grid-secondary">
-                    <!-- Project: PAI PDF AI -->
-                    <div class="project-card">
-                        <img src="https://raw.githubusercontent.com/Harish-nika/PAI_pdf_AI/main/img_assets/readme/BDIP.png" alt="PAI PDF AI Platform Dashboard" class="project-img--ui" loading="lazy" style="object-fit: cover;">
-                        <h3 class="testimonial__name">PAI PDF AI - Bharat Document Intelligence Platform</h3>
-                        <span class="testimonial__description">Independent R&D / Open Source</span>
-                        <p class="project-card__headline">AI-powered document intelligence with localized reasoning and vector cross-referencing</p>
-                        <div class="project-metrics" aria-label="Key facts">
-                            <span class="metric-chip">Local LLM (Ollama)</span>
-                            <span class="metric-chip">Vector RAG</span>
-                            <span class="metric-chip">Data Privacy</span>
-                        </div>
-                        <div class="project-tech" aria-label="Technologies">
-                            <span class="tech-chip">FastAPI</span>
-                            <span class="tech-chip">React/Vite</span>
-                            <span class="tech-chip">Elasticsearch</span>
-                            <span class="tech-chip">Ollama</span>
-                            <span class="tech-chip">PyMuPDF</span>
-                        </div>
-                        <div class="project-card__body">
-                            <ul>
-                                <li>Extracts key clauses and risks from legal/financial PDFs without sending sensitive data to external APIs.</li>
-                                <li>Answers user questions with explicit proof by cross-referencing against embedded domain knowledge.</li>
-                                <li>Built with a localized, modular architecture (FastAPI backend + interactive React/Framer-Motion UI).</li>
-                            </ul>
-                        </div>
-                        <div class="project-card__cta">
-                            <a href="pai-pdf-ai.html" class="button button--flex button--small portfolio__button">Read case study <i class="uil uil-arrow-right button__icon"></i></a>
-                            <a href="https://github.com/Harish-nika/PAI_pdf_AI" target="_blank" rel="noopener noreferrer" class="button button--flex button--small">GitHub <i class="uil uil-github-alt button__icon"></i></a>
-                        </div>
-                    </div>
 
                     <!-- Project 1: FExpert — Fixed Income Expert System -->
                     <div class="project-card">
