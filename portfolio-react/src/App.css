@@ -105,6 +105,19 @@ body.is-experience-transitioning .legacy-wrapper .qualification__button.qualific
     height: 160px;
   }
 
+  #skills,
+  #Projects,
+  #Certifications,
+  #contact {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 520px;
+  }
+
+  .about__img {
+    width: 200px;
+    height: auto;
+    aspect-ratio: 4 / 5;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

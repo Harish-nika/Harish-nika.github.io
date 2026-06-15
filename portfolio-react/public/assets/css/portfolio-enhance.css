@@ -2269,3 +2269,15 @@ body:not(.dark-theme) .main .contact__container {
     transform: none;
   }
 }
+
+@media screen and (max-width: 767px) {
+  .swiper-pagination-bullet {
+    width: 11px;
+    height: 11px;
+    margin: 0 7px !important;
+  }
+
+  .swiper-container-horizontal > .swiper-pagination-bullets {
+    bottom: -3rem;
+  }
+}

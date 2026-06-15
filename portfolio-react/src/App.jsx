@@ -1,7 +1,23 @@
 import "./App.css";
 import { useEffect } from "react";
-import lottie from "lottie-web";
 import legacyHtml from "./legacy-portfolio.html?raw";
+
+function appendStylesheet(head, href, { defer = false } = {}) {
+  if (document.querySelector(`link[data-legacy="${href}"]`)) {
+    return;
+  }
+  const link = document.createElement("link");
+  link.rel = "stylesheet";
+  link.href = href;
+  link.setAttribute("data-legacy", href);
+  if (defer) {
+    link.media = "print";
+    link.onload = () => {
+      link.media = "all";
+    };
+  }
+  head.appendChild(link);
+}
 
 function App() {
   useEffect(() => {
@@ -14,14 +30,30 @@ function App() {
       "Harish Kumar | AI/ML Engineer & Data Mining Engine (DME) | FactEntry";
 
     const head = document.head;
-    const links = [
-      "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css",
-      "https://unicons.iconscout.com/release/v3.0.6/css/line.css",
+
+    // Critical path: layout and typography first; icon fonts after first paint.
+    const criticalLinks = [
       "/assets/css/swiper-bundle.min.css",
       "/assets/css/styles.css",
       "/assets/css/portfolio-enhance.css",
       "/assets/css/portfolio-transitions.css",
     ];
+    const deferredLinks = [
+      "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css",
+      "https://unicons.iconscout.com/release/v3.0.6/css/line.css",
+    ];
+
+    criticalLinks.forEach((href) => appendStylesheet(head, href));
+
+    const loadDeferredIcons = () => {
+      deferredLinks.forEach((href) => appendStylesheet(head, href, { defer: true }));
+    };
+    if ("requestIdleCallback" in window) {
+      window.requestIdleCallback(loadDeferredIcons, { timeout: 1200 });
+    } else {
+      window.setTimeout(loadDeferredIcons, 80);
+    }
+
     const scripts = [
       "/assets/js/portfolio-transitions.js",
       "/assets/js/swiper-bundle.min.js",
@@ -29,28 +61,13 @@ function App() {
       "/assets/js/portfolio-enhance.js",
     ];
 
-    const addedNodes = [];
-
-    links.forEach((href) => {
-      if (!document.querySelector(`link[data-legacy="${href}"]`)) {
-        const link = document.createElement("link");
-        link.rel = "stylesheet";
-        link.href = href;
-        link.setAttribute("data-legacy", href);
-        head.appendChild(link);
-        addedNodes.push(link);
-      }
-    });
-
     scripts.forEach((src) => {
       if (!document.querySelector(`script[data-legacy="${src}"]`)) {
         const script = document.createElement("script");
         script.src = src;
-        // Dynamic scripts are async by default; force ordered execution.
         script.async = false;
         script.setAttribute("data-legacy", src);
         document.body.appendChild(script);
-        addedNodes.push(script);
       }
     });
 
@@ -62,6 +79,10 @@ function App() {
     const body = document.body;
     const cleanupFns = [];
     const transitionTimers = [];
+    let lottieModule = null;
+    let lottieLoadPromise = null;
+    const lottieInstances = [];
+    const lottieLoadState = new WeakMap();
 
     const addTemporaryBodyClass = (className, duration = 650) => {
       body.classList.add(className);
@@ -71,61 +92,146 @@ function App() {
       transitionTimers.push(timer);
     };
 
+    const ensureLottieLoaded = () => {
+      if (!lottieLoadPromise) {
+        lottieLoadPromise = import("lottie-web").then((mod) => {
+          lottieModule = mod.default;
+          return lottieModule;
+        });
+      }
+      return lottieLoadPromise;
+    };
+
     if (!reducedMotion) {
       body.classList.add("is-page-entering");
     }
-    // Balanced sitewide motifs: AI intro, research, education vs K8s/GitOps pipeline,
-    // model graph, API deploy, and sci-fi cert HUD. Contact uses a custom CSS tech orbit.
+
     const lottieConfig = {
       hero: {
         path: "/assets/animations/lottie/hero-ai-network.json",
         loop: true,
+        rootMargin: "0px 0px 120px 0px",
       },
       about: {
         path: "/assets/animations/lottie/about-ml-research.json",
         loop: true,
+        rootMargin: "0px 0px 160px 0px",
       },
       experienceAcademic: {
         path: "/assets/animations/lottie/experience-academic-research.json",
         loop: true,
+        rootMargin: "0px 0px 200px 0px",
       },
       experienceProfessional: {
         path: "/assets/animations/lottie/experience-mlops-workflow.json",
         loop: true,
+        rootMargin: "0px 0px 200px 0px",
       },
       skills: {
         path: "/assets/animations/lottie/skills-ml-graph.json",
         loop: true,
+        rootMargin: "0px 0px 200px 0px",
       },
       projects: {
         path: "/assets/animations/lottie/projects-ai-delivery.json",
         loop: true,
+        rootMargin: "0px 0px 240px 0px",
       },
       certs: {
         path: "/assets/animations/lottie/certs-scifi-hud.json",
         loop: true,
+        rootMargin: "0px 0px 240px 0px",
       },
     };
 
-    const lottieInstances = [];
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const container = entry.target;
-          const animation = lottieInstances.find((item) => item.container === container)?.instance;
+    const findLottieRecord = (container) =>
+      lottieInstances.find((item) => item.container === container);
 
-          if (!animation) {
-            return;
-          }
-          if (entry.isIntersecting) {
-            animation.play();
-          } else {
-            animation.pause();
-          }
+    const loadLottieForContainer = async (container) => {
+      const existing = findLottieRecord(container);
+      if (existing) {
+        return existing;
+      }
+
+      const state = lottieLoadState.get(container);
+      if (state === "loading") {
+        return new Promise((resolve) => {
+          const check = () => {
+            const record = findLottieRecord(container);
+            if (record) {
+              resolve(record);
+              return;
+            }
+            window.requestAnimationFrame(check);
+          };
+          check();
         });
-      },
-      { threshold: 0.2 }
-    );
+      }
+
+      const id = container.dataset.lottieId;
+      const config = lottieConfig[id];
+      if (!config) {
+        return null;
+      }
+
+      lottieLoadState.set(container, "loading");
+      const lottie = await ensureLottieLoaded();
+      const instance = lottie.loadAnimation({
+        container,
+        renderer: "svg",
+        loop: config.loop,
+        autoplay: false,
+        path: config.path,
+        rendererSettings: {
+          preserveAspectRatio: "xMidYMid meet",
+          progressiveLoad: true,
+        },
+      });
+
+      const record = { container, instance, id };
+      lottieInstances.push(record);
+      lottieLoadState.set(container, "loaded");
+
+      if (reducedMotion) {
+        instance.goToAndStop(0, true);
+      }
+
+      return record;
+    };
+
+    const playLottie = async (container) => {
+      if (reducedMotion) {
+        return;
+      }
+      const record = await loadLottieForContainer(container);
+      record?.instance.play();
+    };
+
+    const pauseLottie = (container) => {
+      const record = findLottieRecord(container);
+      record?.instance.pause();
+    };
+
+    Object.entries(lottieConfig).forEach(([id, config]) => {
+      const container = document.querySelector(`[data-lottie-id="${id}"]`);
+      if (!container) {
+        return;
+      }
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              playLottie(container);
+            } else {
+              pauseLottie(container);
+            }
+          });
+        },
+        { threshold: 0.12, rootMargin: config.rootMargin || "0px" }
+      );
+      observer.observe(container);
+      cleanupFns.push(() => observer.disconnect());
+    });
 
     const themedSections = Array.from(
       document.querySelectorAll(
@@ -153,41 +259,15 @@ function App() {
 
     themedSections.forEach((section) => sectionObserver.observe(section));
 
-    Object.entries(lottieConfig).forEach(([id, config]) => {
-      const container = document.querySelector(`[data-lottie-id="${id}"]`);
-      if (!container) {
-        return;
-      }
-      const instance = lottie.loadAnimation({
-        container,
-        renderer: "svg",
-        loop: config.loop,
-        autoplay: !reducedMotion,
-        path: config.path,
-        rendererSettings: {
-          preserveAspectRatio: "xMidYMid meet",
-          progressiveLoad: true,
-        },
-      });
-
-      if (reducedMotion) {
-        instance.goToAndStop(0, true);
-      } else {
-        observer.observe(container);
-      }
-      lottieInstances.push({ container, instance });
-    });
-
     const experienceButtons = Array.from(document.querySelectorAll(".qualification__button"));
-    const experienceAnimationById = {
-      experienceAcademic: lottieInstances.find((item) => item.container.dataset.lottieId === "experienceAcademic"),
-      experienceProfessional: lottieInstances.find((item) => item.container.dataset.lottieId === "experienceProfessional"),
-    };
 
-    const syncExperienceAnimation = (targetId) => {
+    const getExperienceRecord = (key) =>
+      lottieInstances.find((item) => item.container.dataset.lottieId === key);
+
+    const syncExperienceAnimation = async (targetId) => {
       const showAcademic = targetId === "#education";
-      const academicContainer = experienceAnimationById.experienceAcademic?.container;
-      const professionalContainer = experienceAnimationById.experienceProfessional?.container;
+      const academicContainer = document.querySelector('[data-lottie-id="experienceAcademic"]');
+      const professionalContainer = document.querySelector('[data-lottie-id="experienceProfessional"]');
 
       if (academicContainer) {
         academicContainer.classList.toggle("lottie-slot--hidden", !showAcademic);
@@ -198,12 +278,17 @@ function App() {
       if (reducedMotion) {
         return;
       }
+
       if (showAcademic) {
-        experienceAnimationById.experienceProfessional?.instance.pause();
-        experienceAnimationById.experienceAcademic?.instance.play();
+        getExperienceRecord("experienceProfessional")?.instance.pause();
+        if (academicContainer) {
+          await playLottie(academicContainer);
+        }
       } else {
-        experienceAnimationById.experienceAcademic?.instance.pause();
-        experienceAnimationById.experienceProfessional?.instance.play();
+        getExperienceRecord("experienceAcademic")?.instance.pause();
+        if (professionalContainer) {
+          await playLottie(professionalContainer);
+        }
       }
     };
 
@@ -218,11 +303,12 @@ function App() {
       if (!targetId) {
         return;
       }
-      // wait for class toggle in legacy script to settle
       if (!reducedMotion) {
         addTemporaryBodyClass("is-experience-transitioning", 520);
       }
-      window.requestAnimationFrame(() => syncExperienceAnimation(targetId));
+      window.requestAnimationFrame(() => {
+        syncExperienceAnimation(targetId);
+      });
     };
 
     experienceButtons.forEach((button) => {
@@ -296,7 +382,6 @@ function App() {
     bindPortfolioTransitions();
 
     return () => {
-      observer.disconnect();
       sectionObserver.disconnect();
       transitionTimers.forEach((timer) => window.clearTimeout(timer));
       body.classList.remove(
