@@ -765,6 +765,43 @@ body.dark-theme .certifications--scifi .portfolio__title {
   background: hsla(var(--hue-color), 89%, 56%, 0.26);
 }
 
+.portfolio__img-wrap {
+  display: block;
+  justify-self: center;
+}
+
+.credly-badge-host {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+  min-height: 150px;
+}
+
+.cert-slide--azure .portfolio__img-wrap--decorative {
+  display: block;
+}
+
+@media screen and (max-width: 767px) {
+  .cert-slide--azure .portfolio__img-wrap--decorative {
+    display: none;
+  }
+
+  .cert-slide--azure .credly-badge-host {
+    min-height: 200px;
+    margin-bottom: 0.5rem;
+  }
+
+  .certifications--scifi .portfolio__title {
+    font-size: 1rem;
+  }
+
+  .certifications--scifi .swiper-button-next,
+  .certifications--scifi .swiper-button-prev {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+}
+
 /* Transition motifs: GitOps/API/K3s themed micro effects */
 .section-theme {
   position: relative;

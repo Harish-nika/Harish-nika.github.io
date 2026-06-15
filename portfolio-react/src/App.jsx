@@ -381,6 +381,43 @@ function App() {
     };
     bindPortfolioTransitions();
 
+    const loadCredlyEmbeds = () => {
+      const badgeHosts = document.querySelectorAll(".credly-badge-host[data-share-badge-id]");
+      if (!badgeHosts.length) {
+        return;
+      }
+      const renderBadges = () => {
+        if (typeof window.CredlyBadge === "object" && typeof window.CredlyBadge.render === "function") {
+          window.CredlyBadge.render();
+        }
+      };
+      if (document.querySelector("script[data-credly-embed]")) {
+        renderBadges();
+        return;
+      }
+      const script = document.createElement("script");
+      script.src = "https://cdn.credly.com/assets/utilities/embed.js";
+      script.async = true;
+      script.setAttribute("data-credly-embed", "true");
+      script.onload = renderBadges;
+      document.body.appendChild(script);
+    };
+
+    const certSection = document.getElementById("Certifications");
+    if (certSection) {
+      const credlyObserver = new IntersectionObserver(
+        (entries) => {
+          if (entries.some((entry) => entry.isIntersecting)) {
+            loadCredlyEmbeds();
+            credlyObserver.disconnect();
+          }
+        },
+        { rootMargin: "120px 0px", threshold: 0.05 }
+      );
+      credlyObserver.observe(certSection);
+      cleanupFns.push(() => credlyObserver.disconnect());
+    }
+
     return () => {
       sectionObserver.disconnect();
       transitionTimers.forEach((timer) => window.clearTimeout(timer));
