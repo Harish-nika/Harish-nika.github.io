@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://harish-nika.github.io/sitemap.xml

@@ -1,0 +1,12 @@
+/* TEAM */
+Engineer: Harish Kumar S
+Role: AI/ML Engineer
+Company: FactEntry Data Solutions (A SIX Company)
+Location: Tamil Nadu, India
+Site: https://harish-nika.github.io/
+LinkedIn: https://www.linkedin.com/in/harish-kumar-s-b0a0472b1/
+GitHub: https://github.com/Harish-nika
+Email: harishkumar56278@gmail.com
+
+/* THANKS */
+VIT Vellore, FactEntry, MIMASOFT Technologies

@@ -40,6 +40,9 @@ cp "$DIST_DIR/dental-project.html" "$ROOT_DIR/dental-project.html"
 cp "$DIST_DIR/profile.html" "$ROOT_DIR/profile.html"
 cp "$DIST_DIR/favicon.svg" "$ROOT_DIR/favicon.svg"
 cp "$DIST_DIR/icons.svg" "$ROOT_DIR/icons.svg"
+cp "$DIST_DIR/robots.txt" "$ROOT_DIR/robots.txt"
+cp "$DIST_DIR/sitemap.xml" "$ROOT_DIR/sitemap.xml"
+cp "$DIST_DIR/humans.txt" "$ROOT_DIR/humans.txt"
 if [[ -f "$DIST_DIR/google7f465a6ab3fc22ea.html" ]]; then
   cp "$DIST_DIR/google7f465a6ab3fc22ea.html" "$ROOT_DIR/google7f465a6ab3fc22ea.html"
 fi
