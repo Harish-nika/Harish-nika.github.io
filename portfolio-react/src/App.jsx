@@ -10,7 +10,8 @@ function App() {
     }
     window.__legacyAssetsLoaded = true;
 
-    document.title = "Harish Kumar - AI ML Engineer";
+    document.title =
+      "Harish Kumar | AI/ML Engineer & Data Mining Engine (DME) | FactEntry";
 
     const head = document.head;
     const links = [
