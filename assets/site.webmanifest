@@ -1,21 +1,16 @@
 {
-  "name": "MyWebSite",
-  "short_name": "MySite",
+  "name": "Harish Kumar — AI/ML Engineer Portfolio",
+  "short_name": "Harish Kumar",
+  "description": "AI/ML Engineer at FactEntry. Data Mining Engine, K3s, GitOps, RAG, computer vision.",
+  "start_url": "/",
   "icons": [
     {
-      "src": "/web-app-manifest-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "maskable"
-    },
-    {
-      "src": "/web-app-manifest-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable"
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
     }
   ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
+  "theme_color": "#040a18",
+  "background_color": "#040a18",
   "display": "standalone"
 }
