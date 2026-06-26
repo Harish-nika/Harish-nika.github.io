@@ -321,12 +321,6 @@ img {
   animation: homeBlobFloat 7s ease-in-out infinite;
 }
 
-.home__blob-img {
-  width: 180px;
-  translate: -5px;
-  /* mix-blend-mode: multiply; */
-}
-
 .home__data {
   grid-column: 1/3;
 }
@@ -457,9 +451,6 @@ img {
 /*==================== ABOUT ====================*/
 .about__img {
   width: 200px;
-  height: 250px;
-  object-fit: cover;
-  object-position: center 15%;
   border-radius: .5rem;
   justify-self: center;
   align-self: center;
