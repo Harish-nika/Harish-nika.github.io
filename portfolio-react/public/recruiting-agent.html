@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Harish Kumar S">
+    <meta name="description" content="Recruiting Agent — AI-powered ATS case study. Multi-step LLM resume pipeline, ChromaDB JD matching, verification, suspicion scoring, and HR feedback loop.">
+    <meta property="og:title" content="Recruiting Agent — AI-Powered ATS | Harish Kumar S">
+    <meta property="og:description" content="Observable multi-step agent pipeline for resume verification, role-fit scoring, and HR follow-up — FastAPI, React, ChromaDB, Ollama/Groq.">
+    <meta property="og:image" content="https://harish-nika.github.io/assets/img/recruiting-agent/overview.png">
+    <meta property="og:url" content="https://harish-nika.github.io/recruiting-agent.html">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" href="./favicon.svg">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.6/css/line.css">
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="./assets/css/portfolio-enhance.css">
+    <link rel="stylesheet" href="./assets/css/portfolio-transitions.css">
+
+    <title>Recruiting Agent — AI-Powered ATS | Harish Kumar S</title>
+    <style>
+        .case-study-header { text-align: center; margin-bottom: 2rem; padding-top: 5rem; }
+        .case-study-title  { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .probation-badge {
+            display: inline-block; background-color: var(--first-color); color: #fff;
+            padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem;
+            font-weight: 600; margin-bottom: 1.5rem;
+        }
+        .case-study-subtitle {
+            font-size: 1.1rem; color: var(--text-color-light); max-width: 860px;
+            margin: 0 auto 1rem; text-align: left; line-height: 1.65;
+        }
+        .tabs {
+            display: flex; justify-content: center; flex-wrap: wrap;
+            gap: 1rem; margin-bottom: 2rem;
+            border-bottom: 2px solid var(--text-color-light); padding-bottom: 1rem;
+        }
+        .tab-btn {
+            background: none; border: none; font-size: 1.05rem; font-weight: 600;
+            color: var(--text-color-light); cursor: pointer; padding: 0.5rem 1rem;
+            transition: color 0.3s; position: relative;
+        }
+        .tab-btn:hover { color: var(--first-color); }
+        .tab-btn.active { color: var(--first-color); }
+        .tab-btn.active::after {
+            content: ''; position: absolute; left: 0; bottom: -18px;
+            width: 100%; height: 3px; background-color: var(--first-color); border-radius: 3px;
+        }
+        .tab-content {
+            display: block; scroll-margin-top: 6.5rem;
+            padding-top: 0.5rem; margin-bottom: 3rem;
+            border-bottom: 1px solid hsl(var(--hue-color), 12%, 88%);
+            padding-bottom: 2rem;
+        }
+        body.dark-theme .tab-content { border-bottom-color: hsl(var(--hue-color), 12%, 28%); }
+        .project-section { margin-bottom: 3rem; }
+        .project-img { width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-bottom: 1.5rem; border: 1px solid rgba(0,0,0,0.1); }
+        .img-caption { text-align: center; font-size: 0.95rem; font-weight: 500;
+            color: var(--title-color); margin-top: -1rem; margin-bottom: 2rem; }
+        .arch-list { line-height: 1.8; margin-left: 1.5rem; margin-bottom: 1.5rem; }
+        .arch-list li { margin-bottom: 0.45rem; }
+        .code-block {
+            background: hsl(var(--hue-color), 20%, 14%); color: #e2e8f0;
+            border-radius: 8px; padding: 1rem 1.25rem; font-size: 0.85rem;
+            font-family: "Courier New", monospace; overflow-x: auto; line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        body:not(.dark-theme) .code-block { background: #1e293b; }
+        .endpoint-table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; font-size: 0.95rem; }
+        .endpoint-table th, .endpoint-table td {
+            border: 1px solid hsl(var(--hue-color), 12%, 80%); padding: 8px 12px; text-align: left;
+        }
+        body.dark-theme .endpoint-table th, body.dark-theme .endpoint-table td { border-color: hsl(var(--hue-color), 12%, 28%); }
+        .endpoint-table th { background: var(--input-color); font-weight: 600; }
+        .note-box {
+            background: var(--input-color);
+            border-left: 4px solid var(--first-color);
+            padding: 1rem 1.2rem;
+            border-radius: 0 8px 8px 0;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+        .method-badge {
+            display: inline-block; padding: 2px 8px; border-radius: 4px;
+            font-size: 0.78rem; font-weight: 700; background: var(--first-color); color: #fff;
+        }
+        .flow-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-bottom: 2rem; }
+        @media screen and (min-width: 768px) {
+            .flow-grid { grid-template-columns: repeat(2, 1fr); }
+            .flow-card--wide { grid-column: 1 / -1; }
+        }
+        .flow-card figcaption { font-size: 0.9rem; line-height: 1.5; margin-top: 0.5rem; color: var(--text-color-light); }
+    </style>
+</head>
+<body class="case-study">
+
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="index.html" class="nav__logo"><i class="fa-solid fa-arrow-left"></i> Back to Portfolio</a>
+            <div class="nav__btns">
+                <i class="uil uil-moon change-theme" id="theme-button"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="section container">
+            <div class="case-study-header">
+                <h1 class="case-study-title">Recruiting Agent — AI-Powered ATS</h1>
+                <p class="case-study-tagline">Multi-step LLM pipeline for resume verification, role-fit scoring, and HR follow-up</p>
+                <div class="probation-badge"><i class="uil uil-robot"></i> AI Agent Project</div>
+                <ul class="case-study-hero-bullets">
+                    <li>FastAPI + React SPA on a single port</li>
+                    <li>ChromaDB semantic JD matching</li>
+                    <li>Observable 9-step agent pipeline</li>
+                    <li>Optional Groq acceleration (local embeddings)</li>
+                </ul>
+                <p class="case-study-subtitle">
+                    Recruiting Agent is an AI-powered Applicant Tracking System built for HR teams. It ingests job descriptions
+                    and resumes (including scanned PDFs), runs a multi-stage LLM pipeline for structured verification and role-fit
+                    scoring, flags authenticity concerns, and surfaces categorized HR follow-up questions — with a live Agent Activity
+                    timeline during processing. Part of the <strong>Agents</strong> monorepo — designed as the first of multiple AI agent projects.
+                </p>
+            </div>
+
+            <div class="case-study-tabs-wrap">
+                <nav class="tabs tabs-sticky" aria-label="Case study sections">
+                    <button type="button" class="tab-btn active" data-tab="overview" onclick="openTab(event,'overview')">Overview</button>
+                    <button type="button" class="tab-btn" data-tab="architecture" onclick="openTab(event,'architecture')">Architecture</button>
+                    <button type="button" class="tab-btn" data-tab="pipeline" onclick="openTab(event,'pipeline')">Agent Pipeline</button>
+                    <button type="button" class="tab-btn" data-tab="walkthrough" onclick="openTab(event,'walkthrough')">Product Walkthrough</button>
+                    <button type="button" class="tab-btn" data-tab="implementation" onclick="openTab(event,'implementation')">Implementation</button>
+                    <button type="button" class="tab-btn" data-tab="deployment" onclick="openTab(event,'deployment')">Deployment</button>
+                </nav>
+
+                <!-- Overview -->
+                <div id="overview" class="tab-content">
+                    <div class="project-section">
+                        <h2 class="section__title">What the system solves</h2>
+                        <p style="line-height:1.8; margin-bottom:1.2rem;">
+                            Manual resume screening is slow, inconsistent, and weak on fraud detection for technical roles.
+                            Recruiting Agent provides an end-to-end ATS with semantic JD matching, structured verification,
+                            evidence-calibrated scoring, and an HR feedback loop — not a chatbot, but an observable multi-step agent pipeline.
+                        </p>
+                        <div class="project-metrics" aria-label="Key metrics">
+                            <span class="metric-chip">9-step pipeline</span>
+                            <span class="metric-chip">OCR for scanned PDFs</span>
+                            <span class="metric-chip">Top-K JD matching</span>
+                            <span class="metric-chip">HR reassessment loop</span>
+                        </div>
+                        <div class="project-tech" aria-label="Technologies">
+                            <span class="tech-chip">FastAPI</span>
+                            <span class="tech-chip">React 19</span>
+                            <span class="tech-chip">TypeScript</span>
+                            <span class="tech-chip">SQLite</span>
+                            <span class="tech-chip">ChromaDB</span>
+                            <span class="tech-chip">Ollama</span>
+                            <span class="tech-chip">Groq</span>
+                            <span class="tech-chip">TanStack Query</span>
+                            <span class="tech-chip">Recharts</span>
+                        </div>
+
+                        <h2 class="section__title" style="margin-top:2rem;">Core features</h2>
+                        <table class="endpoint-table">
+                            <thead><tr><th>Feature</th><th>Description</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>JD Manager</strong></td><td>Create/update roles; paste raw JD text → AI extracts skills, seniority, must-haves</td></tr>
+                                <tr><td><strong>Vector search</strong></td><td>JDs chunked and embedded with Ollama → ChromaDB semantic matching</td></tr>
+                                <tr><td><strong>Resume upload</strong></td><td>PDF, DOCX, TXT, JPG/PNG with OCR for scanned documents</td></tr>
+                                <tr><td><strong>Verification</strong></td><td>Structured extract (education, experience, projects) + rule-based anomaly detection</td></tr>
+                                <tr><td><strong>Scoring</strong></td><td>Technical / HR / overall fit with evidence-based strengths and gaps</td></tr>
+                                <tr><td><strong>Suspicion + HR Qs</strong></td><td>Fraud flags and categorized verification questions with resume excerpts</td></tr>
+                                <tr><td><strong>Agent Activity</strong></td><td>Live pipeline timeline during analysis with similarity bars and skill chips</td></tr>
+                                <tr><td><strong>Dashboard charts</strong></td><td>Score distribution, role averages, top candidates, verification gaps</td></tr>
+                            </tbody>
+                        </table>
+
+                        <h2 class="section__title" style="margin-top:2rem;">Monorepo context</h2>
+                        <div class="code-block">Agents/
+├── README.md
+├── recruiting-agent/     # ATS / resume scoring agent (this project)
+│   ├── app/              # FastAPI backend + agent services
+│   ├── frontend/         # React SPA (Vite + TanStack Router)
+│   ├── deploy/           # systemd install scripts
+│   └── scripts/          # e2e, benchmark, reimport
+└── (future agents)/</div>
+                    </div>
+                </div>
+
+                <!-- Architecture -->
+                <div id="architecture" class="tab-content">
+                    <div class="project-section">
+                        <h2 class="section__title">System architecture</h2>
+                        <img src="./assets/img/recruiting-agent/architecture-flow.png" alt="Recruiting Agent full stack architecture" class="project-img project-img--ui" loading="lazy">
+                        <p class="img-caption">React SPA → FastAPI → agent services → SQLite/ChromaDB/uploads → Ollama (local) + Groq (optional)</p>
+
+                        <h2 class="section__title" style="margin-top:1.8rem;">Component summary</h2>
+                        <table class="endpoint-table">
+                            <thead><tr><th>Layer</th><th>Role</th></tr></thead>
+                            <tbody>
+                                <tr><td>React SPA</td><td>Dashboard, JD manager, upload, results, HR questions, settings — TanStack Router + Query</td></tr>
+                                <tr><td>FastAPI</td><td>JWT auth, async job endpoints, SPA static serving on port 8512</td></tr>
+                                <tr><td>job_service</td><td>Background threads, step timeline, job recovery, cancellation</td></tr>
+                                <tr><td>scoring_agent</td><td>Orchestrates parse → verify → embed → search → score → suspicion → save</td></tr>
+                                <tr><td>vector_store</td><td>ChromaDB HNSW index — JD chunks + skills, cosine similarity</td></tr>
+                                <tr><td>llm_client</td><td>Routes chat to Groq when key set, else Ollama; embeddings always local</td></tr>
+                                <tr><td>SQLite</td><td>Candidates, JDs, analysis results, processing jobs, HR questions</td></tr>
+                            </tbody>
+                        </table>
+
+                        <h2 class="section__title" style="margin-top:2rem;">Data model</h2>
+                        <ul class="arch-list">
+                            <li><code>job_descriptions</code> + <code>jd_versions</code> — role definitions with versioned content</li>
+                            <li><code>candidates</code> — raw text, structured/verification JSON, parse method</li>
+                            <li><code>analysis_results</code> — per candidate × JD scores, suspicion, similarity</li>
+                            <li><code>hr_questions</code> — categorized questions with resume excerpts and HR answers</li>
+                            <li><code>processing_jobs</code> — step timeline + <code>viz_json</code> for live Agent Activity UI</li>
+                            <li><code>user_settings</code> — per-user Groq API key (optional)</li>
+                        </ul>
+
+                        <h2 class="section__title" style="margin-top:2rem;">LLM routing</h2>
+                        <p style="line-height:1.8; margin-bottom:1rem;">
+                            Middleware resolves Groq API key per request (header, saved settings, or local file).
+                            Chat inference uses <strong>Groq</strong> when a key is available, otherwise <strong>Ollama</strong>.
+                            Embeddings always run on local Ollama (<code>nomic-embed-text</code>) — even when Groq accelerates scoring.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Agent Pipeline -->
+                <div id="pipeline" class="tab-content">
+                    <div class="project-section">
+                        <h2 class="section__title">Resume analysis pipeline</h2>
+                        <img src="./assets/img/recruiting-agent/resume-pipeline-flow.png" alt="Resume analysis 9-step pipeline" class="project-img project-img--ui" loading="lazy">
+                        <p class="img-caption">Upload → parse → normalize → verify → embed → search → score → suspicion → save → HR questions</p>
+
+                        <h2 class="section__title" style="margin-top:1.8rem;">Pipeline steps</h2>
+                        <table class="endpoint-table">
+                            <thead><tr><th>Step</th><th>Label</th><th>What happens</th></tr></thead>
+                            <tbody>
+                                <tr><td><code>receive</code></td><td>Receive file</td><td>Store upload, create processing job record</td></tr>
+                                <tr><td><code>parse</code></td><td>Parse resume</td><td>Extract text from PDF/DOCX/image; OCR for low-text scans</td></tr>
+                                <tr><td><code>normalize</code></td><td>Structure text</td><td>LLM normalization when unstructured</td></tr>
+                                <tr><td><code>verify</code></td><td>Verify education &amp; experience</td><td>Structured LLM extract + rule-based anomaly checks</td></tr>
+                                <tr><td><code>embed</code></td><td>Embed vectors</td><td>Ollama embeddings for resume text</td></tr>
+                                <tr><td><code>search</code></td><td>Search matching roles</td><td>ChromaDB top-K JD similarity (default K=3)</td></tr>
+                                <tr><td><code>score</code></td><td>LLM role scoring</td><td>Technical / HR / overall fit with evidence</td></tr>
+                                <tr><td><code>suspicion</code></td><td>Suspicion analysis</td><td>0–100 authenticity score + HR questions</td></tr>
+                                <tr><td><code>save</code></td><td>Save results</td><td>Persist candidate, scores, questions to SQLite</td></tr>
+                            </tbody>
+                        </table>
+
+                        <h2 class="section__title" style="margin-top:2rem;">Other async job types</h2>
+                        <table class="endpoint-table">
+                            <thead><tr><th>Job type</th><th>Steps</th><th>Trigger</th></tr></thead>
+                            <tbody>
+                                <tr><td><code>jd_parse</code></td><td>receive → llm → done</td><td>POST <code>/api/v1/jds/parse-async</code></td></tr>
+                                <tr><td><code>jd_index</code></td><td>chunk → embed → index → done</td><td>POST <code>/api/v1/jds/{id}/index-async</code></td></tr>
+                                <tr><td><code>hr_reassess</code></td><td>collect → llm_reassess → update → done</td><td>POST <code>/api/v1/candidates/{id}/reassess-suspicion</code></td></tr>
+                            </tbody>
+                        </table>
+
+                        <h2 class="section__title" style="margin-top:2rem;">HR verification loop</h2>
+                        <img src="./assets/img/recruiting-agent/hr-loop-flow.png" alt="HR verification loop flow" class="project-img project-img--ui" loading="lazy">
+                        <p class="img-caption">Suspicion flags → categorized HR questions → recruiter answers → LLM reassessment → updated fit summary</p>
+
+                        <h2 class="section__title" style="margin-top:2rem;">Live Agent Activity</h2>
+                        <img src="./assets/img/recruiting-agent/screenshots/agent_activity_bar.png" alt="Live agent activity timeline" class="project-img project-img--ui" loading="lazy">
+                        <p class="img-caption">Frontend polls <code>GET /api/v1/jobs</code> every 1.5s via TanStack Query — step timeline updates with similarity bars and skill chips from <code>viz_snapshots</code></p>
+                    </div>
+                </div>
+
+                <!-- Product Walkthrough -->
+                <div id="walkthrough" class="tab-content">
+                    <div class="project-section">
+                        <h2 class="section__title">Dashboard</h2>
+                        <img src="./assets/img/recruiting-agent/screenshots/dashboard_page.png" alt="Recruiting Agent dashboard" class="project-img project-img--ui" loading="lazy">
+                        <p class="img-caption">Pipeline health, score distribution, and top candidates at a glance</p>
+
+                        <h2 class="section__title" style="margin-top:2rem;">Job descriptions</h2>
+                        <img src="./assets/img/recruiting-agent/screenshots/jd_page.png" alt="Job descriptions manager" class="project-img project-img--ui" loading="lazy">
+                        <p class="img-caption">Create roles, paste JD text, and index skills for vector search</p>
+                        <img src="./assets/img/recruiting-agent/screenshots/jd_parsing_with_llm.png" alt="JD parsing with LLM" class="project-img project-img--ui" loading="lazy">
+                        <p class="img-caption">LLM extracts structured fields — skills, seniority, must-haves — from raw JD text</p>
+
+                        <h2 class="section__title" style="margin-top:2rem;">Resume upload</h2>
+                        <img src="./assets/img/recruiting-agent/screenshots/upload_cv_for_analysis.png" alt="Resume upload for analysis" class="project-img project-img--ui" loading="lazy">
+                        <p class="img-caption">Bulk upload with optional target role; supports PDF, DOCX, scans, and images</p>
+
+                        <h2 class="section__title" style="margin-top:2rem;">Analysis results</h2>
+                        <img src="./assets/img/recruiting-agent/screenshots/analysis_result.png" alt="Analysis results per candidate" class="project-img project-img--ui" loading="lazy">
+                        <p class="img-caption">Per-candidate scores, role suitability comparison, verification gaps, and ranking</p>
+                        <img src="./assets/img/recruiting-agent/screenshots/gap_sus_report.png" alt="Verification gaps and suspicion report" class="project-img project-img--ui" loading="lazy">
+                        <p class="img-caption">Detailed verification gaps and suspicion evidence tied to resume excerpts</p>
+
+                        <h2 class="section__title" style="margin-top:2rem;">HR questions</h2>
+                        <img src="./assets/img/recruiting-agent/screenshots/hr_question_page.png" alt="HR verification questions" class="project-img project-img--ui" loading="lazy">
+                        <p class="img-caption">Categorized verification questions with resume excerpts for recruiter follow-up</p>
+
+                        <h2 class="section__title" style="margin-top:2rem;">Settings</h2>
+                        <img src="./assets/img/recruiting-agent/screenshots/settings_key_managment.png" alt="Groq API key settings" class="project-img project-img--ui" loading="lazy">
+                        <p class="img-caption">Optional Groq API key for faster LLM scoring — embeddings stay on local Ollama</p>
+                    </div>
+                </div>
+
+                <!-- Implementation -->
+                <div id="implementation" class="tab-content">
+                    <div class="project-section">
+                        <h2 class="section__title">Key services</h2>
+                        <table class="endpoint-table">
+                            <thead><tr><th>Service</th><th>Responsibility</th></tr></thead>
+                            <tbody>
+                                <tr><td><code>scoring_agent.py</code></td><td>End-to-end resume analysis orchestration and result persistence</td></tr>
+                                <tr><td><code>resume_parser.py</code></td><td>Multi-format parsing, OCR for scans, LLM normalization</td></tr>
+                                <tr><td><code>candidate_verification.py</code></td><td>Structured extract + timeline gap / missing section rules</td></tr>
+                                <tr><td><code>suspicion_detector.py</code></td><td>LLM authenticity scoring with evidence-tied HR questions</td></tr>
+                                <tr><td><code>suspicion_reassessment.py</code></td><td>Re-evaluate suspicion after HR answers</td></tr>
+                                <tr><td><code>vector_store.py</code></td><td>ChromaDB chunking, embedding, and top-K JD search</td></tr>
+                                <tr><td><code>jd_parser.py</code></td><td>LLM extraction of skills and requirements from raw JD text</td></tr>
+                                <tr><td><code>llm_client.py</code></td><td>Groq/Ollama routing; local embeddings via Ollama</td></tr>
+                                <tr><td><code>viz_snapshots.py</code></td><td>Step visualization data for Agent Activity panel</td></tr>
+                            </tbody>
+                        </table>
+
+                        <h2 class="section__title" style="margin-top:2rem;">API endpoints</h2>
+                        <table class="endpoint-table">
+                            <thead><tr><th>Endpoint</th><th>Method</th><th>Description</th></tr></thead>
+                            <tbody>
+                                <tr><td><code>/api/v1/auth/login</code></td><td><span class="method-badge">POST</span></td><td>JWT login (bcrypt password)</td></tr>
+                                <tr><td><code>/api/v1/jds</code></td><td><span class="method-badge">GET/POST</span></td><td>List and create job descriptions</td></tr>
+                                <tr><td><code>/api/v1/jds/parse-async</code></td><td><span class="method-badge">POST</span></td><td>Async LLM JD field extraction</td></tr>
+                                <tr><td><code>/api/v1/jds/{id}/index-async</code></td><td><span class="method-badge">POST</span></td><td>Chunk, embed, and index JD in ChromaDB</td></tr>
+                                <tr><td><code>/api/v1/candidates/upload-async</code></td><td><span class="method-badge">POST</span></td><td>Upload resume → returns job_id for polling</td></tr>
+                                <tr><td><code>/api/v1/jobs</code></td><td><span class="method-badge">GET</span></td><td>Poll job status and step timeline</td></tr>
+                                <tr><td><code>/api/v1/candidates/{id}/reassess-suspicion</code></td><td><span class="method-badge">POST</span></td><td>HR answer loop reassessment</td></tr>
+                                <tr><td><code>/api/v1/dashboard/stats</code></td><td><span class="method-badge">GET</span></td><td>Analytics aggregates for charts</td></tr>
+                                <tr><td><code>/api/v1/settings/groq-key</code></td><td><span class="method-badge">GET/PUT</span></td><td>Per-user Groq API key management</td></tr>
+                            </tbody>
+                        </table>
+
+                        <h2 class="section__title" style="margin-top:2rem;">Concurrency &amp; resilience</h2>
+                        <ul class="arch-list">
+                            <li>Resume jobs serialized via <code>threading.Semaphore(1)</code> — one resume at a time</li>
+                            <li>Background daemon threads for all async jobs</li>
+                            <li>Stale job recovery on server restart (<code>recover_stale_jobs</code>)</li>
+                            <li>Job cancellation support</li>
+                            <li>SQLite WAL mode + commit retry on lock</li>
+                            <li>Email-based deduplication — re-upload replaces prior analyses</li>
+                        </ul>
+
+                        <h2 class="section__title" style="margin-top:2rem;">Scoring prompt design</h2>
+                        <p style="line-height:1.8; margin-bottom:1rem;">
+                            Scoring prompts enforce full 0–100 range, role-specific weighting (e.g. GenAI/ML roles),
+                            and penalize keyword stuffing without project proof. Suspicion prompts require evidence-tied
+                            HR questions with calibrated 0–100 authenticity scores.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Deployment -->
+                <div id="deployment" class="tab-content">
+                    <div class="project-section">
+                        <h2 class="section__title">Quick start</h2>
+                        <div class="code-block">git clone https://github.com/Harish-nika/Agents.git
+cd Agents/recruiting-agent
+
+# Prerequisites: Python 3.10+, Node 20+, Ollama
+ollama pull llama3.1:8b
+ollama pull nomic-embed-text
+
+cp .env.example .env   # set APP_PASSWORD
+python3 -m venv venv && source venv/bin/activate
+pip install -r requirements.txt
+python -c "from app.db.models import init_db; init_db()"
+
+cd frontend && npm install && npm run build && cd ..
+export PYTHONPATH=$(pwd)
+uvicorn app.api.main:app --host 0.0.0.0 --port 8512
+
+# Open http://localhost:8512 — login: hr / APP_PASSWORD</div>
+
+                        <h2 class="section__title" style="margin-top:2rem;">Production (systemd)</h2>
+                        <div class="code-block">bash deploy/install.sh
+sudo systemctl enable --now recruiting-agent</div>
+
+                        <h2 class="section__title" style="margin-top:2rem;">Security</h2>
+                        <div class="note-box">
+                            <strong>Privacy by default:</strong> Ollama handles all inference and embeddings locally.
+                            Groq is optional — when enabled, text is sent to Groq's API for faster scoring.
+                            Never commit <code>.env</code>, <code>groq_key.txt</code>, or <code>resumes/</code>.
+                            Change <code>APP_PASSWORD</code> before exposing on a network.
+                        </div>
+
+                        <h2 class="section__title" style="margin-top:2rem;">Testing</h2>
+                        <div class="code-block">source venv/bin/activate && export PYTHONPATH=$(pwd)
+python scripts/e2e_test.py
+python scripts/reimport_resumes.py   # bulk score resumes/ folder
+python scripts/benchmark_resumes.py  # Groq vs Ollama latency</div>
+
+                        <div class="project-card__cta" style="margin-top:2rem;">
+                            <a href="https://github.com/Harish-nika/Agents" target="_blank" rel="noopener" class="button button--flex button--small portfolio__button">
+                                <i class="uil uil-github-alt"></i>&nbsp; View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align:center;">
+                <a href="index.html" style="display:inline-flex;align-items:center;gap:.5rem;margin:2rem 0;padding:.75rem 1.5rem;background:var(--first-color);color:#fff;border-radius:8px;text-decoration:none;font-weight:500;">
+                    <i class="fa-solid fa-arrow-left"></i> Back to Portfolio
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        function openTab(evt, tabName) {
+            if (evt && evt.preventDefault) evt.preventDefault();
+            document.querySelectorAll('.case-study-tabs-wrap .tab-btn').forEach(function(btn) {
+                btn.classList.toggle('active', btn.getAttribute('data-tab') === tabName);
+            });
+            var section = document.getElementById(tabName);
+            if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        const themeButton = document.getElementById('theme-button');
+        const darkTheme = 'dark-theme';
+        const iconTheme = 'uil-sun';
+        const selectedTheme = localStorage.getItem('selected-theme');
+        const selectedIcon = localStorage.getItem('selected-icon');
+        const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light';
+        const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'uil-moon' : 'uil-sun';
+        if (selectedTheme) {
+            document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme);
+            themeButton.classList[selectedIcon === 'uil-moon' ? 'add' : 'remove'](iconTheme);
+        }
+        themeButton.addEventListener('click', () => {
+            document.body.classList.toggle(darkTheme);
+            themeButton.classList.toggle(iconTheme);
+            localStorage.setItem('selected-theme', getCurrentTheme());
+            localStorage.setItem('selected-icon', getCurrentIcon());
+        });
+    </script>
+    <script src="./assets/js/portfolio-transitions.js"></script>
+    <script src="./assets/js/portfolio-enhance.js"></script>
+</body>
+</html>

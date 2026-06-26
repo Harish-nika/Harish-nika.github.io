@@ -1105,6 +1105,65 @@
                         </div>
                     </div>
 
+                    <!-- Featured: Recruiting Agent -->
+                    <div class="project-card project-card--featured">
+                        <img src="./assets/img/recruiting-agent/overview.png" alt="Recruiting Agent — AI-powered ATS pipeline, dashboard, and tech stack" class="project-img--ui" loading="lazy" decoding="async" style="object-fit:cover;">
+                        <h3 class="testimonial__name">Recruiting Agent — AI-Powered ATS</h3>
+                        <span class="testimonial__description">Independent R&amp;D — Agents Monorepo</span>
+                        <p class="project-card__headline">AI-powered ATS with observable multi-step resume analysis, semantic JD matching, and HR verification loop</p>
+                        <div class="project-metrics" aria-label="Key metrics">
+                            <span class="metric-chip">9-step agent pipeline</span>
+                            <span class="metric-chip">ChromaDB semantic match</span>
+                            <span class="metric-chip">OCR resume ingest</span>
+                            <span class="metric-chip">Hybrid Ollama/Groq</span>
+                        </div>
+                        <div class="project-tech" aria-label="Technologies">
+                            <span class="tech-chip">FastAPI</span>
+                            <span class="tech-chip">React</span>
+                            <span class="tech-chip">SQLite</span>
+                            <span class="tech-chip">ChromaDB</span>
+                            <span class="tech-chip">Ollama</span>
+                            <span class="tech-chip">Groq</span>
+                            <span class="tech-chip">TanStack Query</span>
+                        </div>
+                        <div class="project-card__body">
+                            <ul>
+                                <li>JD manager with LLM field extraction and ChromaDB vector indexing for semantic role matching.</li>
+                                <li>Resume upload (PDF, DOCX, scans) with structured verification, suspicion scoring, and evidence-based HR questions.</li>
+                                <li>Live Agent Activity timeline during async analysis — polled job steps with similarity bars and skill chips.</li>
+                                <li>Dashboard analytics: score distribution, role averages, top candidates, and verification gap totals.</li>
+                            </ul>
+                        </div>
+
+                        <div class="project-flows">
+                            <h4 class="project-flows__title">Architecture &amp; agent flows</h4>
+                            <p class="project-flows__intro">Multi-step resume pipeline with observable agent steps — click a diagram to enlarge. Full walkthrough in the case study.</p>
+                            <div class="flow-grid flow-grid--index">
+                                <figure class="flow-card flow-card--wide">
+                                    <img src="./assets/img/recruiting-agent/architecture-flow.png" alt="Recruiting Agent full stack — React, FastAPI, services, ChromaDB, Ollama/Groq" class="project-img--ui" loading="lazy">
+                                    <figcaption><strong>Full stack</strong> React SPA → FastAPI → agent services → SQLite/ChromaDB → Ollama/Groq</figcaption>
+                                </figure>
+                                <figure class="flow-card">
+                                    <img src="./assets/img/recruiting-agent/resume-pipeline-flow.png" alt="Resume analysis pipeline — parse through save" class="project-img--ui" loading="lazy">
+                                    <figcaption><strong>Resume pipeline</strong> Upload → parse → verify → embed → search → score → suspicion → save</figcaption>
+                                </figure>
+                                <figure class="flow-card">
+                                    <img src="./assets/img/recruiting-agent/screenshots/agent_activity_bar.png" alt="Live agent activity timeline during resume analysis" class="project-img--ui" loading="lazy">
+                                    <figcaption><strong>Agent Activity</strong> Live step timeline with similarity bars during async resume jobs</figcaption>
+                                </figure>
+                                <figure class="flow-card">
+                                    <img src="./assets/img/recruiting-agent/hr-loop-flow.png" alt="HR verification loop — suspicion to reassessment" class="project-img--ui" loading="lazy">
+                                    <figcaption><strong>HR loop</strong> Suspicion flags → HR questions → reassess → updated fit summary</figcaption>
+                                </figure>
+                            </div>
+                        </div>
+
+                        <div class="project-card__cta">
+                            <a href="recruiting-agent.html" class="button button--flex button--small portfolio__button">Read full case study <i class="uil uil-arrow-right button__icon"></i></a>
+                            <a href="https://github.com/Harish-nika/Agents" target="_blank" rel="noopener noreferrer" class="button button--flex button--small">GitHub <i class="uil uil-github-alt button__icon"></i></a>
+                        </div>
+                    </div>
+
                     <div class="project-grid-secondary">
 
                     <!-- Project 1: FExpert — Fixed Income Expert System -->

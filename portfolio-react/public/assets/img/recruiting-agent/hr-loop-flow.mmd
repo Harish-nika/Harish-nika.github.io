@@ -1,0 +1,6 @@
+flowchart LR
+    Score[Role-fit scoring] --> Flags[Suspicion flags]
+    Flags --> Questions[HR verification questions]
+    Questions --> Answers[Recruiter answers]
+    Answers --> Reassess[LLM reassessment]
+    Reassess --> Updated[Updated fit summary]

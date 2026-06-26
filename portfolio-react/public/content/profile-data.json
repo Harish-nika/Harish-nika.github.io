@@ -142,6 +142,14 @@
       "summary": "Enterprise bond extraction on K3s — UI, API, Redis queue workers, GitOps CI/CD, validation workspace."
     },
     {
+      "name": "Recruiting Agent — AI-Powered ATS",
+      "context": "Independent R&D — Agents Monorepo",
+      "link": "https://harish-nika.github.io/recruiting-agent.html",
+      "github": "https://github.com/Harish-nika/Agents",
+      "stack": ["FastAPI", "React", "SQLite", "ChromaDB", "Ollama", "Groq"],
+      "summary": "Multi-step LLM ATS — resume OCR, ChromaDB JD matching, verification, suspicion scoring, and HR feedback loop."
+    },
+    {
       "name": "Fixed Income Expert System",
       "context": "FactEntry internship — personal contribution",
       "link": "https://harish-nika.github.io/fexpert.html",

@@ -1,0 +1,11 @@
+flowchart LR
+    Upload[Upload resume] --> Receive[Receive file]
+    Receive --> Parse[Parse resume]
+    Parse --> Normalize[Structure text]
+    Normalize --> Verify[Verify education and experience]
+    Verify --> Embed[Embed vectors]
+    Embed --> Search[Search matching roles]
+    Search --> Score[LLM role scoring]
+    Score --> Suspicion[Suspicion analysis]
+    Suspicion --> Save[Save results]
+    Save --> HRQs[HR questions generated]

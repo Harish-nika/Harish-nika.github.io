@@ -46,6 +46,9 @@ _Jun 2025 - Oct 2025_
 - **Data Mining Engine (DME)** (FactEntry Data Solutions (A SIX Company) — Software Developer Trainee, probation)
   Enterprise bond extraction on K3s — UI, API, Redis queue workers, GitOps CI/CD, validation workspace. [K3s, FastAPI, Redis, PostgreSQL, Argo CD]
   https://harish-nika.github.io/dme-project.html
+- **Recruiting Agent — AI-Powered ATS** (Independent R&D — Agents Monorepo)
+  Multi-step LLM ATS — resume OCR, ChromaDB JD matching, verification, suspicion scoring, and HR feedback loop. [FastAPI, React, SQLite, ChromaDB, Ollama, Groq]
+  https://harish-nika.github.io/recruiting-agent.html | https://github.com/Harish-nika/Agents
 - **Fixed Income Expert System** (FactEntry internship — personal contribution)
   RAG chatbot for financial bond PDFs — upload, embed, retrieve, LLaMA 3 answers via Groq. [FastAPI, Streamlit, FAISS, Groq, SBERT]
   https://harish-nika.github.io/fexpert.html | https://github.com/Harish-nika/FExpert

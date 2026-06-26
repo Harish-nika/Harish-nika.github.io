@@ -1,0 +1,57 @@
+flowchart TB
+    subgraph UI["React SPA"]
+        Dashboard
+        JDs[Job Descriptions]
+        Upload
+        Results
+        HRQs[HR Questions]
+        AgentPanel[Agent Activity Panel]
+    end
+
+    subgraph API["FastAPI"]
+        Auth["/api/v1/auth"]
+        JDAPI["/api/v1/jds"]
+        CandAPI["/api/v1/candidates"]
+        JobsAPI["/api/v1/jobs"]
+        MiscAPI["/api/v1/dashboard"]
+    end
+
+    subgraph Services["Agent Services"]
+        JobSvc[job_service]
+        ScoreAgent[scoring_agent]
+        JDParser[jd_parser]
+        ResumeParser[resume_parser]
+        Verify[candidate_verification]
+        Suspicion[suspicion_detector]
+        LLM[llm_client]
+        Vector[vector_store]
+    end
+
+    subgraph Storage["Persistence"]
+        SQLite[(SQLite)]
+        Chroma[(ChromaDB)]
+        Files[(uploads)]
+    end
+
+    subgraph External["LLM Providers"]
+        Ollama[Ollama local]
+        Groq[Groq API optional]
+    end
+
+    UI --> API
+    API --> JobSvc
+    JobSvc --> ScoreAgent
+    ScoreAgent --> ResumeParser
+    ScoreAgent --> Verify
+    ScoreAgent --> Vector
+    ScoreAgent --> Suspicion
+    ScoreAgent --> LLM
+    JDAPI --> JDParser
+    JDParser --> LLM
+    Vector --> Chroma
+    Vector --> Ollama
+    LLM --> Ollama
+    LLM --> Groq
+    Services --> SQLite
+    Services --> Files
+    AgentPanel -. polls .-> JobsAPI

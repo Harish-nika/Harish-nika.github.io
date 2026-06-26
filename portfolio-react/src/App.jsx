@@ -324,6 +324,7 @@ function App() {
       "content-moderator.html",
       "lang-tool.html",
       "medbot.html",
+      "recruiting-agent.html",
       "profile.html",
     ]);
 
