@@ -207,7 +207,7 @@ body.dark-theme .tech-chip {
 
 .about__cover-wrap {
   width: 100%;
-  height: clamp(120px, 22vw, 180px);
+  height: clamp(140px, 18vw, 200px);
   overflow: hidden;
   border-radius: 12px 12px 0 0;
   background: hsl(var(--hue-color), 28%, 18%);
@@ -217,8 +217,19 @@ body.dark-theme .tech-chip {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center center;
+  /* Anchor top: on wide desktop, cover scales by width and must not crop the head */
+  object-position: center top;
   display: block;
+}
+
+@media screen and (min-width: 768px) {
+  .about__cover-wrap {
+    height: clamp(170px, 14vw, 220px);
+  }
+
+  .about__cover-img {
+    object-position: 68% 6%;
+  }
 }
 
 .about__profile-header {
