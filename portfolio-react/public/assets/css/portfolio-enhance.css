@@ -198,18 +198,18 @@ body.dark-theme .tech-chip {
   margin-bottom: 0.4rem;
 }
 
-/* LinkedIn-style About: cover banner + overlapping avatar */
+/* About: full-width cover banner */
 .about__linkedin-card {
   width: 100%;
   overflow: hidden;
-  border-radius: 16px;
 }
 
 .about__cover-wrap {
-  width: 100%;
-  height: clamp(140px, 18vw, 200px);
+  width: calc(100% + 2.5rem);
+  margin: -1.25rem -1.25rem 1.25rem;
+  height: clamp(160px, 24vw, 260px);
   overflow: hidden;
-  border-radius: 12px 12px 0 0;
+  border-radius: 20px 20px 0 0;
   background: hsl(var(--hue-color), 28%, 18%);
 }
 
@@ -217,41 +217,18 @@ body.dark-theme .tech-chip {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* Anchor top: on wide desktop, cover scales by width and must not crop the head */
-  object-position: center top;
+  object-position: center center;
   display: block;
 }
 
 @media screen and (min-width: 768px) {
   .about__cover-wrap {
-    height: clamp(170px, 14vw, 220px);
+    height: clamp(200px, 18vw, 280px);
   }
 
   .about__cover-img {
-    object-position: 68% 6%;
+    object-position: center center;
   }
-}
-
-.about__profile-header {
-  padding: 0 1.25rem;
-  margin-top: clamp(-3.5rem, -8vw, -4.5rem);
-  margin-bottom: 0.75rem;
-}
-
-.about__avatar {
-  width: clamp(110px, 18vw, 148px);
-  height: clamp(110px, 18vw, 148px);
-  border-radius: 50%;
-  border: 4px solid hsl(var(--hue-color), 28%, 12%);
-  object-fit: cover;
-  object-position: center 12%;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.28);
-  display: block;
-  background: var(--container-color);
-}
-
-body:not(.dark-theme) .about__avatar {
-  border-color: hsl(var(--hue-color), 60%, 99%);
 }
 
 .about__linkedin-card .about__data {
