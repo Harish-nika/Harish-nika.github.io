@@ -1,7 +1,7 @@
 {
   "basics": {
     "name": "Harish Kumar S",
-    "title": "AI/ML Engineer",
+    "title": "Associate Software Developer",
     "location": "Ranipet, Tamil Nadu, India | Chennai, India",
     "email": "harishkumar56278@gmail.com",
     "phone": "+91 73973 27957",
@@ -11,7 +11,7 @@
     "resumeLink": "https://drive.google.com/file/d/1gawlbbXktf9qoLHGh9AskOxeLvBPYQNp/view?usp=sharing",
     "resumePdf": "./content/Harish-Kumar-Resume.pdf",
     "resumeMd": "./content/resume.md",
-    "summary": "Integrated MTech in Data Science (VIT, 2025) AI/ML engineer building production AI systems at FactEntry Data Solutions (A SIX Company). Experienced in MLOps, Kubernetes, GitOps, RAG pipelines, computer vision, and scalable backend engineering. Delivered enterprise-grade AI platforms using FastAPI microservices, Redis-based distributed processing, and cloud-native deployment architectures.",
+    "summary": "Integrated MTech in Data Science (VIT, 2025). Associate Software Developer at FactEntry Data Solutions (A SIX Company) building production AI systems. Experienced in MLOps, Kubernetes, GitOps, RAG pipelines, computer vision, and scalable backend engineering. Delivered enterprise-grade AI platforms using FastAPI microservices, Redis-based distributed processing, and cloud-native deployment architectures.",
     "highlights": [
       "Built and deployed a production bond-extraction platform on K3s, leveraging 80+ CPU cores with Redis Streams and human-in-the-loop validation workflows.",
       "Implemented end-to-end GitOps delivery pipelines using GitLab CI, Helm, and Argo CD for automated staging deployments.",
@@ -47,7 +47,7 @@
   },
   "experience": [
     {
-      "role": "Software Developer Trainee (Probation)",
+      "role": "Associate Software Developer",
       "company": "FactEntry Data Solutions - A SIX Company",
       "period": "Dec 2025 - Present",
       "highlights": [
@@ -136,7 +136,7 @@
   "projects": [
     {
       "name": "Data Mining Engine (DME)",
-      "context": "FactEntry Data Solutions (A SIX Company) — Software Developer Trainee, probation",
+      "context": "FactEntry Data Solutions (A SIX Company) — Associate Software Developer",
       "link": "https://harish-nika.github.io/dme-project.html",
       "stack": ["K3s", "FastAPI", "Redis", "PostgreSQL", "Argo CD"],
       "summary": "Enterprise bond extraction on K3s — UI, API, Redis queue workers, GitOps CI/CD, validation workspace."

@@ -16,6 +16,7 @@
     "content-moderator.html": true,
     "lang-tool.html": true,
     "medbot.html": true,
+    "recruiting-agent.html": true,
     "profile.html": true,
   };
 

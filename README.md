@@ -2,7 +2,7 @@
 
 **Live site:** [harish-nika.github.io](https://harish-nika.github.io/)
 
-AI/ML engineer at **FactEntry Data Solutions** (A SIX Company). Production systems with **K3s**, **GitOps**, **FastAPI**, **Redis**, **RAG**, and **computer vision**.
+**Associate Software Developer** at **FactEntry Data Solutions** (A SIX Company). Production systems with **K3s**, **GitOps**, **FastAPI**, **Redis**, **RAG**, and **computer vision**.
 
 ## Quick links for recruiters
 

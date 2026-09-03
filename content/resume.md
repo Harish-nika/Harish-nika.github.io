@@ -1,11 +1,11 @@
 # Harish Kumar S
-AI/ML Engineer
+Associate Software Developer
 Ranipet, Tamil Nadu, India | Chennai, India | harishkumar56278@gmail.com | +91 73973 27957
 https://www.linkedin.com/in/harish-kumar-s-b0a0472b1/ | https://github.com/Harish-nika
 https://harish-nika.github.io/
 
 ## Summary
-Integrated MTech in Data Science (VIT, 2025) AI/ML engineer building production AI systems at FactEntry Data Solutions (A SIX Company). Experienced in MLOps, Kubernetes, GitOps, RAG pipelines, computer vision, and scalable backend engineering. Delivered enterprise-grade AI platforms using FastAPI microservices, Redis-based distributed processing, and cloud-native deployment architectures.
+Integrated MTech in Data Science (VIT, 2025). Associate Software Developer at FactEntry Data Solutions (A SIX Company) building production AI systems. Experienced in MLOps, Kubernetes, GitOps, RAG pipelines, computer vision, and scalable backend engineering. Delivered enterprise-grade AI platforms using FastAPI microservices, Redis-based distributed processing, and cloud-native deployment architectures.
 - Built and deployed a production bond-extraction platform on K3s, leveraging 80+ CPU cores with Redis Streams and human-in-the-loop validation workflows.
 - Implemented end-to-end GitOps delivery pipelines using GitLab CI, Helm, and Argo CD for automated staging deployments.
 - Developed RAG-powered document intelligence systems using FAISS, Groq LLaMA, Streamlit, and FastAPI.
@@ -16,7 +16,7 @@ Integrated MTech in Data Science (VIT, 2025) AI/ML engineer building production 
 AI/ML Engineer | Machine Learning | Deep Learning | Computer Vision | NLP | RAG | Python | FastAPI | Kubernetes | K3s | Docker | Redis | PostgreSQL | GitLab CI | Argo CD | Helm | GitOps | MLOps | Roboflow | YOLO | FAISS | LangChain | Streamlit
 
 ## Experience
-### Software Developer Trainee (Probation) - FactEntry Data Solutions - A SIX Company
+### Associate Software Developer - FactEntry Data Solutions - A SIX Company
 _Dec 2025 - Present_
 - Shipped Data Mining Engine (DME) modules on K3s stage: corporate/municipal bond extraction, validation UI, and cluster operations portal.
 - Implemented Redis-stream job dispatch with multi-node worker throughput and GitOps delivery (GitLab CI image build -> Helm chart promote -> Argo CD).
@@ -43,9 +43,12 @@ _Jun 2025 - Oct 2025_
 - DevOps/GitOps: GitHub, GitLab CI, Argo CD, Helm, systemd, GitHub Actions, GitOps
 
 ## Key Projects
-- **Data Mining Engine (DME)** (FactEntry Data Solutions (A SIX Company) — Software Developer Trainee, probation)
+- **Data Mining Engine (DME)** (FactEntry Data Solutions (A SIX Company) — Associate Software Developer)
   Enterprise bond extraction on K3s — UI, API, Redis queue workers, GitOps CI/CD, validation workspace. [K3s, FastAPI, Redis, PostgreSQL, Argo CD]
   https://harish-nika.github.io/dme-project.html
+- **Recruiting Agent — AI-Powered ATS** (Independent R&D — Agents Monorepo)
+  Multi-step LLM ATS — resume OCR, ChromaDB JD matching, verification, suspicion scoring, and HR feedback loop. [FastAPI, React, SQLite, ChromaDB, Ollama, Groq]
+  https://harish-nika.github.io/recruiting-agent.html | https://github.com/Harish-nika/Agents
 - **Fixed Income Expert System** (FactEntry internship — personal contribution)
   RAG chatbot for financial bond PDFs — upload, embed, retrieve, LLaMA 3 answers via Groq. [FastAPI, Streamlit, FAISS, Groq, SBERT]
   https://harish-nika.github.io/fexpert.html | https://github.com/Harish-nika/FExpert

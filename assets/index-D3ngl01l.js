@@ -1,5 +1,5 @@
 const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/lottie-BrhmxwhG.js","assets/vendor-DwSqkya0.js"])))=>i.map(i=>d[i]);
-import{r as k,j as w,a as V}from"./vendor-DwSqkya0.js";(function(){const c=document.createElement("link").relList;if(c&&c.supports&&c.supports("modulepreload"))return;for(const t of document.querySelectorAll('link[rel="modulepreload"]'))l(t);new MutationObserver(t=>{for(const i of t)if(i.type==="childList")for(const e of i.addedNodes)e.tagName==="LINK"&&e.rel==="modulepreload"&&l(e)}).observe(document,{childList:!0,subtree:!0});function d(t){const i={};return t.integrity&&(i.integrity=t.integrity),t.referrerPolicy&&(i.referrerPolicy=t.referrerPolicy),t.crossOrigin==="use-credentials"?i.credentials="include":t.crossOrigin==="anonymous"?i.credentials="omit":i.credentials="same-origin",i}function l(t){if(t.ep)return;t.ep=!0;const i=d(t);fetch(t.href,i)}})();const K="modulepreload",N=function(o){return"/"+o},D={},Q=function(c,d,l){let t=Promise.resolve();if(d&&d.length>0){document.getElementsByTagName("link");const e=document.querySelector("meta[property=csp-nonce]"),p=(e==null?void 0:e.nonce)||(e==null?void 0:e.getAttribute("nonce"));t=Promise.allSettled(d.map(u=>{if(u=N(u),u in D)return;D[u]=!0;const m=u.endsWith(".css"),f=m?'[rel="stylesheet"]':"";if(document.querySelector(`link[href="${u}"]${f}`))return;const _=document.createElement("link");if(_.rel=m?"stylesheet":K,m||(_.as="script"),_.crossOrigin="",_.href=u,p&&_.setAttribute("nonce",p),document.head.appendChild(_),m)return new Promise((b,v)=>{_.addEventListener("load",b),_.addEventListener("error",()=>v(new Error(`Unable to preload CSS for ${u}`)))})}))}function i(e){const p=new Event("vite:preloadError",{cancelable:!0});if(p.payload=e,window.dispatchEvent(p),!p.defaultPrevented)throw e}return t.then(e=>{for(const p of e||[])p.status==="rejected"&&i(p.reason);return c().catch(i)})},U=`<header class="header" id="header">
+import{r as k,j as w,a as V}from"./vendor-DwSqkya0.js";(function(){const c=document.createElement("link").relList;if(c&&c.supports&&c.supports("modulepreload"))return;for(const t of document.querySelectorAll('link[rel="modulepreload"]'))l(t);new MutationObserver(t=>{for(const i of t)if(i.type==="childList")for(const e of i.addedNodes)e.tagName==="LINK"&&e.rel==="modulepreload"&&l(e)}).observe(document,{childList:!0,subtree:!0});function d(t){const i={};return t.integrity&&(i.integrity=t.integrity),t.referrerPolicy&&(i.referrerPolicy=t.referrerPolicy),t.crossOrigin==="use-credentials"?i.credentials="include":t.crossOrigin==="anonymous"?i.credentials="omit":i.credentials="same-origin",i}function l(t){if(t.ep)return;t.ep=!0;const i=d(t);fetch(t.href,i)}})();const K="modulepreload",N=function(o){return"/"+o},E={},Q=function(c,d,l){let t=Promise.resolve();if(d&&d.length>0){document.getElementsByTagName("link");const e=document.querySelector("meta[property=csp-nonce]"),p=(e==null?void 0:e.nonce)||(e==null?void 0:e.getAttribute("nonce"));t=Promise.allSettled(d.map(u=>{if(u=N(u),u in E)return;E[u]=!0;const m=u.endsWith(".css"),f=m?'[rel="stylesheet"]':"";if(document.querySelector(`link[href="${u}"]${f}`))return;const _=document.createElement("link");if(_.rel=m?"stylesheet":K,m||(_.as="script"),_.crossOrigin="",_.href=u,p&&_.setAttribute("nonce",p),document.head.appendChild(_),m)return new Promise((b,v)=>{_.addEventListener("load",b),_.addEventListener("error",()=>v(new Error(`Unable to preload CSS for ${u}`)))})}))}function i(e){const p=new Event("vite:preloadError",{cancelable:!0});if(p.payload=e,window.dispatchEvent(p),!p.defaultPrevented)throw e}return t.then(e=>{for(const p of e||[])p.status==="rejected"&&i(p.reason);return c().catch(i)})},U=`<header class="header" id="header">
             <nav class="nav container">
                 <a href="#" class="nav__logo"><i class="fa-solid fa-microchip"></i> Harish Kumar</a>
 
@@ -163,7 +163,7 @@ import{r as k,j as w,a as V}from"./vendor-DwSqkya0.js";(function(){const c=docum
                                     129.362C2.45775 97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 
                                     -0.149132 97.9666 0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z"/>
 
-                                    <image class="home__blob-img" x="15" y="12" xlink:href="./assets/img/dp0.png"/>
+                                    <image class="home__blob-img" x="-5" y="-18" width="210" height="210" preserveAspectRatio="xMidYMin slice" xlink:href="./assets/img/full_image.jfif"/>
 
                                 </g>
                             </svg>
@@ -220,16 +220,16 @@ import{r as k,j as w,a as V}from"./vendor-DwSqkya0.js";(function(){const c=docum
                 <h2 class="section__title">About</h2>
                 <span class="section__subtitle">My Introduction</span>
 
-                <div class="about__container container grid">
-                    <picture>
-                        <source srcset="./assets/img/dp1-400.webp" type="image/webp" />
-                        <img src="./assets/img/dp1.jpg" alt="Harish Kumar" class="about__img" width="200" height="250" loading="lazy" decoding="async" />
-                    </picture>
+                <div class="about__container container">
+                    <div class="about__linkedin-card">
+                        <div class="about__cover-wrap">
+                            <img src="./assets/img/ai_ml_professional_cover_image.jfif" alt="Harish Kumar — AI/ML Engineer" class="about__cover-img" width="1200" height="480" loading="lazy" decoding="async" />
+                        </div>
 
                     <div class="about__data">
                         <div class="lottie-slot lottie-slot--about" data-lottie-id="about" aria-hidden="true"></div>
                         <p class="about__description">
-                            Integrated MTech in Data Science (VIT, 2025), AI/ML engineer building production AI systems at FactEntry Data Solutions (A SIX Company).
+                            Integrated MTech in Data Science (VIT, 2025), Associate Software Developer at FactEntry Data Solutions (A SIX Company) building production AI systems.
                             Experienced in MLOps, Kubernetes, GitOps, RAG pipelines, computer vision, and scalable backend engineering.
                             Delivered enterprise-grade platforms using FastAPI microservices, Redis-based distributed processing, and cloud-native deployment architectures.
                         </p>
@@ -278,6 +278,7 @@ import{r as k,j as w,a as V}from"./vendor-DwSqkya0.js";(function(){const c=docum
                         </div>
                         
 
+                    </div>
                     </div>
                 </div>
             </section>
@@ -367,7 +368,7 @@ import{r as k,j as w,a as V}from"./vendor-DwSqkya0.js";(function(){const c=docum
                             <div class="qualification__data">
                                 <div>
                                     <span class="qual-badge qual-badge--full">Full-time</span>
-                                    <h3 class="qualification__title">Software Developer Trainee</h3>
+                                    <h3 class="qualification__title">Associate Software Developer</h3>
                                     <span class="qualification__subtitle qualification__org">FactEntry Data Solutions — A SIX Company</span>
                                     <span class="qualification__note">Data Mining Engine (DME): K3s stage, GitLab CI → Helm charts → Argo CD GitOps, Redis queue extraction.</span>
                                     <div class="qualification__calendar">
@@ -1047,7 +1048,7 @@ import{r as k,j as w,a as V}from"./vendor-DwSqkya0.js";(function(){const c=docum
                     <div class="project-card project-card--featured">
                         <img src="./assets/img/dme/platform/user_dashboard.png" alt="DME dashboard — live queue and cluster telemetry" class="project-img--ui" loading="lazy" decoding="async" onerror="this.src='./assets/img/dme/user_dashboard.png';">
                         <h3 class="testimonial__name">Data Mining Engine (DME)</h3>
-                        <span class="testimonial__description">FactEntry (A SIX Company) — Software Developer Trainee, probation</span>
+                        <span class="testimonial__description">FactEntry (A SIX Company) — Associate Software Developer</span>
                         <p class="project-card__headline">Enterprise bond extraction on K3s — UI, API, multi-node workers</p>
                         <div class="project-metrics" aria-label="Key metrics">
                             <span class="metric-chip">80+ CPU cores</span>
@@ -1072,7 +1073,7 @@ import{r as k,j as w,a as V}from"./vendor-DwSqkya0.js";(function(){const c=docum
 
                         <div class="project-flows">
                             <h4 class="project-flows__title">Architecture &amp; system flows</h4>
-                            <p class="project-flows__intro">End-to-end K3s platform — click a diagram to enlarge. Full set in the case study.</p>
+                            <p class="project-flows__intro">End-to-end K3s platform — click a diagram to enlarge. Full set available on request.</p>
                             <div class="flow-grid flow-grid--index">
                                 <figure class="flow-card flow-card--wide">
                                     <img src="./assets/img/dme/architecture-flow.png" alt="DME full stack — runtime and GitOps" class="project-img--ui" loading="lazy">
@@ -1102,7 +1103,66 @@ import{r as k,j as w,a as V}from"./vendor-DwSqkya0.js";(function(){const c=docum
                         </div>
 
                         <div class="project-card__cta">
-                            <a href="dme-project.html" class="button button--flex button--small portfolio__button">Read full case study <i class="uil uil-arrow-right button__icon"></i></a>
+                            <a href="mailto:harishkumar56278@gmail.com?subject=Data%20Mining%20Engine%20(DME)%20Case%20Study%20Request" class="button button--flex button--small portfolio__button">Request case study <i class="uil uil-envelope-alt button__icon"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Featured: Recruiting Agent -->
+                    <div class="project-card project-card--featured">
+                        <img src="./assets/img/recruiting-agent/overview.png" alt="Recruiting Agent — AI-powered ATS pipeline, dashboard, and tech stack" class="project-img--ui" loading="lazy" decoding="async" style="object-fit:cover;">
+                        <h3 class="testimonial__name">Recruiting Agent — AI-Powered ATS</h3>
+                        <span class="testimonial__description">Independent R&amp;D — Agents Monorepo</span>
+                        <p class="project-card__headline">AI-powered ATS with observable multi-step resume analysis, semantic JD matching, and HR verification loop</p>
+                        <div class="project-metrics" aria-label="Key metrics">
+                            <span class="metric-chip">9-step agent pipeline</span>
+                            <span class="metric-chip">ChromaDB semantic match</span>
+                            <span class="metric-chip">OCR resume ingest</span>
+                            <span class="metric-chip">Hybrid Ollama/Groq</span>
+                        </div>
+                        <div class="project-tech" aria-label="Technologies">
+                            <span class="tech-chip">FastAPI</span>
+                            <span class="tech-chip">React</span>
+                            <span class="tech-chip">SQLite</span>
+                            <span class="tech-chip">ChromaDB</span>
+                            <span class="tech-chip">Ollama</span>
+                            <span class="tech-chip">Groq</span>
+                            <span class="tech-chip">TanStack Query</span>
+                        </div>
+                        <div class="project-card__body">
+                            <ul>
+                                <li>JD manager with LLM field extraction and ChromaDB vector indexing for semantic role matching.</li>
+                                <li>Resume upload (PDF, DOCX, scans) with structured verification, suspicion scoring, and evidence-based HR questions.</li>
+                                <li>Live Agent Activity timeline during async analysis — polled job steps with similarity bars and skill chips.</li>
+                                <li>Dashboard analytics: score distribution, role averages, top candidates, and verification gap totals.</li>
+                            </ul>
+                        </div>
+
+                        <div class="project-flows">
+                            <h4 class="project-flows__title">Architecture &amp; agent flows</h4>
+                            <p class="project-flows__intro">Multi-step resume pipeline with observable agent steps — click a diagram to enlarge. Full walkthrough in the case study.</p>
+                            <div class="flow-grid flow-grid--index">
+                                <figure class="flow-card flow-card--wide">
+                                    <img src="./assets/img/recruiting-agent/architecture-flow.png" alt="Recruiting Agent full stack — React, FastAPI, services, ChromaDB, Ollama/Groq" class="project-img--ui" loading="lazy">
+                                    <figcaption><strong>Full stack</strong> React SPA → FastAPI → agent services → SQLite/ChromaDB → Ollama/Groq</figcaption>
+                                </figure>
+                                <figure class="flow-card">
+                                    <img src="./assets/img/recruiting-agent/resume-pipeline-flow.png" alt="Resume analysis pipeline — parse through save" class="project-img--ui" loading="lazy">
+                                    <figcaption><strong>Resume pipeline</strong> Upload → parse → verify → embed → search → score → suspicion → save</figcaption>
+                                </figure>
+                                <figure class="flow-card">
+                                    <img src="./assets/img/recruiting-agent/screenshots/agent_activity_bar.png" alt="Live agent activity timeline during resume analysis" class="project-img--ui" loading="lazy">
+                                    <figcaption><strong>Agent Activity</strong> Live step timeline with similarity bars during async resume jobs</figcaption>
+                                </figure>
+                                <figure class="flow-card">
+                                    <img src="./assets/img/recruiting-agent/hr-loop-flow.png" alt="HR verification loop — suspicion to reassessment" class="project-img--ui" loading="lazy">
+                                    <figcaption><strong>HR loop</strong> Suspicion flags → HR questions → reassess → updated fit summary</figcaption>
+                                </figure>
+                            </div>
+                        </div>
+
+                        <div class="project-card__cta">
+                            <a href="recruiting-agent.html" class="button button--flex button--small portfolio__button">Read full case study <i class="uil uil-arrow-right button__icon"></i></a>
+                            <a href="https://github.com/Harish-nika/Agents" target="_blank" rel="noopener noreferrer" class="button button--flex button--small">GitHub <i class="uil uil-github-alt button__icon"></i></a>
                         </div>
                     </div>
 
@@ -1609,7 +1669,7 @@ import{r as k,j as w,a as V}from"./vendor-DwSqkya0.js";(function(){const c=docum
                 <div class="footer__container container grid">
                     <div>
                         <h1 class="footer__title">Harish</h1>
-                        <span class="footer__subtitle">AI and ML Engineer</span>
+                        <span class="footer__subtitle">Associate Software Developer</span>
                     </div>
 
                     <ul class="footer__links">
@@ -1644,4 +1704,4 @@ import{r as k,j as w,a as V}from"./vendor-DwSqkya0.js";(function(){const c=docum
         <a href="#" class="scrollup" id="scroll-top" aria-label="Scroll to top">
             <i class="uil uil-arrow-up scrollup__icon"></i>
         </a>
-`;function T(o,c,{defer:d=!1}={}){if(document.querySelector(`link[data-legacy="${c}"]`))return;const l=document.createElement("link");l.rel="stylesheet",l.href=c,l.setAttribute("data-legacy",c),d&&(l.media="print",l.onload=()=>{l.media="all"}),o.appendChild(l)}function W(){return k.useEffect(()=>{if(window.__legacyAssetsLoaded)return;window.__legacyAssetsLoaded=!0,document.title="Harish Kumar | AI/ML Engineer & Data Mining Engine (DME) | FactEntry";const o=document.head,c=["/assets/css/swiper-bundle.min.css","/assets/css/styles.css","/assets/css/portfolio-enhance.css","/assets/css/portfolio-transitions.css"],d=["https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css","https://unicons.iconscout.com/release/v3.0.6/css/line.css"];c.forEach(i=>T(o,i));const l=()=>{d.forEach(i=>T(o,i,{defer:!0}))};return"requestIdleCallback"in window?window.requestIdleCallback(l,{timeout:1200}):window.setTimeout(l,80),["/assets/js/portfolio-transitions.js","/assets/js/swiper-bundle.min.js","/assets/js/main.js","/assets/js/portfolio-enhance.js"].forEach(i=>{if(!document.querySelector(`script[data-legacy="${i}"]`)){const e=document.createElement("script");e.src=i,e.async=!1,e.setAttribute("data-legacy",i),document.body.appendChild(e)}}),()=>{}},[]),k.useEffect(()=>{const o=window.matchMedia("(prefers-reduced-motion: reduce)").matches,c=document.body,d=[],l=[];let t=null,i=null;const e=[],p=new WeakMap,u=(s,n=650)=>{c.classList.add(s);const a=window.setTimeout(()=>{c.classList.remove(s)},n);l.push(a)},m=()=>(i||(i=Q(()=>import("./lottie-BrhmxwhG.js").then(s=>s.l),__vite__mapDeps([0,1])).then(s=>(t=s.default,t))),i);o||c.classList.add("is-page-entering");const f={hero:{path:"/assets/animations/lottie/hero-ai-network.json",loop:!0,rootMargin:"0px 0px 120px 0px"},about:{path:"/assets/animations/lottie/about-ml-research.json",loop:!0,rootMargin:"0px 0px 160px 0px"},experienceAcademic:{path:"/assets/animations/lottie/experience-academic-research.json",loop:!0,rootMargin:"0px 0px 200px 0px"},experienceProfessional:{path:"/assets/animations/lottie/experience-mlops-workflow.json",loop:!0,rootMargin:"0px 0px 200px 0px"},skills:{path:"/assets/animations/lottie/skills-ml-graph.json",loop:!0,rootMargin:"0px 0px 200px 0px"},projects:{path:"/assets/animations/lottie/projects-ai-delivery.json",loop:!0,rootMargin:"0px 0px 240px 0px"},certs:{path:"/assets/animations/lottie/certs-scifi-hud.json",loop:!0,rootMargin:"0px 0px 240px 0px"}},_=s=>e.find(n=>n.container===s),b=async s=>{const n=_(s);if(n)return n;if(p.get(s)==="loading")return new Promise(z=>{const M=()=>{const E=_(s);if(E){z(E);return}window.requestAnimationFrame(M)};M()});const r=s.dataset.lottieId,h=f[r];if(!h)return null;p.set(s,"loading");const C=(await m()).loadAnimation({container:s,renderer:"svg",loop:h.loop,autoplay:!1,path:h.path,rendererSettings:{preserveAspectRatio:"xMidYMid meet",progressiveLoad:!0}}),q={container:s,instance:C,id:r};return e.push(q),p.set(s,"loaded"),o&&C.goToAndStop(0,!0),q},v=async s=>{if(o)return;const n=await b(s);n==null||n.instance.play()},R=s=>{const n=_(s);n==null||n.instance.pause()};Object.entries(f).forEach(([s,n])=>{const a=document.querySelector(`[data-lottie-id="${s}"]`);if(!a)return;const r=new IntersectionObserver(h=>{h.forEach(g=>{g.isIntersecting?v(a):R(a)})},{threshold:.12,rootMargin:n.rootMargin||"0px"});r.observe(a),d.push(()=>r.disconnect())});const F=Array.from(document.querySelectorAll('#skills, #Projects, #Certifications, #contact, [data-theme-transition="skills"], [data-theme-transition="projects"], [data-theme-transition="certifications"], [data-theme-transition="contact"]')),y=new IntersectionObserver(s=>{s.forEach(n=>{if(!n.isIntersecting||o)return;const a=n.target;a.classList.add("section-theme--active"),u("is-section-transitioning",450);const r=window.setTimeout(()=>{a.classList.remove("section-theme--active")},950);l.push(r)})},{threshold:.35});F.forEach(s=>y.observe(s));const j=Array.from(document.querySelectorAll(".qualification__button")),P=s=>e.find(n=>n.container.dataset.lottieId===s),A=async s=>{var h,g;const n=s==="#education",a=document.querySelector('[data-lottie-id="experienceAcademic"]'),r=document.querySelector('[data-lottie-id="experienceProfessional"]');a&&a.classList.toggle("lottie-slot--hidden",!n),r&&r.classList.toggle("lottie-slot--hidden",n),!o&&(n?((h=P("experienceProfessional"))==null||h.instance.pause(),a&&await v(a)):((g=P("experienceAcademic"))==null||g.instance.pause(),r&&await v(r)))},O=()=>{const s=document.querySelector(".qualification__button.qualification__active");return(s==null?void 0:s.getAttribute("data-target"))||"#work"},I=s=>{const a=s.currentTarget.getAttribute("data-target");a&&(o||u("is-experience-transitioning",520),window.requestAnimationFrame(()=>{A(a)}))};j.forEach(s=>{s.addEventListener("click",I)}),A(O());const G=new Set(["pai-pdf-ai.html","dme-project.html","dental-project.html","fexpert.html","content-moderator.html","lang-tool.html","medbot.html","profile.html"]),H=Array.from(document.querySelectorAll("a[href]")).filter(s=>{if(!(s instanceof HTMLAnchorElement)||s.target==="_blank"||s.hasAttribute("download"))return!1;const n=s.getAttribute("href");if(!n||n.startsWith("#")||n.startsWith("mailto:")||n.startsWith("tel:"))return!1;let a;try{a=new URL(s.href,window.location.href)}catch{return!1}if(a.origin!==window.location.origin)return!1;const r=a.pathname.split("/").pop()||"";return G.has(r)}),x=()=>{if(o){c.classList.remove("is-page-entering");return}const s=window.setTimeout(()=>{c.classList.remove("is-page-entering")},850);l.push(s)},S=()=>{if(!window.PortfolioTransitions){const n=window.setTimeout(S,40);l.push(n);return}window.PortfolioTransitions.bindDeployLinks(H);const s=window.PortfolioTransitions.runHomeIntro;typeof s=="function"?s().then(x):(window.PortfolioTransitions.playEnter(),x())};S();const B=()=>{if(!document.querySelectorAll(".credly-badge-host[data-share-badge-id]").length)return;const n=()=>{typeof window.CredlyBadge=="object"&&typeof window.CredlyBadge.render=="function"&&window.CredlyBadge.render()};if(document.querySelector("script[data-credly-embed]")){n();return}const a=document.createElement("script");a.src="https://cdn.credly.com/assets/utilities/embed.js",a.async=!0,a.setAttribute("data-credly-embed","true"),a.onload=n,document.body.appendChild(a)},L=document.getElementById("Certifications");if(L){const s=new IntersectionObserver(n=>{n.some(a=>a.isIntersecting)&&(B(),s.disconnect())},{rootMargin:"120px 0px",threshold:.05});s.observe(L),d.push(()=>s.disconnect())}return()=>{y.disconnect(),l.forEach(s=>window.clearTimeout(s)),c.classList.remove("is-page-entering","is-section-transitioning","is-experience-transitioning","is-portfolio-nav-active"),e.forEach(({instance:s})=>s.destroy()),j.forEach(s=>{s.removeEventListener("click",I)}),d.forEach(s=>s())}},[]),w.jsx("div",{className:"legacy-wrapper",dangerouslySetInnerHTML:{__html:U}})}V.createRoot(document.getElementById("root")).render(w.jsx(k.StrictMode,{children:w.jsx(W,{})}));
+`;function R(o,c,{defer:d=!1}={}){if(document.querySelector(`link[data-legacy="${c}"]`))return;const l=document.createElement("link");l.rel="stylesheet",l.href=c,l.setAttribute("data-legacy",c),d&&(l.media="print",l.onload=()=>{l.media="all"}),o.appendChild(l)}function W(){return k.useEffect(()=>{if(window.__legacyAssetsLoaded)return;window.__legacyAssetsLoaded=!0,document.title="Harish Kumar | AI/ML Engineer & Data Mining Engine (DME) | FactEntry";const o=document.head,c=["/assets/css/swiper-bundle.min.css","/assets/css/styles.css","/assets/css/portfolio-enhance.css","/assets/css/portfolio-transitions.css"],d=["https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css","https://unicons.iconscout.com/release/v3.0.6/css/line.css"];c.forEach(i=>R(o,i));const l=()=>{d.forEach(i=>R(o,i,{defer:!0}))};return"requestIdleCallback"in window?window.requestIdleCallback(l,{timeout:1200}):window.setTimeout(l,80),["/assets/js/portfolio-transitions.js","/assets/js/swiper-bundle.min.js","/assets/js/main.js","/assets/js/portfolio-enhance.js"].forEach(i=>{if(!document.querySelector(`script[data-legacy="${i}"]`)){const e=document.createElement("script");e.src=i,e.async=!1,e.setAttribute("data-legacy",i),document.body.appendChild(e)}}),()=>{}},[]),k.useEffect(()=>{const o=window.matchMedia("(prefers-reduced-motion: reduce)").matches,c=document.body,d=[],l=[];let t=null,i=null;const e=[],p=new WeakMap,u=(s,n=650)=>{c.classList.add(s);const a=window.setTimeout(()=>{c.classList.remove(s)},n);l.push(a)},m=()=>(i||(i=Q(()=>import("./lottie-BrhmxwhG.js").then(s=>s.l),__vite__mapDeps([0,1])).then(s=>(t=s.default,t))),i);o||c.classList.add("is-page-entering");const f={hero:{path:"/assets/animations/lottie/hero-ai-network.json",loop:!0,rootMargin:"0px 0px 120px 0px"},about:{path:"/assets/animations/lottie/about-ml-research.json",loop:!0,rootMargin:"0px 0px 160px 0px"},experienceAcademic:{path:"/assets/animations/lottie/experience-academic-research.json",loop:!0,rootMargin:"0px 0px 200px 0px"},experienceProfessional:{path:"/assets/animations/lottie/experience-mlops-workflow.json",loop:!0,rootMargin:"0px 0px 200px 0px"},skills:{path:"/assets/animations/lottie/skills-ml-graph.json",loop:!0,rootMargin:"0px 0px 200px 0px"},projects:{path:"/assets/animations/lottie/projects-ai-delivery.json",loop:!0,rootMargin:"0px 0px 240px 0px"},certs:{path:"/assets/animations/lottie/certs-scifi-hud.json",loop:!0,rootMargin:"0px 0px 240px 0px"}},_=s=>e.find(n=>n.container===s),b=async s=>{const n=_(s);if(n)return n;if(p.get(s)==="loading")return new Promise(z=>{const D=()=>{const M=_(s);if(M){z(M);return}window.requestAnimationFrame(D)};D()});const r=s.dataset.lottieId,h=f[r];if(!h)return null;p.set(s,"loading");const C=(await m()).loadAnimation({container:s,renderer:"svg",loop:h.loop,autoplay:!1,path:h.path,rendererSettings:{preserveAspectRatio:"xMidYMid meet",progressiveLoad:!0}}),q={container:s,instance:C,id:r};return e.push(q),p.set(s,"loaded"),o&&C.goToAndStop(0,!0),q},v=async s=>{if(o)return;const n=await b(s);n==null||n.instance.play()},T=s=>{const n=_(s);n==null||n.instance.pause()};Object.entries(f).forEach(([s,n])=>{const a=document.querySelector(`[data-lottie-id="${s}"]`);if(!a)return;const r=new IntersectionObserver(h=>{h.forEach(g=>{g.isIntersecting?v(a):T(a)})},{threshold:.12,rootMargin:n.rootMargin||"0px"});r.observe(a),d.push(()=>r.disconnect())});const F=Array.from(document.querySelectorAll('#skills, #Projects, #Certifications, #contact, [data-theme-transition="skills"], [data-theme-transition="projects"], [data-theme-transition="certifications"], [data-theme-transition="contact"]')),y=new IntersectionObserver(s=>{s.forEach(n=>{if(!n.isIntersecting||o)return;const a=n.target;a.classList.add("section-theme--active"),u("is-section-transitioning",450);const r=window.setTimeout(()=>{a.classList.remove("section-theme--active")},950);l.push(r)})},{threshold:.35});F.forEach(s=>y.observe(s));const j=Array.from(document.querySelectorAll(".qualification__button")),A=s=>e.find(n=>n.container.dataset.lottieId===s),P=async s=>{var h,g;const n=s==="#education",a=document.querySelector('[data-lottie-id="experienceAcademic"]'),r=document.querySelector('[data-lottie-id="experienceProfessional"]');a&&a.classList.toggle("lottie-slot--hidden",!n),r&&r.classList.toggle("lottie-slot--hidden",n),!o&&(n?((h=A("experienceProfessional"))==null||h.instance.pause(),a&&await v(a)):((g=A("experienceAcademic"))==null||g.instance.pause(),r&&await v(r)))},O=()=>{const s=document.querySelector(".qualification__button.qualification__active");return(s==null?void 0:s.getAttribute("data-target"))||"#work"},I=s=>{const a=s.currentTarget.getAttribute("data-target");a&&(o||u("is-experience-transitioning",520),window.requestAnimationFrame(()=>{P(a)}))};j.forEach(s=>{s.addEventListener("click",I)}),P(O());const G=new Set(["pai-pdf-ai.html","dme-project.html","dental-project.html","fexpert.html","content-moderator.html","lang-tool.html","medbot.html","recruiting-agent.html","profile.html"]),H=Array.from(document.querySelectorAll("a[href]")).filter(s=>{if(!(s instanceof HTMLAnchorElement)||s.target==="_blank"||s.hasAttribute("download"))return!1;const n=s.getAttribute("href");if(!n||n.startsWith("#")||n.startsWith("mailto:")||n.startsWith("tel:"))return!1;let a;try{a=new URL(s.href,window.location.href)}catch{return!1}if(a.origin!==window.location.origin)return!1;const r=a.pathname.split("/").pop()||"";return G.has(r)}),x=()=>{if(o){c.classList.remove("is-page-entering");return}const s=window.setTimeout(()=>{c.classList.remove("is-page-entering")},850);l.push(s)},S=()=>{if(!window.PortfolioTransitions){const n=window.setTimeout(S,40);l.push(n);return}window.PortfolioTransitions.bindDeployLinks(H);const s=window.PortfolioTransitions.runHomeIntro;typeof s=="function"?s().then(x):(window.PortfolioTransitions.playEnter(),x())};S();const B=()=>{if(!document.querySelectorAll(".credly-badge-host[data-share-badge-id]").length)return;const n=()=>{typeof window.CredlyBadge=="object"&&typeof window.CredlyBadge.render=="function"&&window.CredlyBadge.render()};if(document.querySelector("script[data-credly-embed]")){n();return}const a=document.createElement("script");a.src="https://cdn.credly.com/assets/utilities/embed.js",a.async=!0,a.setAttribute("data-credly-embed","true"),a.onload=n,document.body.appendChild(a)},L=document.getElementById("Certifications");if(L){const s=new IntersectionObserver(n=>{n.some(a=>a.isIntersecting)&&(B(),s.disconnect())},{rootMargin:"120px 0px",threshold:.05});s.observe(L),d.push(()=>s.disconnect())}return()=>{y.disconnect(),l.forEach(s=>window.clearTimeout(s)),c.classList.remove("is-page-entering","is-section-transitioning","is-experience-transitioning","is-portfolio-nav-active"),e.forEach(({instance:s})=>s.destroy()),j.forEach(s=>{s.removeEventListener("click",I)}),d.forEach(s=>s())}},[]),w.jsx("div",{className:"legacy-wrapper",dangerouslySetInnerHTML:{__html:U}})}V.createRoot(document.getElementById("root")).render(w.jsx(k.StrictMode,{children:w.jsx(W,{})}));
