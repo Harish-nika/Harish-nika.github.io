@@ -5,32 +5,46 @@ https://www.linkedin.com/in/harish-kumar-s-b0a0472b1/ | https://github.com/Haris
 https://harish-nika.github.io/
 
 ## Summary
-Integrated MTech in Data Science (VIT, 2025). Associate Software Developer at FactEntry Data Solutions (A SIX Company) building production AI systems. Experienced in MLOps, Kubernetes, GitOps, RAG pipelines, computer vision, and scalable backend engineering. Delivered enterprise-grade AI platforms using FastAPI microservices, Redis-based distributed processing, and cloud-native deployment architectures.
+Integrated MTech in Data Science (VIT, 2025). Associate Software Developer at FactEntry Data Solutions (A SIX Company) building production AI systems and collaborating with SIX on DME cloud migration (Databricks, data lakes, data warehouses, MLflow). Experienced in MLOps, Kubernetes, GitOps, RAG pipelines, computer vision, and scalable backend engineering. Delivered enterprise-grade AI platforms using FastAPI microservices, Redis-based distributed processing, and cloud-native deployment architectures.
 - Built and deployed a production bond-extraction platform on K3s, leveraging 80+ CPU cores with Redis Streams and human-in-the-loop validation workflows.
+- Collaborating with SIX parent company on DME migration to Databricks cloud: data lakes, data warehouses, and MLflow MLOps.
 - Implemented end-to-end GitOps delivery pipelines using GitLab CI, Helm, and Argo CD for automated staging deployments.
 - Developed RAG-powered document intelligence systems using FAISS, Groq LLaMA, Streamlit, and FastAPI.
 - Published the language-processing-tool package on PyPI for reusable NLP workflows.
 - Trained and deployed YOLOv11 computer vision models on Roboflow for dental image analysis applications.
 
 ## Core Competencies
-AI/ML Engineer | Machine Learning | Deep Learning | Computer Vision | NLP | RAG | Python | FastAPI | Kubernetes | K3s | Docker | Redis | PostgreSQL | GitLab CI | Argo CD | Helm | GitOps | MLOps | Roboflow | YOLO | FAISS | LangChain | Streamlit
+AI/ML Engineer | Machine Learning | Deep Learning | Computer Vision | NLP | RAG | Python | FastAPI | Kubernetes | K3s | Docker | Redis | PostgreSQL | Databricks | MLflow | Data Lake | Data Warehouse | GitLab CI | Argo CD | Helm | GitOps | MLOps | Roboflow | YOLO | FAISS | LangChain | Streamlit
 
 ## Experience
 ### Associate Software Developer - FactEntry Data Solutions - A SIX Company
 _Dec 2025 - Present_
 - Shipped Data Mining Engine (DME) modules on K3s stage: corporate/municipal bond extraction, validation UI, and cluster operations portal.
+- Collaborating with SIX parent company on DME migration to cloud: Databricks platform, data lakes, and data warehouse patterns.
+- Supporting MLOps on Databricks with MLflow experiment/model tracking alongside existing K3s GitOps delivery.
 - Implemented Redis-stream job dispatch with multi-node worker throughput and GitOps delivery (GitLab CI image build -> Helm chart promote -> Argo CD).
 - Built FastAPI microservices, live WebSocket job telemetry, role-based CPU tiering, and domain-restricted enterprise auth.
+
+### Associate Software Engineer Trainee Intern - MIMASOFT Technologies
+_Jun 2025 - Oct 2025_
+- Developed Dental ML Project: Roboflow YOLOv11 tooth and panoramic X-ray models with inference CLI.
+- Contributed to backend integration, API workflows, and production-oriented software development practices.
 
 ### MLOps and Data Science Intern - FactEntry Data Solutions - A SIX Company
 _Nov 2024 - May 2025_
 - Published language-processing-tool on PyPI (PDF language detection, OCR, document clustering) as self-driven internship contribution.
 - Built Fixed Income Expert RAG system (FAISS, Groq LLaMA 3, Streamlit/FastAPI) as personal contribution during internship.
 
-### Associate Software Engineer Trainee Intern - MIMASOFT Technologies
-_Jun 2025 - Oct 2025_
-- Developed Dental ML Project: Roboflow YOLOv11 tooth and panoramic X-ray models with inference CLI.
-- Contributed to backend integration, API workflows, and production-oriented software development practices.
+### Data Science Intern (ML and SDE) - JP INFOTECH
+_Nov 2023 - Jan 2024_
+- Built NLP web scraping with English-to-SQL query translation for extractive summarization and information retrieval.
+- Developed an OCR-based resume analyser with keyword suggestions and n-gram typing assist against job descriptions.
+- Engineered a real-time MQTT + Unity AR system to visualize environmental telemetry with ML-driven climate insights.
+
+### Applied Data Science Extern - Smart Bridge - Smartinternz
+_May 2023 - Jul 2023_
+- Built a disease prediction ensemble using Random Forest and SVM for clinical trial prediction accuracy.
+- Stored and retrieved clinical data via MongoDB Atlas and PyMongo, transforming it into analysis-ready datasets.
 
 ## Education
 - **Integrated MTech - CSE (Data Science)**, Vellore Institute of Technology (2020 - 2025) - CGPA 7.8
@@ -38,13 +52,13 @@ _Jun 2025 - Oct 2025_
 - **Class X**, St Joseph Matriculation Higher Secondary School (2018) - 87.8%
 
 ## Technical Skills
-- AI/ML: Machine Learning, Deep Learning, Generative AI, Computer Vision, NLP, RAG, FAISS, Sentence Transformers, Ollama, Roboflow, YOLOv11, Supervision
-- Engineering: Python, FastAPI, Streamlit, SQL, Docker, Kubernetes (K3s), Redis, PostgreSQL, LangChain, PyMuPDF, OpenCV
-- DevOps/GitOps: GitHub, GitLab CI, Argo CD, Helm, systemd, GitHub Actions, GitOps
+- AI/ML: Machine Learning, Deep Learning, Generative AI, Computer Vision, NLP, RAG, FAISS, Sentence Transformers, Ollama, Roboflow, YOLOv11, Supervision, MLflow, Databricks
+- Engineering: Python, FastAPI, Streamlit, SQL, Docker, Kubernetes (K3s), Redis, PostgreSQL, Databricks, Data Lake, Data Warehouse, LangChain, PyMuPDF, OpenCV
+- DevOps/GitOps: GitHub, GitLab CI, Argo CD, Helm, systemd, GitHub Actions, GitOps, MLflow
 
 ## Key Projects
 - **Data Mining Engine (DME)** (FactEntry Data Solutions (A SIX Company) — Associate Software Developer)
-  Enterprise bond extraction on K3s — UI, API, Redis queue workers, GitOps CI/CD, validation workspace. [K3s, FastAPI, Redis, PostgreSQL, Argo CD]
+  Enterprise bond extraction on K3s with GitOps CI/CD; collaborating with SIX on Databricks cloud migration (data lakes, warehouses, MLflow). [K3s, FastAPI, Redis, PostgreSQL, Argo CD, Databricks, MLflow]
   https://harish-nika.github.io/dme-project.html
 - **Recruiting Agent — AI-Powered ATS** (Independent R&D — Agents Monorepo)
   Multi-step LLM ATS — resume OCR, ChromaDB JD matching, verification, suspicion scoring, and HR feedback loop. [FastAPI, React, SQLite, ChromaDB, Ollama, Groq]
@@ -61,21 +75,6 @@ _Jun 2025 - Oct 2025_
 - **MedBot (Medical RAG Assistant)** (VIT — J Component, Soft Computing course)
   Medical PDF Q&A with SBERT + FAISS retrieval and Groq LLaMA 3 grounded responses. [Streamlit, FAISS, Sentence Transformers, Groq]
   https://harish-nika.github.io/medbot.html | https://github.com/Harish-nika/medbot
-- **Dental ML Project** (MIMASOFT Technologies — trainee internship)
-  YOLOv11 tooth and panoramic X-ray detection — Roboflow fine-tuning and inference CLI. [Roboflow, YOLOv11, inference-sdk, Supervision]
-  https://harish-nika.github.io/dental-project.html | https://github.com/Harish-nika/Dental_ML_project
-- **Disease Prediction using Ensemble Learning** (SmartInternz / Smart Bridge — Applied Data Science externship)
-  Ensemble ML model for clinical trial disease prediction with MongoDB Atlas pipeline. [Python, Random Forest, SVM, MongoDB]
-  mailto:harishkumar56278@gmail.com?subject=Disease%20Prediction%20Project
-- **Real-Time Room Temperature & Humidity Visualization (AR)** (VIT — J Component, ARVR course)
-  MQTT telemetry with Unity AR overlay and ML-driven climate insights. [Unity, MQTT, AR, Python]
-  mailto:harishkumar56278@gmail.com?subject=AR%20Visualization%20Project
-- **Extractive Summarization & Information Retrieval** (JP Infotech)
-  NLP web scraping with English-to-SQL query translation and 95% extraction accuracy. [Python, NLP, SQLite, MySQL]
-  mailto:harishkumar56278@gmail.com?subject=Summarization%20Project
-- **Application Tracking System** (JP Infotech)
-  Resume analyser with OCR, keyword suggestions, and n-gram typing assist vs job descriptions. [Python, PyTesseract, OpenCV, NLP]
-  mailto:harishkumar56278@gmail.com?subject=Application%20Tracking%20System
 
 ## Certifications
 - Microsoft Certified: Azure AI Fundamentals: https://www.credly.com/badges/da3ef4b3-03a0-4560-95b6-5941473704de/public_url

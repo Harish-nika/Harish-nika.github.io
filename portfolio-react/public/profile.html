@@ -356,7 +356,7 @@
 
         <div class="resume-bar no-print" id="resume">
           <span class="resume-bar__label"><i class="uil uil-file-download"></i> Resume</span>
-          <span class="resume-bar__hint">Download or print a single-page-friendly PDF with experience, projects (with context), skills, and certificate links.</span>
+          <span class="resume-bar__hint">Download the ATS-friendly PDF hosted on this site — full experience, projects, skills, and certifications.</span>
           <a class="button button--flex button--small" href="${escapeHtml(pdf)}" download="Harish-Kumar-Resume.pdf">
             <i class="uil uil-file-alt"></i> Download PDF
           </a>
@@ -366,8 +366,8 @@
           <button type="button" class="button button--flex button--small button--ghost" onclick="window.print()">
             <i class="uil uil-print"></i> Print
           </button>
-          <a class="button button--flex button--small button--ghost" href="${escapeHtml(b.resumeLink)}" target="_blank" rel="noopener noreferrer">
-            <i class="uil uil-cloud-download"></i> Google Drive
+          <a class="button button--flex button--small button--ghost" href="${escapeHtml(b.resumeLink || pdf)}" target="_blank" rel="noopener noreferrer">
+            <i class="uil uil-external-link-alt"></i> Open PDF
           </a>
         </div>
 

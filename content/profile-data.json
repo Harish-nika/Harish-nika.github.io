@@ -8,12 +8,13 @@
     "linkedin": "https://www.linkedin.com/in/harish-kumar-s-b0a0472b1/",
     "github": "https://github.com/Harish-nika",
     "portfolio": "https://harish-nika.github.io/",
-    "resumeLink": "https://drive.google.com/file/d/1gawlbbXktf9qoLHGh9AskOxeLvBPYQNp/view?usp=sharing",
+    "resumeLink": "https://harish-nika.github.io/content/Harish-Kumar-Resume.pdf",
     "resumePdf": "./content/Harish-Kumar-Resume.pdf",
     "resumeMd": "./content/resume.md",
-    "summary": "Integrated MTech in Data Science (VIT, 2025). Associate Software Developer at FactEntry Data Solutions (A SIX Company) building production AI systems. Experienced in MLOps, Kubernetes, GitOps, RAG pipelines, computer vision, and scalable backend engineering. Delivered enterprise-grade AI platforms using FastAPI microservices, Redis-based distributed processing, and cloud-native deployment architectures.",
+    "summary": "Integrated MTech in Data Science (VIT, 2025). Associate Software Developer at FactEntry Data Solutions (A SIX Company) building production AI systems and collaborating with SIX on DME cloud migration (Databricks, data lakes, data warehouses, MLflow). Experienced in MLOps, Kubernetes, GitOps, RAG pipelines, computer vision, and scalable backend engineering. Delivered enterprise-grade AI platforms using FastAPI microservices, Redis-based distributed processing, and cloud-native deployment architectures.",
     "highlights": [
       "Built and deployed a production bond-extraction platform on K3s, leveraging 80+ CPU cores with Redis Streams and human-in-the-loop validation workflows.",
+      "Collaborating with SIX parent company on DME migration to Databricks cloud: data lakes, data warehouses, and MLflow MLOps.",
       "Implemented end-to-end GitOps delivery pipelines using GitLab CI, Helm, and Argo CD for automated staging deployments.",
       "Developed RAG-powered document intelligence systems using FAISS, Groq LLaMA, Streamlit, and FastAPI.",
       "Published the language-processing-tool package on PyPI for reusable NLP workflows.",
@@ -33,6 +34,10 @@
       "Docker",
       "Redis",
       "PostgreSQL",
+      "Databricks",
+      "MLflow",
+      "Data Lake",
+      "Data Warehouse",
       "GitLab CI",
       "Argo CD",
       "Helm",
@@ -52,8 +57,19 @@
       "period": "Dec 2025 - Present",
       "highlights": [
         "Shipped Data Mining Engine (DME) modules on K3s stage: corporate/municipal bond extraction, validation UI, and cluster operations portal.",
+        "Collaborating with SIX parent company on DME migration to cloud: Databricks platform, data lakes, and data warehouse patterns.",
+        "Supporting MLOps on Databricks with MLflow experiment/model tracking alongside existing K3s GitOps delivery.",
         "Implemented Redis-stream job dispatch with multi-node worker throughput and GitOps delivery (GitLab CI image build -> Helm chart promote -> Argo CD).",
         "Built FastAPI microservices, live WebSocket job telemetry, role-based CPU tiering, and domain-restricted enterprise auth."
+      ]
+    },
+    {
+      "role": "Associate Software Engineer Trainee Intern",
+      "company": "MIMASOFT Technologies",
+      "period": "Jun 2025 - Oct 2025",
+      "highlights": [
+        "Developed Dental ML Project: Roboflow YOLOv11 tooth and panoramic X-ray models with inference CLI.",
+        "Contributed to backend integration, API workflows, and production-oriented software development practices."
       ]
     },
     {
@@ -66,12 +82,22 @@
       ]
     },
     {
-      "role": "Associate Software Engineer Trainee Intern",
-      "company": "MIMASOFT Technologies",
-      "period": "Jun 2025 - Oct 2025",
+      "role": "Data Science Intern (ML and SDE)",
+      "company": "JP INFOTECH",
+      "period": "Nov 2023 - Jan 2024",
       "highlights": [
-        "Developed Dental ML Project: Roboflow YOLOv11 tooth and panoramic X-ray models with inference CLI.",
-        "Contributed to backend integration, API workflows, and production-oriented software development practices."
+        "Built NLP web scraping with English-to-SQL query translation for extractive summarization and information retrieval.",
+        "Developed an OCR-based resume analyser with keyword suggestions and n-gram typing assist against job descriptions.",
+        "Engineered a real-time MQTT + Unity AR system to visualize environmental telemetry with ML-driven climate insights."
+      ]
+    },
+    {
+      "role": "Applied Data Science Extern",
+      "company": "Smart Bridge - Smartinternz",
+      "period": "May 2023 - Jul 2023",
+      "highlights": [
+        "Built a disease prediction ensemble using Random Forest and SVM for clinical trial prediction accuracy.",
+        "Stored and retrieved clinical data via MongoDB Atlas and PyMongo, transforming it into analysis-ready datasets."
       ]
     }
   ],
@@ -108,7 +134,9 @@
       "Ollama",
       "Roboflow",
       "YOLOv11",
-      "Supervision"
+      "Supervision",
+      "MLflow",
+      "Databricks"
     ],
     "engineering": [
       "Python",
@@ -119,6 +147,9 @@
       "Kubernetes (K3s)",
       "Redis",
       "PostgreSQL",
+      "Databricks",
+      "Data Lake",
+      "Data Warehouse",
       "LangChain",
       "PyMuPDF",
       "OpenCV"
@@ -130,7 +161,8 @@
       "Helm",
       "systemd",
       "GitHub Actions",
-      "GitOps"
+      "GitOps",
+      "MLflow"
     ]
   },
   "projects": [
@@ -138,8 +170,8 @@
       "name": "Data Mining Engine (DME)",
       "context": "FactEntry Data Solutions (A SIX Company) — Associate Software Developer",
       "link": "https://harish-nika.github.io/dme-project.html",
-      "stack": ["K3s", "FastAPI", "Redis", "PostgreSQL", "Argo CD"],
-      "summary": "Enterprise bond extraction on K3s — UI, API, Redis queue workers, GitOps CI/CD, validation workspace."
+      "stack": ["K3s", "FastAPI", "Redis", "PostgreSQL", "Argo CD", "Databricks", "MLflow"],
+      "summary": "Enterprise bond extraction on K3s with GitOps CI/CD; collaborating with SIX on Databricks cloud migration (data lakes, warehouses, MLflow)."
     },
     {
       "name": "Recruiting Agent — AI-Powered ATS",
