@@ -1112,7 +1112,7 @@
                     <div class="project-card project-card--featured">
                         <img src="./assets/img/recruiting-agent/overview.png" alt="Recruiting Agent — AI-powered ATS pipeline, dashboard, and tech stack" class="project-img--ui" loading="lazy" decoding="async" style="object-fit:cover;">
                         <h3 class="testimonial__name">Recruiting Agent — AI-Powered ATS</h3>
-                        <span class="testimonial__description">Independent R&amp;D — Agents Monorepo</span>
+                        <span class="testimonial__description">Independent R&amp;D — Agents Monorepo (ATS + Trip Guide)</span>
                         <p class="project-card__headline">AI-powered ATS with observable multi-step resume analysis, semantic JD matching, and HR verification loop</p>
                         <div class="project-metrics" aria-label="Key metrics">
                             <span class="metric-chip">9-step agent pipeline</span>
@@ -1163,6 +1163,65 @@
 
                         <div class="project-card__cta">
                             <a href="recruiting-agent.html" class="button button--flex button--small portfolio__button">Read full case study <i class="uil uil-arrow-right button__icon"></i></a>
+                            <a href="https://github.com/Harish-nika/Agents" target="_blank" rel="noopener noreferrer" class="button button--flex button--small">GitHub <i class="uil uil-github-alt button__icon"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Featured: Trip Guide -->
+                    <div class="project-card project-card--featured">
+                        <img src="./assets/img/trip-planner-agent/overview.png" alt="Trip Guide — multi-agent trip planner architecture, UI, and tech stack" class="project-img--ui" loading="lazy" decoding="async" style="object-fit:cover;">
+                        <h3 class="testimonial__name">Trip Guide — Conversational Trip Planner</h3>
+                        <span class="testimonial__description">Independent R&amp;D — Agents Monorepo</span>
+                        <p class="project-card__headline">Multi-agent travel assistant with live trip board + map — Google ADK orchestrator and specialist tools</p>
+                        <div class="project-metrics" aria-label="Key metrics">
+                            <span class="metric-chip">Google ADK agents</span>
+                            <span class="metric-chip">Gemini → Groq → Ollama</span>
+                            <span class="metric-chip">SSE streaming</span>
+                            <span class="metric-chip">Leaflet / OSRM</span>
+                        </div>
+                        <div class="project-tech" aria-label="Technologies">
+                            <span class="tech-chip">FastAPI</span>
+                            <span class="tech-chip">Google ADK</span>
+                            <span class="tech-chip">Gemini</span>
+                            <span class="tech-chip">Groq</span>
+                            <span class="tech-chip">Ollama</span>
+                            <span class="tech-chip">Leaflet</span>
+                            <span class="tech-chip">Open-Meteo</span>
+                        </div>
+                        <div class="project-card__body">
+                            <ul>
+                                <li>Orchestrator (<code>trip_guide</code>) plus weather, places, and stays specialists wired as ADK <code>AgentTool</code>s.</li>
+                                <li>Natural-language multi-stop trips with live spine, prefs strip, and Leaflet map + OSRM routes.</li>
+                                <li>Model failover Gemini → Groq → local Ollama for resilient tool-calling chat over SSE.</li>
+                                <li>Free-stack tools: Open-Meteo climate, DuckDuckGo places/food/stays, OSM tiles — no Maps JS billing required.</li>
+                            </ul>
+                        </div>
+
+                        <div class="project-flows">
+                            <h4 class="project-flows__title">Architecture &amp; agent flows</h4>
+                            <p class="project-flows__intro">User chat streams through FastAPI SSE into the orchestrator, which updates the board/map and delegates specialists.</p>
+                            <div class="flow-grid flow-grid--index">
+                                <figure class="flow-card flow-card--wide">
+                                    <img src="./assets/img/trip-planner-agent/overview.png" alt="Trip Guide architecture and tech stack overview" class="project-img--ui" loading="lazy">
+                                    <figcaption><strong>Full stack</strong> Chat → FastAPI SSE → Gemini/Groq/Ollama → trip_guide → specialists → spine + map</figcaption>
+                                </figure>
+                                <figure class="flow-card">
+                                    <img src="./assets/img/trip-planner-agent/ui-chat.png" alt="Trip Guide three-column UI with chat in flight" class="project-img--ui" loading="lazy">
+                                    <figcaption><strong>Live UI</strong> Trip plan spine · Trip Guide chat · Route map filling as tools run</figcaption>
+                                </figure>
+                                <figure class="flow-card">
+                                    <img src="./assets/img/trip-planner-agent/spine-weather.png" alt="Trip spine with preferences and weather cards" class="project-img--ui" loading="lazy">
+                                    <figcaption><strong>Board + climate</strong> Ordered stops, prefs strip, and weather timelines in chat</figcaption>
+                                </figure>
+                                <figure class="flow-card">
+                                    <img src="./assets/img/trip-planner-agent/ui-layout.png" alt="Trip Guide UI layout" class="project-img--ui" loading="lazy">
+                                    <figcaption><strong>Layout</strong> Three-column shell with streaming tool status and map markers</figcaption>
+                                </figure>
+                            </div>
+                        </div>
+
+                        <div class="project-card__cta">
+                            <a href="trip-planner-agent.html" class="button button--flex button--small portfolio__button">Read full case study <i class="uil uil-arrow-right button__icon"></i></a>
                             <a href="https://github.com/Harish-nika/Agents" target="_blank" rel="noopener noreferrer" class="button button--flex button--small">GitHub <i class="uil uil-github-alt button__icon"></i></a>
                         </div>
                     </div>

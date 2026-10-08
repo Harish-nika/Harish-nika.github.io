@@ -63,6 +63,9 @@ _May 2023 - Jul 2023_
 - **Recruiting Agent — AI-Powered ATS** (Independent R&D — Agents Monorepo)
   Multi-step LLM ATS — resume OCR, ChromaDB JD matching, verification, suspicion scoring, and HR feedback loop. [FastAPI, React, SQLite, ChromaDB, Ollama, Groq]
   https://harish-nika.github.io/recruiting-agent.html | https://github.com/Harish-nika/Agents
+- **Trip Guide — Conversational Trip Planner** (Independent R&D — Agents Monorepo)
+  Multi-agent travel assistant — ADK orchestrator with weather/places/stays specialists, SSE chat, live trip board + OSRM map. [FastAPI, Google ADK, Gemini, Groq, Ollama, Leaflet]
+  https://harish-nika.github.io/trip-planner-agent.html | https://github.com/Harish-nika/Agents
 - **Fixed Income Expert System** (FactEntry internship — personal contribution)
   RAG chatbot for financial bond PDFs — upload, embed, retrieve, LLaMA 3 answers via Groq. [FastAPI, Streamlit, FAISS, Groq, SBERT]
   https://harish-nika.github.io/fexpert.html | https://github.com/Harish-nika/FExpert
@@ -72,9 +75,6 @@ _May 2023 - Jul 2023_
 - **Language Distribution & Document Clustering Tool** (FactEntry internship — self contribution)
   PyPI-published PDF language detector, OCR, and clustering pipeline (v0.2.7). [Python, Tesseract, LangDetect, PyPI]
   https://harish-nika.github.io/lang-tool.html | https://github.com/Harish-nika/language_processing_tool
-- **MedBot (Medical RAG Assistant)** (VIT — J Component, Soft Computing course)
-  Medical PDF Q&A with SBERT + FAISS retrieval and Groq LLaMA 3 grounded responses. [Streamlit, FAISS, Sentence Transformers, Groq]
-  https://harish-nika.github.io/medbot.html | https://github.com/Harish-nika/medbot
 
 ## Certifications
 - Microsoft Certified: Azure AI Fundamentals: https://www.credly.com/badges/da3ef4b3-03a0-4560-95b6-5941473704de/public_url

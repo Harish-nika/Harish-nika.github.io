@@ -31,6 +31,12 @@
     <priority>0.85</priority>
   </url>
   <url>
+    <loc>https://harish-nika.github.io/trip-planner-agent.html</loc>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://harish-nika.github.io/fexpert.html</loc>
     <lastmod>2026-06-15</lastmod>
     <changefreq>monthly</changefreq>

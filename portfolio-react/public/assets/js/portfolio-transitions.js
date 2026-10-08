@@ -17,6 +17,7 @@
     "lang-tool.html": true,
     "medbot.html": true,
     "recruiting-agent.html": true,
+    "trip-planner-agent.html": true,
     "profile.html": true,
   };
 
