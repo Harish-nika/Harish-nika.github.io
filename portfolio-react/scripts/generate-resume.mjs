@@ -12,228 +12,278 @@ const resumeMdPath = path.join(contentDir, "resume.md");
 const resumePdfPath = path.join(contentDir, "Harish-Kumar-Resume.pdf");
 
 const profile = JSON.parse(await fs.readFile(profilePath, "utf8"));
+const { basics } = profile;
+const resumeProjects = profile.projects.filter((p) => p.resume);
+const resumeCertifications = [...new Set(profile.certifications.map((c) => c.resumeLabel || c.name))];
+const stripScheme = (url) => String(url).replace(/^https?:\/\//, "").replace(/\/$/, "");
+const formatPeriod = (period) => String(period).replace(/\s-\s/g, " – ");
 
-/** WinAnsi-safe text for PDF (Helvetica standard fonts). */
+/** Keep only characters Helvetica's WinAnsi encoding can render. */
 const pdfSafe = (text) =>
   String(text)
     .replace(/\u2192/g, "->")
-    .replace(/\u2013|\u2014/g, "-")
-    .replace(/\u2018|\u2019/g, "'")
-    .replace(/\u201c|\u201d/g, '"')
-    .replace(/[^\x00-\xFF]/g, " ");
+    .replace(/[^\x00-\xFF\u2022\u2013\u2014\u2018\u2019\u201c\u201d]/g, " ");
 
-const featuredProjects = (profile.projects || []).slice(0, 6);
-
-const lines = [];
-lines.push(`# ${profile.basics.name}`);
-lines.push(`${profile.basics.title}`);
-lines.push(
-  `${profile.basics.location} | ${profile.basics.email} | ${profile.basics.phone}`
-);
-lines.push(`${profile.basics.linkedin} | ${profile.basics.github}`);
-lines.push(`${profile.basics.portfolio}`);
-lines.push("");
-lines.push("## Summary");
-lines.push(profile.basics.summary);
-if (profile.basics.highlights?.length) {
-  for (const h of profile.basics.highlights) {
-    lines.push(`- ${h}`);
-  }
-}
-lines.push("");
-if (profile.basics.keywords?.length) {
-  lines.push("## Core Competencies");
-  lines.push(profile.basics.keywords.join(" | "));
-  lines.push("");
-}
-
-lines.push("## Experience");
+// ---------- Markdown ----------
+const md = [];
+md.push(`# ${basics.name}`);
+md.push(`**${basics.title}** | ${basics.headline}`);
+md.push(`${basics.location} | ${basics.phone} | ${basics.email}`);
+md.push(`${basics.portfolio} | ${basics.linkedin} | ${basics.github}`);
+md.push("");
+md.push("## Summary");
+md.push(basics.summary);
+md.push("");
+md.push("## Experience");
 for (const exp of profile.experience) {
-  lines.push(`### ${exp.role} - ${exp.company}`);
-  lines.push(`_${exp.period}_`);
-  for (const point of exp.highlights) {
-    lines.push(`- ${point}`);
-  }
-  lines.push("");
+  md.push(`### ${exp.role} — ${exp.company}`);
+  md.push(`_${formatPeriod(exp.period)}_`);
+  for (const point of exp.highlights) md.push(`- ${point}`);
+  md.push("");
 }
-
-lines.push("## Education");
+md.push("## Projects");
+for (const p of resumeProjects) {
+  md.push(`- **${p.name}** (${p.stack.join(", ")}): ${p.summary}`);
+  md.push(`  ${p.link}${p.github ? ` | ${p.github}` : ""}`);
+}
+md.push("");
+md.push("## Skills");
+for (const group of profile.skills) md.push(`- **${group.label}:** ${group.items.join(", ")}`);
+md.push("");
+md.push("## Education");
 for (const edu of profile.education) {
-  lines.push(`- **${edu.degree}**, ${edu.institution} (${edu.period}) - ${edu.score}`);
+  md.push(`- **${edu.degree}**, ${edu.institution} (${formatPeriod(edu.period)}) — ${edu.score}`);
 }
-lines.push("");
+md.push("");
+md.push("## Certifications");
+for (const cert of profile.certifications) md.push(`- [${cert.name}](${cert.link})`);
+await fs.writeFile(resumeMdPath, `${md.join("\n")}\n`, "utf8");
 
-lines.push("## Technical Skills");
-lines.push(`- AI/ML: ${profile.skills.ai_ml.join(", ")}`);
-lines.push(`- Engineering: ${profile.skills.engineering.join(", ")}`);
-lines.push(`- DevOps/GitOps: ${profile.skills.devops_gitops.join(", ")}`);
-lines.push("");
+// ---------- PDF ----------
+const PAGE_W = 595;
+const PAGE_H = 842;
+const MARGIN_X = 38;
+const MARGIN_TOP = 32;
+const MARGIN_BOTTOM = 28;
+const CONTENT_W = PAGE_W - MARGIN_X * 2;
 
-lines.push("## Key Projects");
-for (const project of featuredProjects) {
-  const gh = project.github ? ` | ${project.github}` : "";
-  lines.push(`- **${project.name}** (${project.context})`);
-  lines.push(`  ${project.summary} [${project.stack.join(", ")}]`);
-  lines.push(`  ${project.link}${gh}`);
-}
-lines.push("");
+const INK = rgb(0.11, 0.13, 0.17);
+const MUTED = rgb(0.36, 0.39, 0.44);
+const ACCENT = rgb(0.07, 0.27, 0.5);
+const RULE = rgb(0.76, 0.8, 0.86);
 
-lines.push("## Certifications");
-for (const cert of profile.certifications) {
-  const name = typeof cert === "string" ? cert : cert.name;
-  const link = typeof cert === "string" ? "" : cert.link;
-  lines.push(link ? `- ${name}: ${link}` : `- ${name}`);
-}
+async function renderPdf(density) {
+  const doc = await PDFDocument.create();
+  doc.setTitle(`${basics.name} — Resume`);
+  doc.setAuthor(basics.name);
+  doc.setSubject(`${basics.title} | ${basics.headline}`);
+  doc.setKeywords(profile.skills.flatMap((g) => g.items));
 
-await fs.writeFile(resumeMdPath, `${lines.join("\n")}\n`, "utf8");
+  const fonts = {
+    regular: await doc.embedFont(StandardFonts.Helvetica),
+    bold: await doc.embedFont(StandardFonts.HelveticaBold),
+    italic: await doc.embedFont(StandardFonts.HelveticaOblique),
+  };
 
-const pdfDoc = await PDFDocument.create();
-const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
-const boldFont = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
+  const body = 9.4 * density;
+  const small = 8.6 * density;
+  const lead = 1.27;
 
-const pageWidth = 595;
-const pageHeight = 842;
-const left = 40;
-const right = 40;
-const contentWidth = pageWidth - left - right;
-const bottomMargin = 36;
-const ink = rgb(0.12, 0.14, 0.18);
-const muted = rgb(0.35, 0.38, 0.42);
-const accent = rgb(0.08, 0.28, 0.52);
-const rule = rgb(0.78, 0.82, 0.88);
+  let page = doc.addPage([PAGE_W, PAGE_H]);
+  let y = PAGE_H - MARGIN_TOP;
 
-let page = pdfDoc.addPage([pageWidth, pageHeight]);
-let y = 812;
-
-const ensureSpace = (requiredHeight) => {
-  if (y - requiredHeight >= bottomMargin) return;
-  page = pdfDoc.addPage([pageWidth, pageHeight]);
-  y = 812;
-};
-
-const wrapText = (text, activeFont, size, maxWidth) => {
-  const words = String(text).split(/\s+/).filter(Boolean);
-  if (!words.length) return [""];
-  const out = [];
-  let current = words[0];
-  for (let i = 1; i < words.length; i += 1) {
-    const candidate = `${current} ${words[i]}`;
-    if (activeFont.widthOfTextAtSize(candidate, size) <= maxWidth) {
-      current = candidate;
-    } else {
-      out.push(current);
-      current = words[i];
+  const newPageIfNeeded = (height) => {
+    if (y - height < MARGIN_BOTTOM) {
+      page = doc.addPage([PAGE_W, PAGE_H]);
+      y = PAGE_H - MARGIN_TOP;
     }
-  }
-  out.push(current);
-  return out;
-};
+  };
 
-const drawText = (text, opts = {}) => {
-  const {
-    bold = false,
-    size = 9.5,
-    color = ink,
-    indent = 0,
-    gapAfter = 1.5,
-  } = opts;
-  const activeFont = bold ? boldFont : font;
-  const maxWidth = contentWidth - indent;
-  const lineHeight = size + 2.2;
-  const wrapped = wrapText(pdfSafe(text), activeFont, size, maxWidth);
-  ensureSpace(wrapped.length * lineHeight + gapAfter + 2);
+  /**
+   * Draw mixed-style text that wraps across lines.
+   * segments: [{ text, font, size, color }]; continuation lines start at `hang`.
+   */
+  const drawRich = (segments, { indent = 0, hang = indent, gapAfter = 0 } = {}) => {
+    const words = [];
+    for (const seg of segments) {
+      const font = fonts[seg.font || "regular"];
+      const size = seg.size || body;
+      const color = seg.color || INK;
+      const parts = pdfSafe(seg.text).split(/(\s+)/);
+      for (const part of parts) {
+        if (!part) continue;
+        if (/^\s+$/.test(part)) {
+          if (words.length) words[words.length - 1].spaceAfter = true;
+          continue;
+        }
+        words.push({ text: part, font, size, color, spaceAfter: false });
+      }
+    }
 
-  for (const line of wrapped) {
-    page.drawText(line, {
-      x: left + indent,
-      y,
-      size,
-      font: activeFont,
-      color,
+    const lines = [];
+    let line = [];
+    let lineW = 0;
+    let maxW = CONTENT_W - indent;
+    for (const w of words) {
+      const wW = w.font.widthOfTextAtSize(w.text, w.size);
+      const prev = line[line.length - 1];
+      const spaceW = prev && prev.spaceAfter ? prev.font.widthOfTextAtSize(" ", prev.size) : 0;
+      if (line.length && lineW + spaceW + wW > maxW) {
+        lines.push(line);
+        line = [];
+        lineW = 0;
+        maxW = CONTENT_W - hang;
+      }
+      const leading = line.length && line[line.length - 1].spaceAfter
+        ? line[line.length - 1].font.widthOfTextAtSize(" ", line[line.length - 1].size)
+        : 0;
+      line.push(w);
+      lineW += leading + wW;
+    }
+    if (line.length) lines.push(line);
+
+    lines.forEach((ln, idx) => {
+      const lineSize = Math.max(...ln.map((w) => w.size));
+      const lineH = lineSize * lead;
+      newPageIfNeeded(lineH);
+      let x = MARGIN_X + (idx === 0 ? indent : hang);
+      let run = null;
+      const flush = () => {
+        if (!run) return;
+        page.drawText(run.text, { x: run.x, y, size: run.size, font: run.font, color: run.color });
+        run = null;
+      };
+      ln.forEach((w, i) => {
+        const text = w.text + (w.spaceAfter && i < ln.length - 1 ? " " : "");
+        if (run && run.font === w.font && run.size === w.size && run.color === w.color) {
+          run.text += text;
+        } else {
+          flush();
+          run = { text, x, font: w.font, size: w.size, color: w.color };
+        }
+        x += w.font.widthOfTextAtSize(text, w.size);
+      });
+      flush();
+      y -= lineH;
     });
-    y -= lineHeight;
-  }
-  y -= gapAfter;
-};
+    y -= gapAfter;
+  };
 
-const drawSection = (title) => {
-  ensureSpace(22);
-  y -= 4;
-  drawText(title, { bold: true, size: 10.5, color: accent, gapAfter: 2 });
-  page.drawLine({
-    start: { x: left, y: y + 2 },
-    end: { x: pageWidth - right, y: y + 2 },
-    thickness: 0.8,
-    color: rule,
+  const drawRightAligned = (text, { size = small, color = MUTED, font = "regular" } = {}) => {
+    const f = fonts[font];
+    const safe = pdfSafe(text);
+    const w = f.widthOfTextAtSize(safe, size);
+    page.drawText(safe, { x: PAGE_W - MARGIN_X - w, y, size, font: f, color });
+  };
+
+  const drawSection = (title) => {
+    newPageIfNeeded(26 * density);
+    y -= 7 * density;
+    drawRich([{ text: title.toUpperCase(), font: "bold", size: 10.4 * density, color: ACCENT }]);
+    page.drawLine({
+      start: { x: MARGIN_X, y: y + 8.5 * density },
+      end: { x: PAGE_W - MARGIN_X, y: y + 8.5 * density },
+      thickness: 0.7,
+      color: RULE,
+    });
+    y -= 2.5 * density;
+  };
+
+  const drawBullet = (text) => {
+    newPageIfNeeded(body * lead);
+    page.drawText("•", { x: MARGIN_X + 3, y, size: body, font: fonts.regular, color: ACCENT });
+    drawRich([{ text, size: body }], { indent: 12, hang: 12, gapAfter: 1.2 * density });
+  };
+
+  /** Bold title on the left with a muted date on the right (first line). */
+  const drawRow = (leftSegments, rightText) => {
+    newPageIfNeeded(body * lead * 2);
+    if (rightText) drawRightAligned(rightText);
+    drawRich(leftSegments);
+  };
+
+  // Header
+  drawRich([{ text: basics.name, font: "bold", size: 20 * density, color: ACCENT }], { gapAfter: 2 * density });
+  drawRich(
+    [
+      { text: basics.title, font: "bold", size: 10.8 * density },
+      { text: `  |  ${basics.headline}`, size: 10.2 * density, color: MUTED },
+    ],
+    { gapAfter: 2.5 * density }
+  );
+  drawRich([{ text: `${basics.location}  |  ${basics.phone}  |  ${basics.email}`, size: small, color: MUTED }]);
+  drawRich([
+    {
+      text: [basics.portfolio, basics.linkedin, basics.github].map(stripScheme).join("  |  "),
+      size: small,
+      color: MUTED,
+    },
+  ]);
+
+  drawSection("Summary");
+  drawRich([{ text: basics.summary, size: body }]);
+
+  drawSection("Experience");
+  profile.experience.forEach((exp, idx) => {
+    if (idx) y -= 3.5 * density;
+    drawRow([{ text: exp.role, font: "bold", size: 10 * density }], formatPeriod(exp.period));
+    drawRich([{ text: exp.company, font: "italic", size: small, color: MUTED }], { gapAfter: 1.5 * density });
+    exp.highlights.forEach(drawBullet);
   });
-  y -= 6;
-};
 
-// Header
-drawText(profile.basics.name, { bold: true, size: 18, color: accent, gapAfter: 2 });
-drawText(profile.basics.title, { bold: true, size: 11, color: ink, gapAfter: 3 });
-drawText(
-  `${profile.basics.email}  |  ${profile.basics.phone}  |  ${profile.basics.location}`,
-  { size: 8.5, color: muted, gapAfter: 1.5 }
-);
-drawText(
-  `${profile.basics.portfolio}  |  ${profile.basics.linkedin}  |  ${profile.basics.github}`,
-  { size: 8.5, color: muted, gapAfter: 2 }
-);
+  drawSection("Projects");
+  resumeProjects.forEach((p, idx) => {
+    if (idx) y -= 2.5 * density;
+    drawRich(
+      [
+        { text: p.name, font: "bold", size: 9.6 * density },
+        { text: `  |  ${p.stack.join(", ")}`, size: small, color: MUTED },
+      ],
+      { gapAfter: 0.8 * density }
+    );
+    drawRich([{ text: p.summary, size: body }], { indent: 12, hang: 12 });
+  });
 
-drawSection("PROFESSIONAL SUMMARY");
-drawText(profile.basics.summary, { size: 9, gapAfter: 2 });
-for (const h of (profile.basics.highlights || []).slice(0, 5)) {
-  drawText(`• ${h}`, { size: 8.8, indent: 4, gapAfter: 1 });
-}
+  drawSection("Skills");
+  profile.skills.forEach((group) => {
+    drawRich(
+      [
+        { text: `${group.label}: `, font: "bold", size: body },
+        { text: group.items.join(", "), size: body },
+      ],
+      { hang: 12, gapAfter: 1.2 * density }
+    );
+  });
 
-if (profile.basics.keywords?.length) {
-  drawSection("CORE COMPETENCIES");
-  drawText(profile.basics.keywords.join("  •  "), { size: 8.5, color: muted, gapAfter: 2 });
-}
-
-drawSection("EXPERIENCE");
-for (const exp of profile.experience) {
-  ensureSpace(40);
-  drawText(exp.role, { bold: true, size: 10, gapAfter: 1 });
-  drawText(`${exp.company}  |  ${exp.period}`, { size: 8.7, color: muted, gapAfter: 2 });
-  for (const point of exp.highlights) {
-    drawText(`• ${point}`, { size: 8.8, indent: 6, gapAfter: 1 });
-  }
-  y -= 3;
-}
-
-drawSection("EDUCATION");
-for (const edu of profile.education) {
-  drawText(
-    `${edu.degree}  |  ${edu.institution}  |  ${edu.period}  |  ${edu.score}`,
-    { size: 8.8, gapAfter: 1.5 }
+  drawSection("Education");
+  const [degree, ...school] = profile.education;
+  drawRow([{ text: degree.degree, font: "bold", size: 9.8 * density }], formatPeriod(degree.period));
+  drawRich([{ text: `${degree.institution}  |  ${degree.score}`, font: "italic", size: small, color: MUTED }], {
+    gapAfter: 1.5 * density,
+  });
+  drawRich(
+    [
+      {
+        text: school.map((s) => `${s.degree}: ${s.score}, ${s.institution} (${s.period})`).join("   |   "),
+        size: small,
+        color: MUTED,
+      },
+    ],
+    { hang: 0 }
   );
+
+  drawSection("Certifications");
+  drawRich([{ text: resumeCertifications.join("  •  "), size: body }]);
+
+  return doc;
 }
 
-drawSection("TECHNICAL SKILLS");
-drawText(`AI/ML: ${profile.skills.ai_ml.join(", ")}`, { size: 8.5, gapAfter: 1.5 });
-drawText(`Engineering: ${profile.skills.engineering.join(", ")}`, { size: 8.5, gapAfter: 1.5 });
-drawText(`DevOps/GitOps: ${profile.skills.devops_gitops.join(", ")}`, { size: 8.5, gapAfter: 2 });
-
-drawSection("KEY PROJECTS");
-for (const project of featuredProjects) {
-  ensureSpace(28);
-  drawText(project.name, { bold: true, size: 9.2, gapAfter: 1 });
-  drawText(
-    `${project.context}  |  ${project.stack.join(", ")}`,
-    { size: 8.2, color: muted, indent: 4, gapAfter: 1 }
-  );
-  drawText(project.summary, { size: 8.5, indent: 4, gapAfter: 2 });
+let pdfDoc;
+for (const density of [1, 0.97, 0.94, 0.91]) {
+  pdfDoc = await renderPdf(density);
+  if (pdfDoc.getPageCount() === 1) break;
 }
 
-drawSection("CERTIFICATIONS");
-for (const cert of profile.certifications) {
-  const name = typeof cert === "string" ? cert : cert.name;
-  drawText(`• ${name}`, { size: 8.6, gapAfter: 1.2 });
-}
-
-const pdfBytes = await pdfDoc.save();
-await fs.writeFile(resumePdfPath, pdfBytes);
+await fs.writeFile(resumePdfPath, await pdfDoc.save());
 console.log(`Generated ${resumeMdPath}`);
-console.log(`Generated ${resumePdfPath}`);
+console.log(`Generated ${resumePdfPath} (${pdfDoc.getPageCount()} page${pdfDoc.getPageCount() > 1 ? "s" : ""})`);

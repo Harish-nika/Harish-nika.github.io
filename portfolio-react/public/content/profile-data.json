@@ -2,7 +2,8 @@
   "basics": {
     "name": "Harish Kumar S",
     "title": "Associate Software Developer",
-    "location": "Ranipet, Tamil Nadu, India | Chennai, India",
+    "headline": "AI/ML · MLOps · Data Platforms",
+    "location": "Chennai, Tamil Nadu, India",
     "email": "harishkumar56278@gmail.com",
     "phone": "+91 73973 27957",
     "linkedin": "https://www.linkedin.com/in/harish-kumar-s-b0a0472b1/",
@@ -11,56 +12,18 @@
     "resumeLink": "https://harish-nika.github.io/content/Harish-Kumar-Resume.pdf",
     "resumePdf": "./content/Harish-Kumar-Resume.pdf",
     "resumeMd": "./content/resume.md",
-    "summary": "Integrated MTech in Data Science (VIT, 2025). Associate Software Developer at FactEntry Data Solutions (A SIX Company) building production AI systems and collaborating with SIX on DME cloud migration (Databricks, data lakes, data warehouses, MLflow). Experienced in MLOps, Kubernetes, GitOps, RAG pipelines, computer vision, and scalable backend engineering. Delivered enterprise-grade AI platforms using FastAPI microservices, Redis-based distributed processing, and cloud-native deployment architectures.",
-    "highlights": [
-      "Built and deployed a production bond-extraction platform on K3s, leveraging 80+ CPU cores with Redis Streams and human-in-the-loop validation workflows.",
-      "Collaborating with SIX parent company on DME migration to Databricks cloud: data lakes, data warehouses, and MLflow MLOps.",
-      "Implemented end-to-end GitOps delivery pipelines using GitLab CI, Helm, and Argo CD for automated staging deployments.",
-      "Developed RAG-powered document intelligence systems using FAISS, Groq LLaMA, Streamlit, and FastAPI.",
-      "Published the language-processing-tool package on PyPI for reusable NLP workflows.",
-      "Trained and deployed YOLOv11 computer vision models on Roboflow for dental image analysis applications."
-    ],
-    "keywords": [
-      "AI/ML Engineer",
-      "Machine Learning",
-      "Deep Learning",
-      "Computer Vision",
-      "NLP",
-      "RAG",
-      "Python",
-      "FastAPI",
-      "Kubernetes",
-      "K3s",
-      "Docker",
-      "Redis",
-      "PostgreSQL",
-      "Databricks",
-      "MLflow",
-      "Data Lake",
-      "Data Warehouse",
-      "GitLab CI",
-      "Argo CD",
-      "Helm",
-      "GitOps",
-      "MLOps",
-      "Roboflow",
-      "YOLO",
-      "FAISS",
-      "LangChain",
-      "Streamlit"
-    ]
+    "summary": "Associate Software Developer at FactEntry (A SIX Company) building production AI and data platforms. Experienced in FastAPI microservices, Redis-based distributed processing, Kubernetes (K3s) with GitOps delivery, RAG systems, and computer vision, and now cloud data engineering on Databricks (data lake, data warehouse, MLflow). Integrated M.Tech in Data Science from VIT (2025)."
   },
   "experience": [
     {
       "role": "Associate Software Developer",
-      "company": "FactEntry Data Solutions - A SIX Company",
+      "company": "FactEntry Data Solutions (A SIX Company)",
       "period": "Dec 2025 - Present",
       "highlights": [
-        "Shipped Data Mining Engine (DME) modules on K3s stage: corporate/municipal bond extraction, validation UI, and cluster operations portal.",
-        "Collaborating with SIX parent company on DME migration to cloud: Databricks platform, data lakes, and data warehouse patterns.",
-        "Supporting MLOps on Databricks with MLflow experiment/model tracking alongside existing K3s GitOps delivery.",
-        "Implemented Redis-stream job dispatch with multi-node worker throughput and GitOps delivery (GitLab CI image build -> Helm chart promote -> Argo CD).",
-        "Built FastAPI microservices, live WebSocket job telemetry, role-based CPU tiering, and domain-restricted enterprise auth."
+        "Build and run the Data Mining Engine (DME), a production bond-extraction platform for corporate and municipal bonds on K3s (80+ CPU cores) with a human-in-the-loop validation UI.",
+        "Designed Redis Streams job dispatch across multi-node workers, plus FastAPI microservices with live WebSocket job telemetry, role-based CPU tiering, and domain-restricted auth.",
+        "Implemented GitOps delivery: GitLab CI image builds, Helm chart promotion, and Argo CD sync to staging.",
+        "Working with SIX (parent company) to migrate DME to Databricks: data lake and data warehouse design, with MLflow for experiment and model tracking."
       ]
     },
     {
@@ -68,17 +31,17 @@
       "company": "MIMASOFT Technologies",
       "period": "Jun 2025 - Oct 2025",
       "highlights": [
-        "Developed Dental ML Project: Roboflow YOLOv11 tooth and panoramic X-ray models with inference CLI.",
-        "Contributed to backend integration, API workflows, and production-oriented software development practices."
+        "Fine-tuned two YOLOv11 detection models in Roboflow for dental imaging: tooth detection (mAP@50 87.7%, precision 89.3%) and 14-class panoramic X-ray (mAP@50 70.3%).",
+        "Built an inference CLI for Roboflow serverless (inference-sdk) and local model backends; contributed to backend API integration."
       ]
     },
     {
       "role": "MLOps and Data Science Intern",
-      "company": "FactEntry Data Solutions - A SIX Company",
+      "company": "FactEntry Data Solutions (A SIX Company)",
       "period": "Nov 2024 - May 2025",
       "highlights": [
-        "Published language-processing-tool on PyPI (PDF language detection, OCR, document clustering) as self-driven internship contribution.",
-        "Built Fixed Income Expert RAG system (FAISS, Groq LLaMA 3, Streamlit/FastAPI) as personal contribution during internship."
+        "Published language-processing-tool on PyPI (v0.2.7) for PDF language detection, OCR, and layout-based document clustering; delivered an advanced internal version (VGG16/ResNet clustering, LLaMA Vision) to FactEntry.",
+        "Built Fixed Income Expert, a RAG chatbot over bond documents (SBERT, FAISS, Groq LLaMA 3, FastAPI + Streamlit), deployed as systemd services; contributed to DME prototype R&D."
       ]
     },
     {
@@ -86,24 +49,22 @@
       "company": "JP INFOTECH",
       "period": "Nov 2023 - Jan 2024",
       "highlights": [
-        "Built NLP web scraping with English-to-SQL query translation for extractive summarization and information retrieval.",
-        "Developed an OCR-based resume analyser with keyword suggestions and n-gram typing assist against job descriptions.",
-        "Engineered a real-time MQTT + Unity AR system to visualize environmental telemetry with ML-driven climate insights."
+        "Built an extractive summarization and information-retrieval system using NLP-driven web scraping with English-to-SQL query translation (SQLite/MySQL), reaching 95% extraction accuracy.",
+        "Built an applicant tracking tool that OCRs resumes (PyTesseract, OpenCV), matches them to job descriptions, and suggests missing keywords."
       ]
     },
     {
       "role": "Applied Data Science Extern",
-      "company": "Smart Bridge - Smartinternz",
+      "company": "Smart Bridge - SmartInternz (Google Developers)",
       "period": "May 2023 - Jul 2023",
       "highlights": [
-        "Built a disease prediction ensemble using Random Forest and SVM for clinical trial prediction accuracy.",
-        "Stored and retrieved clinical data via MongoDB Atlas and PyMongo, transforming it into analysis-ready datasets."
+        "Built a Random Forest + SVM ensemble for disease prediction on clinical-trial data, fed by a MongoDB Atlas (PyMongo) data pipeline."
       ]
     }
   ],
   "education": [
     {
-      "degree": "Integrated MTech - CSE (Data Science)",
+      "degree": "Integrated M.Tech, Computer Science and Engineering (Data Science)",
       "institution": "Vellore Institute of Technology",
       "period": "2020 - 2025",
       "score": "CGPA 7.8"
@@ -121,96 +82,167 @@
       "score": "87.8%"
     }
   ],
-  "skills": {
-    "ai_ml": [
-      "Machine Learning",
-      "Deep Learning",
-      "Generative AI",
-      "Computer Vision",
-      "NLP",
-      "RAG",
-      "FAISS",
-      "Sentence Transformers",
-      "Ollama",
-      "Roboflow",
-      "YOLOv11",
-      "Supervision",
-      "MLflow",
-      "Databricks"
-    ],
-    "engineering": [
-      "Python",
-      "FastAPI",
-      "Streamlit",
-      "SQL",
-      "Docker",
-      "Kubernetes (K3s)",
-      "Redis",
-      "PostgreSQL",
-      "Databricks",
-      "Data Lake",
-      "Data Warehouse",
-      "LangChain",
-      "PyMuPDF",
-      "OpenCV"
-    ],
-    "devops_gitops": [
-      "GitHub",
-      "GitLab CI",
-      "Argo CD",
-      "Helm",
-      "systemd",
-      "GitHub Actions",
-      "GitOps",
-      "MLflow"
-    ]
-  },
+  "skills": [
+    {
+      "label": "Languages & Backend",
+      "items": [
+        "Python",
+        "SQL",
+        "FastAPI",
+        "WebSockets",
+        "React",
+        "Streamlit"
+      ]
+    },
+    {
+      "label": "AI / ML & GenAI",
+      "items": [
+        "Machine Learning",
+        "Deep Learning",
+        "NLP",
+        "Computer Vision",
+        "RAG",
+        "LLM Agents (Google ADK)",
+        "LangChain",
+        "FAISS",
+        "ChromaDB",
+        "Sentence Transformers",
+        "Ollama",
+        "Groq",
+        "YOLOv11",
+        "Roboflow",
+        "OpenCV",
+        "Tesseract OCR"
+      ]
+    },
+    {
+      "label": "Data & Cloud",
+      "items": [
+        "Databricks",
+        "Data Lake",
+        "Data Warehouse",
+        "PostgreSQL",
+        "Redis Streams",
+        "SQLite",
+        "MongoDB",
+        "Elasticsearch"
+      ]
+    },
+    {
+      "label": "MLOps & DevOps",
+      "items": [
+        "Kubernetes (K3s)",
+        "Docker",
+        "Helm",
+        "Argo CD",
+        "GitLab CI",
+        "GitHub Actions",
+        "GitOps",
+        "MLflow",
+        "systemd"
+      ]
+    }
+  ],
   "projects": [
+    {
+      "name": "PAI PDF AI — Document Intelligence Platform",
+      "context": "Independent R&D — ongoing",
+      "link": "https://harish-nika.github.io/pai-pdf-ai.html",
+      "stack": [
+        "FastAPI",
+        "React",
+        "Elasticsearch",
+        "Ollama",
+        "PyMuPDF"
+      ],
+      "summary": "Privacy-first analysis of legal and financial PDFs: local-LLM extraction of clauses, entities, and risks, with answers cited to exact source chunks from a vector knowledge base.",
+      "resume": true
+    },
     {
       "name": "Data Mining Engine (DME)",
       "context": "FactEntry Data Solutions (A SIX Company) — Associate Software Developer",
       "link": "https://harish-nika.github.io/dme-project.html",
-      "stack": ["K3s", "FastAPI", "Redis", "PostgreSQL", "Argo CD", "Databricks", "MLflow"],
-      "summary": "Enterprise bond extraction on K3s with GitOps CI/CD; collaborating with SIX on Databricks cloud migration (data lakes, warehouses, MLflow)."
+      "stack": [
+        "K3s",
+        "FastAPI",
+        "Redis",
+        "PostgreSQL",
+        "Argo CD",
+        "Databricks",
+        "MLflow"
+      ],
+      "summary": "Enterprise bond extraction on K3s with GitOps CI/CD; migrating to Databricks with SIX (data lake, warehouse, MLflow)."
     },
     {
       "name": "Recruiting Agent — AI-Powered ATS",
-      "context": "Independent R&D — Agents Monorepo",
+      "context": "Independent R&D — Agents monorepo",
       "link": "https://harish-nika.github.io/recruiting-agent.html",
       "github": "https://github.com/Harish-nika/Agents",
-      "stack": ["FastAPI", "React", "SQLite", "ChromaDB", "Ollama", "Groq"],
-      "summary": "Multi-step LLM ATS — resume OCR, ChromaDB JD matching, verification, suspicion scoring, and HR feedback loop."
+      "stack": [
+        "FastAPI",
+        "React",
+        "SQLite",
+        "ChromaDB",
+        "Ollama",
+        "Groq"
+      ],
+      "summary": "Nine-step LLM pipeline that OCRs resumes, matches them to job descriptions in ChromaDB, verifies claims, scores fit and authenticity, and generates evidence-based HR questions.",
+      "resume": true
     },
     {
       "name": "Trip Guide — Conversational Trip Planner",
-      "context": "Independent R&D — Agents Monorepo",
+      "context": "Independent R&D — Agents monorepo",
       "link": "https://harish-nika.github.io/trip-planner-agent.html",
       "github": "https://github.com/Harish-nika/Agents",
-      "stack": ["FastAPI", "Google ADK", "Gemini", "Groq", "Ollama", "Leaflet"],
-      "summary": "Multi-agent travel assistant — ADK orchestrator with weather/places/stays specialists, SSE chat, live trip board + OSRM map."
+      "stack": [
+        "FastAPI",
+        "Google ADK",
+        "Gemini",
+        "Groq",
+        "Ollama",
+        "Leaflet"
+      ],
+      "summary": "Multi-agent travel assistant: Google ADK orchestrator with weather, places, and stays specialists, SSE streaming chat, live trip board and OSRM route map, and Gemini to Groq to Ollama failover.",
+      "resume": true
     },
     {
       "name": "Fixed Income Expert System",
       "context": "FactEntry internship — personal contribution",
       "link": "https://harish-nika.github.io/fexpert.html",
       "github": "https://github.com/Harish-nika/FExpert",
-      "stack": ["FastAPI", "Streamlit", "FAISS", "Groq", "SBERT"],
+      "stack": [
+        "FastAPI",
+        "Streamlit",
+        "FAISS",
+        "Groq",
+        "SBERT"
+      ],
       "summary": "RAG chatbot for financial bond PDFs — upload, embed, retrieve, LLaMA 3 answers via Groq."
     },
     {
       "name": "Cybersecurity Content Moderator",
-      "context": "VIT — Capstone project (academic)",
+      "context": "VIT — Capstone project",
       "link": "https://harish-nika.github.io/content-moderator.html",
       "github": "https://github.com/Harish-nika/Content-moderator-image",
-      "stack": ["LLM", "Streamlit", "Docker", "FastAPI"],
-      "summary": "Multimodal hate-speech and harmful content classification (text, image, PDF)."
+      "stack": [
+        "LLM",
+        "FastAPI",
+        "Streamlit",
+        "Docker"
+      ],
+      "summary": "Multimodal hate-speech and harmful-content classification across text, images, and PDFs, packaged as a Dockerized API."
     },
     {
       "name": "Language Distribution & Document Clustering Tool",
       "context": "FactEntry internship — self contribution",
       "link": "https://harish-nika.github.io/lang-tool.html",
       "github": "https://github.com/Harish-nika/language_processing_tool",
-      "stack": ["Python", "Tesseract", "LangDetect", "PyPI"],
+      "stack": [
+        "Python",
+        "Tesseract",
+        "LangDetect",
+        "PyPI"
+      ],
       "summary": "PyPI-published PDF language detector, OCR, and clustering pipeline (v0.2.7)."
     },
     {
@@ -218,7 +250,12 @@
       "context": "VIT — J Component, Soft Computing course",
       "link": "https://harish-nika.github.io/medbot.html",
       "github": "https://github.com/Harish-nika/medbot",
-      "stack": ["Streamlit", "FAISS", "Sentence Transformers", "Groq"],
+      "stack": [
+        "Streamlit",
+        "FAISS",
+        "Sentence Transformers",
+        "Groq"
+      ],
       "summary": "Medical PDF Q&A with SBERT + FAISS retrieval and Groq LLaMA 3 grounded responses."
     },
     {
@@ -226,62 +263,93 @@
       "context": "MIMASOFT Technologies — trainee internship",
       "link": "https://harish-nika.github.io/dental-project.html",
       "github": "https://github.com/Harish-nika/Dental_ML_project",
-      "stack": ["Roboflow", "YOLOv11", "inference-sdk", "Supervision"],
+      "stack": [
+        "Roboflow",
+        "YOLOv11",
+        "inference-sdk",
+        "Supervision"
+      ],
       "summary": "YOLOv11 tooth and panoramic X-ray detection — Roboflow fine-tuning and inference CLI."
     },
     {
       "name": "Disease Prediction using Ensemble Learning",
       "context": "SmartInternz / Smart Bridge — Applied Data Science externship",
       "link": "mailto:harishkumar56278@gmail.com?subject=Disease%20Prediction%20Project",
-      "stack": ["Python", "Random Forest", "SVM", "MongoDB"],
+      "stack": [
+        "Python",
+        "Random Forest",
+        "SVM",
+        "MongoDB"
+      ],
       "summary": "Ensemble ML model for clinical trial disease prediction with MongoDB Atlas pipeline."
     },
     {
       "name": "Real-Time Room Temperature & Humidity Visualization (AR)",
       "context": "VIT — J Component, ARVR course",
       "link": "mailto:harishkumar56278@gmail.com?subject=AR%20Visualization%20Project",
-      "stack": ["Unity", "MQTT", "AR", "Python"],
+      "stack": [
+        "Unity",
+        "MQTT",
+        "AR",
+        "Python"
+      ],
       "summary": "MQTT telemetry with Unity AR overlay and ML-driven climate insights."
     },
     {
       "name": "Extractive Summarization & Information Retrieval",
       "context": "JP Infotech",
       "link": "mailto:harishkumar56278@gmail.com?subject=Summarization%20Project",
-      "stack": ["Python", "NLP", "SQLite", "MySQL"],
+      "stack": [
+        "Python",
+        "NLP",
+        "SQLite",
+        "MySQL"
+      ],
       "summary": "NLP web scraping with English-to-SQL query translation and 95% extraction accuracy."
     },
     {
       "name": "Application Tracking System",
       "context": "JP Infotech",
       "link": "mailto:harishkumar56278@gmail.com?subject=Application%20Tracking%20System",
-      "stack": ["Python", "PyTesseract", "OpenCV", "NLP"],
+      "stack": [
+        "Python",
+        "PyTesseract",
+        "OpenCV",
+        "NLP"
+      ],
       "summary": "Resume analyser with OCR, keyword suggestions, and n-gram typing assist vs job descriptions."
     }
   ],
   "certifications": [
     {
       "name": "Microsoft Certified: Azure AI Fundamentals",
-      "link": "https://www.credly.com/badges/da3ef4b3-03a0-4560-95b6-5941473704de/public_url"
+      "link": "https://www.credly.com/badges/da3ef4b3-03a0-4560-95b6-5941473704de/public_url",
+      "resumeLabel": "Microsoft Azure AI Fundamentals"
     },
     {
       "name": "Applied Data Science (SmartInternz + Google Developers)",
-      "link": "https://drive.google.com/file/d/126d8VTJ6y-X-t6_S_KOD2gYttWQhqe2T/view"
+      "link": "https://drive.google.com/file/d/126d8VTJ6y-X-t6_S_KOD2gYttWQhqe2T/view",
+      "resumeLabel": "Applied Data Science (SmartInternz + Google)"
     },
     {
       "name": "Data Analysis and Visualization with Power BI",
-      "link": "https://www.coursera.org/account/accomplishments/verify/YKAC25V5T6WJ"
+      "link": "https://www.coursera.org/account/accomplishments/verify/YKAC25V5T6WJ",
+      "resumeLabel": "Power BI & Excel (Coursera, 4 courses)"
     },
     {
       "name": "Preparing Data for Analysis with Microsoft Excel",
-      "link": "https://www.coursera.org/account/accomplishments/verify/F3SR649G78ZN"
+      "link": "https://www.coursera.org/account/accomplishments/verify/F3SR649G78ZN",
+      "resumeLabel": "Power BI & Excel (Coursera, 4 courses)"
     },
     {
       "name": "Harnessing the Power of Data with Power BI",
-      "link": "https://www.coursera.org/account/accomplishments/verify/CTOOZYTXL926"
+      "link": "https://www.coursera.org/account/accomplishments/verify/CTOOZYTXL926",
+      "resumeLabel": "Power BI & Excel (Coursera, 4 courses)"
     },
     {
       "name": "Extract, Transform, and Load Data in Power BI",
-      "link": "https://www.coursera.org/account/accomplishments/verify/5VXS5AHV12DN"
+      "link": "https://www.coursera.org/account/accomplishments/verify/5VXS5AHV12DN",
+      "resumeLabel": "Power BI & Excel (Coursera, 4 courses)"
     }
   ]
 }

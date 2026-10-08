@@ -341,7 +341,7 @@
       root.innerHTML = `
         <section class="profile-hero" id="top">
           <h1>${escapeHtml(b.name)}</h1>
-          <p class="role">${escapeHtml(b.title)}</p>
+          <p class="role">${escapeHtml(b.title)}${b.headline ? ` · ${escapeHtml(b.headline)}` : ""}</p>
           <p class="summary">${escapeHtml(b.summary)}</p>
           <div class="contact-grid">
             <span><strong>Email:</strong> <a href="mailto:${escapeHtml(b.email)}">${escapeHtml(b.email)}</a></span>
@@ -351,7 +351,6 @@
             <span><strong>LinkedIn:</strong> <a href="${escapeHtml(b.linkedin)}" target="_blank" rel="noopener noreferrer">Profile</a></span>
             <span><strong>GitHub:</strong> <a href="${escapeHtml(b.github)}" target="_blank" rel="noopener noreferrer">Harish-nika</a></span>
           </div>
-          ${(b.highlights || []).length ? `<ul class="highlight-list">${b.highlights.map((h) => `<li>${escapeHtml(h)}</li>`).join("")}</ul>` : ""}
         </section>
 
         <div class="resume-bar no-print" id="resume">
@@ -395,17 +394,13 @@
 
         <section class="profile-card" id="skills">
           <h2>Technical Skills</h2>
-          <p><strong>AI / ML</strong></p>
-          <div class="chipline">${data.skills.ai_ml.map((s) => `<span>${escapeHtml(s)}</span>`).join("")}</div>
-          <p style="margin-top:1rem;"><strong>Engineering</strong></p>
-          <div class="chipline">${data.skills.engineering.map((s) => `<span>${escapeHtml(s)}</span>`).join("")}</div>
-          <p style="margin-top:1rem;"><strong>DevOps / GitOps</strong></p>
-          <div class="chipline">${data.skills.devops_gitops.map((s) => `<span>${escapeHtml(s)}</span>`).join("")}</div>
-          ${
-            b.keywords?.length
-              ? `<p style="margin-top:1.2rem;"><strong>Core keywords</strong></p><p class="keywords-block">${b.keywords.map(escapeHtml).join(" · ")}</p>`
-              : ""
-          }
+          ${data.skills
+            .map(
+              (group, i) => `
+            <p${i ? ' style="margin-top:1rem;"' : ""}><strong>${escapeHtml(group.label)}</strong></p>
+            <div class="chipline">${group.items.map((s) => `<span>${escapeHtml(s)}</span>`).join("")}</div>`
+            )
+            .join("")}
         </section>
 
         <section class="profile-card" id="projects">
