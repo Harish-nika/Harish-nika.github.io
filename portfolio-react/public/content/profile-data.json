@@ -88,7 +88,9 @@
       "items": [
         "Python",
         "SQL",
+        "C/C++",
         "FastAPI",
+        "Flask",
         "WebSockets",
         "React",
         "Streamlit"
@@ -97,7 +99,9 @@
     {
       "label": "AI / ML & GenAI",
       "items": [
-        "Machine Learning",
+        "PyTorch",
+        "TensorFlow",
+        "scikit-learn",
         "Deep Learning",
         "NLP",
         "Computer Vision",
@@ -107,7 +111,7 @@
         "FAISS",
         "ChromaDB",
         "Sentence Transformers",
-        "Ollama",
+        "Ollama (fine-tuning)",
         "Groq",
         "YOLOv11",
         "Roboflow",
@@ -121,9 +125,11 @@
         "Databricks",
         "Data Lake",
         "Data Warehouse",
+        "ETL Pipelines",
+        "Microsoft Azure",
+        "GCP",
         "PostgreSQL",
         "Redis Streams",
-        "SQLite",
         "MongoDB",
         "Elasticsearch"
       ]
@@ -132,14 +138,14 @@
       "label": "MLOps & DevOps",
       "items": [
         "Kubernetes (K3s)",
-        "Docker",
+        "Docker / Compose",
         "Helm",
         "Argo CD",
         "GitLab CI",
         "GitHub Actions",
         "GitOps",
         "MLflow",
-        "systemd"
+        "Linux / systemd"
       ]
     }
   ],

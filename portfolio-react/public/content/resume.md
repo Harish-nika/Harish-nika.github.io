@@ -42,10 +42,10 @@ _May 2023 – Jul 2023_
   https://harish-nika.github.io/trip-planner-agent.html | https://github.com/Harish-nika/Agents
 
 ## Skills
-- **Languages & Backend:** Python, SQL, FastAPI, WebSockets, React, Streamlit
-- **AI / ML & GenAI:** Machine Learning, Deep Learning, NLP, Computer Vision, RAG, LLM Agents (Google ADK), LangChain, FAISS, ChromaDB, Sentence Transformers, Ollama, Groq, YOLOv11, Roboflow, OpenCV, Tesseract OCR
-- **Data & Cloud:** Databricks, Data Lake, Data Warehouse, PostgreSQL, Redis Streams, SQLite, MongoDB, Elasticsearch
-- **MLOps & DevOps:** Kubernetes (K3s), Docker, Helm, Argo CD, GitLab CI, GitHub Actions, GitOps, MLflow, systemd
+- **Languages & Backend:** Python, SQL, C/C++, FastAPI, Flask, WebSockets, React, Streamlit
+- **AI / ML & GenAI:** PyTorch, TensorFlow, scikit-learn, Deep Learning, NLP, Computer Vision, RAG, LLM Agents (Google ADK), LangChain, FAISS, ChromaDB, Sentence Transformers, Ollama (fine-tuning), Groq, YOLOv11, Roboflow, OpenCV, Tesseract OCR
+- **Data & Cloud:** Databricks, Data Lake, Data Warehouse, ETL Pipelines, Microsoft Azure, GCP, PostgreSQL, Redis Streams, MongoDB, Elasticsearch
+- **MLOps & DevOps:** Kubernetes (K3s), Docker / Compose, Helm, Argo CD, GitLab CI, GitHub Actions, GitOps, MLflow, Linux / systemd
 
 ## Education
 - **Integrated M.Tech, Computer Science and Engineering (Data Science)**, Vellore Institute of Technology (2020 – 2025) — CGPA 7.8
