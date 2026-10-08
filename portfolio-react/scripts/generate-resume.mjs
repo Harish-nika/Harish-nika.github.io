@@ -13,7 +13,7 @@ const resumePdfPath = path.join(contentDir, "Harish-Kumar-Resume.pdf");
 
 const profile = JSON.parse(await fs.readFile(profilePath, "utf8"));
 const { basics } = profile;
-const resumeProjects = profile.projects.filter((p) => p.resume);
+const resumeProjects = profile.projects.filter((p) => p.resume).sort((a, b) => Number(a.resume) - Number(b.resume));
 const resumeCertifications = [...new Set(profile.certifications.map((c) => c.resumeLabel || c.name))];
 const stripScheme = (url) => String(url).replace(/^https?:\/\//, "").replace(/\/$/, "");
 const formatPeriod = (period) => String(period).replace(/\s-\s/g, " – ");

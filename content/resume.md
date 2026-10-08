@@ -34,18 +34,20 @@ _May 2023 – Jul 2023_
 - Built a Random Forest + SVM ensemble for disease prediction on clinical-trial data, fed by a MongoDB Atlas (PyMongo) data pipeline.
 
 ## Projects
-- **PAI PDF AI — Document Intelligence Platform** (FastAPI, React, Elasticsearch, Ollama, PyMuPDF): Privacy-first analysis of legal and financial PDFs: local-LLM extraction of clauses, entities, and risks, with answers cited to exact source chunks from a vector knowledge base.
-  https://harish-nika.github.io/pai-pdf-ai.html
-- **Recruiting Agent — AI-Powered ATS** (FastAPI, React, SQLite, ChromaDB, Ollama, Groq): Nine-step LLM pipeline that OCRs resumes, matches them to job descriptions in ChromaDB, verifies claims, scores fit and authenticity, and generates evidence-based HR questions.
+- **Recruiting Agent — AI-Powered ATS** (FastAPI, React, SQLite, ChromaDB, Ollama, Groq): Nine-step LLM ATS: resume OCR, ChromaDB JD matching, claim verification, fit and authenticity scoring, HR questions.
   https://harish-nika.github.io/recruiting-agent.html | https://github.com/Harish-nika/Agents
-- **Trip Guide — Conversational Trip Planner** (FastAPI, Google ADK, Gemini, Groq, Ollama, Leaflet): Multi-agent travel assistant: Google ADK orchestrator with weather, places, and stays specialists, SSE streaming chat, live trip board and OSRM route map, and Gemini to Groq to Ollama failover.
+- **Trip Guide — Conversational Trip Planner** (FastAPI, Google ADK, Gemini, Groq, Ollama, Leaflet): Google ADK multi-agent trip planner (weather, places, stays agents) with SSE chat, live trip board, and OSRM map.
   https://harish-nika.github.io/trip-planner-agent.html | https://github.com/Harish-nika/Agents
+- **Cybersecurity Content Moderator — VIT Capstone** (Ollama, FAISS, FastAPI, Streamlit, Docker, GitHub Actions): Multimodal moderation of text, images, and PDFs with custom Ollama models (WizardLM 7B, Gemma 3 12B vision), FAISS retrieval over prior cases to ground verdicts, GPU inference, and CI-published Docker images.
+  https://harish-nika.github.io/content-moderator.html | https://github.com/Harish-nika/Content-moderator-image
+- **PAI PDF AI — Document Intelligence Platform** (FastAPI, React, Elasticsearch, Ollama, PyMuPDF): Privacy-first PDF analysis with local LLMs: clause, entity, and risk extraction with answers cited to source chunks.
+  https://harish-nika.github.io/pai-pdf-ai.html
 
 ## Skills
-- **Languages & Backend:** Python, SQL, C/C++, FastAPI, Flask, WebSockets, React, Streamlit
+- **Languages & Backend:** Python, SQL, FastAPI, Flask, WebSockets, React, Streamlit
 - **AI / ML & GenAI:** PyTorch, TensorFlow, scikit-learn, Deep Learning, NLP, Computer Vision, RAG, LLM Agents (Google ADK), LangChain, FAISS, ChromaDB, Sentence Transformers, Ollama (fine-tuning), Groq, YOLOv11, Roboflow, OpenCV, Tesseract OCR
-- **Data & Cloud:** Databricks, Data Lake, Data Warehouse, ETL Pipelines, Microsoft Azure, GCP, PostgreSQL, Redis Streams, MongoDB, Elasticsearch
-- **MLOps & DevOps:** Kubernetes (K3s), Docker / Compose, Helm, Argo CD, GitLab CI, GitHub Actions, GitOps, MLflow, Linux / systemd
+- **Data & Cloud:** Databricks, Data Lake, Data Warehouse, ETL, Microsoft Azure, PostgreSQL, Redis Streams, MongoDB, Elasticsearch
+- **MLOps & DevOps:** Kubernetes (K3s), Docker, Helm, Argo CD, GitLab CI, GitHub Actions, GitOps, MLflow, Linux, GPU Computing
 
 ## Education
 - **Integrated M.Tech, Computer Science and Engineering (Data Science)**, Vellore Institute of Technology (2020 – 2025) — CGPA 7.8

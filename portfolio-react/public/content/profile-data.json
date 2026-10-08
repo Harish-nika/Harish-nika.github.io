@@ -88,7 +88,6 @@
       "items": [
         "Python",
         "SQL",
-        "C/C++",
         "FastAPI",
         "Flask",
         "WebSockets",
@@ -125,9 +124,8 @@
         "Databricks",
         "Data Lake",
         "Data Warehouse",
-        "ETL Pipelines",
+        "ETL",
         "Microsoft Azure",
-        "GCP",
         "PostgreSQL",
         "Redis Streams",
         "MongoDB",
@@ -138,14 +136,15 @@
       "label": "MLOps & DevOps",
       "items": [
         "Kubernetes (K3s)",
-        "Docker / Compose",
+        "Docker",
         "Helm",
         "Argo CD",
         "GitLab CI",
         "GitHub Actions",
         "GitOps",
         "MLflow",
-        "Linux / systemd"
+        "Linux",
+        "GPU Computing"
       ]
     }
   ],
@@ -161,8 +160,8 @@
         "Ollama",
         "PyMuPDF"
       ],
-      "summary": "Privacy-first analysis of legal and financial PDFs: local-LLM extraction of clauses, entities, and risks, with answers cited to exact source chunks from a vector knowledge base.",
-      "resume": true
+      "summary": "Privacy-first PDF analysis with local LLMs: clause, entity, and risk extraction with answers cited to source chunks.",
+      "resume": 4
     },
     {
       "name": "Data Mining Engine (DME)",
@@ -192,8 +191,8 @@
         "Ollama",
         "Groq"
       ],
-      "summary": "Nine-step LLM pipeline that OCRs resumes, matches them to job descriptions in ChromaDB, verifies claims, scores fit and authenticity, and generates evidence-based HR questions.",
-      "resume": true
+      "summary": "Nine-step LLM ATS: resume OCR, ChromaDB JD matching, claim verification, fit and authenticity scoring, HR questions.",
+      "resume": 1
     },
     {
       "name": "Trip Guide — Conversational Trip Planner",
@@ -208,8 +207,8 @@
         "Ollama",
         "Leaflet"
       ],
-      "summary": "Multi-agent travel assistant: Google ADK orchestrator with weather, places, and stays specialists, SSE streaming chat, live trip board and OSRM route map, and Gemini to Groq to Ollama failover.",
-      "resume": true
+      "summary": "Google ADK multi-agent trip planner (weather, places, stays agents) with SSE chat, live trip board, and OSRM map.",
+      "resume": 2
     },
     {
       "name": "Fixed Income Expert System",
@@ -226,17 +225,20 @@
       "summary": "RAG chatbot for financial bond PDFs — upload, embed, retrieve, LLaMA 3 answers via Groq."
     },
     {
-      "name": "Cybersecurity Content Moderator",
+      "name": "Cybersecurity Content Moderator — VIT Capstone",
       "context": "VIT — Capstone project",
       "link": "https://harish-nika.github.io/content-moderator.html",
       "github": "https://github.com/Harish-nika/Content-moderator-image",
       "stack": [
-        "LLM",
+        "Ollama",
+        "FAISS",
         "FastAPI",
         "Streamlit",
-        "Docker"
+        "Docker",
+        "GitHub Actions"
       ],
-      "summary": "Multimodal hate-speech and harmful-content classification across text, images, and PDFs, packaged as a Dockerized API."
+      "summary": "Multimodal moderation of text, images, and PDFs with custom Ollama models (WizardLM 7B, Gemma 3 12B vision), FAISS retrieval over prior cases to ground verdicts, GPU inference, and CI-published Docker images.",
+      "resume": 3
     },
     {
       "name": "Language Distribution & Document Clustering Tool",
