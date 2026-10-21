@@ -14,9 +14,14 @@ const resumePdfPath = path.join(contentDir, "Harish-Kumar-Resume.pdf");
 const profile = JSON.parse(await fs.readFile(profilePath, "utf8"));
 const { basics } = profile;
 const resumeProjects = profile.projects.filter((p) => p.resume).sort((a, b) => Number(a.resume) - Number(b.resume));
-const resumeCertifications = [...new Set(profile.certifications.map((c) => c.resumeLabel || c.name))];
+const accomplishmentCerts = profile.certifications.filter((c) => c.kind === "accomplishment");
+const courseCerts = profile.certifications.filter((c) => c.kind !== "accomplishment");
 const stripScheme = (url) => String(url).replace(/^https?:\/\//, "").replace(/\/$/, "");
 const formatPeriod = (period) => String(period).replace(/\s-\s/g, " – ");
+const formatCertLine = (cert) => {
+  const meta = [cert.issuer, cert.date].filter(Boolean).join(", ");
+  return meta ? `${cert.name} — ${meta}` : cert.name;
+};
 
 /** Keep only characters Helvetica's WinAnsi encoding can render. */
 const pdfSafe = (text) =>
@@ -56,7 +61,15 @@ for (const edu of profile.education) {
 }
 md.push("");
 md.push("## Certifications");
-for (const cert of profile.certifications) md.push(`- [${cert.name}](${cert.link})`);
+md.push("### Awards and exam credentials");
+for (const cert of accomplishmentCerts) {
+  md.push(`- [${formatCertLine(cert)}](${cert.link})`);
+}
+md.push("");
+md.push("### Course certificates");
+for (const cert of courseCerts) {
+  md.push(`- [${formatCertLine(cert)}](${cert.link})`);
+}
 await fs.writeFile(resumeMdPath, `${md.join("\n")}\n`, "utf8");
 
 // ---------- PDF ----------
@@ -272,17 +285,28 @@ async function renderPdf(density) {
     { hang: 0 }
   );
 
+  const drawCertGroup = (label, certs) => {
+    if (!certs.length) return;
+    newPageIfNeeded(body * lead * 2);
+    drawRich([{ text: label, font: "bold", size: small, color: MUTED }], { gapAfter: 1.5 * density });
+    certs.forEach(drawBullet);
+  };
+
   drawSection("Certifications");
-  drawRich([{ text: resumeCertifications.join("  •  "), size: body }]);
+  drawCertGroup(
+    "Awards and exam credentials",
+    accomplishmentCerts.map(formatCertLine)
+  );
+  y -= 2 * density;
+  drawCertGroup(
+    "Course certificates",
+    courseCerts.map(formatCertLine)
+  );
 
   return doc;
 }
 
-let pdfDoc;
-for (const density of [1, 0.97, 0.94, 0.91]) {
-  pdfDoc = await renderPdf(density);
-  if (pdfDoc.getPageCount() === 1) break;
-}
+const pdfDoc = await renderPdf(1);
 
 await fs.writeFile(resumePdfPath, await pdfDoc.save());
 console.log(`Generated ${resumeMdPath}`);

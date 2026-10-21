@@ -444,9 +444,13 @@
             const certItem = (c) => {
               const name = typeof c === "string" ? c : c.name;
               const link = typeof c === "string" ? "" : c.link;
+              const issuer = typeof c === "string" ? "" : c.issuer;
+              const date = typeof c === "string" ? "" : c.date;
+              const meta = [issuer, date].filter(Boolean).join(" · ");
+              const label = meta ? `${name} — ${meta}` : name;
               return link
-                ? `<li><a href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer">${escapeHtml(name)}</a></li>`
-                : `<li>${escapeHtml(name)}</li>`;
+                ? `<li><a href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer">${escapeHtml(label)}</a></li>`
+                : `<li>${escapeHtml(label)}</li>`;
             };
             const all = data.certifications || [];
             const accomplishments = all.filter((c) => typeof c !== "string" && c.kind === "accomplishment");

@@ -166,7 +166,7 @@
         "PyMuPDF"
       ],
       "summary": "Privacy-first PDF analysis with local LLMs: clause, entity, and risk extraction with answers cited to source chunks.",
-      "resume": 4
+      "resume": 5
     },
     {
       "name": "Data Mining Engine (DME)",
@@ -183,7 +183,8 @@
         "PySpark",
         "MLflow"
       ],
-      "summary": "Enterprise bond extraction on K3s with GitOps CI/CD; migrating to Microsoft Azure and Databricks with SIX (PySpark, data lake, warehouse, MLflow). SIX Excellence Award."
+      "summary": "Enterprise bond extraction on K3s with GitOps CI/CD; migrating to Microsoft Azure and Databricks with SIX (PySpark, data lake, warehouse, MLflow). SIX Excellence Award.",
+      "resume": 1
     },
     {
       "name": "Recruiting Agent — AI-Powered ATS",
@@ -199,7 +200,7 @@
         "Groq"
       ],
       "summary": "Nine-step LLM ATS: resume OCR, ChromaDB JD matching, claim verification, fit and authenticity scoring, HR questions.",
-      "resume": 1
+      "resume": 2
     },
     {
       "name": "Trip Guide — Conversational Trip Planner",
@@ -215,7 +216,7 @@
         "Leaflet"
       ],
       "summary": "Google ADK multi-agent trip planner (weather, places, stays agents) with SSE chat, live trip board, and OSRM map.",
-      "resume": 2
+      "resume": 3
     },
     {
       "name": "Fixed Income Expert System",
@@ -245,7 +246,7 @@
         "GitHub Actions"
       ],
       "summary": "Multimodal moderation of text, images, and PDFs with custom Ollama models (WizardLM 7B, Gemma 3 12B vision), FAISS retrieval over prior cases to ground verdicts, GPU inference, and CI-published Docker images.",
-      "resume": 3
+      "resume": 4
     },
     {
       "name": "Language Distribution & Document Clustering Tool",
@@ -338,62 +339,72 @@
   "certifications": [
     {
       "name": "SIX Excellence Award — DME Azure/Databricks Migration",
+      "issuer": "SIX",
+      "date": "Oct 2026",
       "link": "./assets/img/excellence-award-six.jpg",
-      "resumeLabel": "SIX Excellence Award",
       "kind": "accomplishment"
     },
     {
       "name": "Microsoft Certified: Azure AI Fundamentals",
+      "issuer": "Microsoft",
+      "date": "Jun 2023",
       "link": "https://www.credly.com/badges/da3ef4b3-03a0-4560-95b6-5941473704de/public_url",
-      "resumeLabel": "Microsoft Azure AI Fundamentals",
       "kind": "accomplishment"
     },
     {
       "name": "Applied Data Science (SmartInternz + Google Developers)",
+      "issuer": "SmartInternz / Google Developers",
+      "date": "2023",
       "link": "https://drive.google.com/file/d/126d8VTJ6y-X-t6_S_KOD2gYttWQhqe2T/view",
-      "resumeLabel": "Applied Data Science (SmartInternz + Google)",
       "kind": "accomplishment"
     },
     {
       "name": "Complete Guide to Databricks for Data Engineering",
+      "issuer": "LinkedIn Learning",
+      "date": "Oct 2026",
       "link": "./assets/certs/databricks-data-engineering.pdf",
-      "resumeLabel": "Databricks for Data Engineering",
       "kind": "course"
     },
     {
       "name": "Microsoft Azure Essentials Professional Certificate",
+      "issuer": "Microsoft / LinkedIn Learning",
+      "date": "Aug 2026",
       "link": "./assets/certs/azure-essentials-professional.pdf",
-      "resumeLabel": "Azure Essentials Professional Certificate",
       "kind": "course"
     },
     {
       "name": "Build Multi-Agent Systems with n8n — Orchestrating Reliable AI Workflows",
+      "issuer": "LinkedIn Learning",
+      "date": "2026",
       "link": "./assets/certs/n8n-multi-agent-systems.pdf",
-      "resumeLabel": "n8n Multi-Agent Systems",
       "kind": "course"
     },
     {
       "name": "Data Analysis and Visualization with Power BI",
+      "issuer": "Microsoft / Coursera",
+      "date": "2025",
       "link": "https://www.coursera.org/account/accomplishments/verify/YKAC25V5T6WJ",
-      "resumeLabel": "Power BI & Excel (Coursera, 4 courses)",
       "kind": "course"
     },
     {
       "name": "Preparing Data for Analysis with Microsoft Excel",
+      "issuer": "Microsoft / Coursera",
+      "date": "2024",
       "link": "https://www.coursera.org/account/accomplishments/verify/F3SR649G78ZN",
-      "resumeLabel": "Power BI & Excel (Coursera, 4 courses)",
       "kind": "course"
     },
     {
       "name": "Harnessing the Power of Data with Power BI",
+      "issuer": "Microsoft / Coursera",
+      "date": "2024",
       "link": "https://www.coursera.org/account/accomplishments/verify/CTOOZYTXL926",
-      "resumeLabel": "Power BI & Excel (Coursera, 4 courses)",
       "kind": "course"
     },
     {
       "name": "Extract, Transform, and Load Data in Power BI",
+      "issuer": "Microsoft / Coursera",
+      "date": "2024",
       "link": "https://www.coursera.org/account/accomplishments/verify/5VXS5AHV12DN",
-      "resumeLabel": "Power BI & Excel (Coursera, 4 courses)",
       "kind": "course"
     }
   ]

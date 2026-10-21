@@ -34,6 +34,8 @@ _May 2023 – Jul 2023_
 - Built a Random Forest + SVM ensemble for disease prediction on clinical-trial data, fed by a MongoDB Atlas (PyMongo) data pipeline.
 
 ## Projects
+- **Data Mining Engine (DME)** (K3s, FastAPI, Redis, PostgreSQL, Argo CD, Azure, Databricks, PySpark, MLflow): Enterprise bond extraction on K3s with GitOps CI/CD; migrating to Microsoft Azure and Databricks with SIX (PySpark, data lake, warehouse, MLflow). SIX Excellence Award.
+  https://harish-nika.github.io/dme-project.html
 - **Recruiting Agent — AI-Powered ATS** (FastAPI, React, SQLite, ChromaDB, Ollama, Groq): Nine-step LLM ATS: resume OCR, ChromaDB JD matching, claim verification, fit and authenticity scoring, HR questions.
   https://harish-nika.github.io/recruiting-agent.html | https://github.com/Harish-nika/Agents
 - **Trip Guide — Conversational Trip Planner** (FastAPI, Google ADK, Gemini, Groq, Ollama, Leaflet): Google ADK multi-agent trip planner (weather, places, stays agents) with SSE chat, live trip board, and OSRM map.
@@ -55,13 +57,16 @@ _May 2023 – Jul 2023_
 - **Class X**, St Joseph Matriculation Higher Secondary School (2018) — 87.8%
 
 ## Certifications
-- [SIX Excellence Award — DME Azure/Databricks Migration](./assets/img/excellence-award-six.jpg)
-- [Complete Guide to Databricks for Data Engineering](./assets/certs/databricks-data-engineering.pdf)
-- [Microsoft Azure Essentials Professional Certificate](./assets/certs/azure-essentials-professional.pdf)
-- [Build Multi-Agent Systems with n8n — Orchestrating Reliable AI Workflows](./assets/certs/n8n-multi-agent-systems.pdf)
-- [Microsoft Certified: Azure AI Fundamentals](https://www.credly.com/badges/da3ef4b3-03a0-4560-95b6-5941473704de/public_url)
-- [Applied Data Science (SmartInternz + Google Developers)](https://drive.google.com/file/d/126d8VTJ6y-X-t6_S_KOD2gYttWQhqe2T/view)
-- [Data Analysis and Visualization with Power BI](https://www.coursera.org/account/accomplishments/verify/YKAC25V5T6WJ)
-- [Preparing Data for Analysis with Microsoft Excel](https://www.coursera.org/account/accomplishments/verify/F3SR649G78ZN)
-- [Harnessing the Power of Data with Power BI](https://www.coursera.org/account/accomplishments/verify/CTOOZYTXL926)
-- [Extract, Transform, and Load Data in Power BI](https://www.coursera.org/account/accomplishments/verify/5VXS5AHV12DN)
+### Awards and exam credentials
+- [SIX Excellence Award — DME Azure/Databricks Migration — SIX, Oct 2026](./assets/img/excellence-award-six.jpg)
+- [Microsoft Certified: Azure AI Fundamentals — Microsoft, Jun 2023](https://www.credly.com/badges/da3ef4b3-03a0-4560-95b6-5941473704de/public_url)
+- [Applied Data Science (SmartInternz + Google Developers) — SmartInternz / Google Developers, 2023](https://drive.google.com/file/d/126d8VTJ6y-X-t6_S_KOD2gYttWQhqe2T/view)
+
+### Course certificates
+- [Complete Guide to Databricks for Data Engineering — LinkedIn Learning, Oct 2026](./assets/certs/databricks-data-engineering.pdf)
+- [Microsoft Azure Essentials Professional Certificate — Microsoft / LinkedIn Learning, Aug 2026](./assets/certs/azure-essentials-professional.pdf)
+- [Build Multi-Agent Systems with n8n — Orchestrating Reliable AI Workflows — LinkedIn Learning, 2026](./assets/certs/n8n-multi-agent-systems.pdf)
+- [Data Analysis and Visualization with Power BI — Microsoft / Coursera, 2025](https://www.coursera.org/account/accomplishments/verify/YKAC25V5T6WJ)
+- [Preparing Data for Analysis with Microsoft Excel — Microsoft / Coursera, 2024](https://www.coursera.org/account/accomplishments/verify/F3SR649G78ZN)
+- [Harnessing the Power of Data with Power BI — Microsoft / Coursera, 2024](https://www.coursera.org/account/accomplishments/verify/CTOOZYTXL926)
+- [Extract, Transform, and Load Data in Power BI — Microsoft / Coursera, 2024](https://www.coursera.org/account/accomplishments/verify/5VXS5AHV12DN)
