@@ -4,13 +4,16 @@
 }
 
 .legacy-wrapper .main {
-  transition: opacity 0.35s ease, transform 0.35s ease, filter 0.35s ease;
+  animation: pageEnter 0.12s ease;
 }
 
-body.is-page-entering .legacy-wrapper .main {
-  opacity: 0;
-  transform: translateY(10px);
-  filter: blur(5px);
+@keyframes pageEnter {
+  from {
+    opacity: 0.88;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 body.is-section-transitioning .legacy-wrapper .section__title,
@@ -116,15 +119,10 @@ body.is-experience-transitioning .legacy-wrapper .qualification__button.qualific
   .legacy-wrapper .main,
   .lottie-slot {
     transition: none;
+    animation: none;
   }
 
   .lottie-slot {
     opacity: 0.6;
-  }
-
-  body.is-page-entering .legacy-wrapper .main {
-    opacity: 1;
-    transform: none;
-    filter: none;
   }
 }

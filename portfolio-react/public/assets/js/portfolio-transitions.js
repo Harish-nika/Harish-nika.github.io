@@ -1,296 +1,30 @@
 /**
- * DevOps-style page transitions: deploy to case study, rollout back to portfolio, cold load.
+ * Page navigation helpers. Overlay HUD is disabled so links navigate immediately.
  */
 (function () {
   "use strict";
 
-  var STORAGE_KEY = "portfolioNavTransition";
-  var EXIT_MS = 280;
-  var ENTER_MS = 300;
-  var COLDLOAD_MS = 320;
-
-  var CASE_STUDY_PAGES = {
-    "dme-project.html": true,
-    "dental-project.html": true,
-    "fexpert.html": true,
-    "content-moderator.html": true,
-    "lang-tool.html": true,
-    "medbot.html": true,
-    "recruiting-agent.html": true,
-    "trip-planner-agent.html": true,
-    "profile.html": true,
-  };
-
-  var DEPLOY_STAGES = ["DEPLOYING CASE STUDY"];
-  var DEPLOY_ENTER_STAGES = ["CASE STUDY LIVE"];
-  var ROLLOUT_STAGES = ["ROUTING TO PORTFOLIO"];
-  var ROLLOUT_ENTER_STAGES = ["PORTFOLIO ONLINE"];
-  var COLDLOAD_STAGES = ["PORTFOLIO ONLINE"];
-
-  var OVERLAY_MODE_CLASSES = [
-    "is-deploy-exit",
-    "is-deploy-enter",
-    "is-rollout-exit",
-    "is-rollout-enter",
-    "is-coldload-enter",
-  ];
-
-  function prefersReducedMotion() {
-    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  }
-
-  function pageNameFromUrl(url) {
-    var path = url.pathname.split("/").pop() || "";
-    return path || "index.html";
-  }
-
-  function isCaseStudyPageName(name) {
-    return !!CASE_STUDY_PAGES[name];
-  }
-
-  function isIndexPageName(name) {
-    return !name || name === "index.html";
-  }
-
-  function isIndexHref(anchor) {
-    try {
-      var url = new URL(anchor.href, window.location.href);
-      if (url.origin !== window.location.origin) return false;
-      return isIndexPageName(pageNameFromUrl(url));
-    } catch (e) {
-      return false;
-    }
-  }
-
-  function isCaseStudyHref(anchor) {
-    try {
-      var url = new URL(anchor.href, window.location.href);
-      if (url.origin !== window.location.origin) return false;
-      return isCaseStudyPageName(pageNameFromUrl(url));
-    } catch (e) {
-      return false;
-    }
-  }
-
-  function shouldHandleClick(event, anchor) {
-    if (prefersReducedMotion() || event.defaultPrevented) return false;
-    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return false;
-    if (event.button !== 0) return false;
-    if (!(anchor instanceof HTMLAnchorElement)) return false;
-    if (anchor.target === "_blank" || anchor.hasAttribute("download")) return false;
-    var href = anchor.getAttribute("href");
-    if (!href || href.startsWith("#") || href.startsWith("mailto:") || href.startsWith("tel:")) {
-      return false;
-    }
-    return true;
-  }
-
-  function readTransition() {
-    try {
-      var raw = sessionStorage.getItem(STORAGE_KEY);
-      if (!raw) return null;
-      return JSON.parse(raw);
-    } catch (e) {
-      return null;
-    }
-  }
-
-  function writeTransition(mode) {
-    sessionStorage.setItem(
-      STORAGE_KEY,
-      JSON.stringify({ mode: mode, at: Date.now() })
-    );
-  }
-
-  function clearTransition() {
-    sessionStorage.removeItem(STORAGE_KEY);
-  }
-
-  function ensureOverlay() {
-    var overlay = document.getElementById("portfolio-nav-overlay");
-    if (overlay) return overlay;
-
-    overlay = document.createElement("div");
-    overlay.id = "portfolio-nav-overlay";
-    overlay.className = "portfolio-nav-overlay";
-    overlay.setAttribute("aria-hidden", "true");
-    overlay.innerHTML =
-      '<div class="portfolio-nav-overlay__scan" aria-hidden="true"></div>' +
-      '<div class="portfolio-nav-overlay__panels" aria-hidden="true">' +
-      '<div class="portfolio-nav-overlay__panel portfolio-nav-overlay__panel--left"></div>' +
-      '<div class="portfolio-nav-overlay__panel portfolio-nav-overlay__panel--right"></div>' +
-      "</div>" +
-      '<div class="portfolio-nav-overlay__hud">' +
-      '<p class="portfolio-nav-overlay__stage"></p>' +
-      '<p class="portfolio-nav-overlay__label"></p>' +
-      '<div class="portfolio-nav-overlay__bar" aria-hidden="true"><span></span></div>' +
-      "</div>";
-    document.body.appendChild(overlay);
-    return overlay;
-  }
-
-  function setHud(overlay, stage, label) {
-    var stageEl = overlay.querySelector(".portfolio-nav-overlay__stage");
-    var labelEl = overlay.querySelector(".portfolio-nav-overlay__label");
-    if (stageEl) stageEl.textContent = stage || "";
-    if (labelEl) labelEl.textContent = label || "";
-  }
-
-  function runStages(overlay, stages, totalMs) {
-    if (!stages.length) return function () {};
-    var stepMs = Math.max(120, Math.floor(totalMs / stages.length));
-    var index = 0;
-    setHud(overlay, stages[0], stages[stages.length - 1]);
-    var timer = window.setInterval(function () {
-      index += 1;
-      if (index >= stages.length) {
-        window.clearInterval(timer);
-        return;
-      }
-      setHud(overlay, stages[index], stages[stages.length - 1]);
-    }, stepMs);
-    return function () {
-      window.clearInterval(timer);
-    };
-  }
-
-  function activateOverlay(overlay, modeClass) {
-    document.body.classList.add("is-portfolio-nav-active");
-    overlay.classList.remove.apply(overlay.classList, OVERLAY_MODE_CLASSES);
-    overlay.classList.add("is-active", modeClass);
-    overlay.setAttribute("aria-hidden", "false");
-  }
-
-  function finishOverlay(overlay) {
-    return new Promise(function (resolve) {
-      overlay.classList.add("is-finishing");
-      window.setTimeout(function () {
-        overlay.classList.remove.apply(overlay.classList, ["is-active", "is-finishing"].concat(OVERLAY_MODE_CLASSES));
-        overlay.setAttribute("aria-hidden", "true");
-        document.body.classList.remove("is-portfolio-nav-active");
-        resolve();
-      }, 140);
-    });
-  }
-
-  function playHudSequence(overlay, modeClass, stages, durationMs) {
-    return new Promise(function (resolve) {
-      activateOverlay(overlay, modeClass);
-      var stopStages = runStages(overlay, stages, durationMs - 120);
-      window.setTimeout(function () {
-        stopStages();
-        finishOverlay(overlay).then(resolve);
-      }, durationMs);
-    });
-  }
-
-  function playExit(mode, href, stages) {
-    if (prefersReducedMotion()) {
+  function playExit(_mode, href) {
+    if (href) {
       window.location.assign(href);
-      return;
     }
-
-    writeTransition(mode);
-    var overlay = ensureOverlay();
-    var modeClass = mode === "rollout" ? "is-rollout-exit" : "is-deploy-exit";
-    activateOverlay(overlay, modeClass);
-    var stopStages = runStages(overlay, stages, EXIT_MS - 80);
-
-    window.setTimeout(function () {
-      stopStages();
-      window.location.assign(href);
-    }, EXIT_MS);
   }
 
   function playEnter() {
-    return new Promise(function (resolve) {
-      var transition = readTransition();
-      if (!transition) {
-        resolve();
-        return;
-      }
-      clearTransition();
-
-      if (prefersReducedMotion()) {
-        resolve();
-        return;
-      }
-
-      var onCaseStudy = document.body.classList.contains("case-study");
-      var onProfile = isCaseStudyPageName(pageNameFromUrl(new URL(window.location.href)));
-      var onPortfolioHome = isIndexPageName(pageNameFromUrl(new URL(window.location.href)));
-      var mode = transition.mode;
-      var overlay = ensureOverlay();
-      var stages;
-      var modeClass;
-
-      if (mode === "deploy" && (onCaseStudy || onProfile)) {
-        stages = DEPLOY_ENTER_STAGES;
-        modeClass = "is-deploy-enter";
-      } else if (mode === "rollout" && onPortfolioHome) {
-        stages = ROLLOUT_ENTER_STAGES;
-        modeClass = "is-rollout-enter";
-      } else {
-        resolve();
-        return;
-      }
-
-      playHudSequence(overlay, modeClass, stages, ENTER_MS).then(resolve);
-    });
+    return Promise.resolve();
   }
 
   function playColdLoad() {
-    return new Promise(function (resolve) {
-      if (prefersReducedMotion()) {
-        resolve();
-        return;
-      }
-
-      if (!isIndexPageName(pageNameFromUrl(new URL(window.location.href)))) {
-        resolve();
-        return;
-      }
-
-      if (readTransition()) {
-        resolve();
-        return;
-      }
-
-      var overlay = ensureOverlay();
-      playHudSequence(overlay, "is-coldload-enter", COLDLOAD_STAGES, COLDLOAD_MS).then(resolve);
-    });
+    return Promise.resolve();
   }
 
   function runHomeIntro() {
-    return new Promise(function (resolve) {
-      if (readTransition()) {
-        playEnter().then(resolve);
-        return;
-      }
-      playColdLoad().then(resolve);
-    });
+    return Promise.resolve();
   }
 
-  function bindDeployLinks(links) {
-    links.forEach(function (link) {
-      link.addEventListener("click", function (event) {
-        if (!shouldHandleClick(event, link) || !isCaseStudyHref(link)) return;
-        event.preventDefault();
-        playExit("deploy", link.href, DEPLOY_STAGES);
-      });
-    });
-  }
+  function bindDeployLinks() {}
 
-  function bindRolloutLinks() {
-    document.querySelectorAll("a[href]").forEach(function (link) {
-      if (!isIndexHref(link)) return;
-      link.addEventListener("click", function (event) {
-        if (!shouldHandleClick(event, link)) return;
-        event.preventDefault();
-        playExit("rollout", link.href, ROLLOUT_STAGES);
-      });
-    });
-  }
+  function bindRolloutLinks() {}
 
   window.PortfolioTransitions = {
     bindDeployLinks: bindDeployLinks,
@@ -299,24 +33,10 @@
     playColdLoad: playColdLoad,
     runHomeIntro: runHomeIntro,
     playDeployExit: function (href) {
-      playExit("deploy", href, DEPLOY_STAGES);
+      playExit("deploy", href);
     },
     playRolloutExit: function (href) {
-      playExit("rollout", href, ROLLOUT_STAGES);
+      playExit("rollout", href);
     },
   };
-
-  function init() {
-    var page = pageNameFromUrl(new URL(window.location.href));
-    if (document.body.classList.contains("case-study") || isCaseStudyPageName(page)) {
-      playEnter();
-      bindRolloutLinks();
-    }
-  }
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", init);
-  } else {
-    init();
-  }
 })();

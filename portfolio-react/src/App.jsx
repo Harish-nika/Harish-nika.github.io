@@ -104,10 +104,6 @@ function App() {
       return lottieLoadPromise;
     };
 
-    if (!reducedMotion) {
-      body.classList.add("is-page-entering");
-    }
-
     const lottieConfig = {
       hero: {
         path: "/assets/animations/lottie/hero-ai-network.json",
@@ -431,16 +427,8 @@ function App() {
     cleanupFns.push(() => window.removeEventListener("hashchange", scrollToHash));
 
     const finishPageEnter = () => {
-      if (reducedMotion) {
-        body.classList.remove("is-page-entering");
-        scrollToHash();
-        return;
-      }
-      const enterTimer = window.setTimeout(() => {
-        body.classList.remove("is-page-entering");
-        scrollToHash();
-      }, 80);
-      transitionTimers.push(enterTimer);
+      body.classList.remove("is-page-entering");
+      scrollToHash();
     };
 
     const bindPortfolioTransitions = () => {
