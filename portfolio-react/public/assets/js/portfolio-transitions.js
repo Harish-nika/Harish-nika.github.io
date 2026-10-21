@@ -5,9 +5,9 @@
   "use strict";
 
   var STORAGE_KEY = "portfolioNavTransition";
-  var EXIT_MS = 640;
-  var ENTER_MS = 720;
-  var COLDLOAD_MS = 1000;
+  var EXIT_MS = 280;
+  var ENTER_MS = 300;
+  var COLDLOAD_MS = 320;
 
   var CASE_STUDY_PAGES = {
     "dme-project.html": true,
@@ -21,11 +21,11 @@
     "profile.html": true,
   };
 
-  var DEPLOY_STAGES = ["COMPOSE UP", "HEALTH CHECK", "DEPLOYING CASE STUDY"];
-  var DEPLOY_ENTER_STAGES = ["IMAGE PULLED", "PODS READY", "CASE STUDY LIVE"];
-  var ROLLOUT_STAGES = ["DRAINING TRAFFIC", "ROLLOUT REVISION", "ROUTING TO PORTFOLIO"];
-  var ROLLOUT_ENTER_STAGES = ["SYNC COMPLETE", "INGRESS UPDATED", "PORTFOLIO ONLINE"];
-  var COLDLOAD_STAGES = ["BOOTING SERVICES", "LOADING ASSETS", "PORTFOLIO ONLINE"];
+  var DEPLOY_STAGES = ["DEPLOYING CASE STUDY"];
+  var DEPLOY_ENTER_STAGES = ["CASE STUDY LIVE"];
+  var ROLLOUT_STAGES = ["ROUTING TO PORTFOLIO"];
+  var ROLLOUT_ENTER_STAGES = ["PORTFOLIO ONLINE"];
+  var COLDLOAD_STAGES = ["PORTFOLIO ONLINE"];
 
   var OVERLAY_MODE_CLASSES = [
     "is-deploy-exit",
@@ -169,7 +169,7 @@
         overlay.setAttribute("aria-hidden", "true");
         document.body.classList.remove("is-portfolio-nav-active");
         resolve();
-      }, 280);
+      }, 140);
     });
   }
 

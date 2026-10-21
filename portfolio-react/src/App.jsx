@@ -439,7 +439,7 @@ function App() {
       const enterTimer = window.setTimeout(() => {
         body.classList.remove("is-page-entering");
         scrollToHash();
-      }, 850);
+      }, 80);
       transitionTimers.push(enterTimer);
     };
 

@@ -84,6 +84,27 @@
       .contact-grid { grid-template-columns: 1fr 1fr; }
     }
     .contact-grid a { color: var(--first-color); word-break: break-all; }
+    .profile-page a,
+    .profile-page a:visited {
+      color: var(--first-color);
+    }
+    .profile-page a:hover {
+      color: var(--first-color-alt, var(--first-color));
+      text-decoration: underline;
+    }
+    .profile-page .button:not(.button--ghost):not(.button--link),
+    .profile-page .button:not(.button--ghost):not(.button--link):visited,
+    .profile-page .button:not(.button--ghost):not(.button--link):hover {
+      color: #fff;
+      text-decoration: none;
+    }
+    .cert-list a,
+    .cert-list a:visited {
+      color: var(--title-color);
+    }
+    .cert-list a:hover {
+      color: var(--first-color);
+    }
     .resume-bar {
       display: flex;
       flex-wrap: wrap;

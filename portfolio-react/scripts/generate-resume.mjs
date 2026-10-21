@@ -190,7 +190,7 @@ async function renderPdf(density) {
   };
 
   const drawSection = (title) => {
-    newPageIfNeeded(26 * density);
+    newPageIfNeeded(72 * density);
     y -= 7 * density;
     drawRich([{ text: title.toUpperCase(), font: "bold", size: 10.4 * density, color: ACCENT }]);
     page.drawLine({
@@ -274,16 +274,12 @@ async function renderPdf(density) {
   drawRich([{ text: `${degree.institution}  |  ${degree.score}`, font: "italic", size: small, color: MUTED }], {
     gapAfter: 1.5 * density,
   });
-  drawRich(
-    [
-      {
-        text: school.map((s) => `${s.degree}: ${s.score}, ${s.institution} (${s.period})`).join("   |   "),
-        size: small,
-        color: MUTED,
-      },
-    ],
-    { hang: 0 }
-  );
+  school.forEach((s) => {
+    drawRich(
+      [{ text: `${s.degree}: ${s.score}  |  ${s.institution} (${s.period})`, size: small, color: MUTED }],
+      { hang: 0 }
+    );
+  });
 
   const drawCertGroup = (label, certs) => {
     if (!certs.length) return;
