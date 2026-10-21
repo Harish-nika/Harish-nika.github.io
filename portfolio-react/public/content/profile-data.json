@@ -12,7 +12,7 @@
     "resumeLink": "https://harish-nika.github.io/content/Harish-Kumar-Resume.pdf",
     "resumePdf": "./content/Harish-Kumar-Resume.pdf",
     "resumeMd": "./content/resume.md",
-    "summary": "Associate Software Developer at FactEntry (A SIX Company) building production AI and data platforms. Experienced in FastAPI microservices, Redis-based distributed processing, Kubernetes (K3s) with GitOps delivery, RAG systems, and computer vision, and now cloud data engineering on Databricks (data lake, data warehouse, MLflow). Integrated M.Tech in Data Science from VIT (2025)."
+    "summary": "Associate Software Developer at FactEntry (A SIX Company) building production AI and data platforms. Experienced in FastAPI microservices, Redis-based distributed processing, Kubernetes (K3s) with GitOps delivery, RAG systems, and computer vision, and now cloud data engineering on Microsoft Azure and Databricks (PySpark, data lake, data warehouse, MLflow). Integrated M.Tech in Data Science from VIT (2025)."
   },
   "experience": [
     {
@@ -23,7 +23,7 @@
         "Build and run the Data Mining Engine (DME), a production bond-extraction platform for corporate and municipal bonds on K3s (80+ CPU cores) with a human-in-the-loop validation UI.",
         "Designed Redis Streams job dispatch across multi-node workers, plus FastAPI microservices with live WebSocket job telemetry, role-based CPU tiering, and domain-restricted auth.",
         "Implemented GitOps delivery: GitLab CI image builds, Helm chart promotion, and Argo CD sync to staging.",
-        "Working with SIX (parent company) to migrate DME to Databricks: data lake and data warehouse design, with MLflow for experiment and model tracking."
+        "Working with SIX (parent company) to migrate the DME data-mining architecture onto Microsoft Azure and Databricks: PySpark, data lakes/warehouses, Azure data engineering, and MLflow for experiment and model tracking. Received the SIX Excellence Award for this work."
       ]
     },
     {
@@ -105,6 +105,8 @@
         "NLP",
         "Computer Vision",
         "RAG",
+        "Agentic AI",
+        "n8n",
         "LLM Agents (Google ADK)",
         "LangChain",
         "FAISS",
@@ -122,6 +124,9 @@
       "label": "Data & Cloud",
       "items": [
         "Databricks",
+        "PySpark",
+        "Delta Lake",
+        "Azure Data Engineering",
         "Data Lake",
         "Data Warehouse",
         "ETL",
@@ -173,10 +178,12 @@
         "Redis",
         "PostgreSQL",
         "Argo CD",
+        "Azure",
         "Databricks",
+        "PySpark",
         "MLflow"
       ],
-      "summary": "Enterprise bond extraction on K3s with GitOps CI/CD; migrating to Databricks with SIX (data lake, warehouse, MLflow)."
+      "summary": "Enterprise bond extraction on K3s with GitOps CI/CD; migrating to Microsoft Azure and Databricks with SIX (PySpark, data lake, warehouse, MLflow). SIX Excellence Award."
     },
     {
       "name": "Recruiting Agent — AI-Powered ATS",
@@ -330,34 +337,64 @@
   ],
   "certifications": [
     {
+      "name": "SIX Excellence Award — DME Azure/Databricks Migration",
+      "link": "./assets/img/excellence-award-six.jpg",
+      "resumeLabel": "SIX Excellence Award",
+      "kind": "accomplishment"
+    },
+    {
       "name": "Microsoft Certified: Azure AI Fundamentals",
       "link": "https://www.credly.com/badges/da3ef4b3-03a0-4560-95b6-5941473704de/public_url",
-      "resumeLabel": "Microsoft Azure AI Fundamentals"
+      "resumeLabel": "Microsoft Azure AI Fundamentals",
+      "kind": "accomplishment"
     },
     {
       "name": "Applied Data Science (SmartInternz + Google Developers)",
       "link": "https://drive.google.com/file/d/126d8VTJ6y-X-t6_S_KOD2gYttWQhqe2T/view",
-      "resumeLabel": "Applied Data Science (SmartInternz + Google)"
+      "resumeLabel": "Applied Data Science (SmartInternz + Google)",
+      "kind": "accomplishment"
+    },
+    {
+      "name": "Complete Guide to Databricks for Data Engineering",
+      "link": "./assets/certs/databricks-data-engineering.pdf",
+      "resumeLabel": "Databricks for Data Engineering",
+      "kind": "course"
+    },
+    {
+      "name": "Microsoft Azure Essentials Professional Certificate",
+      "link": "./assets/certs/azure-essentials-professional.pdf",
+      "resumeLabel": "Azure Essentials Professional Certificate",
+      "kind": "course"
+    },
+    {
+      "name": "Build Multi-Agent Systems with n8n — Orchestrating Reliable AI Workflows",
+      "link": "./assets/certs/n8n-multi-agent-systems.pdf",
+      "resumeLabel": "n8n Multi-Agent Systems",
+      "kind": "course"
     },
     {
       "name": "Data Analysis and Visualization with Power BI",
       "link": "https://www.coursera.org/account/accomplishments/verify/YKAC25V5T6WJ",
-      "resumeLabel": "Power BI & Excel (Coursera, 4 courses)"
+      "resumeLabel": "Power BI & Excel (Coursera, 4 courses)",
+      "kind": "course"
     },
     {
       "name": "Preparing Data for Analysis with Microsoft Excel",
       "link": "https://www.coursera.org/account/accomplishments/verify/F3SR649G78ZN",
-      "resumeLabel": "Power BI & Excel (Coursera, 4 courses)"
+      "resumeLabel": "Power BI & Excel (Coursera, 4 courses)",
+      "kind": "course"
     },
     {
       "name": "Harnessing the Power of Data with Power BI",
       "link": "https://www.coursera.org/account/accomplishments/verify/CTOOZYTXL926",
-      "resumeLabel": "Power BI & Excel (Coursera, 4 courses)"
+      "resumeLabel": "Power BI & Excel (Coursera, 4 courses)",
+      "kind": "course"
     },
     {
       "name": "Extract, Transform, and Load Data in Power BI",
       "link": "https://www.coursera.org/account/accomplishments/verify/5VXS5AHV12DN",
-      "resumeLabel": "Power BI & Excel (Coursera, 4 courses)"
+      "resumeLabel": "Power BI & Excel (Coursera, 4 courses)",
+      "kind": "course"
     }
   ]
 }

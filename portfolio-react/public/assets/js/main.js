@@ -129,49 +129,99 @@ tabs.forEach(tab => {
     })
 })
 
-/*==================== PORTFOLIO SWIPER  ====================*/
-if (document.querySelector('.portfolio__container')) {
-    const swiperPortfolioConfig = {
+/*==================== CERTIFICATION TABS + SWIPERS  ====================*/
+const certSwipers = {}
+
+const createCertSwiper = (selector) => {
+    const el = document.querySelector(selector)
+    if (!el || typeof Swiper === 'undefined') {
+        return null
+    }
+
+    const config = {
         effect: 'coverflow',
         loop: true,
         centeredSlides: true,
         slidesPerView: 1.05,
         speed: 700,
         grabCursor: true,
+        observer: true,
+        observeParents: true,
+        watchOverflow: true,
         coverflowEffect: {
-          rotate: 12,
+          rotate: 8,
           stretch: 0,
-          depth: 120,
-          modifier: 1.1,
+          depth: 80,
+          modifier: 1,
           slideShadows: false
         },
         navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
+          nextEl: el.querySelector('.swiper-button-next'),
+          prevEl: el.querySelector('.swiper-button-prev'),
         },
         pagination: {
-          el: '.swiper-pagination',
+          el: el.querySelector('.swiper-pagination'),
           clickable: true,
         },
         breakpoints: {
           768: {
-            slidesPerView: 1.4
+            slidesPerView: 1.25
           },
           1024: {
-            slidesPerView: 1.9
+            slidesPerView: 1.55
           }
         }
     }
     if (!prefersReducedMotion) {
-        swiperPortfolioConfig.autoplay = {
+        config.autoplay = {
           delay: 3600,
           disableOnInteraction: false
         }
     }
-    let swiperPortfolio = new Swiper('.portfolio__container', {
-        ...swiperPortfolioConfig
-    })
+    return new Swiper(el, config)
 }
+
+certSwipers.accomplishments = createCertSwiper('.js-cert-swiper-accomplishments')
+certSwipers.courses = createCertSwiper('.js-cert-swiper-courses')
+
+const certTabs = document.querySelectorAll('.cert-tabs [data-cert-panel]')
+const certPanels = document.querySelectorAll('.cert-panel')
+
+const activateCertPanel = (panelSel) => {
+    certPanels.forEach((panel) => {
+        const isActive = `#${panel.id}` === panelSel
+        panel.classList.toggle('cert-panel--active', isActive)
+        if (isActive) {
+            panel.removeAttribute('hidden')
+        } else {
+            panel.setAttribute('hidden', '')
+        }
+    })
+
+    const swiper = panelSel === '#cert-courses' ? certSwipers.courses : certSwipers.accomplishments
+    if (swiper) {
+        window.requestAnimationFrame(() => {
+            swiper.update()
+            if (swiper.autoplay && typeof swiper.autoplay.start === 'function') {
+                swiper.autoplay.start()
+            }
+        })
+    }
+}
+
+certTabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+        const panelSel = tab.dataset.certPanel
+        if (!panelSel) return
+
+        certTabs.forEach((other) => {
+            const selected = other === tab
+            other.classList.toggle('cert-tab--active', selected)
+            other.setAttribute('aria-selected', selected ? 'true' : 'false')
+        })
+        activateCertPanel(panelSel)
+    })
+})
 
 
 /*==================== SCROLL SECTIONS ACTIVE LINK ====================*/

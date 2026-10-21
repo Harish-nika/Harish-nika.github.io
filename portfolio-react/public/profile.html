@@ -187,6 +187,8 @@
     }
     .cert-list { list-style: none; margin-left: 0; padding-left: 0; }
     .cert-list li { margin-bottom: 0.65rem; line-height: 1.5; }
+    .cert-group-title { font-size: 1rem; margin: 1rem 0 0.55rem; color: var(--first-color); }
+    .cert-group-title:first-child { margin-top: 0; }
 
     .profile-skeleton {
       display: grid;
@@ -438,15 +440,24 @@
 
         <section class="profile-card" id="certifications">
           <h2>Certifications</h2>
-          <ul class="cert-list">${data.certifications
-            .map((c) => {
+          ${(() => {
+            const certItem = (c) => {
               const name = typeof c === "string" ? c : c.name;
               const link = typeof c === "string" ? "" : c.link;
               return link
                 ? `<li><a href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer">${escapeHtml(name)}</a></li>`
                 : `<li>${escapeHtml(name)}</li>`;
-            })
-            .join("")}</ul>
+            };
+            const all = data.certifications || [];
+            const accomplishments = all.filter((c) => typeof c !== "string" && c.kind === "accomplishment");
+            const courses = all.filter((c) => typeof c === "string" || c.kind !== "accomplishment");
+            return `
+              <h3 class="cert-group-title">Awards and exam certifications</h3>
+              <ul class="cert-list">${accomplishments.map(certItem).join("")}</ul>
+              <h3 class="cert-group-title">Course certificates</h3>
+              <ul class="cert-list">${courses.map(certItem).join("")}</ul>
+            `;
+          })()}
         </section>
 
         <p class="no-print" style="text-align:center; margin-top:1.5rem;">

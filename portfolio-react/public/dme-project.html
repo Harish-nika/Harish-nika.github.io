@@ -220,16 +220,16 @@
         <section class="section container">
             <div class="case-study-header">
                 <h1 class="case-study-title">Data Mining Engine (DME)</h1>
-                <p class="case-study-tagline">Production K3s platform for corporate &amp; municipal bond extraction — migrating to Databricks with SIX</p>
+                <p class="case-study-tagline">Production K3s platform for corporate &amp; municipal bond extraction — migrating to Microsoft Azure and Databricks with SIX</p>
                 <div class="probation-badge"><i class="uil uil-briefcase"></i> Associate Software Developer | FactEntry Data Solutions (A SIX Company)</div>
                 <ul class="case-study-hero-bullets">
                     <li>GitOps delivery</li>
                     <li>Redis queue workers</li>
-                    <li>Databricks &amp; MLflow</li>
+                    <li>Azure, Databricks &amp; PySpark</li>
                     <li>API access portal</li>
                 </ul>
                 <p class="case-study-subtitle">
-                    Enterprise extraction platform on K3s: FastAPI microservices, Redis-stream jobs, human-in-the-loop validation, and superuser cluster controls. Delivered via GitLab CI image builds, Helm chart promote, and Argo CD sync to stage. Collaborating with SIX parent company on DME cloud migration — Databricks, data lakes, data warehouses, and MLflow.
+                    Enterprise extraction platform on K3s: FastAPI microservices, Redis-stream jobs, human-in-the-loop validation, and superuser cluster controls. Delivered via GitLab CI image builds, Helm chart promote, and Argo CD sync to stage. Collaborating with SIX parent company on DME cloud migration — Microsoft Azure, Databricks, PySpark, data lakes, data warehouses, and MLflow. Received the SIX Excellence Award for this work.
                 </p>
                 <a href="#architecture-flows" class="flow-jump">View architecture &amp; flow diagrams ↓</a>
             </div>
@@ -253,6 +253,7 @@
                         <li><strong>Microservices Architecture:</strong> Built heavily decoupled services using FastAPI, Python, PostgreSQL, and Redis across Corporate, Municipal, Validation, and Document Processing domains.</li>
                         <li><strong>Redis Queue Extraction (default):</strong> Backend publishes ISIN jobs to Redis streams; corporate/municipal replicas consume in parallel for multi-node throughput. Optional Numaflow/NATS JetStream (`dme-jobs`) runs as cluster infrastructure alongside HTTP fallback paths.</li>
                         <li><strong>GitOps delivery:</strong> GitLab CI builds immutable images (<code>dme-*-commit-sha</code>), promote jobs update <code>docfin_ai_charts</code>, Argo CD auto-syncs <code>dme-stage</code> on K3s.</li>
+                        <li><strong>SIX cloud migration &amp; Excellence Award:</strong> Migrating the DME data-mining architecture onto Microsoft Azure and Databricks (PySpark, data lakes/warehouses, Azure data engineering, MLflow). Awarded the SIX Excellence Award for this work.</li>
                         <li><strong>Security & Threat Modeling:</strong> Conducted comprehensive SecureCoder threat modeling to map trust boundaries across extraction engines, SMB mounts, and the frontend API, ensuring enterprise-grade security.</li>
                         <li><strong>Domain-Restricted Access:</strong> Custom secure signup flows validating against `@factentry.com` domains natively in Zod and FastAPI.</li>
                     </ul>

@@ -1,5 +1,6 @@
 .legacy-wrapper {
   min-height: 100vh;
+  overflow-x: clip;
 }
 
 .legacy-wrapper .main {
@@ -47,26 +48,30 @@ body.is-experience-transitioning .legacy-wrapper .qualification__button.qualific
 
 .lottie-experience-wrap {
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100%;
+  height: 200px;
   min-height: 200px;
   margin: 0 auto 1rem;
+  overflow: hidden;
 }
 
 .lottie-slot--experience {
-  margin: 0 auto;
+  margin: 0;
 }
 
 .lottie-slot--experience-academic,
 .lottie-slot--experience-professional {
-  width: min(100%, 400px);
-  height: 200px;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
 }
 
 .lottie-slot--hidden {
-  display: none;
+  display: none !important;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .lottie-slot--certs {
@@ -95,22 +100,9 @@ body.is-experience-transitioning .legacy-wrapper .qualification__button.qualific
   }
 
   .lottie-experience-wrap {
+    height: 160px;
     min-height: 160px;
     margin-bottom: 0.75rem;
-  }
-
-  .lottie-slot--experience-academic,
-  .lottie-slot--experience-professional {
-    width: min(100%, 300px);
-    height: 160px;
-  }
-
-  #skills,
-  #Projects,
-  #Certifications,
-  #contact {
-    content-visibility: auto;
-    contain-intrinsic-size: auto 520px;
   }
 
   .about__img {

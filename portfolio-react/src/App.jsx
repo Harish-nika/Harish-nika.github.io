@@ -83,6 +83,8 @@ function App() {
     let lottieLoadPromise = null;
     const lottieInstances = [];
     const lottieLoadState = new WeakMap();
+    const lottieLoadGen = new WeakMap();
+    let lottieEffectAlive = true;
 
     const addTemporaryBodyClass = (className, duration = 650) => {
       body.classList.add(className);
@@ -148,6 +150,10 @@ function App() {
       lottieInstances.find((item) => item.container === container);
 
     const loadLottieForContainer = async (container) => {
+      if (!lottieEffectAlive || container.classList.contains("lottie-slot--hidden")) {
+        return null;
+      }
+
       const existing = findLottieRecord(container);
       if (existing) {
         return existing;
@@ -157,9 +163,13 @@ function App() {
       if (state === "loading") {
         return new Promise((resolve) => {
           const check = () => {
+            if (!lottieEffectAlive) {
+              resolve(null);
+              return;
+            }
             const record = findLottieRecord(container);
-            if (record) {
-              resolve(record);
+            if (record || lottieLoadState.get(container) !== "loading") {
+              resolve(record || null);
               return;
             }
             window.requestAnimationFrame(check);
@@ -174,8 +184,16 @@ function App() {
         return null;
       }
 
+      const gen = (lottieLoadGen.get(container) || 0) + 1;
+      lottieLoadGen.set(container, gen);
       lottieLoadState.set(container, "loading");
+      container.innerHTML = "";
       const lottie = await ensureLottieLoaded();
+      if (!lottieEffectAlive || lottieLoadGen.get(container) !== gen) {
+        return null;
+      }
+
+      container.innerHTML = "";
       const instance = lottie.loadAnimation({
         container,
         renderer: "svg",
@@ -212,7 +230,11 @@ function App() {
       record?.instance.pause();
     };
 
+    const experienceIds = new Set(["experienceAcademic", "experienceProfessional"]);
     Object.entries(lottieConfig).forEach(([id, config]) => {
+      if (experienceIds.has(id)) {
+        return;
+      }
       const container = document.querySelector(`[data-lottie-id="${id}"]`);
       if (!container) {
         return;
@@ -220,6 +242,10 @@ function App() {
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
+            if (container.classList.contains("lottie-slot--hidden")) {
+              pauseLottie(container);
+              return;
+            }
             if (entry.isIntersecting) {
               playLottie(container);
             } else {
@@ -232,6 +258,32 @@ function App() {
       observer.observe(container);
       cleanupFns.push(() => observer.disconnect());
     });
+
+    const experienceWrap = document.querySelector(".lottie-experience-wrap");
+    if (experienceWrap) {
+      const getActiveExperienceSlot = () =>
+        Array.from(experienceWrap.querySelectorAll("[data-lottie-id]")).find(
+          (slot) => !slot.classList.contains("lottie-slot--hidden")
+        );
+      const experienceObserver = new IntersectionObserver(
+        (entries) => {
+          const active = getActiveExperienceSlot();
+          if (!active) {
+            return;
+          }
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              playLottie(active);
+            } else {
+              pauseLottie(active);
+            }
+          });
+        },
+        { threshold: 0.12, rootMargin: "0px 0px 200px 0px" }
+      );
+      experienceObserver.observe(experienceWrap);
+      cleanupFns.push(() => experienceObserver.disconnect());
+    }
 
     const themedSections = Array.from(
       document.querySelectorAll(
@@ -354,13 +406,39 @@ function App() {
       }
     );
 
+    const scrollToHash = () => {
+      const id = window.location.hash.replace(/^#/, "");
+      if (!id) {
+        return;
+      }
+      const target = document.getElementById(id);
+      if (!target) {
+        return;
+      }
+      document.querySelectorAll(".legacy-wrapper .section").forEach((section) => {
+        section.style.contentVisibility = "visible";
+      });
+      const isMobileNav = window.matchMedia("(max-width: 767px)").matches;
+      const header = document.getElementById("header");
+      const offset = !isMobileNav && header ? header.offsetHeight + 8 : 8;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({
+        top: Math.max(0, top),
+        behavior: reducedMotion ? "auto" : "smooth",
+      });
+    };
+    window.addEventListener("hashchange", scrollToHash);
+    cleanupFns.push(() => window.removeEventListener("hashchange", scrollToHash));
+
     const finishPageEnter = () => {
       if (reducedMotion) {
         body.classList.remove("is-page-entering");
+        scrollToHash();
         return;
       }
       const enterTimer = window.setTimeout(() => {
         body.classList.remove("is-page-entering");
+        scrollToHash();
       }, 850);
       transitionTimers.push(enterTimer);
     };
@@ -420,6 +498,7 @@ function App() {
     }
 
     return () => {
+      lottieEffectAlive = false;
       sectionObserver.disconnect();
       transitionTimers.forEach((timer) => window.clearTimeout(timer));
       body.classList.remove(
@@ -428,7 +507,13 @@ function App() {
         "is-experience-transitioning",
         "is-portfolio-nav-active"
       );
-      lottieInstances.forEach(({ instance }) => instance.destroy());
+      lottieInstances.forEach(({ instance, container }) => {
+        instance.destroy();
+        if (container) {
+          container.innerHTML = "";
+        }
+      });
+      lottieInstances.length = 0;
       experienceButtons.forEach((button) => {
         button.removeEventListener("click", onExperienceTabClick);
       });

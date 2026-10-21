@@ -228,7 +228,7 @@
                     <div class="about__data">
                         <div class="lottie-slot lottie-slot--about" data-lottie-id="about" aria-hidden="true"></div>
                         <p class="about__description">
-                            Integrated MTech in Data Science (VIT, 2025), Associate Software Developer at FactEntry Data Solutions (A SIX Company) building production AI systems and collaborating with SIX on DME cloud migration (Databricks, data lakes, MLflow).
+                            Integrated MTech in Data Science (VIT, 2025), Associate Software Developer at FactEntry Data Solutions (A SIX Company) building production AI systems and collaborating with SIX on DME cloud migration (Microsoft Azure, Databricks, PySpark, data lakes, MLflow).
                             Experienced in MLOps, Kubernetes, GitOps, RAG pipelines, computer vision, and scalable backend engineering.
                             Delivered enterprise-grade platforms using FastAPI microservices, Redis-based distributed processing, and cloud-native deployment architectures.
                         </p>
@@ -262,7 +262,7 @@
                             </div>
 
                             <div>
-                                <span class="about__info-title">6+</span>
+                                <span class="about__info-title">10+</span>
                                 <span class="about__info-name">Certifications</span>
                             </div>
                         </div>
@@ -369,7 +369,7 @@
                                     <span class="qual-badge qual-badge--full">Full-time</span>
                                     <h3 class="qualification__title">Associate Software Developer</h3>
                                     <span class="qualification__subtitle qualification__org">FactEntry Data Solutions — A SIX Company</span>
-                                    <span class="qualification__note">DME on K3s + SIX cloud migration: Databricks, data lakes/warehouses, MLflow; GitLab CI → Helm → Argo CD, Redis queues.</span>
+                                    <span class="qualification__note">DME on K3s + SIX parent-company migration of the data-mining architecture to Microsoft Azure and Databricks (PySpark, data lakes/warehouses, MLflow, Azure data engineering); GitLab CI → Helm → Argo CD, Redis queues. SIX Excellence Award.</span>
                                     <div class="qualification__calendar">
                                         <i class="uil uil-calendar-alt"></i>
                                         Dec 2025 - Present
@@ -590,6 +590,18 @@
                                     </div>
                                 </div>
 
+                                <div class="skills__data">
+                                    <div class="skills__titles">
+                                        <h3 class="skills__name">Agentic AI</h3>
+                                    </div>
+                                </div>
+
+                                <div class="skills__data">
+                                    <div class="skills__titles">
+                                        <h3 class="skills__name">n8n Multi-Agent Orchestration</h3>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
 
@@ -732,6 +744,11 @@
                                             <span class="skills__percentage skills__aws"></span>
                                         </div> -->
                                     </div>
+                                    <div class="skills__data">
+                                        <div class="skills__titles">
+                                            <h3 class="skills__name">Azure Data Engineering</h3>
+                                        </div>
+                                    </div>
                                 </div>
                         </div>
                     </div>
@@ -822,6 +839,30 @@
                                     <!-- <div class="skills__bar">
                                         <span class="skills__percentage skills__react"></span>
                                     </div> -->
+                                </div>
+
+                                <div class="skills__data">
+                                    <div class="skills__titles">
+                                        <h3 class="skills__name">Databricks</h3>
+                                    </div>
+                                </div>
+
+                                <div class="skills__data">
+                                    <div class="skills__titles">
+                                        <h3 class="skills__name">PySpark</h3>
+                                    </div>
+                                </div>
+
+                                <div class="skills__data">
+                                    <div class="skills__titles">
+                                        <h3 class="skills__name">Delta Lake</h3>
+                                    </div>
+                                </div>
+
+                                <div class="skills__data">
+                                    <div class="skills__titles">
+                                        <h3 class="skills__name">MLflow</h3>
+                                    </div>
                                 </div>
 
                                 
@@ -1473,29 +1514,56 @@
 
             <section class="portfolio section certifications--scifi section-theme section-theme--certifications" id="Certifications" data-theme-transition="certifications">
                 <h2 class="section__title">Certifications and Accomplishments</h2>
-                <span class="section__subtitle">Coursework certifications, badges, and accomplishments</span>
+                <span class="section__subtitle">Awards, exam certifications, and coursework</span>
                 <div class="lottie-slot lottie-slot--certs" data-lottie-id="certs" aria-hidden="true"></div>
 
-                <div class="portfolio__container container swiper-container">
+                <div class="cert-tabs" role="tablist" aria-label="Certification type">
+                    <button type="button" class="cert-tab cert-tab--active" role="tab" aria-selected="true" aria-controls="cert-accomplishments" id="tab-accomplishments" data-cert-panel="#cert-accomplishments">
+                        <i class="uil uil-trophy" aria-hidden="true"></i>
+                        Accomplishments
+                    </button>
+                    <button type="button" class="cert-tab" role="tab" aria-selected="false" aria-controls="cert-courses" id="tab-courses" data-cert-panel="#cert-courses">
+                        <i class="uil uil-book-open" aria-hidden="true"></i>
+                        Courses
+                    </button>
+                </div>
+
+                <div class="cert-panel cert-panel--active" id="cert-accomplishments" role="tabpanel" aria-labelledby="tab-accomplishments">
+                <div class="portfolio__container container swiper-container js-cert-swiper-accomplishments">
                     <div class="swiper-wrapper">
 
-                        <div class="portfolio__content grid swiper-slide cert-slide cert-slide--azure">
-                            <picture class="portfolio__img-wrap portfolio__img-wrap--decorative">
-                                <source srcset="./assets/img/certs/neuralBlack-530.webp" type="image/webp" />
-                                <img src="./assets/img/neuralBlack.png" alt="" class="portfolio__img portfolio__img--decorative" width="265" height="133" loading="lazy" decoding="async" aria-hidden="true" />
+                        <div class="portfolio__content grid swiper-slide cert-card--featured">
+                            <picture class="portfolio__img-wrap">
+                                <source srcset="./assets/img/certs/excellence-award-six-530.webp" type="image/webp" />
+                                <img src="./assets/img/excellence-award-six.jpg" alt="SIX Excellence Award presented to Harish Kumar for DME Azure and Databricks migration" class="portfolio__img" width="265" height="185" loading="lazy" decoding="async" />
+                            </picture>
+    
+                            <div class="portfolio__data">
+                                <span class="cert-kind cert-kind--award">Award</span>
+                                <h3 class="portfolio__title">SIX Excellence Award</h3>
+                                <p class="portfolio__description">
+                                SIX || 2026<br>
+                                • Awarded for migrating the FactEntry Data Mining Engine (DME) architecture onto Microsoft Azure and Databricks with the parent company SIX.<br>
+                                • Azure data engineering, PySpark, data lakes/warehouses, and MLflow for experiment and model tracking.<br>
+                                </p>
+                                <a href="./assets/img/excellence-award-six.jpg" class="button button--flex button--small portfolio__button" target="_blank" rel="noopener noreferrer" aria-label="View SIX Excellence Award">
+                                    View award
+                                    <i class="uil uil-arrow-right button__icon"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="portfolio__content grid swiper-slide cert-slide cert-slide--azure cert-card--featured">
+                            <picture class="portfolio__img-wrap portfolio__img-wrap--badge">
+                                <source srcset="./assets/img/certs/azure-ai-fundamentals-530.webp" type="image/webp" />
+                                <img src="./assets/img/azure-ai-fundamentals.png" alt="Microsoft Certified Azure AI Fundamentals badge" class="portfolio__img" width="220" height="220" loading="lazy" decoding="async" />
                             </picture>
 
                             <div class="portfolio__data">
-                                <div
-                                    class="credly-badge-host"
-                                    data-iframe-width="150"
-                                    data-iframe-height="270"
-                                    data-share-badge-id="da3ef4b3-03a0-4560-95b6-5941473704de"
-                                    data-share-badge-host="https://www.credly.com"
-                                ></div>
+                                <span class="cert-kind cert-kind--exam">Exam</span>
                                 <h3 class="portfolio__title">Microsoft Certified: Azure AI Fundamentals</h3>
                                 <p class="portfolio__description">
-                                    Microsoft || 2023<br>
+                                    Microsoft || AI-900 exam • June 2023<br>
                                     • Successfully completed the AI-900 exam, demonstrated foundational knowledge of AI, including machine learning, computer vision, natural language processing, and Azure AI services.<br>
                                     • Acquired hands-on experience with Azure Machine Learning, Cognitive Services, and responsible AI principles.<br>
                                 </p>
@@ -1506,13 +1574,14 @@
                             </div>
                         </div>
                         
-                        <div class="portfolio__content grid swiper-slide">
+                        <div class="portfolio__content grid swiper-slide cert-card--featured">
                             <picture class="portfolio__img-wrap">
                                 <source srcset="./assets/img/certs/drive-ai-530.webp" type="image/webp" />
                                 <img src="./assets/img/drive-ai.png" alt="SmartInternz Applied Data Science externship" class="portfolio__img" width="265" height="265" loading="lazy" decoding="async" />
                             </picture>
     
                             <div class="portfolio__data">
+                                <span class="cert-kind cert-kind--externship">Externship</span>
                                 <h3 class="portfolio__title">SmartInternz Externship Program on Applied Data Science Powered by Google Developers</h3>
                                 <p class="portfolio__description">SMART INTERNZ || 2023<br>
                                     • Gained hands-on experience in machine learning and deep learning, applying techniques to solve real-world problems with guidance from industry
@@ -1521,6 +1590,83 @@
                                     through collaboration and feedback.<br></p>
                                 <a href="https://drive.google.com/file/d/126d8VTJ6y-X-t6_S_KOD2gYttWQhqe2T/view" class="button button--flex button--small portfolio__button" target="_blank" rel="noopener noreferrer" aria-label="View SmartInternz Applied Data Science certificate">
                                     View SmartInternz cert
+                                    <i class="uil uil-arrow-right button__icon"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="swiper-button-next" aria-label="Next accomplishment slide">
+                        <i class="uil uil-angle-right-b swiper-portfolio-icon"></i>
+                    </div>
+                    <div class="swiper-button-prev" aria-label="Previous accomplishment slide">
+                        <i class="uil uil-angle-left-b swiper-portfolio-icon"></i>
+                    </div>
+
+                    <div class="swiper-pagination"></div>
+                </div>
+                </div>
+
+                <div class="cert-panel" id="cert-courses" role="tabpanel" aria-labelledby="tab-courses" hidden>
+                <div class="portfolio__container container swiper-container js-cert-swiper-courses">
+                    <div class="swiper-wrapper">
+
+                        <div class="portfolio__content grid swiper-slide">
+                            <picture class="portfolio__img-wrap">
+                                <source srcset="./assets/img/certs/databricks-data-engineering-530.webp" type="image/webp" />
+                                <img src="./assets/img/databricks-data-engineering.png" alt="Complete Guide to Databricks for Data Engineering certificate" class="portfolio__img" width="265" height="205" loading="lazy" decoding="async" />
+                            </picture>
+    
+                            <div class="portfolio__data">
+                                <h3 class="portfolio__title">Complete Guide to Databricks for Data Engineering</h3>
+                                <p class="portfolio__description">
+                                LinkedIn Learning || Deepak Goyal • 2026<br>
+                                • Databricks platform, PySpark transformations, Spark SQL, Delta Lake, and scalable data engineering workflows.<br>
+                                • Unity Catalog, cluster management, notebook scheduling, and join optimization.<br>
+                                </p>
+                                <a href="./assets/certs/databricks-data-engineering.pdf" class="button button--flex button--small portfolio__button" target="_blank" rel="noopener noreferrer" aria-label="View Databricks for Data Engineering certificate">
+                                    View Databricks cert
+                                    <i class="uil uil-arrow-right button__icon"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="portfolio__content grid swiper-slide">
+                            <picture class="portfolio__img-wrap">
+                                <source srcset="./assets/img/certs/azure-essentials-530.webp" type="image/webp" />
+                                <img src="./assets/img/azure-essentials.png" alt="Microsoft Azure Essentials Professional Certificate" class="portfolio__img" width="265" height="205" loading="lazy" decoding="async" />
+                            </picture>
+    
+                            <div class="portfolio__data">
+                                <h3 class="portfolio__title">Microsoft Azure Essentials Professional Certificate</h3>
+                                <p class="portfolio__description">
+                                Microsoft + LinkedIn Learning • 2026<br>
+                                • Azure fundamentals: IaaS/PaaS, Virtual Machines, App Services, networking, storage, Entra ID, Policy, and cost management.<br>
+                                • Cloud resource deployment, security, governance, and identity management.<br>
+                                </p>
+                                <a href="./assets/certs/azure-essentials-professional.pdf" class="button button--flex button--small portfolio__button" target="_blank" rel="noopener noreferrer" aria-label="View Microsoft Azure Essentials Professional Certificate">
+                                    View Azure Essentials cert
+                                    <i class="uil uil-arrow-right button__icon"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="portfolio__content grid swiper-slide">
+                            <picture class="portfolio__img-wrap">
+                                <source srcset="./assets/img/certs/n8n-multi-agent-530.webp" type="image/webp" />
+                                <img src="./assets/img/n8n-multi-agent.png" alt="Build Multi-Agent Systems with n8n certificate" class="portfolio__img" width="265" height="205" loading="lazy" decoding="async" />
+                            </picture>
+    
+                            <div class="portfolio__data">
+                                <h3 class="portfolio__title">Build Multi-Agent Systems with n8n — Orchestrating Reliable AI Workflows</h3>
+                                <p class="portfolio__description">
+                                LinkedIn Learning || Tobias Zwingmann • 2026<br>
+                                • Multi-agent architecture, orchestrator and sub-agent design, memory, tools, human-in-the-loop, and fallback handling in n8n.<br>
+                                • Production-oriented agentic workflows: observability, guardrails, and failure handling.<br>
+                                </p>
+                                <a href="./assets/certs/n8n-multi-agent-systems.pdf" class="button button--flex button--small portfolio__button" target="_blank" rel="noopener noreferrer" aria-label="View n8n Multi-Agent Systems certificate">
+                                    View n8n cert
                                     <i class="uil uil-arrow-right button__icon"></i>
                                 </a>
                             </div>
@@ -1604,14 +1750,15 @@
 
                     </div>
 
-                    <div class="swiper-button-next" aria-label="Next certification slide">
+                    <div class="swiper-button-next" aria-label="Next course certificate slide">
                         <i class="uil uil-angle-right-b swiper-portfolio-icon"></i>
                     </div>
-                    <div class="swiper-button-prev" aria-label="Previous certification slide">
+                    <div class="swiper-button-prev" aria-label="Previous course certificate slide">
                         <i class="uil uil-angle-left-b swiper-portfolio-icon"></i>
                     </div>
 
                     <div class="swiper-pagination"></div>
+                </div>
                 </div>
             </section>
 

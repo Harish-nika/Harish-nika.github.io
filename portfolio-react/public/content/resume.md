@@ -4,7 +4,7 @@ Chennai, Tamil Nadu, India | +91 73973 27957 | harishkumar56278@gmail.com
 https://harish-nika.github.io/ | https://www.linkedin.com/in/harish-kumar-s-b0a0472b1/ | https://github.com/Harish-nika
 
 ## Summary
-Associate Software Developer at FactEntry (A SIX Company) building production AI and data platforms. Experienced in FastAPI microservices, Redis-based distributed processing, Kubernetes (K3s) with GitOps delivery, RAG systems, and computer vision, and now cloud data engineering on Databricks (data lake, data warehouse, MLflow). Integrated M.Tech in Data Science from VIT (2025).
+Associate Software Developer at FactEntry (A SIX Company) building production AI and data platforms. Experienced in FastAPI microservices, Redis-based distributed processing, Kubernetes (K3s) with GitOps delivery, RAG systems, and computer vision, and now cloud data engineering on Microsoft Azure and Databricks (PySpark, data lake, data warehouse, MLflow). Integrated M.Tech in Data Science from VIT (2025).
 
 ## Experience
 ### Associate Software Developer — FactEntry Data Solutions (A SIX Company)
@@ -12,7 +12,7 @@ _Dec 2025 – Present_
 - Build and run the Data Mining Engine (DME), a production bond-extraction platform for corporate and municipal bonds on K3s (80+ CPU cores) with a human-in-the-loop validation UI.
 - Designed Redis Streams job dispatch across multi-node workers, plus FastAPI microservices with live WebSocket job telemetry, role-based CPU tiering, and domain-restricted auth.
 - Implemented GitOps delivery: GitLab CI image builds, Helm chart promotion, and Argo CD sync to staging.
-- Working with SIX (parent company) to migrate DME to Databricks: data lake and data warehouse design, with MLflow for experiment and model tracking.
+- Working with SIX (parent company) to migrate the DME data-mining architecture onto Microsoft Azure and Databricks: PySpark, data lakes/warehouses, Azure data engineering, and MLflow for experiment and model tracking. Received the SIX Excellence Award for this work.
 
 ### Associate Software Engineer Trainee Intern — MIMASOFT Technologies
 _Jun 2025 – Oct 2025_
@@ -45,8 +45,8 @@ _May 2023 – Jul 2023_
 
 ## Skills
 - **Languages & Backend:** Python, SQL, FastAPI, Flask, WebSockets, React, Streamlit
-- **AI / ML & GenAI:** PyTorch, TensorFlow, scikit-learn, Deep Learning, NLP, Computer Vision, RAG, LLM Agents (Google ADK), LangChain, FAISS, ChromaDB, Sentence Transformers, Ollama (fine-tuning), Groq, YOLOv11, Roboflow, OpenCV, Tesseract OCR
-- **Data & Cloud:** Databricks, Data Lake, Data Warehouse, ETL, Microsoft Azure, PostgreSQL, Redis Streams, MongoDB, Elasticsearch
+- **AI / ML & GenAI:** PyTorch, TensorFlow, scikit-learn, Deep Learning, NLP, Computer Vision, RAG, Agentic AI, n8n, LLM Agents (Google ADK), LangChain, FAISS, ChromaDB, Sentence Transformers, Ollama (fine-tuning), Groq, YOLOv11, Roboflow, OpenCV, Tesseract OCR
+- **Data & Cloud:** Databricks, PySpark, Delta Lake, Azure Data Engineering, Data Lake, Data Warehouse, ETL, Microsoft Azure, PostgreSQL, Redis Streams, MongoDB, Elasticsearch
 - **MLOps & DevOps:** Kubernetes (K3s), Docker, Helm, Argo CD, GitLab CI, GitHub Actions, GitOps, MLflow, Linux, GPU Computing
 
 ## Education
@@ -55,6 +55,10 @@ _May 2023 – Jul 2023_
 - **Class X**, St Joseph Matriculation Higher Secondary School (2018) — 87.8%
 
 ## Certifications
+- [SIX Excellence Award — DME Azure/Databricks Migration](./assets/img/excellence-award-six.jpg)
+- [Complete Guide to Databricks for Data Engineering](./assets/certs/databricks-data-engineering.pdf)
+- [Microsoft Azure Essentials Professional Certificate](./assets/certs/azure-essentials-professional.pdf)
+- [Build Multi-Agent Systems with n8n — Orchestrating Reliable AI Workflows](./assets/certs/n8n-multi-agent-systems.pdf)
 - [Microsoft Certified: Azure AI Fundamentals](https://www.credly.com/badges/da3ef4b3-03a0-4560-95b6-5941473704de/public_url)
 - [Applied Data Science (SmartInternz + Google Developers)](https://drive.google.com/file/d/126d8VTJ6y-X-t6_S_KOD2gYttWQhqe2T/view)
 - [Data Analysis and Visualization with Power BI](https://www.coursera.org/account/accomplishments/verify/YKAC25V5T6WJ)
